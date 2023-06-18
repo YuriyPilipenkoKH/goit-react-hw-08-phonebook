@@ -37,10 +37,10 @@ const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={< Home />} />
         <Route path="/register" element={
-          <RestrictedRoute redirectTo="/" component={ <Register/>} />
+          <RestrictedRoute redirectTo="/phonebook" component={ <Register/>} />
         } />
         <Route path="/login" element={
-             <RestrictedRoute redirectTo="/" component={<Login />} />
+             <RestrictedRoute redirectTo="/phonebook" component={<Login />} />
         } />
         <Route path="/phonebook" element={
         <PrivateRoute redirectTo="/login" component={<Phonebook />} />
@@ -57,26 +57,3 @@ const App = () => {
 
 export default App;
 
-  //   <Routes>
-  //   <Route path="/" element={<Layout />}>
-  //     <Route index element={<HomePage />} />
-  //     <Route
-  //       path="/register"
-  //       element={
-  //         <RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />
-  //       }
-  //     />
-  //     <Route
-  //       path="/login"
-  //       element={
-  //         <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
-  //       }
-  //     />
-  //     <Route
-  //       path="/tasks"
-  //       element={
-  //         <PrivateRoute redirectTo="/login" component={<PhonebookPage />} />
-  //       }
-  //     />
-  //   </Route>
-  // </Routes>
