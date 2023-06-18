@@ -40,7 +40,7 @@ const App = () => {
           <RestrictedRoute redirectTo="https://www.google.com" component={ <Register/>} />
         } />
         <Route path="/login" element={
-             <RestrictedRoute redirectTo="https://yuriypilipenkokh.github.io/goit-react-hw-08-phonebook/" component={<Login />} />
+             <RestrictedRoute redirectTo="https://github.com/" component={<Login />} />
         } />
         <Route path="/phonebook" element={
         <PrivateRoute redirectTo="/login" component={<Phonebook />} />
