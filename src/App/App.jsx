@@ -7,7 +7,6 @@ import Home from 'pages/Home';
 import Register from 'pages/Register';
 import Login from 'pages/Login';
 import { Phonebook } from 'pages/Phonebook';
-
 import { useDispatch } from 'react-redux';
 import { PrivateRoute, RestrictedRoute } from 'components/Routes';
 import { NotFound } from 'pages/NotFound';
