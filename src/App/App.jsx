@@ -37,10 +37,10 @@ const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={< Home />} />
         <Route path="/register" element={
-          <RestrictedRoute redirectTo="/phonebook" component={ <Register/>} />
+          <RestrictedRoute redirectTo="https://www.google.com" component={ <Register/>} />
         } />
         <Route path="/login" element={
-             <RestrictedRoute redirectTo="/phonebook" component={<Login />} />
+             <RestrictedRoute redirectTo="https://yuriypilipenkokh.github.io/goit-react-hw-08-phonebook/" component={<Login />} />
         } />
         <Route path="/phonebook" element={
         <PrivateRoute redirectTo="/login" component={<Phonebook />} />
