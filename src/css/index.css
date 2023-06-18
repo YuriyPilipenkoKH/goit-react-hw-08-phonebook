@@ -348,6 +348,10 @@ width: 318px;
 
 }
 
+.avatar__wrapp {
+height: 32px;
+}
+
 /* .phonebook__wrap {
   width: 100%;
   background-image: url(../img/react-3.svg);

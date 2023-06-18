@@ -12,6 +12,7 @@ export const MainMenu = styled.div`
 
 
 export const UserWrapp = styled.div`
+
     display: flex;
     align-items: center;
     gap: 18px;
@@ -30,6 +31,23 @@ export const MenuBtn = styled.button`
     align-items: center;
     cursor: pointer;
 `
+export const SliderBtn = styled.button`
+
+    position: absolute;
+    top: 25px;
+    right: 20%;
+  
+    
+    background-color: transparent;
+    border: none;
+    padding: 0 4px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+`
+
+
 export const DropdownMenu = styled.div`
     
     position: absolute;
