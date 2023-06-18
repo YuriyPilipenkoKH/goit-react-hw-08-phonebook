@@ -7,6 +7,8 @@ import { logOut } from 'redux/auth/operations';
 import Loader from 'components/Loader/Loader';
 import { DropdownMenu, MainMenu, MenuBtn, MenuItem, SliderBtn, UserName, UserWrapp } from './UserMenu.styled';
 import { AiOutlineCaretDown , AiFillCaretRight} from 'react-icons/ai';
+import {FaWindowClose} from 'react-icons/fa';
+
 import { useState } from 'react';
 import { arrayOfActors } from 'utils/avatarSvg';
 
@@ -65,7 +67,7 @@ const avatarSetter = () => {
              type='button'
              onClick={() => setIsOpen(!isOpen)}
              > 
-             <AiOutlineCaretDown/></MenuBtn>
+              { isOpen ?  <FaWindowClose/> : <AiOutlineCaretDown/> }</MenuBtn>
           </UserWrapp>
           {isOpen && (
         <DropdownMenu className="dropdown-menu">

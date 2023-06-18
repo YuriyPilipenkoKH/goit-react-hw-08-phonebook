@@ -349,7 +349,11 @@ width: 318px;
 }
 
 .avatar__wrapp {
-height: 32px;
+height: 55px;
+}
+
+.avatar__wrapp > svg{
+ width: 40px ;
 }
 
 /* .phonebook__wrap {

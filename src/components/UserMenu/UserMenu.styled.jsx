@@ -34,7 +34,7 @@ export const MenuBtn = styled.button`
 export const SliderBtn = styled.button`
 
     position: absolute;
-    top: 25px;
+    top: 35px;
     right: 20%;
   
     
