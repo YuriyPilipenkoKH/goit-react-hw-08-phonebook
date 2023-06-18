@@ -7,6 +7,8 @@ export const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
   const { isLoggedIn } = useAuth();
 
   // return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
+ 
+
   if (isLoggedIn) {
     // Redirect to the specified URL
     window.location.href = redirectTo;
