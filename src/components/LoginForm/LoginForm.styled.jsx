@@ -37,7 +37,7 @@ export const SecondsCounter = styled.div`
     width: 90%;
     bottom: 5px;
     text-align: center;
-    color: crimson;
+    color: var(--crimson);
     font-size: 1.6em;
     font-weight: 600;
 `

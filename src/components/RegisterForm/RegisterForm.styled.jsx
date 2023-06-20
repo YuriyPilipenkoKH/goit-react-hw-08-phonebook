@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { buttonStyles } from "components/Button/Button.styled";
 
 export const LogoWrapp = styled.div`
     
@@ -8,4 +10,23 @@ export const LogoWrapp = styled.div`
     &> svg {
         fill: #777;
     }
+`
+
+export const RouteWrapp = styled.div`
+    
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+
+    &>button {
+        padding: 4px 16px;
+    }
+`
+export const FormLink = styled(Link)`
+    
+    ${buttonStyles} ;
+    padding: 4px 16px;
+    text-decoration: none;
+    font-size: 14px;
 `

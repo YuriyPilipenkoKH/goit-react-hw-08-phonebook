@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import {SiLazarus} from 'react-icons/si';
-import { LogoWrapp } from './RegisterForm.styled';
+import { FormLink, LogoWrapp, RouteWrapp } from './RegisterForm.styled';
 
 
 
@@ -78,6 +78,10 @@ export const RegisterForm = () => {
 
         <Button  type="submit">Register</Button>
       </StyledForm>
+      <RouteWrapp>
+        <p>Already have account?</p>
+        <FormLink to="/login">LogIn</FormLink>
+      </RouteWrapp>
     </FormWrapper>
   );
 }

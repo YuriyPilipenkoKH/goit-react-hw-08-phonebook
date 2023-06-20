@@ -19,18 +19,9 @@ export const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
   const [timer, setTimer] = useState(null);
-  // const [message, setMessage] = useState('');
   const [remained, setRemained] = useState(TIME);
 
- 
 
-
-  // useEffect(() => {
-  //   if (remained === 0) {
-  //     setMessage('');
-  //     clearTimeout(timer);
-  //   }
-  // }, [remained, timer]);
 useEffect(() => {
   if((remained > 0) && timer){
     setTimeout(() => {
