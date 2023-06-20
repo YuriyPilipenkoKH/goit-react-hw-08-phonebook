@@ -5,7 +5,8 @@ import { MainTitle } from 'components/section/Section.styled';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-
+import {SiLazarus} from 'react-icons/si';
+import { LogoWrapp } from './RegisterForm.styled';
 
 
 
@@ -41,6 +42,7 @@ export const RegisterForm = () => {
 
   return (
     <FormWrapper>
+       <LogoWrapp><SiLazarus size={50}/></LogoWrapp>
       <MainTitle>Register</MainTitle>
 
       <StyledForm onSubmit={handleSubmit}  autoComplete="on">

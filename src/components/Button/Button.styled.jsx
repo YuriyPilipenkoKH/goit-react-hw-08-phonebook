@@ -54,4 +54,15 @@ export const StyledButton = styled.button`
     opacity: 0.3;
     transition: 0s;
   }
+
+  &:disabled {
+    cursor: none;
+    background-color: #888;
+
+    &:hover {
+      color: #eee;
+    background-color: #888;
+    box-shadow: var(--shadow-four);
+    }
+  }
 `;

@@ -1,4 +1,4 @@
-import { StyledWrap } from 'components/Navigation/Navigation.styled';
+import { StyledWrap } from './UserMenu.styled';
 import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
@@ -19,6 +19,8 @@ export function UserMenu() {
   const [activeAvatar, setActiveAvatar] = useState(arrayOfActors[0]);
   const [activeIndex, setActiveIndex] = useState(0)
 
+
+
 //===============================
   // function numberGenerator() {
   //   let count = 1;
@@ -37,7 +39,7 @@ export function UserMenu() {
 //=================================
 
 const getIndex = () => {
-  const newIndex = (activeIndex + 1) % 7; // Increment the index and wrap around 0-7 range
+  const newIndex = (activeIndex + 1) % 20; // Increment the index and wrap around 0-7 range
   setActiveIndex(newIndex);
 }
 

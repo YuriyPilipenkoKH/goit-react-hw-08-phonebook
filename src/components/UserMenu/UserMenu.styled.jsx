@@ -1,6 +1,19 @@
 import styled from "styled-components";
 
 
+export const StyledWrap = styled.div`
+    display: flex;
+    align-items: center;
+    
+    gap: 20px;
+
+    &> svg {
+        width: 25px;
+        fill: #444;
+    }
+`
+
+
 export const UserName = styled.p`
     
 font-weight: 600;
