@@ -77,6 +77,8 @@ export const MainFooter = styled.footer`
   text-align: center;
   font-size: 20px;
   font-weight: 600;
-  color: #777;
+  color: #555;
   border-top: 1px solid #222;
+
+  
 `

@@ -4,6 +4,7 @@ import { Outlet} from 'react-router-dom';
 import { MainFooter, MainHeader} from "./Layout.styled";
 import { iconReactHook } from "utils/svgIcons";
 
+
 export const Layout = () => {
     return (
         <>
