@@ -7,7 +7,7 @@ import { FormWrapper, SecondsCounter, ShowBtn, StyledForm } from './LoginForm.st
 import { MainTitle } from 'components/section/Section.styled';
 import {IoMdUnlock} from 'react-icons/io';
 import {CgSandClock} from 'react-icons/cg';
-import { LogoWrapp } from 'components/RegisterForm/RegisterForm.styled';
+import { FormLink, LogoWrapp, RouteWrapp } from 'components/RegisterForm/RegisterForm.styled';
 
 
 
@@ -109,6 +109,10 @@ setTimer(true)
         : !remained && <SecondsCounter>Wasted</SecondsCounter>
         }
       </StyledForm>
+      <RouteWrapp>
+        <p>Don’t have account ?</p>
+        <FormLink to="/register">Register</FormLink>
+      </RouteWrapp>
     </FormWrapper>
   );
 }
