@@ -5,6 +5,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
+
 body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
@@ -12,7 +13,7 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #cad9d9;
+  /* background-color: #cad9d9; */
   /* overflow-y: auto; */
 
   /* background-image: url('../img/app-development-bg.jpg'); */
@@ -308,10 +309,7 @@ img {
   fill: #eee;
 }
 
-.iconReactHook{
-  transition: all 0.4s;
-  fill: #555;
-}
+
 .iconRedux {
   transition: all 0.4s ;
 }

@@ -22,6 +22,7 @@ import Loader from 'components/Loader/Loader';
 const App = () => {
   const { isRefreshing } = useAuth();
 
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
@@ -31,7 +32,7 @@ const App = () => {
    <Loader/>
   ) : (
    
-    <Container>
+    <Container >
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={< Home />} />

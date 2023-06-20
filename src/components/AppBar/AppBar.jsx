@@ -14,7 +14,6 @@ export const AppBar = () => {
     const theme = useSelector(getTheme)
     const dispatch = useDispatch()
 
-    console.log('theme',theme);
   
     return (
       <StyledHeader >
@@ -22,9 +21,11 @@ export const AppBar = () => {
 
         <ThemeBtn 
         onClick={() => dispatch(toggleTheme())}
-        type="button">
+        type="button"
+        theme = {theme}
+        >
           {theme === 'light'
-          ? <MdOutlineLightMode size={30}/>  
+          ? <MdOutlineLightMode size={30}/>
           : <MdOutlineNightlight size={30}/>
           }
         </ThemeBtn>

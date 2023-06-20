@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const MainContainer = styled.div`
     display: grid;
     /* place-items: center; */
@@ -8,7 +9,7 @@ export const MainContainer = styled.div`
     grid-template-rows: 80px auto 80px;
     height: 100vh;
 
-    background-color: transparent;
+    background-color: ${props => props.theme === 'light' ? 'var(--body-color)' : 'gray'};
     padding: 0 16px;
     margin: 0 auto;
 `

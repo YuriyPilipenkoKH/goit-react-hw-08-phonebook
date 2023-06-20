@@ -5,3 +5,5 @@ export const selectUser = state => state.auth.user;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 export const selectIsFetching = state => state.auth.isFetching;
+
+export const selectToken = state => state.auth.token;

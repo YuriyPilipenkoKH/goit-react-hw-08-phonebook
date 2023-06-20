@@ -13,17 +13,13 @@ export const HomeTitle = styled.h1`
 
   font-size: 32px;
   font-weight: 700;
-  color: #555;
-  /* background-color: #cad9d9bb;
-  border: 4px solid #7775;
-  border-radius: 16px; */
+  color: ${props => props.theme === 'light' ? '#555' : '#eee'};
 
   &+span {
     font-weight: 600;
-   color: #555;
+   color:${props => props.theme === 'light' ? '#555' : '#999'};
     font-size: 24px;
     text-align: center;
-    /* background-color: #cad9d955; */
     display: block;
 
   }

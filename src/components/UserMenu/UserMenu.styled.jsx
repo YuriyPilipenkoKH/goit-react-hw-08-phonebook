@@ -9,14 +9,18 @@ export const StyledWrap = styled.div`
 
     &> svg {
         width: 25px;
-        fill: #444;
+        fill:  #333;
+    }
+
+    &>div> p{
+        color: ${props => props.theme === 'light' ? '#444' : '#eee'};
     }
 `
 
 
 export const UserName = styled.p`
     
-font-weight: 600;
+    font-weight: 600;
 
 `
 export const MainMenu = styled.div`
@@ -30,7 +34,7 @@ export const UserWrapp = styled.div`
     align-items: center;
     gap: 18px;
     padding: 6px 22px;
-    border: 3px solid #777;
+    border: 3px solid   ${props => props.theme === 'light' ? '#444' : '#eee'};;
     border-radius: 6px;
 
 `
@@ -43,6 +47,11 @@ export const MenuBtn = styled.button`
     display: flex;
     align-items: center;
     cursor: pointer;
+
+    &> svg {
+        fill:  ${props => props.theme === 'light' ? '#444' : '#eee'};
+    }
+    
 `
 export const SliderBtn = styled.button`
 

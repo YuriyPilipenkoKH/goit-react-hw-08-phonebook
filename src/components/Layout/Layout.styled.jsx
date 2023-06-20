@@ -12,7 +12,7 @@ export const MainHeader= styled.header`
   align-items: center;
 
   padding: 32px 16px 16px;
-  background-color: var(--body-color);
+  background-color: transparent;
  
   border-bottom: 1px solid #222;
 
@@ -40,6 +40,8 @@ export const MainHeader= styled.header`
     &:hover {
         color: var(--teal);
     }
+
+
   }
 `
 
@@ -53,9 +55,9 @@ export const StyledLink = styled(NavLink)`
   border:2px solid transparent;
   border-radius: 4px;
   text-decoration: none;
-  color: #222;
+  color:  ${props => props.theme === 'light' ? '#555' : '#eee'};
 
-  font-weight: 500;
+  font-weight: 600;
   transition: 0.3s ease;
 
 
@@ -77,8 +79,13 @@ export const MainFooter = styled.footer`
   text-align: center;
   font-size: 20px;
   font-weight: 600;
-  color: #555;
+  color:  ${props => props.theme === 'light' ? '#555' : '#eee'};
   border-top: 1px solid #222;
+  background-color: transparent;
 
-  
+
+  &> svg {
+    transition: all 0.4s;
+    fill: ${props => props.theme === 'light' ? '#555' : '#eee'};
+  }
 `
