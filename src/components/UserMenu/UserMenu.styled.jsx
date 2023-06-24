@@ -6,14 +6,17 @@ export const StyledWrap = styled.div`
     align-items: center;
     
     gap: 20px;
+    
 
     &> svg {
         width: 25px;
         fill:  #333;
+       
     }
 
     &>div> p{
-        color: ${props => props.theme === 'light' ? '#444' : '#eee'};
+        /* color: ${props => props.theme === 'light' ? '#444' : '#eee'}; */
+        color: var(--main-rgb);
     }
 `
 
@@ -81,9 +84,10 @@ export const DropdownMenu = styled.div`
     flex-direction: column;
     gap: 12px;
     padding: 14px 22px;
-    border: 3px solid #777;
+    border: 3px solid var(--teal);
+   background-color: #eee5;
     border-radius: 6px;
-    background-color: var(--body-color);
+   
     box-shadow: var(--shadow-four);
 `
 export const MenuItem  = styled.button `

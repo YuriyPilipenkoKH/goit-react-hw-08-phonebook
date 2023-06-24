@@ -55,7 +55,7 @@ export const StyledLink = styled(NavLink)`
   border:2px solid transparent;
   border-radius: 4px;
   text-decoration: none;
-  color:  ${props => props.theme === 'light' ? '#555' : '#eee'};
+  color:  ${props => props.theme === 'light' ? '#555' : '#eee'} ;
 
   font-weight: 600;
   transition: 0.3s ease;

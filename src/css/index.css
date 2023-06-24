@@ -54,6 +54,10 @@ body {
 
   --time: 250ms;
 
+  --main: #333;
+  --main-rgb: #dd0;
+  color-scheme: light;
+
   --shadow-one: 1rem 1rem 2rem rgb(65, 64, 64), -1rem -1rem 2rem rgb(82, 81, 81);
   --shadow-two:  rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   --shadow-three:  rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
@@ -324,12 +328,7 @@ img {
   display: flex;
 }
 
-.home__wrapper {
-  background-image: url(../img/hero-image-5.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
+
 
 .login__bg {
   width: 100%;

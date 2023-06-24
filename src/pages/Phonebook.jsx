@@ -11,7 +11,7 @@ import { fetchContacts } from "redux/operations";
 import { useEffect } from "react";
 
 
-export const Phonebook = () => {
+ const Phonebook = () => {
   const dispatch = useDispatch()
   const contacts = useSelector(getContactsList)
   
@@ -39,3 +39,4 @@ export const Phonebook = () => {
   )
 }
 
+export default Phonebook

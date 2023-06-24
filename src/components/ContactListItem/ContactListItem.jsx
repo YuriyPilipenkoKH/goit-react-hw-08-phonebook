@@ -30,8 +30,7 @@ export default function ContactListItem({ contact }) {
         name: nick,
         number: phone,
       };
-
-    
+ 
 
 console.log('updatedContact' , updatedContact );
 const contactToUpdate  = contactsList.find(contact => contact.id === updatedContact.id)

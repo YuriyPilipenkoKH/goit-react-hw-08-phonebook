@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from "redux/themeSlice";
 
 export const AppBar = () => {
+
+  // console.log(thema)
     const { isLoggedIn } = useAuth();
     const theme = useSelector(getTheme)
     const dispatch = useDispatch()
@@ -22,7 +24,7 @@ export const AppBar = () => {
         <ThemeBtn 
         onClick={() => dispatch(toggleTheme())}
         type="button"
-        theme = {theme}
+      
         >
           {theme === 'light'
           ? <MdOutlineLightMode size={30}/>
