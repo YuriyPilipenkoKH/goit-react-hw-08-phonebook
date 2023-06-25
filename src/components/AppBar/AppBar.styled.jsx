@@ -11,10 +11,11 @@ export const StyledHeader = styled.header`
 export const ThemeBtn = styled.button`
    margin-left: auto;
  
-    width: 40px;
-    height: 40px;
-   display: grid;
-   place-items: center;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     outline: none;
     border-radius: 50%;
@@ -28,7 +29,7 @@ export const ThemeBtn = styled.button`
         }
 
     &:hover{
-        background-color: var(--green);
+        background-color: #eee5;
 
 
         &> svg {

@@ -7,7 +7,6 @@ import { useAuth } from 'hooks/useAuth';
 export const AuthNav = () => {
 
   const {token} = useAuth()
-  console.log(token)
 
   return (
     <StyledWrap>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const FilterLabel = styled.label`
-
+ color:  ${props => props.theme === 'light' ? '#444' : '#eee'};
 
   & >input{
 

@@ -93,6 +93,7 @@ export const Label = styled.label`
 position: relative;
   font-size: 18px;
   font-weight: 500;
+  color:  ${props => props.theme === 'light' ? '#444' : '#eee'};
   display: flex;
   flex-direction: column;
   gap: 4px;

@@ -57,7 +57,7 @@ const avatarSetter = () => {
       {isFetching && <Loader/>}
       {isLoggedIn && (
         <StyledWrap>
-          { activeAvatar }
+          <div className='avatar__wrapp-sm'>{ activeAvatar }</div>
         
           <UserWrapp >
             <UserName >{user.name}</UserName>
