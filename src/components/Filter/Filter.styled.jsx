@@ -7,6 +7,7 @@ export const FilterLabel = styled.label`
   & >input{
       
 
+
     &:disabled {
       border: none;
       outline: none;
