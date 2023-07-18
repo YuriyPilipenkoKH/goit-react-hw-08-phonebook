@@ -20,6 +20,9 @@ export const RouteWrapp = styled.div`
     justify-content: space-between;
 
     &> p{
+        transition: color 1s ease-in-out;
+
+    color: var(--text-color);
         font-size: 14px;
     }
 

@@ -9,7 +9,9 @@ export const MainContainer = styled.div`
     grid-template-rows: 80px auto 80px;
     height: 100vh;
 
-    background-color: var(--background-color);
+    transition: background-color 1s ease-in-out, color 1s ease-in-out;
+    background: var(--background-color);
+    color: var(--text-color);
     padding: 0 16px;
     margin: 0 auto;
 `

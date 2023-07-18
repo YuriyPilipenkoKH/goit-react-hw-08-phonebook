@@ -15,8 +15,8 @@ export const StyledWrap = styled.div`
     }
 
     &>div> p{
-        /* color: ${props => props.theme === 'light' ? '#444' : '#eee'}; */
-        color: var(--main-rgb);
+        transition: color 1s ease-in-out;
+        color: var(--text-color);
     }
 `
 
@@ -37,8 +37,9 @@ export const UserWrapp = styled.div`
     align-items: center;
     gap: 18px;
     padding: 6px 22px;
-    border: 3px solid   ${props => props.theme === 'light' ? '#444' : '#eee'};;
+    border: 3px solid    var(--text-color);
     border-radius: 6px;
+    transition: border-color 1s ease-in-out;
 
 `
 export const MenuBtn = styled.button`
@@ -52,7 +53,8 @@ export const MenuBtn = styled.button`
     cursor: pointer;
 
     &> svg {
-        fill:  ${props => props.theme === 'light' ? '#444' : '#eee'};
+        fill: var(--text-color);
+        transition: fill 1s ease-in-out;
     }
     
 `
@@ -85,9 +87,8 @@ export const DropdownMenu = styled.div`
     gap: 12px;
     padding: 14px 22px;
     border: 3px solid var(--teal);
-   background-color: #eee5;
+    background-color: #eee5;
     border-radius: 6px;
-   
     box-shadow: var(--shadow-four);
 `
 export const MenuItem  = styled.button `

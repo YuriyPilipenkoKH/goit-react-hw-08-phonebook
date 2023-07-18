@@ -10,7 +10,8 @@ padding:  32px 16px 60px;
 border: 4px solid #777;
 border-radius: 12px;
 box-shadow: var(--shadow-four);
-background-color: var(--body-color);
+background-color:var(--background-color);
+transition: background-color 1s ease-in-out, color 1s ease-in-out;
 `
 
 export const StyledForm = styled.form`

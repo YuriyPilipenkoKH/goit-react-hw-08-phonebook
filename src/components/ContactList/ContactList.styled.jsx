@@ -106,7 +106,7 @@ export const ContactContainer = styled.div`
   border-radius: 16px;
   box-shadow: var(--shadow-four);
   overflow: auto;
-
+  transition: 1s ease-in-out;
   /* ::-webkit-scrollbar {
     display: none;
 } */

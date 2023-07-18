@@ -25,7 +25,8 @@ export const ThemeBtn = styled.button`
     
 
     &> svg {
-        fill:  ${props => props.theme === 'light' ? '#444' : '#eee'};
+        transition:  fill 1s ease-in-out;
+        fill: var(--text-color);
         }
 
     &:hover{
@@ -33,6 +34,7 @@ export const ThemeBtn = styled.button`
 
 
         &> svg {
+            transition:  fill 1s ease-in-out;
             fill:  ${props => props.theme === 'light' ? '#eee' : '#222'};
         }
     }

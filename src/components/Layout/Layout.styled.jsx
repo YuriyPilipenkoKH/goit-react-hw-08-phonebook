@@ -55,7 +55,8 @@ export const StyledLink = styled(NavLink)`
   border:2px solid transparent;
   border-radius: 4px;
   text-decoration: none;
-  color:  ${props => props.theme === 'light' ? '#555' : '#eee'} ;
+  color: var(--text-color) ;
+  transition:  color 1s ease-in-out;
 
   font-weight: 600;
   transition: 0.3s ease;
@@ -79,13 +80,14 @@ export const MainFooter = styled.footer`
   text-align: center;
   font-size: 20px;
   font-weight: 600;
-  color:  ${props => props.theme === 'light' ? '#555' : '#eee'};
+  color:  var(--text-color);
   border-top: 1px solid #222;
   background-color: transparent;
-
+  transition: color 1s ease-in-out, fill 1s ease-in-out;
 
   &> svg {
-    transition: all 0.4s;
-    fill: ${props => props.theme === 'light' ? '#555' : '#eee'};
+    /* transition: 0.3s ease; */
+    transition: color 1s ease-in-out, fill 1s ease-in-out;
+    fill: var(--text-color);
   }
 `

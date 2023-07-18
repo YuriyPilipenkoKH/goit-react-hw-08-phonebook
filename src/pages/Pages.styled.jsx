@@ -17,7 +17,8 @@ export const HomeWrapper= styled.div`
 
 
   /* background-image: url(${props => props.theme === 'light' ? bg1 : bg6}); */
-  background-image: ${props => props.theme === 'light' ? `url(${bg2})` : `url(${bg6})`};
+  background-image: var(--background-image);
+  transition: background-image 1s ease-in-out;
   background-repeat: no-repeat;
   background-position: center;  
   background-size: cover;
