@@ -11,7 +11,7 @@ export const MainHeader= styled.header`
   gap: 25px;
   align-items: center;
 
-  padding: 32px 16px 16px;
+  padding: 32px 50px 16px;
   background-color: transparent;
  
   border-bottom: 1px solid #222;
@@ -72,11 +72,12 @@ export const StyledLink = styled(NavLink)`
 
 export const MainFooter = styled.footer`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
-  gap: 18px;
+  gap: 40px;
   width: 100%;
-  padding: 32px 16px;
+  padding: 22px 16px;
+
   text-align: center;
   font-size: 20px;
   font-weight: 600;

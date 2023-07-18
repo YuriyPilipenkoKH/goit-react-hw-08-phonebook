@@ -45,3 +45,12 @@ export const HomeTitle = styled.h1`
 
   }
 `
+export const Page404 = styled.div`
+ min-width: 300px;
+
+  & > svg {
+       fill: var(--text-color);
+        transition: fill 1s ease-in-out;
+
+  }
+`
