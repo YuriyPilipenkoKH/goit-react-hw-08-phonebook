@@ -1,14 +1,15 @@
-import {   lazy, useEffect} from 'react';
+import { lazy, useEffect} from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { refreshUser } from 'redux/auth/operations';
 import { Layout } from 'components/Layout/Layout';
 import { Container } from 'components/container/Container';
-
-import { useDispatch } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import { PrivateRoute, RestrictedRoute } from 'components/Routes';
 import { NotFound } from 'pages/NotFound';
 import { useAuth } from 'hooks/useAuth';
 import Loader from 'components/Loader/Loader';
+import { getTheme } from 'redux/selectors';
+
 
 // import Home from 'pages/Home';
 // import Register from 'pages/Register';
@@ -23,7 +24,10 @@ const Phonebook = lazy(() => import('../pages/Phonebook'));
 
 const App = () => {
   const { isRefreshing } = useAuth();
+  const theme = useSelector(getTheme)
 
+   // Set the data-theme attribute on the <html> element
+   document.documentElement.setAttribute('data-theme', theme);
 
   const dispatch = useDispatch();
   useEffect(() => {
