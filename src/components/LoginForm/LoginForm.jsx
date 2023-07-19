@@ -13,7 +13,7 @@ import { FormLink, LogoWrapp, RouteWrapp } from 'components/RegisterForm/Registe
 
 
 export const LoginForm = () => {
-  const TIME = 7
+  const TIME = 15
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

@@ -44,13 +44,14 @@ export const HomeTitle = styled.h1`
 
   text-align: center;
 
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 700;
-  color: #555;
+  color: var(--main-text);
+  padding: 12px;
 
   &+span {
     font-weight: 600;
-   color:${props => props.theme === 'light' ? '#555' : '#999'};
+    color: #757575;
     font-size: 24px;
     text-align: center;
     display: block;
