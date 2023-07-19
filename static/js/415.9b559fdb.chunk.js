@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_hw_08_phonebook=self.webpackChunkreact_hw_08_phonebook||[]).push([[415],{5415:function(n,e,t){t.r(e),t.d(e,{default:function(){return r}});var o=t(1215),a=t(3329);function r(){return(0,a.jsxs)(o.pp,{children:[(0,a.jsx)(o.eA,{children:"React-phonebook"}),(0,a.jsxs)("span",{children:["web application that allows users to store and manage their contacts, ",(0,a.jsx)("br",{})," providing features for adding, editing, and deleting contact information"]})]})}}}]);
+//# sourceMappingURL=415.9b559fdb.chunk.js.map
