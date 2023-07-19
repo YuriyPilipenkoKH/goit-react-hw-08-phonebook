@@ -9,6 +9,7 @@ import { iconMphone } from 'utils/svgIcons';
 import { getContactsList } from 'redux/selectors';
 import { fetchContacts } from "redux/operations";
 import { useEffect } from "react";
+import { PhonebookWrapper } from "./Pages.styled";
 
 
  const Phonebook = () => {
@@ -21,7 +22,7 @@ import { useEffect } from "react";
   }, [dispatch] )
   
   return (
-    <div className="phonebook__wrap">
+    <PhonebookWrapper className="phonebook__wrap">
     <Section title="Phonebook" icon ={iconMphone}>
       <ContactForm  />
 
@@ -35,7 +36,7 @@ import { useEffect } from "react";
       )}
     </Section>
 
-  </div>
+  </PhonebookWrapper>
   )
 }
 

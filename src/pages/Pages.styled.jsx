@@ -9,6 +9,10 @@ import bg7 from '../img/reacy-native-development.svg'
 import bg8 from '../img/reactjs-benefits.svg'
 import bg9 from '../img/react-dev-partner.svg'
 
+export const arrayOfBackgrounds = [
+  bg1, bg2, bg3, bg4, bg5, bg6, bg7, bg8, bg9,
+]
+
 export const HomeWrapper= styled.div`
   width: 100%;
   display: flex;
@@ -23,10 +27,18 @@ export const HomeWrapper= styled.div`
   background-position: center;  
   background-size: cover;
 `
+export const PhonebookWrapper= styled.div`
+  width: 100%;
 
-export const arrayOfBackgrounds = [
-  bg1, bg2, bg3, bg4, bg5, bg6, bg7, bg8, bg9,
-]
+  /* background-image: var(--background-image-contacts); */
+  transition: background-image 1s ease-in-out;
+  background-repeat: no-repeat;
+  background-position: center;  
+  background-size: cover;
+ 
+`
+
+
 
 export const HomeTitle = styled.h1`
 

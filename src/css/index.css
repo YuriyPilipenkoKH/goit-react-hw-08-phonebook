@@ -85,6 +85,7 @@ body {
   --background-image: url('../img/react-dev-partner.svg');
   --field-color: #eeeeee;
   --border: 3px solid transparent;
+  --background-image-contacts: url('../img/mobile_app_development_02.svg');
 }
 
 :root[data-theme="dark"] {
@@ -93,6 +94,7 @@ body {
   --background-image: url('../img/specilized-react-app.svg');
   --field-color: #eee5;
   --border: 3px solid var(--teal);
+  --background-image-contacts: url('../img/mobile-app.svg')
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -379,12 +381,13 @@ height: 55px;
  width: 40px ;
 }
 
-/* .phonebook__wrap {
+.phonebook__wrap {
   width: 100%;
-  background-image: url(../img/react-3.svg);
+  /* background-image: url(../img/react-3.svg); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   display: grid;
-  justify-items: center;
-} */
+  justify-items: center; 
+
+} 
