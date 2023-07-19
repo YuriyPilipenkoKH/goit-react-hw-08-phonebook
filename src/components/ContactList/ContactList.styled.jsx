@@ -101,7 +101,7 @@ export const ContactContainer = styled.div`
   width: 320px;
   max-height: 480px;
   padding: 4px 2px;
-  border: 3px solid var(--teal);
+  border: var(--teal);
   background-color: #eee5;
   border-radius: 16px;
   box-shadow: var(--shadow-four);

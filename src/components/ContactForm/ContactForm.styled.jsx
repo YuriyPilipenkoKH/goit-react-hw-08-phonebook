@@ -57,19 +57,23 @@ export const Input = styled.input`
   width: 280px;
   border-radius: 10px;
   padding:4px 16px;
-  background-color: var(--beige);
-  border: transparent;
+  background-color: var(--field-color);
+  border: var(--border);
   box-shadow: var(--shadow-four);
+  transition: background-color 1s ease-in-out, border 1s ease-in-out;
 
   &:hover,
   &:active,
   &:focus-visible {
    
-    outline: 2px solid var(--orange);
+    outline: 3px solid var(--orange);
+    border: 3px solid transparent;
     box-shadow: var(--shadow-two);
+    transition:  0.4s ease-in-out;
   }
 
   &:disabled {
+    background-color: var(--field-color) !important;
     border: none;
     outline: none;
     cursor: none;

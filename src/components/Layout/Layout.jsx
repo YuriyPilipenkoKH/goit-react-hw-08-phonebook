@@ -2,7 +2,7 @@ import { AppBar } from "components/AppBar/AppBar";
 import { Suspense } from "react";
 import { Outlet} from 'react-router-dom';
 import { MainFooter, MainHeader} from "./Layout.styled";
-import { iconReactHook, mirrorStream } from "utils/svgIcons";
+import {  mirrorStream } from "utils/svgIcons";
 
 
 
