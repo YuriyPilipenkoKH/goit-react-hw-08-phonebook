@@ -14,4 +14,5 @@ export const MainContainer = styled.div`
     color: var(--text-color);
     padding: 0 16px;
     margin: 0 auto;
+   
 `

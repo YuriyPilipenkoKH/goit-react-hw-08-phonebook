@@ -87,6 +87,7 @@ body {
   --border: 3px solid transparent;
   --background-image-contacts: url('../img/mobile_app_development_02.svg');
   --main-text:  #001129;
+
 }
 
 :root[data-theme="dark"] {
@@ -97,6 +98,15 @@ body {
   --border: 3px solid var(--teal);
   --background-image-contacts: url('../img/mobile-app.svg');
   --main-text:  #001129;
+}
+
+:root[data-lang="english"] {
+  --fz: 16px;
+}
+
+
+:root[data-lang="ukrainian"] {
+  --fz: 12px;
 }
 
 h1,h2,h3,h4,h5,h6,p {

@@ -2,11 +2,13 @@ import Button from 'components/Button/Button';
 import { Input, Label } from 'components/ContactForm/ContactForm.styled';
 import { FormWrapper, ShowBtn, StyledForm } from 'components/LoginForm/LoginForm.styled';
 import { MainTitle } from 'components/section/Section.styled';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import {SiLazarus} from 'react-icons/si';
 import { FormLink, LogoWrapp, RouteWrapp } from './RegisterForm.styled';
+import { langEN, langUA } from 'utils/languages';
+import { getLang } from 'redux/selectors';
 
 
 
@@ -16,6 +18,13 @@ export const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
+  const [lang, setLang] = useState(langUA)
+  const language = useSelector(getLang)
+ 
+  // Language
+  useEffect(() => {
+    setLang(language === 'english' ?  langEN :  langUA);
+  }, [language])
 
 
 
@@ -43,16 +52,16 @@ export const RegisterForm = () => {
   return (
     <FormWrapper>
        <LogoWrapp><SiLazarus size={50}/></LogoWrapp>
-      <MainTitle>Register</MainTitle>
+      <MainTitle>{lang.regBtn}</MainTitle>
 
       <StyledForm onSubmit={handleSubmit}  autoComplete="on">
         <Label >
-          Name
+        {lang.name}
           <Input type="text" name="name" value={name} onChange={handleChange} />
         </Label>
 
         <Label >
-          Email
+        {lang.email}
           <Input
             type="email"
             name="email"
@@ -62,7 +71,7 @@ export const RegisterForm = () => {
         </Label>
 
         <Label >
-          Password
+        {lang.pass}
           <Input
             type={show ? 'text' : 'password'}
             name="password"
@@ -72,15 +81,15 @@ export const RegisterForm = () => {
             <ShowBtn 
             type='button' 
             onClick={() => setShow(!show)}>
-              {show ? 'Hide' : 'Show'}
+              {show ? lang.hide : lang.show}
               </ShowBtn>
         </Label>
 
-        <Button  type="submit">Register</Button>
+        <Button  type="submit">{lang.regSubmit}</Button>
       </StyledForm>
       <RouteWrapp>
-        <p>Already have account?</p>
-        <FormLink to="/login">LogIn</FormLink>
+        <p>{lang.alreadyGot}</p>
+        <FormLink to="/login">{lang.logBtn}</FormLink>
       </RouteWrapp>
     </FormWrapper>
   );

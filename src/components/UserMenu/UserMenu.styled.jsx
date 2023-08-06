@@ -92,7 +92,7 @@ export const DropdownMenu = styled.div`
     box-shadow: var(--shadow-four);
 `
 export const MenuItem  = styled.button `
-    padding: 6px 32px;
+    padding: 6px 2px;
     width: 150px;
     background-color: var(--body-color);
     color: #555;

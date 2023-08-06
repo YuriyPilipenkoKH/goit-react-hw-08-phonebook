@@ -2,9 +2,21 @@
 import { StyledListBar, SortBtns } from "./ListBar.styled"
 // import { getSorted } from "redux/selectors"
 import { toggleSortId,  toggleSortName, toggleSortNUmber } from "redux/sortSlice"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect, useState } from "react"
+import { langEN, langUA } from "utils/languages"
+import { getLang } from "redux/selectors"
 
 const ListBar = () => {
+
+    const [lang, setLang] = useState(langUA)
+    const language = useSelector(getLang)
+   
+    // Language
+    useEffect(() => {
+      setLang(language === 'english' ?  langEN :  langUA);
+    }, [language])
+
     const dispatch = useDispatch()
 
     const sortById = () =>{   
@@ -23,8 +35,8 @@ const ListBar = () => {
   return (
     <StyledListBar>
         <SortBtns onClick={sortById}>id</SortBtns>
-        <SortBtns onClick={sortByName}> name</SortBtns>
-        <SortBtns onClick={sortByNumber}>phone</SortBtns>
+        <SortBtns onClick={sortByName}> {lang.name} </SortBtns>
+        <SortBtns onClick={sortByNumber}> {lang.phone} </SortBtns>
     </StyledListBar>
   )
 }

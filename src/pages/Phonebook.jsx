@@ -6,15 +6,23 @@ import { ContactList } from '../components/ContactList/ContactList';
 import ListBar from 'components/ListBar/ListBar';
 import {  useDispatch, useSelector } from 'react-redux';
 import { iconMphone } from 'utils/svgIcons';
-import { getContactsList } from 'redux/selectors';
+import { getContactsList, getLang } from 'redux/selectors';
 import { fetchContacts } from "redux/operations";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { PhonebookWrapper } from "./Pages.styled";
+import { langEN, langUA } from "utils/languages";
 
 
  const Phonebook = () => {
   const dispatch = useDispatch()
   const contacts = useSelector(getContactsList)
+  const [lang, setLang] = useState(langUA)
+  const language = useSelector(getLang)
+ 
+  // Language
+  useEffect(() => {
+    setLang(language === 'english' ?  langEN :  langUA);
+  }, [language])
   
   useEffect(() => {
     dispatch(fetchContacts())
@@ -23,7 +31,7 @@ import { PhonebookWrapper } from "./Pages.styled";
   
   return (
     <PhonebookWrapper className="phonebook__wrap">
-    <Section title="Phonebook" icon ={iconMphone}>
+    <Section title={lang.phonebook} icon ={language === 'english' &&   iconMphone}>
       <ContactForm  />
 
       <Filter />

@@ -1,27 +1,41 @@
-import { Translation } from "react-i18next";
+// import { Translation } from "react-i18next";
 import { HomeTitle, HomeWrapper } from "./Pages.styled";
-import CommentComponent from "components/CommentComponent/CommentComponent";
+// import CommentComponent from "components/CommentComponent/CommentComponent";
+import { langEN, langUA } from "utils/languages";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { getLang } from "redux/selectors";
+
 
 
 export default function Home() {
+  const [lang, setLang] = useState(langUA)
+  const language = useSelector(getLang)
+ 
+  // Language
+  useEffect(() => {
+    setLang(language === 'english' ?  langEN :  langUA);
+  }, [language])
  
     return (
       <HomeWrapper  >
         <HomeTitle  >
-         React-phonebook  
+         {lang.appTitle}  
         </HomeTitle>
-        <span>web application that allows users to store and manage their contacts, <br /> providing features for adding, editing, and deleting contact information</span>
+        <span>
+        {lang.appUnderTitle}
+          </span>
 
-        <div>
+        {/* <div>
       <h1>
         <Translation>{(t) => t("appTitle")}</Translation>
       </h1>
       <p>
         <Translation>{(t) => t("welcomeMessage")}</Translation>
       </p>
-    </div>
+    </div> */}
 
-    <CommentComponent></CommentComponent>
+    {/* <CommentComponent></CommentComponent> */}
 
       </HomeWrapper>
     );

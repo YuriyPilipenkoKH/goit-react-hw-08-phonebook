@@ -4,7 +4,9 @@ export const getForm =  state => state.form
 export const getEditedName =  state => state.edit.nick
 export const getEditedPhone =  state => state.edit.phone
 export const getSorted =  state => state.sort
+
 export const getTheme =  state => state.theme.theme
+export const getLang =  state => state.lang.lang
 
 export const selectIsLoading = state => state.contacts.isLoading;
 

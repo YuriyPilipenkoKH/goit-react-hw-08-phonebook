@@ -141,7 +141,7 @@ export const BtnWrapper = styled.div`
 export const BtnDelete = styled.button`
    ${baseLiStyles};
   
-
+    font-size: var(--fz);
    justify-content: center;
    width: 100px;
    /* background-color: var(--red); */
@@ -165,8 +165,11 @@ export const BtnDelete = styled.button`
 `
 export const BtnEdit = styled.button`
    ${baseLiStyles};
+
+   font-size: var(--fz);
    justify-content: center;
    width: 100px;
+   transition: opacity 1s ease-in-out;
    
    cursor: pointer;
     transition: all 0.4s;
@@ -197,7 +200,6 @@ export const EmptySpan = styled.span`
 
 
 `
-
 
 export const Count  = styled.span`
 position: absolute;

@@ -8,7 +8,8 @@ import { PrivateRoute, RestrictedRoute } from 'components/Routes';
 import { NotFound } from 'pages/NotFound';
 import { useAuth } from 'hooks/useAuth';
 import Loader from 'components/Loader/Loader';
-import { getTheme } from 'redux/selectors';
+import { getLang, getTheme } from 'redux/selectors';
+
 
 
 // import Home from 'pages/Home';
@@ -25,9 +26,11 @@ const Phonebook = lazy(() => import('../pages/Phonebook'));
 const App = () => {
   const { isRefreshing } = useAuth();
   const theme = useSelector(getTheme)
+  const language = useSelector(getLang)
 
    // Set the data-theme attribute on the <html> element
    document.documentElement.setAttribute('data-theme', theme);
+   document.documentElement.setAttribute('data-lang', language);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -38,24 +41,26 @@ const App = () => {
    <Loader/>
   ) : (                     
    
-    <Container >
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={< Home />} />
-        <Route path="/register" element={
-          <RestrictedRoute redirectTo="/phonebook" component={ <Register/>} />
-        } />
-        <Route path="/login" element={
-             <RestrictedRoute redirectTo="/phonebook" component={<Login />} />
-        } />
-        <Route path="/phonebook" element={
-        <PrivateRoute redirectTo="/login" component={<Phonebook />} />
-        } />
-        <Route path="*" element={<NotFound/>} />
-     </Route>
+    
+      <Container >
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={< Home />} />
+          <Route path="/register" element={
+            <RestrictedRoute redirectTo="/phonebook" component={ <Register/>} />
+          } />
+          <Route path="/login" element={
+               <RestrictedRoute redirectTo="/phonebook" component={<Login />} />
+          } />
+          <Route path="/phonebook" element={
+          <PrivateRoute redirectTo="/login" component={<Phonebook />} />
+          } />
+          <Route path="*" element={<NotFound/>} />
+       </Route>
       
-    </Routes>
-    </Container>
+      </Routes>
+      </Container>
+  
 
 
   );

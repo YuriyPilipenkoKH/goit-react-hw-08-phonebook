@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateField, resetForm } from 'redux/formSlice';
 import Notiflix from 'notiflix';
 import { addContact } from 'redux/operations';
-import { getContactsList, getForm} from 'redux/selectors';
+import { getContactsList, getForm, getLang} from 'redux/selectors';
+import { useEffect, useState } from 'react';
+import { langEN, langUA } from 'utils/languages';
 
 
 const ContactForm = () => {
@@ -12,6 +14,13 @@ const ContactForm = () => {
   const contacts = useSelector(getContactsList)
   const { name, number } = useSelector(getForm);
   const dispatch = useDispatch()
+  const [lang, setLang] = useState(langUA)
+  const language = useSelector(getLang)
+ 
+  // Language
+  useEffect(() => {
+    setLang(language === 'english' ?  langEN :  langUA);
+  }, [language])
 
 
   const handleChange = (e) => {
@@ -44,7 +53,7 @@ const ContactForm = () => {
   return (
     <Form autoComplete="off" onSubmit={handleSubmit}>
       <Label>
-        Name:
+      {lang.name}:
         <Input
           type="text"
           name="name"
@@ -56,7 +65,7 @@ const ContactForm = () => {
         />
       </Label>
       <Label>
-        Number:
+      {lang.number}:
         <Input
           type="tel"
           name="number"
@@ -69,9 +78,8 @@ const ContactForm = () => {
       </Label>
       <ContactFormBtn 
       type="submit"
-    
-     
-      >Add contact{ iconRedux }</ContactFormBtn>
+            >
+              {lang.add}{ language === 'english' && iconRedux }</ContactFormBtn>
     </Form>
   );
 };

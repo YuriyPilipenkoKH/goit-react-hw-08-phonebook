@@ -1,13 +1,15 @@
 import Button from 'components/Button/Button';
 import { Input, Label } from 'components/ContactForm/ContactForm.styled';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import { FormWrapper, SecondsCounter, ShowBtn, StyledForm } from './LoginForm.styled';
 import { MainTitle } from 'components/section/Section.styled';
 import {IoMdUnlock} from 'react-icons/io';
 import {CgSandClock} from 'react-icons/cg';
 import { FormLink, LogoWrapp, RouteWrapp } from 'components/RegisterForm/RegisterForm.styled';
+import { langEN, langUA } from 'utils/languages';
+import { getLang } from 'redux/selectors';
 
 
 
@@ -20,6 +22,13 @@ export const LoginForm = () => {
   const [show, setShow] = useState(false);
   const [timer, setTimer] = useState(null);
   const [remained, setRemained] = useState(TIME);
+  const [lang, setLang] = useState(langUA)
+  const language = useSelector(getLang)
+ 
+  // Language
+  useEffect(() => {
+    setLang(language === 'english' ?  langEN :  langUA);
+  }, [language])
 
 
 useEffect(() => {
@@ -38,7 +47,7 @@ useEffect(() => {
       setRemained(TIME)
       setEmail('');
       setPassword('');
-    }, 2000);
+    }, 4000);
   }
 
 }, [timer,remained])
@@ -71,11 +80,12 @@ setTimer(true)
   return (
     <FormWrapper>
       <LogoWrapp><IoMdUnlock size={50}/></LogoWrapp>
-      <MainTitle>LogIn {timer ? <CgSandClock/> : ''}</MainTitle>
+      <MainTitle>
+      {lang.logBtn} {timer ? <CgSandClock/> : ''}</MainTitle>
 
       <StyledForm  onSubmit={handleSubmit}  autoComplete="on">
         <Label >
-          Email
+        {lang.email}
           <Input
             type='email'
             name="email"
@@ -85,7 +95,7 @@ setTimer(true)
         </Label>
 
         <Label  className='pass__label'>
-          Password
+        {lang.pass}
           <Input
             type={show ? 'text' : 'password'}
             name="password"
@@ -96,22 +106,23 @@ setTimer(true)
             <ShowBtn 
             type='button' 
             onClick={() => setShow(!show)}>
-              {show ? 'Hide' : 'Show'}
+              {show ? lang.hide : lang.show}
               </ShowBtn>
         </Label>
 
         <Button 
         type="submit"
-        disabled = {!remained}
-        >{remained ? 'Log In' : 'Try again'}</Button>
+        disabled = {!remained}>
+          {remained ? lang.logBtn : lang.try }
+        </Button>
         {timer 
-        ?  <SecondsCounter>{remained} seconds left</SecondsCounter>
-        : !remained && <SecondsCounter>Wasted</SecondsCounter>
+        ?  <SecondsCounter>{remained}{lang.left}</SecondsCounter>
+        : !remained && <SecondsCounter>{lang.wasted}</SecondsCounter>
         }
       </StyledForm>
       <RouteWrapp>
-        <p>Don’t have account ?</p>
-        <FormLink to="/register">Register</FormLink>
+        <p> {lang.notYet} </p>
+        <FormLink to="/register">{lang.regBtn}</FormLink>
       </RouteWrapp>
     </FormWrapper>
   );

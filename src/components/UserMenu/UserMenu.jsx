@@ -1,17 +1,20 @@
 import { StyledWrap } from './UserMenu.styled';
 import { useAuth } from 'hooks/useAuth';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import Loader from 'components/Loader/Loader';
 import { DropdownMenu, MainMenu, MenuBtn, MenuItem, SliderBtn, UserName, UserWrapp } from './UserMenu.styled';
 import { AiOutlineCaretDown , AiFillCaretRight} from 'react-icons/ai';
 import {FaWindowClose} from 'react-icons/fa';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { arrayOfActors } from 'utils/avatarSvg';
+import { langEN, langUA } from 'utils/languages';
+import { getLang } from 'redux/selectors';
 
 
 
 export function UserMenu() {
+
   const dispatch = useDispatch();
   const { isFetching } = useAuth();
   const { user, isLoggedIn } = useAuth();
@@ -19,7 +22,13 @@ export function UserMenu() {
   const [avatar, setAvatar] = useState(false);
   const [activeAvatar, setActiveAvatar] = useState(arrayOfActors[0]);
   const [activeIndex, setActiveIndex] = useState(0)
-
+  const [lang, setLang] = useState(langUA)
+  const language = useSelector(getLang)
+ 
+  // Language
+  useEffect(() => {
+    setLang(language === 'english' ?  langEN :  langUA);
+  }, [language])
 
 
 //===============================
@@ -45,6 +54,7 @@ const getIndex = () => {
 }
 
 const avatarSetter = () => {
+
   
   setAvatar(!avatar)
   if(avatar) {
@@ -76,9 +86,13 @@ const avatarSetter = () => {
              onClick={getIndex }
             ><AiFillCaretRight/></SliderBtn>}
             {user.email}
-            <MenuItem type='button' onClick={avatarSetter }>{avatar ? 'Set' : 'Avatar'}</MenuItem>
-            <MenuItem type='button'>Settings</MenuItem>
-            <MenuItem type='button' onClick={() => dispatch(logOut())}>Logout</MenuItem>
+
+            <MenuItem type='button' onClick={avatarSetter }>
+              {avatar ? lang.set : lang.avatar}</MenuItem>
+            <MenuItem type='button'>
+              {lang.settings}</MenuItem>
+            <MenuItem type='button' onClick={() => dispatch(logOut())}>
+              {lang.out}</MenuItem>
         
         </DropdownMenu>
       )}

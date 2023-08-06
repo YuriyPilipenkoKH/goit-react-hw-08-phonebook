@@ -16,6 +16,7 @@ import { formReducer } from "./formSlice";
 import { sortReducer } from "./sortSlice";
 import { authReducer } from "./auth/authSlice";
 import { themeReducer } from './themeSlice';
+import { langReducer } from './langSlice';
 
 
 
@@ -34,6 +35,7 @@ export const store = configureStore({
         form: formReducer,    
         filter: filterReducer,
         theme:themeReducer,
+        lang:langReducer,
         sort:sortReducer,
         auth: persistReducer(authPersistConfig, authReducer),
 

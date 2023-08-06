@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BtnDelete, BtnEdit, BtnWrapper, EditWrapper, ItemCard, ListItem } from 'components/ContactList/ContactList.styled';
 import { useState } from 'react';
@@ -6,8 +6,9 @@ import { confirmDelete, confirmUpdate } from 'utils/notifier';
 import { useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
 import { deleteContact } from 'redux/operations';
-import { getContactsList } from 'redux/selectors';
+import { getContactsList, getLang } from 'redux/selectors';
 import { editContact } from 'redux/operations';
+import { langEN, langUA } from 'utils/languages';
 // import { IDspan } from './ContactListItem.styled';
 
 
@@ -19,6 +20,13 @@ export default function ContactListItem({ contact }) {
   const [isEdit, setIsEdit] = useState(false)
   const [nick, setNick] = useState(name)
   const [phone, setPhone] = useState(number)
+  const [lang, setLang] = useState(langUA)
+  const language = useSelector(getLang)
+ 
+  // Language
+  useEffect(() => {
+    setLang(language === 'english' ?  langEN :  langUA);
+  }, [language])
 
 
   const handleEdit = () => {
@@ -125,11 +133,13 @@ confirmUpdate(`Are you sure you want to update ${name}?`, name)
 
       <BtnWrapper className="button-wrapper">
         <BtnEdit type="button" onClick={handleEdit}>
-        {isEdit  ? 'Save' : 'Edit'}
+        {isEdit  ? 'Save' : lang.edit}
         </BtnEdit>
 
-        <BtnDelete type="button" onClick={handleDelete}>
-          Delete
+        <BtnDelete 
+      
+        type="button" onClick={handleDelete}>
+          {lang.delete}
         </BtnDelete>
       </BtnWrapper>
     </ListItem>
