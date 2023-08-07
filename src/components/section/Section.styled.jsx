@@ -8,6 +8,7 @@ export const MainSection = styled.section`
     align-items: center;
     gap: 20px;
     margin: 0;
+    transition: width 1s ease-in-out, left 1.5s ease-in-out;
 `
 
 
@@ -27,7 +28,7 @@ export const MainTitle = styled.h2`
   background-color: #777;
   border: 4px solid #777;
   box-shadow: var(--shadow-four);
-  transition: opacity 1s ease-in-out;
+  transition: width 1s ease-in-out, left 1.5s ease-in-out;
 
   &>svg {
     fill: #eee;

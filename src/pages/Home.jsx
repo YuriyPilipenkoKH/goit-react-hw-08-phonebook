@@ -1,6 +1,4 @@
-// import { Translation } from "react-i18next";
 import { HomeTitle, HomeWrapper } from "./Pages.styled";
-// import CommentComponent from "components/CommentComponent/CommentComponent";
 import { langEN, langUA } from "utils/languages";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -25,17 +23,6 @@ export default function Home() {
         <span>
         {lang.appUnderTitle}
           </span>
-
-        {/* <div>
-      <h1>
-        <Translation>{(t) => t("appTitle")}</Translation>
-      </h1>
-      <p>
-        <Translation>{(t) => t("welcomeMessage")}</Translation>
-      </p>
-    </div> */}
-
-    {/* <CommentComponent></CommentComponent> */}
 
       </HomeWrapper>
     );

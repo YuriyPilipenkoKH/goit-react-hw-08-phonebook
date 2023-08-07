@@ -17,6 +17,7 @@ export const HomeWrapper= styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 12px;
 
 
@@ -46,10 +47,11 @@ export const HomeTitle = styled.h1`
 
   font-size: 40px;
   font-weight: 700;
-  color: var(--main-text);
+  color: var(--app-title);
   padding: 12px;
 
   &+span {
+    max-width: 800px;
     font-weight: 600;
     color: #757575;
     font-size: 24px;
@@ -60,10 +62,18 @@ export const HomeTitle = styled.h1`
 `
 export const Page404 = styled.div`
  min-width: 300px;
+ display: grid;
+ place-items: center;
+ text-align: center;
 
   & > svg {
        fill: var(--text-color);
         transition: fill 1s ease-in-out;
 
   }
+  & > b {
+
+    font-size: 38px;
+  }
+
 `

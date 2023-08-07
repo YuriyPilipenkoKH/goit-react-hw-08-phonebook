@@ -21,6 +21,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
+  transition: all 1s ease-in-out, left 1.5s ease-in-out;
 }
 
 
@@ -102,11 +104,13 @@ body {
 
 :root[data-lang="english"] {
   --fz: 16px;
+  --app-title: #001129;;
 }
 
 
 :root[data-lang="ukrainian"] {
   --fz: 12px;
+  --app-title: #777;
 }
 
 h1,h2,h3,h4,h5,h6,p {

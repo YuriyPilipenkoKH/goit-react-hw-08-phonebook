@@ -35,7 +35,7 @@ const ListBar = () => {
   return (
     <StyledListBar>
         <SortBtns onClick={sortById}>id</SortBtns>
-        <SortBtns onClick={sortByName}> {lang.name} </SortBtns>
+        <SortBtns onClick={sortByName}> {lang.sname} </SortBtns>
         <SortBtns onClick={sortByNumber}> {lang.phone} </SortBtns>
     </StyledListBar>
   )

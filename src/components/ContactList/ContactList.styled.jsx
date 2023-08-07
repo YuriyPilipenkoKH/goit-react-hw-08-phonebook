@@ -14,6 +14,15 @@ const ulAnimation = keyframes`
     }
 
 `
+const fadeIn = keyframes`
+      0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+`
 
 
 export const List = styled.ul`
@@ -148,6 +157,7 @@ export const BtnDelete = styled.button`
    cursor: pointer;
     transition: all 0.4s;
     padding: 2px;
+    animation: ${fadeIn} 2s ease;
 
   &:hover,
   &:focus {
