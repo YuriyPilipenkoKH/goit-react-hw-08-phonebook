@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@400;500;600;800&display=swap');
+body {
+  margin: 0;
+  font-family: -apple-system, Manrope,  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --accent-color: #ff8356;
+  --fone-color: #fef9f9;
+
+  --yellow: #ffc107;
+  --white: #ffffff;
+  --white-bg: #fdf7f2;
+
+  --black: #111111;
+  --medium-blue: #76bcf9;
+  --blue: #54adff;
+  --light-blue: #cce4fb;
+  --green: #00c3ad;
+  --red: #f43f5e;
+  --grey: #888888;
+
+  --gradient-l: #ff5f40;
+  --gradient-r: #ffcf45;
+
+
+
+    
+  --time: 250ms;
+
+  --shadow-default: 3px 8px 14px 0px #88C6FD30;
+
+  --shadow-hover: 7px 13px 14px 0px #74B1E83D;
+
+
+}
