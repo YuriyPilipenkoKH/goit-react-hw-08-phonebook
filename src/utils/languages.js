@@ -1,4 +1,4 @@
-const langEN = {
+export const langEN = {
     appTitle: 'React-phonebook',
     appUnderTitle: `web application that allows users to store and manage their contacts,
     providing features for adding, editing, and deleting contact information`,
@@ -38,7 +38,7 @@ const langEN = {
 }
 
 
-const langUA = {
+export const langUA = {
     appTitle: 'React телефонна книга',
     appUnderTitle: `веб додаток, який дозволяє користувачам зберігати та керувати своїми контактами,
     надання функцій для додавання, редагування та видалення контактної інформації`,
@@ -76,4 +76,3 @@ const langUA = {
 
 }
 
-export { langEN, langUA} // {lang.homeBtn}

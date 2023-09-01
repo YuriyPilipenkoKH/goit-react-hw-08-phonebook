@@ -45,7 +45,6 @@ export const contactsSlice =  createSlice({
         })
 
         .addCase(editContact.fulfilled, (state, action) => {
-
           const contactToUpdate  = state.contactsList.find(
             contact => contact.id === action.payload.id
           )
