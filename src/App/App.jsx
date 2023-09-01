@@ -29,7 +29,7 @@ const App = () => {
   const language = useSelector(getLang)
 
    // Set the data-theme attribute on the <html> element
-   document.documentElement.setAttribute('data-theme', theme);
+   document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
    document.documentElement.setAttribute('data-lang', language);
 
   const dispatch = useDispatch();
@@ -40,8 +40,7 @@ const App = () => {
   return isRefreshing ? (
    <Loader/>
   ) : (                     
-   
-    
+       
       <Container >
       <Routes>
         <Route path="/" element={<Layout />}>

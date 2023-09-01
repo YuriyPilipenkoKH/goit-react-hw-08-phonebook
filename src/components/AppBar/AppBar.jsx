@@ -15,9 +15,18 @@ export const AppBar = () => {
 
     const { isLoggedIn } = useAuth();
     const theme = useSelector(getTheme)
+
     const dispatch = useDispatch()
     const language = useSelector(getLang)
 
+    const themeInvertor =(theme) => {
+     return  theme === 'light' ?  'dark'  :  'light'
+    }
+
+    const themeMaker =() => {
+      localStorage.setItem('theme', themeInvertor(theme))
+      dispatch(toggleTheme())
+    }
   
     return (
       <StyledHeader >
@@ -30,7 +39,7 @@ export const AppBar = () => {
         </LangBtn>
 
         <ThemeBtn 
-        onClick={() => dispatch(toggleTheme())}
+        onClick={themeMaker}
         type="button"
       
         >
