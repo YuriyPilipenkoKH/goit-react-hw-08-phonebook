@@ -22,10 +22,17 @@ export const AppBar = () => {
     const themeInvertor =(theme) => {
      return  theme === 'light' ?  'dark'  :  'light'
     }
+    const languageInvertor =(language) => {
+     return  language === 'english' ?  'ukrainian'  :  'english'
+    }
 
     const themeMaker =() => {
       localStorage.setItem('theme', themeInvertor(theme))
       dispatch(toggleTheme())
+    }
+    const languageMaker =() => {
+      localStorage.setItem('language', languageInvertor(language))
+      dispatch(toggleLang())
     }
   
     return (
@@ -33,7 +40,7 @@ export const AppBar = () => {
         <Navigation />
 
         <LangBtn  
-        onClick={() => dispatch(toggleLang())}
+        onClick={languageMaker}
         type="button">
         {language === 'english' ?  'EN' :  'UA'}
         </LangBtn>
