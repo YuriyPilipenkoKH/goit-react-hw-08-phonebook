@@ -42,7 +42,7 @@ export const AppBar = () => {
         <LangBtn  
         onClick={languageMaker}
         type="button">
-        {language === 'english' ?  'EN' :  'UA'}
+        {(localStorage.getItem('language' ) || language) === 'english' ?  'EN' :  'UA'}
         </LangBtn>
 
         <ThemeBtn 
@@ -50,7 +50,7 @@ export const AppBar = () => {
         type="button"
       
         >
-          {theme === 'light'
+          {(localStorage.getItem('theme') || theme) === 'light'
           ? <MdOutlineLightMode size={30}/>
           : <MdOutlineNightlight size={30}/>
           }
