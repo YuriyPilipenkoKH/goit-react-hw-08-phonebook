@@ -30,7 +30,7 @@ const App = () => {
 
    // Set the data-theme attribute on the <html> element
    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || theme);
-   document.documentElement.setAttribute('data-lang',  localStorage.getItem('language'  || language));
+   document.documentElement.setAttribute('data-lang',  localStorage.getItem('language')  || language);
 
   const dispatch = useDispatch();
   useEffect(() => {
