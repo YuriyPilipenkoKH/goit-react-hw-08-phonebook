@@ -46,7 +46,7 @@ const App = () => {
                <RestrictedRoute redirectTo="/phonebook" component={<Login />} />
           } />
           <Route path="/phonebook" element={
-          <PrivateRoute redirectTo="/login" component={<Phonebook />} />
+            <PrivateRoute redirectTo="/login" component={<Phonebook />} />
           } />
           <Route path="/profile" element={
           <PrivateRoute redirectTo="/login" component={<Profile />} />

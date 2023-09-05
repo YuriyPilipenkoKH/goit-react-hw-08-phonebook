@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
 import { logIn, logOut,  refreshUser,  register } from "./operations";
 
 
@@ -13,23 +13,23 @@ const initialState = {
   isFetching: false,
 };
 
-const handleFulfilled = (state, { payload }) => {
-  state.isFetching = false;
-  state.isLoggedIn = true;
-  state.user = payload.user;
-  state.token = payload.token;
-  state.isRefreshing = false;
-}
+// const handleFulfilled = (state, { payload }) => {
+//   state.isFetching = false;
+//   state.isLoggedIn = true;
+//   state.user = payload.user;
+//   state.token = payload.token;
+//   state.isRefreshing = false;
+// }
 
-const handlePending = (state) => {
-  state.isFetching = true;
-  state.isRefreshing = true;
-}
+// const handlePending = (state) => {
+//   state.isFetching = true;
+//   state.isRefreshing = true;
+// }
 
-const handleRejected = (state,{ payload }) => {
-  state.isFetching = false;
-  state.error = payload;
-}
+// const handleRejected = (state,{ payload }) => {
+//   state.isFetching = false;
+//   state.error = payload;
+// }
 
 
   const authSlice = createSlice({

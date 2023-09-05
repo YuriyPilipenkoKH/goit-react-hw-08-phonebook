@@ -32,23 +32,6 @@ export function UserMenu() {
   }, [language])
 
 
-//===============================
-  // function numberGenerator() {
-  //   let count = 1;
-  
-  //   return function getNextNumber() {
-  //     if (count > 8) {
-  //       count = 1;
-  //     }
-  
-  //     return count++;
-  //   };
-  // }
-  
-  // // Usage example:
-  // const getNextNumber = numberGenerator();
-//=================================
-
 const getIndex = () => {
   const newIndex = (activeIndex + 1) % 20; // Increment the index and wrap around 0-7 range
   setActiveIndex(newIndex);
@@ -93,7 +76,7 @@ const avatarSetter = () => {
             <StyledLink
             className="profile-link"
              to="/profile">
-              {lang.settings}
+              {lang.profile}
                </StyledLink>
             <MenuItem type='button' onClick={() => dispatch(logOut())}>
               {lang.out}</MenuItem>

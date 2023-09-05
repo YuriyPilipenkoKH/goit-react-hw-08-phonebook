@@ -31,6 +31,7 @@ export const langEN = {
     avatar: "Avatar",
     set: "Set",
     settings: "Settings",
+    profile: "Profile",
     out: "LogOut",
     sorry: "Sorry dude, we couldn't find that page",
     
@@ -71,6 +72,7 @@ export const langUA = {
     avatar: "Аватар",
     set: "Встановити",
     settings: "Налаштування",
+    profile: "Профіль",
     out: "Вийти",
     sorry: "Вибач чувак, ми не змогли знайти цю сторінку",
 
