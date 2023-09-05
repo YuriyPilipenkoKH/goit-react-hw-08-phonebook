@@ -12,16 +12,16 @@ const initialState = {
 };
 
 const handleFulfilled = (state) => {
-  state.isLoading = false;
+  // state.isLoading = false;
   state.error = null;
 }
 
 const handlePending = (state) => {
-  state.isLoading = true;
+  // state.isLoading = true;
 }
 
 const handleRejected = (state, action) => {
-  state.isLoading = false;
+  // state.isLoading = false;
   state.error = action.payload;
 }
 

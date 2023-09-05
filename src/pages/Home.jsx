@@ -18,7 +18,7 @@ export default function Home() {
     return (
       <HomeWrapper  >
         <HomeTitle  >
-        Progressive {lang.appTitle}  
+         {lang.appTitle}  
         </HomeTitle>
         <span>
         {lang.appUnderTitle}

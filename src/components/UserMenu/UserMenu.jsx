@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { arrayOfActors } from 'utils/avatarSvg';
 import { langEN, langUA } from 'utils/languages';
 import { getLang } from 'redux/selectors';
+import { StyledLink } from 'components/Layout/Layout.styled';
 
 
 
@@ -89,8 +90,11 @@ const avatarSetter = () => {
 
             <MenuItem type='button' onClick={avatarSetter }>
               {avatar ? lang.set : lang.avatar}</MenuItem>
-            <MenuItem type='button'>
-              {lang.settings}</MenuItem>
+            <StyledLink
+            className="profile-link"
+             to="/profile">
+              {lang.settings}
+               </StyledLink>
             <MenuItem type='button' onClick={() => dispatch(logOut())}>
               {lang.out}</MenuItem>
         

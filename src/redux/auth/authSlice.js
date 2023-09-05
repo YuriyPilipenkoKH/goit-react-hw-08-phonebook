@@ -18,10 +18,12 @@ const handleFulfilled = (state, { payload }) => {
   state.isLoggedIn = true;
   state.user = payload.user;
   state.token = payload.token;
+  state.isRefreshing = false;
 }
 
 const handlePending = (state) => {
   state.isFetching = true;
+  state.isRefreshing = true;
 }
 
 const handleRejected = (state,{ payload }) => {
@@ -30,20 +32,81 @@ const handleRejected = (state,{ payload }) => {
 }
 
 
-  
   const authSlice = createSlice({
     name: 'auth',
     initialState,
     extraReducers: builder => {
       builder
+
+      .addCase(register.pending, state => {
+        state.isLoading = true;
+        state.isFetching = true;
+        state.isRefreshing = true;
+        state.error = null;
+      })
+      .addCase(register.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.isFetching = false;
+        state.isRefreshing = false;
+        state.token = payload.token;
+        state.user = payload;
+        state.isLoggedIn = true;
+        state.error = null;
+        
+      })
+      .addCase(register.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isFetching = false;
+        state.isRefreshing = false;
+        state.error = payload;
+      })
+      .addCase(logIn.pending, state => {
+        state.isLoading = true;
+        state.isFetching = true;
+        state.isRefreshing = true;
+        state.error = null;
+      })
+      .addCase(logIn.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.isFetching = false;
+        state.isRefreshing = false;
+        state.token = payload.token;
+        state.user = payload;
+        state.isLoggedIn = true;
+        state.error = null;
+        
+      })
+      .addCase(logIn.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isFetching = false;
+        state.isRefreshing = false;
+        state.error = payload;
+      })
+      .addCase(logOut.pending, (state, { payload }) => {
+        state.isLoading = true;
+        state.isFetching = true;
+        state.isRefreshing = true;
+        state.error = null;
+      })
         .addCase(logOut.fulfilled, state => {
           state.isFetching = false;
+          state.isRefreshing = false;
+          state.isLoading = false;
           state.user = { name: null, email: null };
           state.token = null;
           state.isLoggedIn = false;
+          state.error = null;
         })
+        .addCase(logOut.rejected, (state, { payload }) => {
+          state.isLoading = false;
+          state.isFetching = false;
+          state.isRefreshing = false;
+          state.error = payload;
+        })
+
         .addCase(refreshUser.pending, state => {
           state.isRefreshing = true;
+          state.error = null;
         })
         .addCase(refreshUser.fulfilled, (state, { payload }) => {
           state.user = payload;
@@ -54,18 +117,18 @@ const handleRejected = (state,{ payload }) => {
           state.isRefreshing = false;
           state.error = payload;
         })
-        .addMatcher(
-          isAnyOf(register.pending, logIn.pending, logOut.pending),
-          handlePending
-        )
-        .addMatcher(
-          isAnyOf(register.fulfilled, logIn.fulfilled),
-          handleFulfilled
-        )
-        .addMatcher(
-          isAnyOf(register.rejected, logIn.rejected, logOut.rejected),
-          handleRejected
-        );
+        // .addMatcher(
+        //   isAnyOf(register.pending, logIn.pending, logOut.pending),
+        //   handlePending
+        // )
+        // .addMatcher(
+        //   isAnyOf(register.fulfilled, logIn.fulfilled),
+        //   handleFulfilled
+        // )
+        // .addMatcher(
+        //   isAnyOf(register.rejected, logIn.rejected, logOut.rejected),
+        //   handleRejected
+        // );
     },
   });
   

@@ -90,6 +90,10 @@ export const DropdownMenu = styled.div`
     background-color: #eee5;
     border-radius: 6px;
     box-shadow: var(--shadow-four);
+
+    &>a.profile-link{
+        width: 150px;
+    }
 `
 export const MenuItem  = styled.button `
     padding: 6px 2px;

@@ -11,20 +11,14 @@ import Loader from 'components/Loader/Loader';
 import { getLang, getTheme } from 'redux/selectors';
 
 
-
-// import Home from 'pages/Home';
-// import Register from 'pages/Register';
-// import Login from 'pages/Login';
-// import  Phonebook  from 'pages/Phonebook';
-
-
 const Home = lazy(() => import('../pages/Home'));
 const Register = lazy(() => import('../pages/Register'));
 const Login = lazy(() => import('../pages/Login'));
 const Phonebook = lazy(() => import('../pages/Phonebook'));
+const Profile = lazy(() => import('../pages/Profile'));
 
 const App = () => {
-  const { isRefreshing } = useAuth();
+  const {  isLoading } = useAuth();
   const theme = useSelector(getTheme)
   const language = useSelector(getLang)
 
@@ -37,7 +31,7 @@ const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
+  return isLoading ? (
    <Loader/>
   ) : (                     
        
@@ -53,6 +47,9 @@ const App = () => {
           } />
           <Route path="/phonebook" element={
           <PrivateRoute redirectTo="/login" component={<Phonebook />} />
+          } />
+          <Route path="/profile" element={
+          <PrivateRoute redirectTo="/login" component={<Profile />} />
           } />
           <Route path="*" element={<NotFound/>} />
        </Route>
