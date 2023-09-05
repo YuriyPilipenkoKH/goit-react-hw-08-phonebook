@@ -94,6 +94,7 @@ export const BtnWrap = styled.div`
     }
 
     &>button.saveBtn {
+        font-family: inherit;
         width: 248px;
         height: 31px;
         border-radius:16px;
