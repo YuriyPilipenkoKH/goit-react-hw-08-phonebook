@@ -17,7 +17,7 @@ export const FormContainer = styled.div`
     "c3";
 
     gap: 20px;
-    background-color: #fff;
+    background: #fbfaf9;
     border-radius: 20px;
     outline: 2px solid #777;
     
@@ -94,7 +94,7 @@ export const BtnWrap = styled.div`
     }
 
     &>button.saveBtn {
-        font-family: inherit;
+        /* font-family: inherit; */
         width: 248px;
         height: 31px;
         border-radius:16px;

@@ -117,13 +117,15 @@ export const UserForm = () => {
                     <ImageControls>
                         {edit && userPhoto ? (
                             <ConfirmButtonWrap>
-                                <EditButton
-                                    type="button"
-                                    onClick={handleAddAvatar}
-                                >
-                                    <Check stroke="#00C3AD" />
-                                    {lang.confirm}
-                                </EditButton>
+                                <div className="box">
+                                    <EditButton
+                                        type="button"
+                                        onClick={handleAddAvatar}
+                                    >
+                                        <Check stroke="#00C3AD" />
+                                        {lang.confirm}
+                                    </EditButton>
+                                </div>
                                 <EditButton
                                     type="button"
                                     onClick={handleCancelAvatar}
