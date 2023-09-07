@@ -36,8 +36,7 @@ useEffect(() => {
     setTimeout(() => {
     setRemained(prev => prev - 1)
     // console.log(`${remained} seconds`);
-    
-   }, 1000);
+    }, 1000);
  
   }
   else if(remained === 0) {
@@ -117,7 +116,7 @@ setTimer(true)
         </Button>
         {timer 
         ?  <SecondsCounter>{remained}{lang.left}</SecondsCounter>
-        : !remained && <SecondsCounter>{lang.wasted}</SecondsCounter>
+        :  !remained && <SecondsCounter>{lang.wasted}</SecondsCounter>
         }
       </StyledForm>
       <RouteWrapp>

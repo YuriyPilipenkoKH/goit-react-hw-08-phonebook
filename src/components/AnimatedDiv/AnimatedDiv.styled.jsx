@@ -44,7 +44,7 @@ export const AnimatedTitle = styled.h2.attrs(props => ({
 
     padding: 20px;
     font-size: 26px;
-    animation: ${props => (props.isAnimating ? scaleTo2 : "none")} 1s ease; 
+    animation: ${props => (props.isAnimating ? scaleTo2 : "none")} 0.8s ease; 
 
 `
 
