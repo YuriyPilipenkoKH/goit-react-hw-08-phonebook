@@ -17,9 +17,10 @@ export const FormContainer = styled.div`
     "c3";
 
     gap: 20px;
-    background: #fbfaf9;
+    background: var(--background-color);
     border-radius: 20px;
     outline: 2px solid #777;
+
     
     @media screen and (min-width: 768px) {
         width: 704px;
@@ -42,7 +43,7 @@ export const FormContainer = styled.div`
         "c3";
     }
 
-    transition: all 0.4s ease-in-out, left 0.4s ease-in-out;
+    transition: all 1s ease-in-out, left 1s ease-in-out;
 `
 export const ImgWrap = styled.div`
     grid-area: c1;

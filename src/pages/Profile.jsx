@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { langEN, langUA } from 'utils/languages'
 import { getLang } from 'redux/selectors'
 import { UserForm } from 'components/UserForm/UserForm'
+import { AnimatedDiv } from 'components/AnimatedDiv/AnimatedDiv'
 
 
 const Profile = () => {
@@ -20,6 +21,7 @@ const Profile = () => {
     { lang.profile }
     </HomeTitle>
    <UserForm />
+   <AnimatedDiv />
   
 
   </HomeWrapper>

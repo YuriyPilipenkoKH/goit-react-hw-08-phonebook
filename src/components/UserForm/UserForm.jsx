@@ -117,7 +117,7 @@ export const UserForm = () => {
                     <ImageControls>
                         {edit && userPhoto ? (
                             <ConfirmButtonWrap>
-                                <div className="box">
+                               
                                     <EditButton
                                         type="button"
                                         onClick={handleAddAvatar}
@@ -125,7 +125,7 @@ export const UserForm = () => {
                                         <Check stroke="#00C3AD" />
                                         {lang.confirm}
                                     </EditButton>
-                                </div>
+                               
                                 <EditButton
                                     type="button"
                                     onClick={handleCancelAvatar}
