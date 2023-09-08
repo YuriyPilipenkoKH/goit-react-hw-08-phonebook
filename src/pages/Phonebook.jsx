@@ -11,6 +11,8 @@ import { fetchContacts } from "redux/operations";
 import { useEffect, useState } from "react";
 import { PhonebookWrapper } from "./Pages.styled";
 import { langEN, langUA } from "utils/languages";
+import Lottie from "lottie-react";
+import animationData  from '../assets/animation_lmaaufzh.json'
 
 
  const Phonebook = () => {
@@ -43,6 +45,7 @@ import { langEN, langUA } from "utils/languages";
         </>
       )}
     </Section>
+    
 
   </PhonebookWrapper>
   )

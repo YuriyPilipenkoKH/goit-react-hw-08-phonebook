@@ -7,15 +7,17 @@ import { addContact } from 'redux/operations';
 import { getContactsList, getForm, getLang} from 'redux/selectors';
 import { useEffect, useState } from 'react';
 import { langEN, langUA } from 'utils/languages';
-
+import Lottie from 'lottie-react';
+import animationData  from '../../assets/animation_lmaaufzh.json'
 
 const ContactForm = () => {
 
   const contacts = useSelector(getContactsList)
   const { name, number } = useSelector(getForm);
-  const dispatch = useDispatch()
+  const [newAdded, setNewAdded] = useState(false)
   const [lang, setLang] = useState(langUA)
   const language = useSelector(getLang)
+  const dispatch = useDispatch()
  
   // Language
   useEffect(() => {
@@ -47,6 +49,10 @@ const ContactForm = () => {
 
     dispatch(addContact(newContact))
     dispatch(resetForm()); // Reset the form after submission
+    setNewAdded(true)
+    setTimeout(() => {
+      setNewAdded(false)
+    }, 3000);
   };
 
 
@@ -80,6 +86,7 @@ const ContactForm = () => {
       type="submit"
             >
               {lang.add}{ language === 'english' && iconRedux }</ContactFormBtn>
+             {newAdded && <Lottie animationData={animationData} className="new"/>}
     </Form>
   );
 };

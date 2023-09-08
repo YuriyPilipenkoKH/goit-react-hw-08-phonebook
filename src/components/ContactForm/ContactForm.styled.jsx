@@ -90,6 +90,10 @@ export const Form = styled.form`
   align-items: center;
   gap: 20px;
 
+  &>.new {
+    position: absolute;
+  }
+
 `;
 
 
