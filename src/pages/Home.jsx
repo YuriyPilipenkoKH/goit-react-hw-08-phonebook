@@ -3,6 +3,8 @@ import { langEN, langUA } from "utils/languages";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getLang } from "redux/selectors";
+import Lottie from "lottie-react";
+import animationData  from '../assets/animation_lma84pgg.json'
 
 
 
@@ -23,6 +25,7 @@ export default function Home() {
         <span>
         {lang.appUnderTitle}
           </span>
+          <Lottie animationData={animationData} className="football-player" />
 
       </HomeWrapper>
     );

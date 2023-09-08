@@ -27,6 +27,16 @@ export const HomeWrapper= styled.div`
   background-repeat: no-repeat;
   background-position: center;  
   background-size: cover;
+
+  &>.football-player{
+    width: 250px;
+    @media screen and (min-width: 768px) {
+    width: 500px;
+}
+    @media screen and (min-width: 1280px) {
+    display: none;
+}
+  }
 `
 export const PhonebookWrapper= styled.div`
   width: 100%;

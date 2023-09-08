@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "api": "^5.0.8",
     "axios": "^1.4.0",
+    "lottie-react": "^2.4.0",
     "nanoid": "^4.0.2",
     "notiflix": "^3.2.6",
     "react": "^18.1.0",
