@@ -10,11 +10,13 @@ import { langEN, langUA } from 'utils/languages';
 import Lottie from 'lottie-react';
 import animationData  from '../../assets/animation_lmaaufzh.json'
 
+
 const ContactForm = () => {
 
   const contacts = useSelector(getContactsList)
   const { name, number } = useSelector(getForm);
   const [newAdded, setNewAdded] = useState(false)
+
   const [lang, setLang] = useState(langUA)
   const language = useSelector(getLang)
   const dispatch = useDispatch()
@@ -87,6 +89,7 @@ const ContactForm = () => {
             >
               {lang.add}{ language === 'english' && iconRedux }</ContactFormBtn>
              {newAdded && <Lottie animationData={animationData} className="new"/>}
+            
     </Form>
   );
 };

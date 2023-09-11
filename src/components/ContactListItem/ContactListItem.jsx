@@ -9,14 +9,18 @@ import { deleteContact } from 'redux/operations';
 import { getContactsList, getLang } from 'redux/selectors';
 import { editContact } from 'redux/operations';
 import { langEN, langUA } from 'utils/languages';
-// import { IDspan } from './ContactListItem.styled';
+import Lottie from 'lottie-react';
+
+import animationDel  from '../../assets/animation_lma9tt99.json'
+import animationEdit  from '../../assets/animation_lmahhdgk.json'
+
 
 
 export default function ContactListItem({ contact }) {
   const dispatch = useDispatch();
   const contactsList  = useSelector(getContactsList )
   const { id, name, number} = contact;
-
+  const [deleted, setDeleted] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const [nick, setNick] = useState(name)
   const [phone, setPhone] = useState(number)
@@ -87,6 +91,10 @@ confirmUpdate(`Are you sure you want to update ${name}?`, name)
     confirmDelete(`Are you sure you want to delete ${name}?`, name)
   .then(() => {
     dispatch(deleteContact(id))
+    setDeleted(true)
+    setTimeout(() => {
+      setDeleted(false)
+    }, 5000);
   })
   .catch(() => {
     // Handle cancellation or rejection
@@ -117,31 +125,33 @@ confirmUpdate(`Are you sure you want to update ${name}?`, name)
 
 
   return (
-    <ListItem totalItems={4}>
-      {/* <IDspan>{id}</IDspan> */}
-      {isEdit ? (
-        <EditWrapper className="edit-wrapper">
-          <input type="text" name="nick" value={nick} onChange={handleChange} />
-          <input type="text" name="phone" value={phone} onChange={handleChange} />
-        </EditWrapper>
-      ) : (
-        
-        <ItemCard className="cardSpan">
-          {contact.name}: {contact.number}
-        </ItemCard>
-      )}
-
-      <BtnWrapper className="button-wrapper">
-        <BtnEdit type="button" onClick={handleEdit}>
-        {isEdit  ? 'Save' : lang.edit}
-        </BtnEdit>
-
-        <BtnDelete 
+    <>
+      <ListItem totalItems={4}>
+        {/* <IDspan>{id}</IDspan> */}
+        {isEdit ? (
+          <EditWrapper className="edit-wrapper">
+            <input type="text" name="nick" value={nick} onChange={handleChange} />
+            <input type="text" name="phone" value={phone} onChange={handleChange} />
+          </EditWrapper>
+        ) : (
       
-        type="button" onClick={handleDelete}>
-          {lang.delete}
-        </BtnDelete>
-      </BtnWrapper>
-    </ListItem>
+          <ItemCard className="cardSpan">
+            {contact.name}: {contact.number}
+          </ItemCard>
+        )}
+        <BtnWrapper className="button-wrapper">
+          <BtnEdit type="button" onClick={handleEdit}>
+          {isEdit  ? 'Save' : lang.edit}
+          </BtnEdit>
+          <BtnDelete
+      
+          type="button" onClick={handleDelete}>
+            {lang.delete}
+          </BtnDelete>
+        </BtnWrapper>
+      </ListItem>
+     {deleted && <Lottie animationData={animationDel} className='deleted'/>}
+     {isEdit && <Lottie animationData={animationEdit} className='edited'/>}
+    </>
   );
 }

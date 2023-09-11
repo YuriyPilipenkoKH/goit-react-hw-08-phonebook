@@ -64,6 +64,17 @@ export const ListItem = styled.li`
   @media screen and (min-width: 768px) {
     grid-template-columns:  auto 200px;
     }
+
+     &~.deleted {
+    position: fixed;
+    width: 300px;
+  }
+     &~.edited {
+    position: fixed;
+    top: 300px;
+    left: 50px;
+    width: 300px;
+  }
 `;
 
 export const ItemCard = styled.span`
@@ -111,7 +122,7 @@ export const ContactContainer = styled.div`
   max-height: 480px;
   padding: 4px 2px;
   border: 3px solid var(--teal);
-  background-color: #eee5;
+  background-color: rgba(238, 238, 238, 0.533);
   border-radius: 16px;
   box-shadow: var(--shadow-four);
   overflow: auto;
