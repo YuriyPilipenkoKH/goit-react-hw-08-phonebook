@@ -11,6 +11,15 @@ import animationData  from '../assets/animation_lma84pgg.json'
 export default function Home() {
   const [lang, setLang] = useState(langUA)
   const language = useSelector(getLang)
+
+  const confused = 'no';
+  const myKey = confused;
+  
+  const obj = {
+  [myKey]: false,
+  };
+  
+  console.log(obj);
  
   // Language
   useEffect(() => {
