@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getLang } from "redux/selectors";
 import { ReactComponent as Camera } from '../../img/camera.svg'
+import Tooltip from "components/Tooltip/Tooltip";
+
 
 
  
@@ -40,7 +42,7 @@ export const UserForm = () => {
       const handleSubmit = (e) => {
         e.preventDefault();
         // Here, you can perform actions with the form data, like sending it to an API or processing it.
-        console.log('Form Data:', formData);
+        // console.log('Form Data:', formData);
         // Clear the form fields after submission (optional)
         setFormData({
           name: '',
@@ -201,9 +203,13 @@ export const UserForm = () => {
       </FormStyled>
 
         <BtnWrap  className="BtnWrap">
+        <Tooltip text="Click me to Save!">
+
           <button 
           className="saveBtn"
           type="submit">Save</button>
+      </Tooltip>
+
         </BtnWrap>
 
         <FormEditor onClick={handleData}>

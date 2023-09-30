@@ -44,9 +44,9 @@ export default function ContactListItem({ contact }) {
       };
  
 
-console.log('updatedContact' , updatedContact );
+// console.log('updatedContact' , updatedContact );
 const contactToUpdate  = contactsList.find(contact => contact.id === updatedContact.id)
-console.log('contactToUpdate',contactToUpdate)
+// console.log('contactToUpdate',contactToUpdate)
 
 const allExeptUpdated = contactsList.filter(contact => contact.id !== contactToUpdate.id)
 // console.log('allExeptUpdated',allExeptUpdated)

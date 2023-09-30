@@ -16,7 +16,7 @@ export  const AnimatedDiv = () => {
           setTimeout(() => {
           setIsAnimating(true);
           setRemained(prev => prev - 1)
-          // console.log(`${remained} seconds`);
+      
             }, 1000);
                }
         else if(remained === 0) {

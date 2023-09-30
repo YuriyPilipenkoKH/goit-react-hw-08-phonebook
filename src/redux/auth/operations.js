@@ -33,7 +33,7 @@ export const register = createAsyncThunk(
         const res = await axios.post('/users/signup', credentials);
      
         setAuthHeader(res.data.token);
-        console.log(res);
+        // console.log(res);
         return res.data;
       } catch (error) {
         Notify.info('Something went wrong. Please, try again later.');

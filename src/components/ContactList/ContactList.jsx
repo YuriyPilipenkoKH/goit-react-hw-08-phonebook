@@ -12,8 +12,7 @@ export const ContactList = () => {
   const {activeIndex, id,  name, number}  = useSelector(getSorted)
   const arrayOfBools = [id,  name, number]
 
-  // console.log(arrayOfMethods[sorted.activeIndex]);
-  // console.log(arrayOfBools[sorted.activeIndex])
+
  
   const sortedContacts = arrayOfMethods[activeIndex]
 

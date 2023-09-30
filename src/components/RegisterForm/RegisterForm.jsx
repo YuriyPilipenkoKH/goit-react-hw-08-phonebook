@@ -12,6 +12,7 @@ import { getLang } from 'redux/selectors';
 
 
 
+
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
@@ -85,7 +86,8 @@ export const RegisterForm = () => {
               </ShowBtn>
         </Label>
 
-        <Button  type="submit">{lang.regSubmit}</Button>
+          <Button  type="submit">{lang.regSubmit}</Button>
+
       </StyledForm>
       <RouteWrapp>
         <p>{lang.alreadyGot}</p>

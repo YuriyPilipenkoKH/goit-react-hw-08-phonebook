@@ -94,7 +94,7 @@ export const BtnWrap = styled.div`
         justify-content: flex-end;
     }
 
-    &>button.saveBtn {
+    &>div>button.saveBtn {
         /* font-family: inherit; */
         width: 248px;
         height: 31px;

@@ -19,7 +19,7 @@ export default function Home() {
   [myKey]: false,
   };
   
-  console.log(obj);
+  // console.log(obj);
  
   // Language
   useEffect(() => {

@@ -5,11 +5,8 @@ import { Provider} from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import  App  from 'App/App';
+// import 'modern-normalize/modern-normalize.css';
 import './css/index.css';
-// import { ThemeProvider } from 'styled-components';
-
-// import { theme } from './constants/theme';
-
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
