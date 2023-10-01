@@ -1,6 +1,4 @@
-// import { useSelector } from "react-redux"
 import { StyledListBar, SortBtns } from "./ListBar.styled"
-// import { getSorted } from "redux/selectors"
 import { toggleSortId,  toggleSortName, toggleSortNUmber } from "redux/sortSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"

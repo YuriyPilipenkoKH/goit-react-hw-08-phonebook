@@ -12,8 +12,6 @@ import { langEN, langUA } from 'utils/languages';
 import { getLang } from 'redux/selectors';
 
 
-
-
 export const LoginForm = () => {
   const TIME = 5
   const dispatch = useDispatch();
@@ -35,7 +33,6 @@ useEffect(() => {
   if((remained > 0) && timer){
     setTimeout(() => {
     setRemained(prev => prev - 1)
-    // console.log(`${remained} seconds`);
     }, 1000);
  
   }
@@ -53,7 +50,6 @@ useEffect(() => {
 
 
   const handleChange = ({ target: { name, value } }) => {
-
 //  clearTimeout(timer); // Clear the previous timer on every change
 
 setTimer(true)

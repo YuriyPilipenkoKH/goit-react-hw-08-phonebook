@@ -8,7 +8,6 @@ import { getLang } from "redux/selectors";
 import { useSelector } from "react-redux";
 
 
-
 export const Layout = () => {
   const [lang, setLang] = useState(langUA)
   const language = useSelector(getLang)

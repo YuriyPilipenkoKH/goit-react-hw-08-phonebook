@@ -5,7 +5,6 @@ import Select from 'react-select';
 
 const ReactSelect = () => {
     const [selectedModel, setSelectedModel] = useState('Enter the text'); // State to track the selected car model
-
     // Event handler to update the selected model when the dropdown changes
     const handleModelChange = (selectedOption) => {
       setSelectedModel(selectedOption);

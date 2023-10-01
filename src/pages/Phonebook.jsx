@@ -1,4 +1,3 @@
-// import { Container } from '../components/container/Container';
 import { Section } from "../components/section/Section";
 import ContactForm from "components/ContactForm/ContactForm";
 import { Filter } from '../components/Filter/Filter';
@@ -11,8 +10,7 @@ import { fetchContacts } from "redux/operations";
 import { useEffect, useState } from "react";
 import { PhonebookWrapper } from "./Pages.styled";
 import { langEN, langUA } from "utils/languages";
-import Lottie from "lottie-react";
-import animationData  from '../assets/animation_lmaaufzh.json'
+
 
 
  const Phonebook = () => {
