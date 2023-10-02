@@ -13,7 +13,7 @@ export const StyledTooltip = styled.div`
 
 export const TooltipText = styled.span`
   visibility: hidden;
-  width: 150px;
+  width: 160px;
   background-color: #333;
   color: #fff;
   text-align: center;
