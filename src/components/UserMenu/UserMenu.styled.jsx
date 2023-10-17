@@ -106,12 +106,23 @@ export const MenuItem  = styled.button `
     border: 3px solid var(--green);
     border-radius: 6px;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: all 0.4ms ease-in-out;
 
     &:hover, 
     &:focus {
         color: #eee;
         background-color: var(--green);
+        &>a{
+        color: #eee;
+        background-color: var(--green);
+        transition: all 0.4ms ease-in-out;
+        }
+    }
+    &>a{
+        height: 100%;
+        padding: 4px;
+        text-decoration: none;
+        transition: all 0.4ms ease-in-out;
     }
 
 `

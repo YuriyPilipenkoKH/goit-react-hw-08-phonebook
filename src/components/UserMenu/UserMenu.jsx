@@ -11,6 +11,7 @@ import { arrayOfActors } from 'utils/avatarSvg';
 import { langEN, langUA } from 'utils/languages';
 import { getLang } from 'redux/selectors';
 import { StyledLink } from 'components/Layout/Layout.styled';
+import { Link } from 'react-router-dom';
 
 
 
@@ -46,6 +47,8 @@ const avatarSetter = () => {
   }
 }
 
+
+
   return (
     <MainMenu className='mainMenu'>
       {isFetching && <Loader/>}
@@ -73,11 +76,22 @@ const avatarSetter = () => {
 
             <MenuItem type='button' onClick={avatarSetter }>
               {avatar ? lang.set : lang.avatar}</MenuItem>
-            <StyledLink
+              <MenuItem 
+               className="profile-button"
+               type='button'> 
+            <Link
             className="profile-link"
              to="/profile">
               {lang.profile}
-               </StyledLink>
+               </Link>
+               </MenuItem>
+            <MenuItem 
+               className="slides-button"
+               type='button'>
+            <Link to="/slides" className="button-link">
+              {lang.slides}
+            </Link>
+          </MenuItem>
             <MenuItem type='button' onClick={() => dispatch(logOut())}>
               {lang.out}</MenuItem>
         

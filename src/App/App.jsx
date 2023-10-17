@@ -9,6 +9,7 @@ import { NotFound } from 'pages/NotFound';
 import { useAuth } from 'hooks/useAuth';
 import Loader from 'components/Loader/Loader';
 import { getLang, getTheme } from 'redux/selectors';
+import SlidesPage from 'pages/SlidesPage';
 
 
 const Home = lazy(() => import('../pages/Home'));
@@ -50,6 +51,9 @@ const App = () => {
           } />
           <Route path="/profile" element={
           <PrivateRoute redirectTo="/login" component={<Profile />} />
+          } />
+          <Route path="/slides" element={
+          <PrivateRoute redirectTo="/login" component={<SlidesPage />} />
           } />
           <Route path="*" element={<NotFound/>} />
        </Route>

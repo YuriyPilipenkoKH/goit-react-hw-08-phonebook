@@ -33,6 +33,8 @@ export const langEN = {
     settings: "Settings",
     profile: "Profile",
     out: "LogOut",
+    slides: "Slides",
+
     sorry: "Sorry dude, we couldn't find that page",
     
     
@@ -74,6 +76,7 @@ export const langUA = {
     settings: "Налаштування",
     profile: "Профіль",
     out: "Вийти",
+    slides: "Слайди",
     sorry: "Вибач чувак, ми не змогли знайти цю сторінку",
 
 }
