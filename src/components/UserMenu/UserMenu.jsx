@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 import { arrayOfActors } from 'utils/avatarSvg';
 import { langEN, langUA } from 'utils/languages';
 import { getLang } from 'redux/selectors';
-import { StyledLink } from 'components/Layout/Layout.styled';
 import { Link } from 'react-router-dom';
 
 
@@ -45,6 +44,10 @@ const avatarSetter = () => {
   if(avatar) {
     setActiveAvatar(arrayOfActors[activeIndex])
   }
+}
+const quit =() => {
+   setIsOpen(!isOpen)
+   dispatch(logOut())
 }
 
 
@@ -81,18 +84,20 @@ const avatarSetter = () => {
                type='button'> 
             <Link
             className="profile-link"
+            onClick={() => setIsOpen(!isOpen)}
              to="/profile">
               {lang.profile}
                </Link>
                </MenuItem>
             <MenuItem 
                className="slides-button"
+               onClick={() => setIsOpen(!isOpen)}
                type='button'>
             <Link to="/slides" className="button-link">
               {lang.slides}
             </Link>
           </MenuItem>
-            <MenuItem type='button' onClick={() => dispatch(logOut())}>
+            <MenuItem type='button' onClick={quit}>
               {lang.out}</MenuItem>
         
         </DropdownMenu>
