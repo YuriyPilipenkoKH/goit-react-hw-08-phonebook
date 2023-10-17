@@ -75,3 +75,14 @@ export const StyledButton = styled.button`
  ${ripple} ;
 
 `;
+
+export const StyledArrowButton = styled.button`
+  position: relative;
+  overflow: hidden;
+
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
