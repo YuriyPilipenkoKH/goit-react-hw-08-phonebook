@@ -7,8 +7,9 @@ import { useState } from "react"
 
 const HookForm = () => {
     let renderCount = 0
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
     const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
    const {
@@ -25,6 +26,9 @@ const HookForm = () => {
     const onChangeName  = (e) => {
                 setName(e.target.value);
          }
+    const onChangeEmail  = (e) => {
+                setEmail(e.target.value);
+         }
     const onChangePassword  = (e) => {
         setPassword(e.target.value);
     }
@@ -33,12 +37,13 @@ const HookForm = () => {
         console.log('Form summited',data)
             // dispatch(logIn({ name, password }));
             setName('');
+            setEmail('');
             setPassword('');
     };
 
-    const onError = errors => {
-        console.log('Form errors', errors)
-    };
+    // const onError = errors => {
+    //     console.log('Form errors', errors)
+    // };
 
     renderCount++
   return (
@@ -59,6 +64,7 @@ const HookForm = () => {
                 }
                 })}
                 id="name"
+                type="text"
                 name="name"
                 value={name} 
                 onChange={onChangeName}
@@ -71,19 +77,45 @@ const HookForm = () => {
             </HookedLabel>
             <HookedLabel >UserEmail
                 <HookedInput 
-                {...register('userEmail',{
-                    required: "user Email is requred"
+                {...register('email',{
+                    required: {
+                        value: true,
+                        message: "Email is requred",
+                    },
+                    pattern: {
+                        value:  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/,
+                        message: 'Email is not valid',
+                    },
                 })}
-                id="userEmail"
-                type="email" />
+                id="email"
+                type="email"
+                name="email"
+                value={email} 
+                onChange={onChangeEmail}
+                errors={errors.email}
+                 />
+                {errors?.email && (
+                <ErrorWrap>{errors.email.message}</ErrorWrap>
+                )}
             </HookedLabel>
             <HookedLabel >Password
                 <HookedInput 
                 {...register('password',{
-                    required: "Password is requred" 
+                    required: "Password is requred" ,
+                    pattern: {
+                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
+                        message: 'Password must be from 6 to 16 characters'
+                    },
                 })}
                 id="password"
-                type="password" />
+                type="password"
+                name="password"
+                value={password} 
+                onChange={onChangePassword}
+                errors={errors.password} />
+                {errors?.password && (
+                <ErrorWrap>{errors.password.message}</ErrorWrap>
+                )}
             </HookedLabel>
             <Button type="submit" className='sub'>submit</Button>
         </HookedForm>

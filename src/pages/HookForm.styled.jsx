@@ -3,10 +3,10 @@ import styled from "styled-components"
 export const HookedForm = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 26px;
     width: 320px;
     height: 400px;
-    padding: 22px;
+    padding: 18px;
 
     &>button.sub{
         width: 140px;
@@ -18,6 +18,7 @@ export const HookedForm = styled.form`
     }
 `
 export const HookedLabel = styled.label`
+    position: relative;
     display: grid;
     gap: 8px;
 
@@ -34,7 +35,8 @@ export const ErrorWrap = styled.div`
  
     color: crimson;
     position: absolute;
-    bottom: -16px;
-    font-size: 11px;
+    bottom: -18px;
+    font-size: 12px;
     font-weight: 500;
+    z-index: 4;
 `
