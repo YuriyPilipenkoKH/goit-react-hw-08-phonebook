@@ -58,7 +58,11 @@ export const RegisterForm = () => {
       <StyledForm onSubmit={handleSubmit}  autoComplete="on">
         <Label >
         {lang.name}
-          <Input type="text" name="name" value={name} onChange={handleChange} />
+          <Input
+           type="text"
+            name="name"
+             value={name} 
+             onChange={handleChange} />
         </Label>
 
         <Label >

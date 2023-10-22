@@ -10,6 +10,7 @@ import { useAuth } from 'hooks/useAuth';
 import Loader from 'components/Loader/Loader';
 import { getLang, getTheme } from 'redux/selectors';
 import SlidesPage from 'pages/SlidesPage';
+import HookForm from 'pages/HookForm';
 
 
 const Home = lazy(() => import('../pages/Home'));
@@ -55,6 +56,7 @@ const App = () => {
           <Route path="/slides" element={
           <PrivateRoute redirectTo="/login" component={<SlidesPage />} />
           } />
+          <Route path="/hookform" element={<HookForm/>} />
           <Route path="*" element={<NotFound/>} />
        </Route>
       
