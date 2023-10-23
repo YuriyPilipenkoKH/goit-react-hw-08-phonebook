@@ -1,38 +1,82 @@
-import Button from "components/Button/Button"
+import Button, { FlatButton } from "components/Button/Button"
 import { ErrorWrap, HookedForm, HookedInput, HookedLabel } from "./HookForm.styled"
 import { useForm } from "react-hook-form"
 import { DevTool } from "@hookform/devtools"
+import { useEffect, useState } from "react"
+import { FaEye, FaEyeSlash } from "react-icons/fa"
 
 
 const HookForm = () => {
-    let renderCount = 0
-    // const [show, setShow] = useState(false);
-
-   const {
-    register, 
-    control,
-    handleSubmit,
-    formState
+    const [show, setShow] = useState(false);
+        const {
+        register, 
+        control,
+        handleSubmit,
+        formState,
+        watch,
+        setValue,
+        reset,
     } = useForm({
         defaultValues: {
-            name: 'Martin',
-            email: 'martin@gmail.com',
+            name: '',
+            email: '',
             password: ''
-        }
+        },
+        mode:'all',
     })
-//    const {name, ref, onChange, onBlur} = register('userName')
-    const {errors} = formState
-
+    //    const {name, ref, onChange, onBlur} = register('userName')
+    const {
+        errors,
+        isDirty,
+        isValid ,
+        isSubmitting, 
+        // isSubmitted, 
+        isSubmitSuccessful,
+    } = formState
+    
     const onSubmit = data => {
         console.log('Form summited',data)
-
+        
     };
 
+    //watch
+    const watchUser = watch('email')
+    useEffect((value) => {
+     const subscription = watch((value) => {
+        // console.log(value)
+     })
+      return () => {
+        subscription.unsubscribe()
+      }
+    }, [watch])
 
+    //set values
+    const handleSetValues = () => {
+        const souldI ={
+            shouldDirty:true,
+            shouldTouch:true,
+            shouldValidate:true,
+        }
+  
+        setValue('name', 'Martin', souldI)
+        setValue('email', 'martino@gmail.com', souldI)
+        setValue('password', 'Martino405', souldI)
+    }
+    //reset
+    useEffect(() => {
+        if(isSubmitSuccessful) {
+            reset()
+        }
+    }, [isSubmitSuccessful, reset])
+     
+
+    // renders   
+    let renderCount = 0
     renderCount++
   return (
     <div>
         <h2>renderCount{"  "}{renderCount}</h2>
+        <h3>Watch {'  '}{watchUser} </h3>
         <HookedForm onSubmit={handleSubmit(onSubmit)} noValidate >
             <HookedLabel >UserName
                 <HookedInput 
@@ -42,6 +86,10 @@ const HookForm = () => {
                     value: true,
                     message: "Name is requred",
                 },
+                minLength:{
+                    value: 2,
+                    message: 'Minimum length is 2'
+                },
                 pattern: {
                     value: /^[a-zA-Z0-9]{2,20}$/,
                     message: 'Name is not valid'
@@ -50,6 +98,8 @@ const HookForm = () => {
 
                 type="text"
                 errors={errors.name}
+                isDirty={isDirty}
+                isValid={isValid}
                  />
                 {errors?.name && (
                 <ErrorWrap>{errors.name.message}</ErrorWrap>
@@ -85,6 +135,8 @@ const HookForm = () => {
 
                 type="email"
                 errors={errors.email}
+                isDirty={isDirty}
+                isValid={isValid}
                  />
                 {errors?.email && (
                 <ErrorWrap>{errors.email.message}</ErrorWrap>
@@ -94,9 +146,14 @@ const HookForm = () => {
                 <HookedInput 
                 {...register('password',{
                     required: "Password is requred" ,
+                    // disabled: watch('email') === '',
+                    minLength:{
+                        value: 6,
+                        message: 'Minimum length is 6'
+                    },
                     pattern: {
                         value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
-                        message: 'Password must be from 6 to 16 characters'
+                        message: 'Include capital letters and numbers'
                     },
                     validate: (fieldValue) => {
                         return (
@@ -105,13 +162,35 @@ const HookForm = () => {
                     }
                 })}
 
-                type="password"
-                errors={errors.password} />
+                type={show ? 'text' : 'password'}
+                errors={errors.password}
+                isDirty={isDirty}
+                isValid={isValid} />
                 {errors?.password && (
                 <ErrorWrap>{errors.password.message}</ErrorWrap>
                 )}
+            <FlatButton 
+            type='button' 
+            className='showBtn'
+            onClick={() => setShow(!show)}>
+              {show ? <FaEyeSlash /> : <FaEye />}
+              </FlatButton>
             </HookedLabel>
-            <Button type="submit" className='sub'>submit</Button>
+            <Button 
+            type="submit" 
+            disabled={!isDirty || !isValid}
+            className='sub'>submit</Button>
+            <Button
+             onClick={handleSetValues}
+             disabled={isSubmitting}
+             type="button"
+             className='set'>set values</Button>
+            <Button
+             onClick={()=> reset()}
+             disabled={!isDirty || isSubmitting}
+             type="button"
+             className='set'>rerset</Button>
+          
         </HookedForm>
         <DevTool control={control}/>
     </div>

@@ -86,3 +86,12 @@ export const StyledArrowButton = styled.button`
   cursor: pointer;
 `;
 
+export const StyledFlatButton = styled.button`
+       padding: 0;
+       outline: none;
+       border:none;
+       background-color: transparent;
+       cursor: pointer; 
+      transition: all 0.4s ease-in-out; 
+
+`

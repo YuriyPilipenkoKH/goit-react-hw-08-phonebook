@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { StyledArrowButton, StyledButton } from './Button.styled';
+import { StyledArrowButton, StyledButton, StyledFlatButton } from './Button.styled';
 
 
 const Button = ({ children, ...props }) => {
@@ -8,6 +8,10 @@ const Button = ({ children, ...props }) => {
 
 export const ArrowButton = ({ children, ...props }) => {
   return <StyledArrowButton type='button' {...props}> {children}</StyledArrowButton>;
+};
+
+export const FlatButton = ({ children, ...props }) => {
+  return <StyledFlatButton type='button' {...props}> {children}</StyledFlatButton>;
 };
 
 export default Button;
