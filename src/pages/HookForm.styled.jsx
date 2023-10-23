@@ -1,3 +1,4 @@
+import isPropValid from "@emotion/is-prop-valid"
 import styled from "styled-components"
 
 export const HookedForm = styled.form`
@@ -23,9 +24,14 @@ export const HookedLabel = styled.label`
     gap: 8px;
 
 `
-export const HookedInput = styled.input`
+export const HookedInput = styled.input.withConfig({
+    shouldForwardProp: prop =>
+        isPropValid(prop)  && prop !== 'errors',
+  })`
     height: 40px;
     background-color: #f5f5f5;
+    border: 2px solid #777;
+    border-color: ${({ errors }) => errors ?  "crimson" : "#777"};
     border-radius: 8px;
     padding: 4px 12px;
     outline : none;
