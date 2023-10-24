@@ -6,8 +6,12 @@ import { useEffect, useState } from "react"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 
 
+
 const HookForm = () => {
     const [show, setShow] = useState(false);
+    // const [isValidName, setIsValidName] = useState(false)
+    // const [isValidEmail, setIsValidEmail] = useState(false)
+    // const [isValidPassword, setIsValidPassword] = useState(false)
         const {
         register, 
         control,
@@ -30,7 +34,6 @@ const HookForm = () => {
         isDirty,
         isValid ,
         isSubmitting, 
-        // isSubmitted, 
         isSubmitSuccessful,
     } = formState
     
@@ -52,15 +55,18 @@ const HookForm = () => {
 
     //set values
     const handleSetValues = () => {
-        const souldI ={
+        const shouldI ={
             shouldDirty:true,
             shouldTouch:true,
             shouldValidate:true,
         }
   
-        setValue('name', 'Martin', souldI)
-        setValue('email', 'martino@gmail.com', souldI)
-        setValue('password', 'Martino405', souldI)
+        setValue('name', 'Martin', shouldI)
+        setValue('email', 'martino@gmail.com', shouldI)
+        setValue('password', 'Martino405', shouldI)
+    }
+    const check = () => {
+  console.log('errors',errors, 'isDirty', isDirty, 'isValid', isValid)
     }
     //reset
     useEffect(() => {
@@ -93,13 +99,18 @@ const HookForm = () => {
                 pattern: {
                     value: /^[a-zA-Z0-9]{2,20}$/,
                     message: 'Name is not valid'
+                },
+                validate: (fieldValue) => {
+                    return (
+                        fieldValue.toLowerCase() !== 'jonny' || 'Enter a different name'
+                    )
                 }
                 })}
 
                 type="text"
                 errors={errors.name}
-                isDirty={isDirty}
-                isValid={isValid}
+                // isValid={isValidName}
+
                  />
                 {errors?.name && (
                 <ErrorWrap>{errors.name.message}</ErrorWrap>
@@ -135,8 +146,8 @@ const HookForm = () => {
 
                 type="email"
                 errors={errors.email}
-                isDirty={isDirty}
-                isValid={isValid}
+                // isValid={isValidEmail}
+
                  />
                 {errors?.email && (
                 <ErrorWrap>{errors.email.message}</ErrorWrap>
@@ -164,8 +175,9 @@ const HookForm = () => {
 
                 type={show ? 'text' : 'password'}
                 errors={errors.password}
-                isDirty={isDirty}
-                isValid={isValid} />
+                // isValid={isValidPassword} 
+
+                    />
                 {errors?.password && (
                 <ErrorWrap>{errors.password.message}</ErrorWrap>
                 )}
@@ -190,7 +202,9 @@ const HookForm = () => {
              disabled={!isDirty || isSubmitting}
              type="button"
              className='set'>rerset</Button>
-          
+             <Button
+             onClick={check}>
+                Check</Button>
         </HookedForm>
         <DevTool control={control}/>
     </div>

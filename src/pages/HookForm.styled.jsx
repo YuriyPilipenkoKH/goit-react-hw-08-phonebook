@@ -38,13 +38,13 @@ export const HookedInput = styled.input.withConfig({
     shouldForwardProp: prop =>
         isPropValid(prop) 
         && prop !== 'errors'
-        && prop !== 'isDirty'
         && prop !== 'isValid',
   })`
     height: 40px;
     background-color: #f5f5f5;
     border: 2px solid #777;
-    border-color: ${({ errors, isDirty, isValid }) => (errors ? "crimson" : isValid && isDirty ? "#080" : "#777")};
+    border-color: ${({ errors, isValid }) => 
+    (errors ? "crimson" : isValid ? "#080" : "#777")};
 
     border-radius: 8px;
     padding: 4px 12px;
