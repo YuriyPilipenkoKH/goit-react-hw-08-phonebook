@@ -13,15 +13,16 @@ export const StyledTooltip = styled.div`
 
 export const TooltipText = styled.span`
   visibility: hidden;
-  width: 160px;
+  width: 260px;
   background-color: #333;
   color: #fff;
   text-align: center;
   border-radius: 4px;
   padding: 8px;
   position: absolute;
-  z-index: 1;
-  bottom: 125%; /* Position above the element */
+  z-index: 4;
+  /* bottom: -120%;  */
+top: 80px;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;

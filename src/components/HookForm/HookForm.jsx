@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import { DevTool } from "@hookform/devtools"
 import { useEffect, useState } from "react"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
+import Tooltip from "components/Tooltip/Tooltip"
 
 
 
@@ -85,33 +86,43 @@ const HookForm = () => {
         <h3>Watch {'  '}{watchUser} </h3>
         <HookedForm onSubmit={handleSubmit(onSubmit)} noValidate >
             <HookedLabel >UserName
-                <HookedInput 
-                {...register('name',
-                { 
-                required: {
-                    value: true,
-                    message: "Name is requred",
-                },
-                minLength:{
-                    value: 2,
-                    message: 'Minimum length is 2'
-                },
-                pattern: {
-                    value: /^[a-zA-Z0-9]{2,20}$/,
-                    message: 'Name is not valid'
-                },
-                validate: (fieldValue) => {
-                    return (
-                        fieldValue.toLowerCase() !== 'jonny' || 'Enter a different name'
-                    )
-                }
-                })}
-
-                type="text"
-                errors={errors.name}
-                // isValid={isValidName}
-
-                 />
+                
+                    <HookedInput
+                    {...register('name',
+                    {
+                    required: {
+                        value: true,
+                        message: "Name is requred",
+                    },
+                    minLength:{
+                        value: 2,
+                        message: 'Minimum length is 2'
+                    },
+                    pattern: {
+                        value: /^[a-zA-Z0-9]{2,20}$/,
+                        message: 'Name is not valid'
+                    },
+                    validate: {
+                        notQwe: (fieldValue) => {
+                            return (
+                                !fieldValue.toLowerCase().startsWith('qw') || 
+                                'Enter a different name'
+                            )
+                        },
+                        notJonny: (fieldValue) => {
+                            return (
+                                fieldValue.toLowerCase() !== 'jonny'  || 
+                                'Jonny is not allowed'
+                            )
+                        },
+                    }
+                    })}
+                    
+                    type="text"
+                    errors={errors.name}
+                    // isValid={isValidName}
+                     />
+               
                 {errors?.name && (
                 <ErrorWrap>{errors.name.message}</ErrorWrap>
                 )}
@@ -141,7 +152,13 @@ const HookForm = () => {
                                 'This domain is not supported'
                             )
                         },
-                    }
+                        emailAvailable: async (fieldValue)  => {
+                            const response = await fetch(`https://jsonplaceholder.typicode.com/users?email=${fieldValue}`)
+                            const data = await response.json()
+                            return data.length === 0 || 'Email already exists'
+                        }
+                    },
+
                 })}
 
                 type="email"
@@ -153,6 +170,7 @@ const HookForm = () => {
                 <ErrorWrap>{errors.email.message}</ErrorWrap>
                 )}
             </HookedLabel>
+            <Tooltip text='Use secure password'>
             <HookedLabel >Password
                 <HookedInput 
                 {...register('password',{
@@ -163,7 +181,7 @@ const HookForm = () => {
                         message: 'Minimum length is 6'
                     },
                     pattern: {
-                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,16}$/,
+                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d$#&]*$/,
                         message: 'Include capital letters and numbers'
                     },
                     validate: (fieldValue) => {
@@ -179,8 +197,8 @@ const HookForm = () => {
 
                     />
                 {errors?.password && (
-                <ErrorWrap>{errors.password.message}</ErrorWrap>
-                )}
+                    <ErrorWrap>{errors.password.message}</ErrorWrap>
+                    )}
             <FlatButton 
             type='button' 
             className='showBtn'
@@ -188,6 +206,7 @@ const HookForm = () => {
               {show ? <FaEyeSlash /> : <FaEye />}
               </FlatButton>
             </HookedLabel>
+                </Tooltip>
             <Button 
             type="submit" 
             disabled={!isDirty || !isValid}

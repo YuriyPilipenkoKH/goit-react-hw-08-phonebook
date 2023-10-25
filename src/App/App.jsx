@@ -10,7 +10,7 @@ import { useAuth } from 'hooks/useAuth';
 import Loader from 'components/Loader/Loader';
 import { getLang, getTheme } from 'redux/selectors';
 import SlidesPage from 'pages/SlidesPage';
-import HookForm from 'pages/HookForm';
+import HookForm from 'components/HookForm/HookForm';
 
 
 const Home = lazy(() => import('../pages/Home'));
