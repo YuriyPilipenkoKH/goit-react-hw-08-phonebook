@@ -8,17 +8,35 @@ import { useSelector } from "react-redux";
 import { getLang } from "redux/selectors";
 import { ReactComponent as Camera } from '../../img/camera.svg'
 import Tooltip from "components/Tooltip/Tooltip";
+import { useForm } from "react-hook-form";
+import { ErrorWrap } from "components/HookForm/HookForm.styled";
 
  
 export const UserForm = () => {
     const [showData, setShowData] = useState(false);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        birthday: '',
-        phone: '',
-        location: '',
-      });
+    const {
+        register, 
+        handleSubmit,
+        formState,
+        reset,
+    } = useForm({
+        defaultValues: {
+            name: '',
+            email: '',
+            birthday: '',
+            phone: '',
+            location: '',
+        },
+        mode:'all',
+    })
+    const {
+        errors,
+        isDirty,
+        isValid ,
+        isSubmitSuccessful,
+    } = formState
+
+    
       const [userPhoto, setUserPhoto] = useState('');  
       const [edit, setEdit] = useState(false);
       const language = useSelector(getLang)
@@ -27,26 +45,16 @@ export const UserForm = () => {
       useEffect(() => {
           setLang(language === 'english' ? langEN : langUA);
       }, [language]);
-  
-
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-          ...formData,
-          [name]: value,
-        });
+      
+      const submit = (data) => {
+        console.log('Form summited',data)
       };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        setFormData({
-          name: '',
-          email: '',
-          birthday: '',
-          phone: '',
-          location: '',
-        });
-      };
+          //reset
+    useEffect(() => {
+        if(isSubmitSuccessful) {
+            reset()
+        }
+    }, [isSubmitSuccessful, reset])
 
       const handleData = () => {
         setShowData(!showData);
@@ -78,6 +86,7 @@ export const UserForm = () => {
     const handleEditBtn = () => {
         document.getElementById('userPhoto').click();
     };
+
   return (
     <FormContainer>
             <ImgWrap className="UserPhotoWrap">
@@ -143,69 +152,151 @@ export const UserForm = () => {
                     </ImageControls>
                 )}
             </ImgWrap>
-        <FormStyled onSubmit={handleSubmit}>
-           <FormLabel htmlFor="name">Name:
+            {/* form */}
+        <FormStyled onSubmit={handleSubmit(submit)} noValidate>
+           <FormLabel >Name:
           <FormInput
+          {...register('name',
+          {
+          required: {
+              value: true,
+              message: "Name is requred",
+          },
+          minLength:{
+              value: 2,
+              message: 'Minimum length is 2'
+          },
+          pattern: {
+              value: /^[a-zA-Z0-9]{2,20}$/,
+              message: 'Name is not valid'
+          },
+          validate: {
+              notQwe: (fieldValue) => {
+                  return (
+                      !fieldValue.toLowerCase().startsWith('qw') || 
+                      'Enter a different name'
+                  )
+              },
+          }
+          })}
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+            errors={errors.name}
+            />
+            {errors?.name && (
+                <ErrorWrap>{errors.name.message}</ErrorWrap>
+                )}
           </FormLabel>
-          <FormLabel htmlFor="email">Email:
+          <FormLabel >Email:
           <FormInput
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          </FormLabel>
-          <FormLabel htmlFor="birthday">Birthday:
-          <FormInput
-            type="text"
-            id="birthday"
-            name="birthday"
-            value={formData.birthday}
-            onChange={handleChange}
-            required
-          />
-          </FormLabel>
-          <FormLabel htmlFor="phone">Phone:
-          <FormInput
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-          </FormLabel>
-           <FormLabel htmlFor="location">Location:
-          <FormInput
-            type="text"
-            id="location"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-            required
-          />
-           </FormLabel>
-    
-      </FormStyled>
+              {...register('email',{
+                required: {
+                    value: true,
+                    message: "Email is requred",
+                },
+                pattern: {
+                    value:  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: 'Email is not valid',
+                },
+                validate: {
+                    notAdmin: (fieldValue) => {
+                        return (
+                            !fieldValue.startsWith('admin') || 
+                            'Enter a different email address'
+                        )
+                    },
+                    notBlackListed: (fieldValue) => {
+                        return (
+                            !fieldValue.endsWith('.ru') ||
+                            'This domain is not supported'
+                        )
+                    },
+                    emailAvailable: async (fieldValue)  => {
+                        const response = await fetch(`https://jsonplaceholder.typicode.com/users?email=${fieldValue}`)
+                        const data = await response.json()
+                        return data.length === 0 || 'Email already exists'
+                    }
+                },
 
+            })}
+            type="email"
+
+            errors={errors.email}
+          />
+            {errors?.email && (
+            <ErrorWrap>{errors.email.message}</ErrorWrap>
+            )}
+          </FormLabel>
+          <FormLabel >Birthday:
+          <FormInput
+           {...register('birthday',{
+            required: {
+                value: true,
+                message: "Birthday is requred",
+            },
+            pattern: {
+                value:  /^(?:19|20)\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/,
+                message: 'Birthday is not valid',
+            },
+        })}
+            type="date"
+            placeholder="YYYY-MM-DD"
+            errors={errors.birthday}
+          />
+        {errors?.birthday && (
+        <ErrorWrap>{errors.birthday.message}</ErrorWrap>
+        )}
+          </FormLabel>
+          <FormLabel >Phone:
+          <FormInput
+        {...register('phone',{
+            required: {
+                value: true,
+                message: "Phone is requred",
+            },
+            pattern: {
+                value:  /^\d{10}$/,
+                message: 'Phone is not valid',
+            },
+        })}
+            type="text"
+            errors={errors.phone}
+          />
+        {errors?.phone && (
+        <ErrorWrap>{errors.phone.message}</ErrorWrap>
+        )}
+          </FormLabel>
+           <FormLabel >Location:
+          <FormInput
+        {...register('location',{
+            required: {
+                value: true,
+                message: "Location is requred",
+            },
+            minLength:{
+                value: 3,
+                message: 'Minimum length is 3'
+            },
+        })}
+            type="text"
+     
+            errors={errors.location}
+          />
+        {errors?.location && (
+        <ErrorWrap>{errors.location.message}</ErrorWrap>
+        )}
+        </FormLabel>
+    
         <BtnWrap  className="BtnWrap">
         <Tooltip text="Click me to Save!">
-
           <button 
           className="saveBtn"
+          disabled={!isDirty || !isValid}
           type="submit">Save</button>
       </Tooltip>
 
         </BtnWrap>
+      </FormStyled>
+
 
         <FormEditor onClick={handleData}>
                 {!showData ? iconPen : IconCrossForSearch}

@@ -7,14 +7,13 @@ import { ReactComponent as CrossIcon } from '../../img/cross-small.svg';
 export const FormContainer = styled.div`
     position: relative;
     width: 280px;
-    height: 517px;
+    height: 600px;
     padding: 20px 16px;
     display: grid;
-    grid-template-rows: 224px auto 31px;
+    grid-template-rows: 224px auto;
     grid-template-areas: 
     "c1"
-    "c2"
-    "c3";
+    "c2";
 
     gap: 20px;
     background: var(--background-color);
@@ -24,23 +23,21 @@ export const FormContainer = styled.div`
     
     @media screen and (min-width: 768px) {
         width: 704px;
-        height: 268px;
+        height: 308px;
         grid-template-rows: auto;
         grid-template-columns: 360px auto ;
         grid-template-areas: 
-        "c2 c1"
-        "c3 c1" ;
+        "c2 c1";
     }
     
     @media screen and (min-width: 1280px) {
         width: 380px;
-        height: 520px;
-        grid-template-rows: 224px auto 31px;
+        height: 600px;
+        grid-template-rows: 224px auto;
         grid-template-columns: auto;
         grid-template-areas: 
         "c1"
-        "c2"
-        "c3";
+        "c2";
     }
 
     transition: all 1s ease-in-out, left 1s ease-in-out;
@@ -70,6 +67,7 @@ export const FormStyled = styled.form`
     gap: 16px;
 `
 export const FormLabel = styled.label`
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -81,13 +79,18 @@ export const FormLabel = styled.label`
 
 export const FormInput = styled.input`
     width: 180px;
-    height: 24px;
+    height: 28px;
+    padding: 2px 8px;
     outline: 2px solid #29f;
-    border-radius: 8px;
+    font-size: 18px;
+    border-radius: 12px;
+    @media screen and (min-width: 768px) {
+        width: 220px;
+    }
 `
 
 export const BtnWrap = styled.div`
-    grid-area: c3;
+
     display: flex;
     width: 100%;
     @media screen and (min-width: 768px) {
@@ -103,7 +106,7 @@ export const BtnWrap = styled.div`
         padding: 4px 32px;
 
         @media screen and (min-width: 768px) {
-            width: 180px;
+            width: 220px;
         }
     }
 `
