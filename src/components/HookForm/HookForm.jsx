@@ -5,12 +5,13 @@ import { DevTool } from "@hookform/devtools"
 import { useEffect, useState } from "react"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 import Tooltip from "components/Tooltip/Tooltip"
+import { useRandomColor } from "hooks/useRandomColor"
 
 
 
 const HookForm = () => {
     const [show, setShow] = useState(false);
-    const [color, setColor] = useState('')
+    const {color, colorChange} = useRandomColor()
     // const [isValidName, setIsValidName] = useState(false)
     // const [isValidEmail, setIsValidEmail] = useState(false)
     // const [isValidPassword, setIsValidPassword] = useState(false)
@@ -77,19 +78,14 @@ const HookForm = () => {
         }
     }, [isSubmitSuccessful, reset])
 
-    //color
-    const colorChange = () => {
-        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-        setColor(randomColor)
-        console.log('color',color)
-    }
+
      
 
     // renders   
     let renderCount = 0
     renderCount++
   return (
-    <div  style={{backgroundColor: color}}>
+    <div  style={{backgroundColor: color, padding: '24px'}}> 
         <h2>renderCount{"  "}{renderCount}</h2>
         <h3>Watch {'  '}{watchUser} </h3>
         <HookedForm onSubmit={handleSubmit(onSubmit)} noValidate >
