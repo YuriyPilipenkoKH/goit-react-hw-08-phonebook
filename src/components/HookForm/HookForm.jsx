@@ -10,6 +10,7 @@ import Tooltip from "components/Tooltip/Tooltip"
 
 const HookForm = () => {
     const [show, setShow] = useState(false);
+    const [color, setColor] = useState('')
     // const [isValidName, setIsValidName] = useState(false)
     // const [isValidEmail, setIsValidEmail] = useState(false)
     // const [isValidPassword, setIsValidPassword] = useState(false)
@@ -75,13 +76,20 @@ const HookForm = () => {
             reset()
         }
     }, [isSubmitSuccessful, reset])
+
+    //color
+    const colorChange = () => {
+        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        setColor(randomColor)
+        console.log('color',color)
+    }
      
 
     // renders   
     let renderCount = 0
     renderCount++
   return (
-    <div>
+    <div  style={{backgroundColor: color}}>
         <h2>renderCount{"  "}{renderCount}</h2>
         <h3>Watch {'  '}{watchUser} </h3>
         <HookedForm onSubmit={handleSubmit(onSubmit)} noValidate >
@@ -224,6 +232,9 @@ const HookForm = () => {
              <Button
              onClick={check}>
                 Check</Button>
+             <Button
+             onClick={colorChange}>
+                Color</Button>
         </HookedForm>
         <DevTool control={control}/>
     </div>
