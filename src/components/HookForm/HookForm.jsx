@@ -6,12 +6,14 @@ import { useEffect, useState } from "react"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 import Tooltip from "components/Tooltip/Tooltip"
 import { useRandomColor } from "hooks/useRandomColor"
+import { useLanguage } from "hooks/useLanguage"
 
 
 
 const HookForm = () => {
     const [show, setShow] = useState(false);
     const {color, colorChange} = useRandomColor()
+    const lang = useLanguage()
     // const [isValidName, setIsValidName] = useState(false)
     // const [isValidEmail, setIsValidEmail] = useState(false)
     // const [isValidPassword, setIsValidPassword] = useState(false)
@@ -89,7 +91,7 @@ const HookForm = () => {
         <h2>renderCount{"  "}{renderCount}</h2>
         <h3>Watch {'  '}{watchUser} </h3>
         <HookedForm onSubmit={handleSubmit(onSubmit)} noValidate >
-            <HookedLabel >UserName
+            <HookedLabel >{lang.name}
                 
                     <HookedInput
                     {...register('name',
@@ -132,7 +134,7 @@ const HookForm = () => {
                 )}
          
             </HookedLabel>
-            <HookedLabel >UserEmail
+            <HookedLabel >{lang.email}
                 <HookedInput 
                 {...register('email',{
                     required: {
@@ -175,7 +177,7 @@ const HookForm = () => {
                 )}
             </HookedLabel>
             <Tooltip text='Use secure password'>
-            <HookedLabel >Password
+            <HookedLabel >{lang.pass}
                 <HookedInput 
                 {...register('password',{
                     required: "Password is requred" ,

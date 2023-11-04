@@ -1,19 +1,10 @@
 import { StyledListBar, SortBtns } from "./ListBar.styled"
 import { toggleSortId,  toggleSortName, toggleSortNUmber } from "redux/sortSlice"
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react"
-import { langEN, langUA } from "utils/languages"
-import { getLang } from "redux/selectors"
+import { useDispatch} from "react-redux"
+import { useLanguage } from "hooks/useLanguage"
 
 const ListBar = () => {
-
-    const [lang, setLang] = useState(langUA)
-    const language = useSelector(getLang)
-   
-    // Language
-    useEffect(() => {
-      setLang(language === 'english' ?  langEN :  langUA);
-    }, [language])
+  const lang = useLanguage()
 
     const dispatch = useDispatch()
 

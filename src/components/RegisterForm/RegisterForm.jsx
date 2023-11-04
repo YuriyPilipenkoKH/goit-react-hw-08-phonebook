@@ -2,15 +2,12 @@ import Button from 'components/Button/Button';
 import { Input, Label } from 'components/ContactForm/ContactForm.styled';
 import { FormWrapper, ShowBtn, StyledForm } from 'components/LoginForm/LoginForm.styled';
 import { MainTitle } from 'components/section/Section.styled';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import {SiLazarus} from 'react-icons/si';
 import { FormLink, LogoWrapp, RouteWrapp } from './RegisterForm.styled';
-import { langEN, langUA } from 'utils/languages';
-import { getLang } from 'redux/selectors';
-
-
+import { useLanguage } from 'hooks/useLanguage';
 
 
 export const RegisterForm = () => {
@@ -19,15 +16,7 @@ export const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
-  const [lang, setLang] = useState(langUA)
-  const language = useSelector(getLang)
- 
-  // Language
-  useEffect(() => {
-    setLang(language === 'english' ?  langEN :  langUA);
-  }, [language])
-
-
+  const lang = useLanguage()
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {

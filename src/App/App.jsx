@@ -4,7 +4,7 @@ import { refreshUser } from 'redux/auth/operations';
 import { Layout } from 'components/Layout/Layout';
 import { Container } from 'components/container/Container';
 import {  useDispatch, useSelector } from 'react-redux';
-import { PrivateRoute, RestrictedRoute } from 'components/Routes';
+import { PrivateRoute, RestrictedRoute } from 'Routes';
 import { NotFound } from 'pages/NotFound';
 import { useAuth } from 'hooks/useAuth';
 import Loader from 'components/Loader/Loader';

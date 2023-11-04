@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BtnDelete, BtnEdit, BtnWrapper, EditWrapper, ItemCard, ListItem } from 'components/ContactList/ContactList.styled';
 import { useState } from 'react';
@@ -6,14 +5,12 @@ import { confirmDelete, confirmUpdate } from 'utils/notifier';
 import { useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
 import { deleteContact } from 'redux/operations';
-import { getContactsList, getLang } from 'redux/selectors';
+import { getContactsList } from 'redux/selectors';
 import { editContact } from 'redux/operations';
-import { langEN, langUA } from 'utils/languages';
 import Lottie from 'lottie-react';
-
 import animationDel  from '../../assets/animation_lma9tt99.json'
 import animationEdit  from '../../assets/animation_lmahhdgk.json'
-
+import { useLanguage } from 'hooks/useLanguage';
 
 
 export default function ContactListItem({ contact }) {
@@ -24,14 +21,7 @@ export default function ContactListItem({ contact }) {
   const [isEdit, setIsEdit] = useState(false)
   const [nick, setNick] = useState(name)
   const [phone, setPhone] = useState(number)
-  const [lang, setLang] = useState(langUA)
-  const language = useSelector(getLang)
- 
-  // Language
-  useEffect(() => {
-    setLang(language === 'english' ?  langEN :  langUA);
-  }, [language])
-
+  const lang = useLanguage()
 
   const handleEdit = () => {
     setIsEdit(prev => !prev )

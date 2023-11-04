@@ -1,17 +1,15 @@
 import { StyledWrap } from './UserMenu.styled';
 import { useAuth } from 'hooks/useAuth';
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import Loader from 'components/Loader/Loader';
 import { DropdownMenu, MainMenu, MenuBtn, MenuItem, SliderBtn, UserName, UserWrapp } from './UserMenu.styled';
 import { AiOutlineCaretDown , AiFillCaretRight} from 'react-icons/ai';
 import {FaWindowClose} from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { arrayOfActors } from 'utils/avatarSvg';
-import { langEN, langUA } from 'utils/languages';
-import { getLang } from 'redux/selectors';
 import { Link } from 'react-router-dom';
-
+import { useLanguage } from 'hooks/useLanguage';
 
 
 export function UserMenu() {
@@ -23,14 +21,7 @@ export function UserMenu() {
   const [avatar, setAvatar] = useState(false);
   const [activeAvatar, setActiveAvatar] = useState(arrayOfActors[0]);
   const [activeIndex, setActiveIndex] = useState(0)
-  const [lang, setLang] = useState(langUA)
-  const language = useSelector(getLang)
- 
-  // Language
-  useEffect(() => {
-    setLang(language === 'english' ?  langEN :  langUA);
-  }, [language])
-
+  const lang = useLanguage()
 
 const getIndex = () => {
   const newIndex = (activeIndex + 1) % 20; // Increment the index and wrap around 0-7 range

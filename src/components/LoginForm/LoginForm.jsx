@@ -1,15 +1,14 @@
 import Button from 'components/Button/Button';
 import { Input, Label } from 'components/ContactForm/ContactForm.styled';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import { FormWrapper, SecondsCounter, ShowBtn, StyledForm } from './LoginForm.styled';
 import { MainTitle } from 'components/section/Section.styled';
 import {IoMdUnlock} from 'react-icons/io';
 import {CgSandClock} from 'react-icons/cg';
 import { FormLink, LogoWrapp, RouteWrapp } from 'components/RegisterForm/RegisterForm.styled';
-import { langEN, langUA } from 'utils/languages';
-import { getLang } from 'redux/selectors';
+import { useLanguage } from 'hooks/useLanguage';
 
 
 export const LoginForm = () => {
@@ -20,13 +19,7 @@ export const LoginForm = () => {
   const [show, setShow] = useState(false);
   const [timer, setTimer] = useState(null);
   const [remained, setRemained] = useState(TIME);
-  const [lang, setLang] = useState(langUA)
-  const language = useSelector(getLang)
- 
-  // Language
-  useEffect(() => {
-    setLang(language === 'english' ?  langEN :  langUA);
-  }, [language])
+  const lang = useLanguage()
 
 
 useEffect(() => {

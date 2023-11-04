@@ -5,10 +5,10 @@ import { updateField, resetForm } from 'redux/formSlice';
 import Notiflix from 'notiflix';
 import { addContact } from 'redux/operations';
 import { getContactsList, getForm, getLang} from 'redux/selectors';
-import { useEffect, useState } from 'react';
-import { langEN, langUA } from 'utils/languages';
+import {  useState } from 'react';
 import Lottie from 'lottie-react';
 import animationData  from '../../assets/animation_lmaaufzh.json'
+import { useLanguage } from 'hooks/useLanguage';
 
 
 const ContactForm = () => {
@@ -16,16 +16,10 @@ const ContactForm = () => {
   const contacts = useSelector(getContactsList)
   const { name, number } = useSelector(getForm);
   const [newAdded, setNewAdded] = useState(false)
-
-  const [lang, setLang] = useState(langUA)
+  const lang = useLanguage()
   const language = useSelector(getLang)
   const dispatch = useDispatch()
  
-  // Language
-  useEffect(() => {
-    setLang(language === 'english' ?  langEN :  langUA);
-  }, [language])
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -2,23 +2,13 @@
 import { StyledLink } from 'components/Layout/Layout.styled';
 import { StyledWrap } from 'components/Navigation/Navigation.styled';
 import { useAuth } from 'hooks/useAuth';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { getLang } from 'redux/selectors';
-import { langEN, langUA } from 'utils/languages';
+import { useLanguage } from 'hooks/useLanguage';
 
 
 export const AuthNav = () => {
 
   const {token} = useAuth()
-  const [lang, setLang] = useState(langUA)
-  const language = useSelector(getLang)
- 
-  // Language
-  useEffect(() => {
-    setLang(language === 'english' ?  langEN :  langUA);
-  }, [language])
-
+  const lang = useLanguage()
   return (
     <StyledWrap>
      {token && <StyledLink  to="/register">

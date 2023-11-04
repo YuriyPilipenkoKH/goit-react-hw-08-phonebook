@@ -2,14 +2,12 @@ import { useState } from "react";
 import { Avatar, BtnWrap, Check, ConfirmButtonWrap, Cross, EditButton, FormContainer, FormEditor, FormInput, FormLabel, FormStyled, ImageControls, ImgWrap } from "./UserForm.styled"
 import { IconCrossForSearch, iconPen } from "utils/svgIcons";
 import avatarDefault2x from '../../img/Photo_default@2x.jpg';
-import { langEN, langUA } from "utils/languages";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { getLang } from "redux/selectors";
 import { ReactComponent as Camera } from '../../img/camera.svg'
 import Tooltip from "components/Tooltip/Tooltip";
 import { useForm } from "react-hook-form";
 import { ErrorWrap } from "components/HookForm/HookForm.styled";
+import { useLanguage } from "hooks/useLanguage";
 
  
 export const UserForm = () => {
@@ -39,12 +37,7 @@ export const UserForm = () => {
     
       const [userPhoto, setUserPhoto] = useState('');  
       const [edit, setEdit] = useState(false);
-      const language = useSelector(getLang)
-      const [lang, setLang] = useState(langUA);
-  
-      useEffect(() => {
-          setLang(language === 'english' ? langEN : langUA);
-      }, [language]);
+      const lang = useLanguage()
       
       const submit = (data) => {
         console.log('Form summited',data)
