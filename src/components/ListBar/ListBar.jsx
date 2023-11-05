@@ -5,8 +5,7 @@ import { useLanguage } from "hooks/useLanguage"
 
 const ListBar = () => {
   const lang = useLanguage()
-
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
     const sortById = () =>{   
         dispatch(toggleSortId()) 

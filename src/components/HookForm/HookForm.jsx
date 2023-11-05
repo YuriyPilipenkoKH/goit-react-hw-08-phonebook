@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa"
 import Tooltip from "components/Tooltip/Tooltip"
 import { useRandomColor } from "hooks/useRandomColor"
 import { useLanguage } from "hooks/useLanguage"
+import { useFetch } from "hooks/useFetch"
 
 
 
@@ -14,6 +15,7 @@ const HookForm = () => {
     const [show, setShow] = useState(false);
     const {color, colorChange} = useRandomColor()
     const lang = useLanguage()
+    const {data, refetch} = useFetch("https://v2.jokeapi.dev/joke/Any")
     // const [isValidName, setIsValidName] = useState(false)
     // const [isValidEmail, setIsValidEmail] = useState(false)
     // const [isValidPassword, setIsValidPassword] = useState(false)
@@ -80,9 +82,7 @@ const HookForm = () => {
         }
     }, [isSubmitSuccessful, reset])
 
-
-     
-
+   
     // renders   
     let renderCount = 0
     renderCount++
@@ -90,6 +90,8 @@ const HookForm = () => {
     <div  style={{backgroundColor: color, padding: '24px'}}> 
         <h2>renderCount{"  "}{renderCount}</h2>
         <h3>Watch {'  '}{watchUser} </h3>
+        <h3>Fetch : {data?.setup}  </h3>
+        <h3> {data?.delivery}</h3>
         <HookedForm onSubmit={handleSubmit(onSubmit)} noValidate >
             <HookedLabel >{lang.name}
                 
@@ -233,6 +235,9 @@ const HookForm = () => {
              <Button
              onClick={colorChange}>
                 Color</Button>
+             <Button
+             onClick={refetch}>
+                Fetch</Button>
         </HookedForm>
         <DevTool control={control}/>
     </div>

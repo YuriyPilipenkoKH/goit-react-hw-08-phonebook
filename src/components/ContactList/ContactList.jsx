@@ -11,11 +11,7 @@ export const ContactList = () => {
   const filterValue = useSelector(getContactsFilter)
   const {activeIndex, id,  name, number}  = useSelector(getSorted)
   const arrayOfBools = [id,  name, number]
-
-
- 
   const sortedContacts = arrayOfMethods[activeIndex]
-
   const filteredContacts = [...sortedContacts(contacts, arrayOfBools[activeIndex])
     .filter((contact )=>
      contact.name.toLowerCase().includes(filterValue.filter) 
