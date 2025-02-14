@@ -19,18 +19,13 @@ import { themeReducer } from './themeSlice';
 import { filterReducer } from './filterSlice';
 import { formReducer } from './formSlice';
 import { contactsReducer } from './contactsSlice';
-import { PersistPartial } from 'redux-persist/es/persistReducer';
 
-
-
-const authPersistConfig: PersistConfig<AuthState & PersistPartial> = {
+const authPersistConfig= {
     key: 'auth',
     storage,
     whitelist: ['token'],
   };
 
-  const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
-  
 export const store = configureStore({
 
     reducer: {    
@@ -40,13 +35,13 @@ export const store = configureStore({
         theme:themeReducer,
         lang:langReducer,
         sort:sortReducer,
-        auth: persistedAuthReducer ,// ✅ Correctly typed
+        auth: persistReducer<AuthState >(authPersistConfig, authReducer) ,// ✅ Correctly typed
     },
 
     middleware (getDefaultMiddleware) {
         return getDefaultMiddleware({
           serializableCheck: {
-            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, ],
           },
         })},
 })   
