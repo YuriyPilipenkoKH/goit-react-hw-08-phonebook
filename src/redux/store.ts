@@ -10,13 +10,15 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { contactsReducer } from "./contactsSlice";
-import { filterReducer } from "./filterSlice";
-import { formReducer } from "./formSlice";
-import { sortReducer } from "./sortSlice";
-import { authReducer } from "./auth/authSlice";
-import { themeReducer } from './themeSlice';
+
 import { langReducer } from './langSlice';
+import { sortReducer } from './sortSlice';
+import { authReducer } from './auth/authSlice';
+import { themeReducer } from './themeSlice';
+import { filterReducer } from './filterSlice';
+import { formReducer } from './formSlice';
+import { contactsReducer } from './contactsSlice';
+
 
 
 
@@ -32,7 +34,7 @@ export const store = configureStore({
     reducer: {
       
         contacts: contactsReducer,
-        form: formReducer,    
+        form: formReducer ,    
         filter: filterReducer,
         theme:themeReducer,
         lang:langReducer,
@@ -50,3 +52,4 @@ export const store = configureStore({
 })   
 
 export const persistor = persistStore(store);
+export type RootState = ReturnType<typeof store.getState>;
