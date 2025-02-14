@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { Suspense } from 'react'
+import { MainFooter, MainHeader } from './Layout.styled'
+import { Outlet } from 'react-router-dom'
 
 const Layout = () => {
-  return (
-    <div>Layout</div>
-  )
-}
+  // const lang = useLanguage()
+
+    return (
+        <>
+        <MainHeader  className="main-header" >
+        <AppBar/>
+        </MainHeader>
+        <Suspense >
+                  <Outlet />
+        </Suspense>
+        
+        <MainFooter >
+          {/* {lang.footerTitle} { mirrorStream } */}
+           </MainFooter>
+          </>
+    )}
 
 export default Layout
