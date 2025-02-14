@@ -1,9 +1,16 @@
-import React from 'react'
+import { useLanguage } from '../hooks/useLanguage';
 
 const LoginPage = () => {
+   const lang = useLanguage()
   return (
-    <div>LoginPage</div>
-  )
+    <div className='login__bg '>
+    <div className='login__wrap'>
+      <div>
+        <title>{lang.logBtn}</title>
+      </div>
+      {/* <LoginForm /> */}
+    </div>
+    </div>
+  );
 }
-
 export default LoginPage

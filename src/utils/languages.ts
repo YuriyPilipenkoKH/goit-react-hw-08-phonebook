@@ -35,7 +35,7 @@ export const langEN = {
   out: "LogOut",
   slides: "Slides",
 
-  sorry: "Sorry dude, we couldn't find that page",
+  sorry: "Sorry dude, we couldn't find this page",
   
   
 }
