@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react'
+import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 
 import { StyledArrowButton, StyledButton, StyledFlatButton } from './Button.styled';
 
-interface BtnProps {
+interface BtnProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   children: ReactNode;
 }
 

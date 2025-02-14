@@ -82,3 +82,85 @@ export const SecondsCounter = styled.div`
     font-size: 1.6em;
     font-weight: 600;
 `
+export const MainTitle = styled.h2`
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  font-size: 22px;
+  text-align: center;
+  color: #eee;
+  margin: 0;
+  padding: 8px 30px;
+  border-radius: 10px;
+  background-color: #777;
+  border: 4px solid #777;
+  box-shadow: var(--shadow-four);
+  transition: width 1s ease-in-out, left 1.5s ease-in-out;
+
+  &>svg {
+    fill: #eee;
+    transition: opacity 1s ease-in-out;
+  }
+`
+
+export const Input = styled.input`
+  height: 40px;
+  width: 280px;
+  border-radius: 10px;
+  padding:4px 16px;
+  background-color: var(--field-color);
+  border: var(--border);
+  box-shadow: var(--shadow-four);
+  transition: background-color 1s ease-in-out, border 1s ease-in-out;
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+   
+    outline: 3px solid var(--orange);
+    border: 3px solid transparent;
+    box-shadow: var(--shadow-two);
+    transition:  0.4s ease-in-out;
+  }
+
+  &:disabled {
+    background-color: var(--field-color) !important;
+    border: none;
+    outline: none;
+    cursor: none;
+
+    &:hover {
+      box-shadow: var(--shadow-four);
+    }
+  }
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  &>.new {
+    position: absolute;
+  }
+
+
+`;
+
+
+export const Label = styled.label`
+position: relative;
+  font-size: 18px;
+  font-weight: 500;
+  color:  var(--text-color);
+  transition:  color 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: space-between;
+  align-items: baseline;
+`;
