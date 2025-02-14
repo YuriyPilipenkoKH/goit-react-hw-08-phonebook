@@ -8,39 +8,39 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
+  PersistConfig
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import { langReducer } from './langSlice';
 import { sortReducer } from './sortSlice';
-import { authReducer } from './auth/authSlice';
+import { authReducer, AuthState } from './auth/authSlice';
 import { themeReducer } from './themeSlice';
 import { filterReducer } from './filterSlice';
 import { formReducer } from './formSlice';
 import { contactsReducer } from './contactsSlice';
+import { PersistPartial } from 'redux-persist/es/persistReducer';
 
 
 
-
-const authPersistConfig = {
+const authPersistConfig: PersistConfig<AuthState & PersistPartial> = {
     key: 'auth',
     storage,
     whitelist: ['token'],
   };
 
-
+  const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
+  
 export const store = configureStore({
 
-    reducer: {
-      
+    reducer: {    
         contacts: contactsReducer,
         form: formReducer ,    
         filter: filterReducer,
         theme:themeReducer,
         lang:langReducer,
         sort:sortReducer,
-        auth: persistReducer(authPersistConfig, authReducer),
-
+        auth: persistedAuthReducer ,// ✅ Correctly typed
     },
 
     middleware (getDefaultMiddleware) {
@@ -51,5 +51,7 @@ export const store = configureStore({
         })},
 })   
 
-export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export const persistor = persistStore(store);

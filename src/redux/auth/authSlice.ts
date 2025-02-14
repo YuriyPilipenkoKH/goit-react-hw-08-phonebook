@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { logIn, logOut,  refreshUser,  register } from "./operations";
 
-interface AuthState {
+export interface AuthState {
   user: { name: string | null; email: string | null };
   error: string | null;
   token: string | null;
@@ -68,7 +68,7 @@ const initialState:AuthState  = {
         state.isLoading = false;
         state.isFetching = false;
         state.isRefreshing = false;
-        state.error = payload;
+        state.error = payload as string;
       })
       .addCase(logIn.pending, state => {
         state.isLoading = true;
@@ -90,7 +90,7 @@ const initialState:AuthState  = {
         state.isLoading = false;
         state.isFetching = false;
         state.isRefreshing = false;
-        state.error = payload;
+        state.error = payload as string;
       })
       .addCase(logOut.pending, (state, { payload }) => {
         state.isLoading = true;
@@ -111,7 +111,7 @@ const initialState:AuthState  = {
           state.isLoading = false;
           state.isFetching = false;
           state.isRefreshing = false;
-          state.error = payload;
+          state.error = payload as string;
         })
 
         .addCase(refreshUser.pending, state => {
@@ -125,7 +125,7 @@ const initialState:AuthState  = {
         })
         .addCase(refreshUser.rejected, (state, { payload }) => {
           state.isRefreshing = false;
-          state.error = payload;
+          state.error = payload as string;
         })
         // .addMatcher(
         //   isAnyOf(register.pending, logIn.pending, logOut.pending),
