@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { MainFooter, MainHeader } from './Layout.styled'
 import { Outlet } from 'react-router-dom'
 import AppBar from '../appbar/AppBar'
-import MirrorStreamIcon from '../../utils/icons/mirrorStream'
+import MirrorStreamIcon from '../../img/icons/mirrorStream'
 
 
 const Layout = () => {

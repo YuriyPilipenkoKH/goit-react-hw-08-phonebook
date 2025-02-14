@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { useLanguage } from '../../hooks/useLanguage';
-import { useDispatch } from 'react-redux';
 import { useAuth } from '../../hooks/useAuth';
 import { logOut } from '../../redux/auth/operations';
 import { DropdownMenu, MainMenu, MenuBtn, MenuItem, SliderBtn, StyledWrap, UserName, UserWrapp } from './UserMenu.styled';
 import { FaWindowClose } from 'react-icons/fa';
 import { AiFillCaretRight, AiOutlineCaretDown } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { arrayOfActors } from '../../img/actors.ts';
+import Loader from '../loader/Loader.tsx';
+import { useAppDispatch } from '../../hooks/useAppDispatch.ts';
 
 const UserMenu = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { isFetching } = useAuth();
   const { user, isLoggedIn } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +58,7 @@ const quit =() => {
           </UserWrapp>
           {isOpen && (
         <DropdownMenu className="dropdown-menu">
-            <div className='avatar__wrapp'>{arrayOfActors[activeIndex]  }</div>
+            <div className='avatar__wrapp'> arrayOfActors[activeIndex]  </div>
             {avatar && <SliderBtn 
              type='button'
              onClick={getIndex }

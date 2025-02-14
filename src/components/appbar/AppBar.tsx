@@ -3,12 +3,13 @@ import {MdOutlineNightlight} from 'react-icons/md';
 import {MdOutlineLightMode} from 'react-icons/md';
 import { LangBtn, StyledHeader, ThemeBtn } from './AppBar.styled';
 import Navigation from '../navigation/Navigation';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import { getLang, getTheme } from '../../redux/selectors/selectors';
 import { toggleTheme } from '../../redux/themeSlice';
 import { toggleLang } from '../../redux/langSlice';
 import { useAuth } from '../../hooks/useAuth';
 import { languageTypes, themeTypes } from '../../types';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
 
 const AppBar = () => {
 
@@ -16,7 +17,7 @@ const AppBar = () => {
   const { isLoggedIn } = useAuth();
   const theme = useSelector(getTheme)
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const language = useSelector(getLang)
 
   const themeInvertor =(theme:themeTypes) => {
