@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, } from "@reduxjs/toolkit";
 import { logIn, logOut,  refreshUser,  register } from "./operations";
 
 export interface AuthState {
@@ -11,7 +11,6 @@ export interface AuthState {
   isLoading: boolean;
 }
 
-
 const initialState:AuthState  = {
   user: { name: null, email: null },
   error: null,
@@ -21,25 +20,6 @@ const initialState:AuthState  = {
   isFetching: false,
   isLoading: false, 
 };
-
-// const handleFulfilled = (state, { payload }) => {
-//   state.isFetching = false;
-//   state.isLoggedIn = true;
-//   state.user = payload.user;
-//   state.token = payload.token;
-//   state.isRefreshing = false;
-// }
-
-// const handlePending = (state) => {
-//   state.isFetching = true;
-//   state.isRefreshing = true;
-// }
-
-// const handleRejected = (state,{ payload }) => {
-//   state.isFetching = false;
-//   state.error = payload;
-// }
-
 
   const authSlice = createSlice({
     name: 'auth',
@@ -127,6 +107,31 @@ const initialState:AuthState  = {
           state.isRefreshing = false;
           state.error = payload as string;
         })
+
+    },
+  });
+
+  
+// const handleFulfilled = (state, { payload }) => {
+//   state.isFetching = false;
+//   state.isLoggedIn = true;
+//   state.user = payload.user;
+//   state.token = payload.token;
+//   state.isRefreshing = false;
+// }
+
+// const handlePending = (state) => {
+//   state.isFetching = true;
+//   state.isRefreshing = true;
+// }
+
+// const handleRejected = (state,{ payload }) => {
+//   state.isFetching = false;
+//   state.error = payload;
+// }
+
+
+
         // .addMatcher(
         //   isAnyOf(register.pending, logIn.pending, logOut.pending),
         //   handlePending
@@ -139,10 +144,6 @@ const initialState:AuthState  = {
         //   isAnyOf(register.rejected, logIn.rejected, logOut.rejected),
         //   handleRejected
         // );
-    },
-  });
-  
-
 
 
 //     extraReducers: {

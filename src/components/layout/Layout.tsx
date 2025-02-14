@@ -1,12 +1,13 @@
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 import { MainFooter, MainHeader } from './Layout.styled'
 import { Outlet } from 'react-router-dom'
 import AppBar from '../appbar/AppBar'
 import MirrorStreamIcon from '../../img/icons/mirrorStream'
+import { useLanguage } from '../../hooks/useLanguage'
 
 
 const Layout = () => {
-  // const lang = useLanguage()
+  const lang = useLanguage()
 
     return (
     <>
@@ -18,7 +19,7 @@ const Layout = () => {
         </Suspense>
         
         <MainFooter >
-          {/* {lang.footerTitle}  */}
+          {lang.footerTitle} 
           < MirrorStreamIcon />
         </MainFooter>
       </>

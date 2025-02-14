@@ -94,9 +94,10 @@ export const register = createAsyncThunk<
   >(
     'auth/refresh',
     async (_, thunkAPI) => {
-     
+     console.log('refreshUser');
       const state = thunkAPI.getState();
       const persistedToken = state.auth.token;
+      console.log('persistedToken');
   
       if (persistedToken === null) {
     
@@ -106,7 +107,7 @@ export const register = createAsyncThunk<
       try {
         // If there is a token, add it to the HTTP header and perform the request
         setAuthHeader(persistedToken);
-        const res = await axios.get('/users/current');
+        const res = await axios.get('/auth/current');
         return res.data;
       } catch (error:unknown) {
         if(error instanceof AxiosError){

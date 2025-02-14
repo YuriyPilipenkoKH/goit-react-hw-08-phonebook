@@ -1,19 +1,19 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-
 import { Container } from './components/container/Container'
 import Layout from './components/layout/Layout'
 import { useSelector } from 'react-redux'
 import { getLang, getTheme } from './redux/selectors/selectors'
 import { useAppDispatch } from './hooks/useAppDispatch'
-import { useEffect } from 'react'
+import { lazy, useEffect } from 'react'
 import { refreshUser } from './redux/auth/operations'
 import { useAuth } from './hooks/useAuth'
-import NotFoundPage from './pages/NotFoundPage '
-import ProfilePage from './pages/ProfilePage'
-import PhonebookPage from './pages/PhonebookPage'
-import LoginPage from './pages/LoginPage'
-import SignUpPage from './pages/SignUpPage'
-import HomePage from './pages/HomePage'
+
+const HomePage = lazy(() => import('./pages/HomePage'))
+const SignUpPage = lazy(() => import('./pages/SignUpPage'))
+const LoginPage = lazy(() => import('./pages/LoginPage'))
+const PhonebookPage = lazy(() => import('./pages/PhonebookPage'))
+const ProfilePage = lazy(() => import('./pages/ProfilePage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage '))
 
 function App() {
   const {token} = useAuth()
