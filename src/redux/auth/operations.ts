@@ -1,12 +1,13 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
+import { RootState } from '../store';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'http://localhost:5000/api';
 
 
 // Utility to add JWT
-const setAuthHeader = (token )=> {
+const setAuthHeader = (token:string )=> {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -35,9 +36,12 @@ export const register = createAsyncThunk(
         setAuthHeader(res.data.token);
         // console.log(res);
         return res.data;
-      } catch (error) {
+      } catch (error: unknown) {
         Notify.info('Something went wrong. Please, try again later.');
-        return thunkAPI.rejectWithValue(error.message);
+        if(error instanceof AxiosError){
+          return thunkAPI.rejectWithValue(error.message);
+
+        }
       }
     }
   );
@@ -51,9 +55,11 @@ export const register = createAsyncThunk(
       
         setAuthHeader(res.data.token);
         return res.data;
-      } catch (error) {
+      } catch (error: unknown) {
         Notify.info('Something went wrong. Please, try again later.');
+        if(error instanceof AxiosError){
         return thunkAPI.rejectWithValue(error.message);
+        }
       }
     }
   );
@@ -63,13 +69,18 @@ export const register = createAsyncThunk(
       await axios.post('/users/logout');
    
       clearAuthHeader();
-    } catch (error) {
-      
+    } catch (error:unknown) {
+      if(error instanceof AxiosError){
       return thunkAPI.rejectWithValue(error.message);
+      }
     }
   });
 
-  export const refreshUser = createAsyncThunk(
+  export const refreshUser = createAsyncThunk<
+  any, // The type of the return value (you can replace `any` with a proper type)
+  void, // No arguments are passed to the async function
+  { state: RootState } // This tells TypeScript what type `thunkAPI.getState()` returns
+>(
     'auth/refresh',
     async (_, thunkAPI) => {
      
@@ -86,8 +97,10 @@ export const register = createAsyncThunk(
         setAuthHeader(persistedToken);
         const res = await axios.get('/users/current');
         return res.data;
-      } catch (error) {
+      } catch (error:unknown) {
+        if(error instanceof AxiosError){
         return thunkAPI.rejectWithValue(error.message);
+        }
       }
     }
   );
