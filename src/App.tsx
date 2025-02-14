@@ -7,6 +7,7 @@ import { useAppDispatch } from './hooks/useAppDispatch'
 import { lazy, useEffect } from 'react'
 import { refreshUser } from './redux/auth/operations'
 import { useAuth } from './hooks/useAuth'
+import AdminPage from './pages/AdminPage'
 
 const HomePage = lazy(() => import('./pages/HomePage'))
 const SignUpPage = lazy(() => import('./pages/SignUpPage'))
@@ -16,7 +17,7 @@ const ProfilePage = lazy(() => import('./pages/ProfilePage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage '))
 
 function App() {
-  const {token} = useAuth()
+  const {token, user} = useAuth()
 
   const theme = useSelector(getTheme)
   const language = useSelector(getLang)
@@ -54,11 +55,16 @@ function App() {
             element={ token
             ? <ProfilePage /> 
             : <Navigate to='/login' />} />
+        <Route path="/admin"
+            element={ token
+            ? <AdminPage/> 
+            : <Navigate to='/login' />} />
         <Route path="*" 
             element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Container>
+
   )
 }
 

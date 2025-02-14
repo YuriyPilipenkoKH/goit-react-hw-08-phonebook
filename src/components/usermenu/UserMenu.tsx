@@ -12,8 +12,7 @@ import { useAppDispatch } from '../../hooks/useAppDispatch.ts';
 
 const UserMenu = () => {
   const dispatch = useAppDispatch();
-  const { isFetching } = useAuth();
-  const { user, isLoggedIn } = useAuth();
+  const { isFetching ,user, isLoggedIn} = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [avatar, setAvatar] = useState(false);
   const [activeAvatar, setActiveAvatar] = useState(arrayOfActors[0]);
@@ -45,7 +44,7 @@ const quit =() => {
           <div className='avatar__wrapp-sm'>{ activeAvatar }</div>
         
           <UserWrapp >
-            <UserName >{user.name}</UserName>
+            <UserName >{user?.name}</UserName>
             <MenuBtn
              type='button'
              onClick={() => setIsOpen(!isOpen)}
@@ -55,12 +54,12 @@ const quit =() => {
           </UserWrapp>
           {isOpen && (
         <DropdownMenu className="dropdown-menu">
-            <div className='avatar__wrapp'> arrayOfActors[activeIndex]  </div>
+            <div className='avatar__wrapp'> {arrayOfActors[activeIndex]()}  </div>
             {avatar && <SliderBtn 
              type='button'
              onClick={getIndex }
             ><AiFillCaretRight/></SliderBtn>}
-            {user.email}
+            {user?.email}
 
             <MenuItem type='button' onClick={avatarSetter }>
               {avatar ? lang.set : lang.avatar}</MenuItem>
@@ -78,8 +77,8 @@ const quit =() => {
                className="slides-button"
                onClick={() => setIsOpen(!isOpen)}
                type='button'>
-            <Link to="/phonebook" className="button-link">
-              {/* {lang.slides} */}phonebook
+            <Link to="/admin" className="button-link">
+              {/* {lang.slides} */}admin
             </Link>
           </MenuItem>
             <MenuItem type='button' onClick={quit}>
