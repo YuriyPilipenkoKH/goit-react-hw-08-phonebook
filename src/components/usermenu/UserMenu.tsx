@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAuth } from '../../hooks/useAuth';
 import { logOut } from '../../redux/auth/operations';
@@ -26,8 +26,6 @@ const getIndex = () => {
 }
 
 const avatarSetter = () => {
-
-  
   setAvatar(!avatar)
   if(avatar) {
     setActiveAvatar(arrayOfActors[activeIndex])
@@ -37,8 +35,6 @@ const quit =() => {
    setIsOpen(!isOpen)
    dispatch(logOut())
 }
-
-
 
   return (
     <MainMenu className='mainMenu'>

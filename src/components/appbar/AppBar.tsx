@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import {MdOutlineNightlight} from 'react-icons/md';
 import {MdOutlineLightMode} from 'react-icons/md';
 import { LangBtn, StyledHeader, ThemeBtn } from './AppBar.styled';
@@ -10,9 +9,10 @@ import { toggleLang } from '../../redux/langSlice';
 import { useAuth } from '../../hooks/useAuth';
 import { languageTypes, themeTypes } from '../../types';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
+import UserMenu from '../usermenu/UserMenu';
+import AuthNav from '../authnav/AuthNav';
 
 const AppBar = () => {
-
 
   const { isLoggedIn } = useAuth();
   const theme = useSelector(getTheme)
@@ -57,7 +57,7 @@ const AppBar = () => {
         }
       </ThemeBtn>
       
-      {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </StyledHeader>
   );
 };
