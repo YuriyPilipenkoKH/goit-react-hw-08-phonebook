@@ -9,10 +9,10 @@ const Layout = () => {
   // const lang = useLanguage()
 
     return (
-        <>
-        <MainHeader  className="main-header" >
+    <>
+      <MainHeader  className="main-header" >
         <AppBar/>
-        </MainHeader>
+      </MainHeader>
         <Suspense >
                   <Outlet />
         </Suspense>
@@ -20,8 +20,8 @@ const Layout = () => {
         <MainFooter >
           {/* {lang.footerTitle}  */}
           < MirrorStreamIcon />
-           </MainFooter>
-          </>
+        </MainFooter>
+      </>
     )}
 
 export default Layout
