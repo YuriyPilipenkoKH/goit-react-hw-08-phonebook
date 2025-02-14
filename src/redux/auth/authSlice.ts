@@ -59,7 +59,7 @@ const initialState:AuthState  = {
         state.isFetching = false;
         state.isRefreshing = false;
         state.token = payload.token;
-        state.user = payload;
+        state.user = payload.user;
         state.isLoggedIn = true;
         state.error = null;
         
@@ -81,7 +81,7 @@ const initialState:AuthState  = {
         state.isFetching = false;
         state.isRefreshing = false;
         state.token = payload.token;
-        state.user = payload;
+        state.user = payload.user;
         state.isLoggedIn = true;
         state.error = null;
         
