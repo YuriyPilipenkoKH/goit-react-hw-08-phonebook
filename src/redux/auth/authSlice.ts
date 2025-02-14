@@ -1,8 +1,9 @@
 import { createSlice, } from "@reduxjs/toolkit";
 import { logIn, logOut,  refreshUser,  register } from "./operations";
+import { User } from "../../types/user.model";
 
 export interface AuthState {
-  user: { name: string | null; email: string | null };
+  user: User | null
   error: string | null;
   token: string | null;
   isLoggedIn: boolean;
@@ -12,7 +13,7 @@ export interface AuthState {
 }
 
 const initialState:AuthState  = {
-  user: { name: null, email: null },
+  user: null,
   error: null,
   token: localStorage.getItem("token-08") || null,
   isLoggedIn: false,
@@ -81,7 +82,7 @@ const initialState:AuthState  = {
           state.isFetching = false;
           state.isRefreshing = false;
           state.isLoading = false;
-          state.user = { name: null, email: null };
+          state.user = null;
           state.token = null;
           state.isLoggedIn = false;
           state.error = null;

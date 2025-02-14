@@ -2,6 +2,7 @@ import axios, { AxiosError } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
 import { RootState } from '../store';
+import { User } from '../../types/user.model';
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
 
@@ -17,7 +18,7 @@ const clearAuthHeader = () => {
 };
 
 interface AuthResponse {
-  user: { name: string; email: string }; // Adjust based on your API response
+  user: User; // Adjust based on your API response
   token: string;
 }
 interface Credentials {
