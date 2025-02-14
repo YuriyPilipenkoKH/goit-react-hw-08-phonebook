@@ -1,4 +1,4 @@
-import LoginForm from '../components/forms/login/LoginForm';
+import LoginForm from '../components/forms/LoginForm';
 import { useLanguage } from '../hooks/useLanguage';
 
 const LoginPage = () => {

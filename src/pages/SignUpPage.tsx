@@ -1,4 +1,4 @@
-import SignupForm from '../components/forms/signup/SignupForm';
+import SignupForm from '../components/forms/SignupForm';
 import { useLanguage } from '../hooks/useLanguage'
 
 const SignUpPage = () => {

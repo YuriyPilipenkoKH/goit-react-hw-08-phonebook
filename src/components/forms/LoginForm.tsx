@@ -1,11 +1,11 @@
 import React, { useEffect, useState , FormEvent, ChangeEvent} from 'react'
-import { useLanguage } from '../../../hooks/useLanguage';
-import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import { logIn } from '../../../redux/auth/operations';
-import { FormLink, FormWrapper, Input, Label, LogoWrapp, MainTitle, RouteWrapp, SecondsCounter, ShowBtn, StyledForm } from '../Form.styled';
+import { useLanguage } from '../../hooks/useLanguage';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { logIn } from '../../redux/auth/operations';
+import { FormLink, FormWrapper, Input, Label, LogoWrapp, MainTitle, RouteWrapp, SecondsCounter, ShowBtn, StyledForm } from './Form.styled';
 import { IoMdUnlock } from 'react-icons/io';
 import { CgSandClock } from 'react-icons/cg';
-import { Button } from '../../button/Button';
+import { Button } from '../button/Button';
 
 const LoginForm = () => {
   const TIME = 10
