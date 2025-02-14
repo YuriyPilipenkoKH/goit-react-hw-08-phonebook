@@ -8,17 +8,14 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-  PersistConfig
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import { langReducer } from './langSlice';
-import { sortReducer } from './sortSlice';
 import { authReducer, AuthState } from './auth/authSlice';
 import { themeReducer } from './themeSlice';
-import { filterReducer } from './filterSlice';
 import { formReducer } from './formSlice';
-import { contactsReducer } from './contactsSlice';
+
 
 const authPersistConfig= {
     key: 'auth',
@@ -29,12 +26,12 @@ const authPersistConfig= {
 export const store = configureStore({
 
     reducer: {    
-        contacts: contactsReducer,
-        form: formReducer ,    
-        filter: filterReducer,
+        // contacts: contactsReducer,
+        // filter: filterReducer,
+        // sort:sortReducer,
+        // form: formReducer ,    
         theme:themeReducer,
         lang:langReducer,
-        sort:sortReducer,
         auth: persistReducer<AuthState >(authPersistConfig, authReducer) ,// ✅ Correctly typed
     },
 
