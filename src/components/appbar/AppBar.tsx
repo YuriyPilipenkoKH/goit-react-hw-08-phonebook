@@ -3,38 +3,43 @@ import {MdOutlineNightlight} from 'react-icons/md';
 import {MdOutlineLightMode} from 'react-icons/md';
 import { LangBtn, StyledHeader, ThemeBtn } from './AppBar.styled';
 import Navigation from '../navigation/Navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLang, getTheme } from '../../redux/selectors/selectors';
+import { toggleTheme } from '../../redux/themeSlice';
+import { toggleLang } from '../../redux/langSlice';
+import { useAuth } from '../../hooks/useAuth';
 
 const AppBar = () => {
-  const [language, setLanguage] = useState('english')
 
-  // const { isLoggedIn } = useAuth();
-  // const theme = useSelector(getTheme)
 
-  // const dispatch = useDispatch()
-  // const language = useSelector(getLang)
+  const { isLoggedIn } = useAuth();
+  const theme = useSelector(getTheme)
 
-  // const themeInvertor =(theme) => {
-  //  return  theme === 'light' ?  'dark'  :  'light'
-  // }
-  // const languageInvertor =(language) => {
-  //  return  language === 'english' ?  'ukrainian'  :  'english'
-  // }
+  const dispatch = useDispatch()
+  const language = useSelector(getLang)
 
-  // const themeMaker =() => {
-  //   localStorage.setItem('theme', themeInvertor(theme))
-    // dispatch(toggleTheme())
-  // }
-  // const languageMaker =() => {
-  //   localStorage.setItem('language', languageInvertor(language))
-  //   dispatch(toggleLang())
-  // }
+  const themeInvertor =(theme) => {
+   return  theme === 'light' ?  'dark'  :  'light'
+  }
+  const languageInvertor =(language) => {
+   return  language === 'english' ?  'ukrainian'  :  'english'
+  }
+
+  const themeMaker =() => {
+    localStorage.setItem('theme', themeInvertor(theme))
+    dispatch(toggleTheme())
+  }
+  const languageMaker =() => {
+    localStorage.setItem('language', languageInvertor(language))
+    dispatch(toggleLang())
+  }
 
   return (
     <StyledHeader >
       <Navigation />
 
       <LangBtn  
-      // onClick={languageMaker}
+      onClick={languageMaker}
       type="button">
       {(localStorage.getItem('language' ) || language) === 'english' ?  'EN' :  'UA'}
       </LangBtn>
