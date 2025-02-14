@@ -1,3 +1,4 @@
+import LoginForm from '../components/forms/login/LoginForm';
 import { useLanguage } from '../hooks/useLanguage';
 
 const LoginPage = () => {
@@ -8,7 +9,7 @@ const LoginPage = () => {
       <div>
         <title>{lang.logBtn}</title>
       </div>
-      {/* <LoginForm /> */}
+      <LoginForm />
     </div>
     </div>
   );

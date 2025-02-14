@@ -1,3 +1,4 @@
+import SignupForm from '../components/forms/signup/SignupForm';
 import { useLanguage } from '../hooks/useLanguage'
 
 const SignUpPage = () => {
@@ -6,7 +7,7 @@ const SignUpPage = () => {
     <div className='login__bg '>
     <div className='login__wrap'>
         <title>{lang.regBtn} </title>
-      {/* <RegisterForm /> */}
+      <SignupForm />
     </div>
     </div>
   );
