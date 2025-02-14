@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { MainFooter, MainHeader } from './Layout.styled'
 import { Outlet } from 'react-router-dom'
 import AppBar from '../appbar/AppBar'
+import MirrorStreamIcon from '../../utils/icons/mirrorStream'
 
 
 const Layout = () => {
@@ -18,7 +19,7 @@ const Layout = () => {
         
         <MainFooter >
           {/* {lang.footerTitle}  */}
-          { mirrorStream }
+          < MirrorStreamIcon />
            </MainFooter>
           </>
     )}
