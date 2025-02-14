@@ -70,7 +70,12 @@ export const register = createAsyncThunk<
     }
   );
 
-  export const logOut = createAsyncThunk<void, void, { state: RootState }>('auth/logout', async (_, thunkAPI) => {
+  export const logOut = createAsyncThunk<
+    void, 
+    void, 
+    { state: RootState }
+    >(
+    'auth/logout', async (_, thunkAPI) => {
     try {
       await axios.post('/users/logout');
    
@@ -83,10 +88,10 @@ export const register = createAsyncThunk<
   });
 
   export const refreshUser = createAsyncThunk<
-  any, // The type of the return value (you can replace `any` with a proper type)
-  void, // No arguments are passed to the async function
-  { state: RootState } // This tells TypeScript what type `thunkAPI.getState()` returns
->(
+    any, 
+    void, 
+    { state: RootState } 
+  >(
     'auth/refresh',
     async (_, thunkAPI) => {
      

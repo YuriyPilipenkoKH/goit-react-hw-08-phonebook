@@ -9,4 +9,6 @@ export const selectIsRefreshing = (state: RootState) => state.auth.isRefreshing;
 
 export const selectIsFetching = (state: RootState) => state.auth.isFetching;
 
+export const selectIsLoading = (state: RootState) => state.auth.isLoading;
+
 export const selectToken = (state: RootState) => state.auth.token;
