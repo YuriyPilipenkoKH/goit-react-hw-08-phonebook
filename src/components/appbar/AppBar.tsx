@@ -8,6 +8,7 @@ import { getLang, getTheme } from '../../redux/selectors/selectors';
 import { toggleTheme } from '../../redux/themeSlice';
 import { toggleLang } from '../../redux/langSlice';
 import { useAuth } from '../../hooks/useAuth';
+import { languageTypes, themeTypes } from '../../types';
 
 const AppBar = () => {
 
@@ -18,10 +19,10 @@ const AppBar = () => {
   const dispatch = useDispatch()
   const language = useSelector(getLang)
 
-  const themeInvertor =(theme) => {
+  const themeInvertor =(theme:themeTypes) => {
    return  theme === 'light' ?  'dark'  :  'light'
   }
-  const languageInvertor =(language) => {
+  const languageInvertor =(language:languageTypes) => {
    return  language === 'english' ?  'ukrainian'  :  'english'
   }
 
@@ -44,7 +45,7 @@ const AppBar = () => {
       {(localStorage.getItem('language' ) || language) === 'english' ?  'EN' :  'UA'}
       </LangBtn>
 
-      {/* <ThemeBtn 
+      <ThemeBtn 
       onClick={themeMaker}
       type="button"
     
@@ -53,7 +54,7 @@ const AppBar = () => {
         ? <MdOutlineLightMode size={30}/>
         : <MdOutlineNightlight size={30}/>
         }
-      </ThemeBtn> */}
+      </ThemeBtn>
       
       {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
     </StyledHeader>
