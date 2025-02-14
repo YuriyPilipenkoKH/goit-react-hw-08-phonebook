@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react'
 import { MainFooter, MainHeader } from './Layout.styled'
 import { Outlet } from 'react-router-dom'
+import AppBar from '../appbar/AppBar'
+
 
 const Layout = () => {
   // const lang = useLanguage()
@@ -15,7 +17,8 @@ const Layout = () => {
         </Suspense>
         
         <MainFooter >
-          {/* {lang.footerTitle} { mirrorStream } */}
+          {/* {lang.footerTitle}  */}
+          { mirrorStream }
            </MainFooter>
           </>
     )}

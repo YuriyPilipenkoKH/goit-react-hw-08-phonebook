@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {MdOutlineNightlight} from 'react-icons/md';
 import {MdOutlineLightMode} from 'react-icons/md';
 import { LangBtn, StyledHeader, ThemeBtn } from './AppBar.styled';
 import Navigation from '../navigation/Navigation';
 
 const AppBar = () => {
+  const [language, setLanguage] = useState('english')
 
   // const { isLoggedIn } = useAuth();
   // const theme = useSelector(getTheme)

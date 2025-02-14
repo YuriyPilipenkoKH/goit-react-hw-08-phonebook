@@ -11,11 +11,11 @@ const Navigation = () => {
       <StyledLink  to="/">
       {/* {lang.homeBtn} */}
       </StyledLink>
-      {isLoggedIn && (
+      {/* {isLoggedIn && (
         <StyledLink to="/phonebook">
-         {/* {lang.contactsBtn} */}
+         {lang.contactsBtn}
         </StyledLink>
-      )}
+      )} */}
     </StyledWrap>
   );
 };
