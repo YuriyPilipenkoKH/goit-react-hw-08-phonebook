@@ -41,7 +41,7 @@ const SignupForm = () => {
        <LogoWrapp ><SiLazarus size={50}/></LogoWrapp>
       <MainTitle>{lang.regBtn}</MainTitle>
 
-      <StyledForm onSubmit={handleSubmit}  autoComplete="on">
+      <StyledForm onSubmit={handleSubmit} noValidate autoComplete="off">
         <Label >
         {lang.name}
           <Input

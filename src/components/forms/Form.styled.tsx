@@ -111,6 +111,7 @@ export const Input = styled.input`
   width: 280px;
   border-radius: 10px;
   padding:4px 16px;
+  font-size: 18px;
   background-color: var(--field-color);
   border: var(--border);
   box-shadow: var(--shadow-four);

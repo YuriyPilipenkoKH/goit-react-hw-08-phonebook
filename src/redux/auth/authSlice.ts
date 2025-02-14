@@ -14,7 +14,7 @@ export interface AuthState {
 const initialState:AuthState  = {
   user: { name: null, email: null },
   error: null,
-  token: null,
+  token: localStorage.getItem("token-08") || null,
   isLoggedIn: false,
   isRefreshing: false,
   isFetching: false,
@@ -38,7 +38,6 @@ const initialState:AuthState  = {
         state.isLoading = false;
         state.isFetching = false;
         state.isRefreshing = false;
-        state.token = payload.token;
         state.user = payload.user;
         state.isLoggedIn = true;
         state.error = null;
@@ -99,7 +98,7 @@ const initialState:AuthState  = {
           state.error = null;
         })
         .addCase(refreshUser.fulfilled, (state, { payload }) => {
-          state.user = payload;
+          state.user = payload.user;
           state.isLoggedIn = true;
           state.isRefreshing = false;
         })

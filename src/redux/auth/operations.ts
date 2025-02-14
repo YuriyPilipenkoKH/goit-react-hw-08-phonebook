@@ -34,9 +34,9 @@ export const register = createAsyncThunk<
     'auth/register',
     async (credentials, thunkAPI) => {
       try {
-        const res = await axios.post('/users/signup', credentials);
+        const res = await axios.post('/auth/signup', credentials);
      
-        setAuthHeader(res.data.token);
+        // setAuthHeader(res.data.token);
         // console.log(res);
         return res.data;
       } catch (error: unknown) {
@@ -58,9 +58,10 @@ export const register = createAsyncThunk<
     'auth/login',
     async (credentials, thunkAPI) => {
       try {
-        const res = await axios.post('/users/login', credentials);
+        const res = await axios.post('/auth/login', credentials);
       
         setAuthHeader(res.data.token);
+        localStorage.setItem("token-08",res.data.token)
         return res.data;
       } catch (error: unknown) {
         Notify.info('Something went wrong. Please, try again later.');
@@ -78,9 +79,10 @@ export const register = createAsyncThunk<
     >(
     'auth/logout', async (_, thunkAPI) => {
     try {
-      await axios.post('/users/logout');
+      await axios.post('/auth/logout');
    
       clearAuthHeader();
+      localStorage.setItem("token-08", "")
     } catch (error:unknown) {
       if(error instanceof AxiosError){
       return thunkAPI.rejectWithValue(error.message);
@@ -89,7 +91,7 @@ export const register = createAsyncThunk<
   });
 
   export const refreshUser = createAsyncThunk<
-    any, 
+    AuthResponse, 
     void, 
     { state: RootState } 
   >(

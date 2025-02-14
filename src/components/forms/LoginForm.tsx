@@ -8,7 +8,7 @@ import { CgSandClock } from 'react-icons/cg';
 import { Button } from '../button/Button';
 
 const LoginForm = () => {
-  const TIME = 10
+  const TIME = 200
   const dispatch = useAppDispatch();
 
   const [email, setEmail] = useState('');
@@ -57,6 +57,7 @@ const LoginForm = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');

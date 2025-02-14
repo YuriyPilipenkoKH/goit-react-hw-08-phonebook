@@ -9,7 +9,7 @@ const AuthNav = () => {
   const lang = useLanguage()
   return (
     <StyledWrap>
-     {token && <StyledLink  to="/register">
+     {token && <StyledLink  to="/signup">
      {lang.regBtn}
       </StyledLink>}
       <StyledLink  to="/login">

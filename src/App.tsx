@@ -26,7 +26,10 @@ function App() {
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(refreshUser());
+    async function check() {
+      await dispatch(refreshUser()); 
+    }
+    check()
   }, [dispatch]);
 
 
@@ -38,12 +41,12 @@ function App() {
         <Route path="/signup"
             element ={!token
             ? <SignUpPage/>
-            : <Navigate to='/dashboard'/>}/>
+            : <Navigate to='/phonebook'/>}/>
         <Route path="/login"
             element ={!token
             ? <LoginPage/>
-            : <Navigate to='/dashboard'/>}/>
-        <Route path="dashboard"
+            : <Navigate to='/phonebook'/>}/>
+        <Route path="phonebook"
             element ={ token
             ? <PhonebookPage/>
             : <Navigate to='/login'/>}/>

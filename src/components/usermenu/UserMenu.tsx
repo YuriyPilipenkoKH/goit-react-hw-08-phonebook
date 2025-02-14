@@ -19,6 +19,7 @@ const UserMenu = () => {
   const [activeAvatar, setActiveAvatar] = useState(arrayOfActors[0]);
   const [activeIndex, setActiveIndex] = useState(0)
   const lang = useLanguage()
+ 
 
 const getIndex = () => {
   const newIndex = (activeIndex + 1) % 20; // Increment the index and wrap around 0-7 range
@@ -77,8 +78,8 @@ const quit =() => {
                className="slides-button"
                onClick={() => setIsOpen(!isOpen)}
                type='button'>
-            <Link to="/slides" className="button-link">
-              {lang.slides}
+            <Link to="/phonebook" className="button-link">
+              {/* {lang.slides} */}phonebook
             </Link>
           </MenuItem>
             <MenuItem type='button' onClick={quit}>

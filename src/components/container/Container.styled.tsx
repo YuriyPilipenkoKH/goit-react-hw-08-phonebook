@@ -6,7 +6,7 @@ export const MainContainer = styled.div`
     justify-items: center;
     grid-gap: 25px;
     grid-template-rows: 80px auto 80px;
-
+    min-height: 100vh;
 
     transition: background-color 1s ease-in-out, color 1s ease-in-out;
     background: var(--background-color);
