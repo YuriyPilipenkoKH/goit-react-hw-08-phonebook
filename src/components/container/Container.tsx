@@ -1,4 +1,4 @@
-import { MainContainer } from "./container/Container.styled"
+import { MainContainer } from "./Container.styled"
 import React, { ReactNode } from 'react'
 
 interface ContainerProps {
