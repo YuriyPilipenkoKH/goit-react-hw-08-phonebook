@@ -21,8 +21,9 @@ interface AuthResponse {
   token: string;
 }
 interface Credentials {
-  email: string;
-  password: string;
+  name?:string
+  email: string
+  password: string
 }
 
 export const register = createAsyncThunk<
