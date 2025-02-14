@@ -2,6 +2,7 @@ import React from 'react'
 import {MdOutlineNightlight} from 'react-icons/md';
 import {MdOutlineLightMode} from 'react-icons/md';
 import { LangBtn, StyledHeader, ThemeBtn } from './AppBar.styled';
+import Navigation from '../navigation/Navigation';
 
 const AppBar = () => {
 
@@ -37,7 +38,7 @@ const AppBar = () => {
       {(localStorage.getItem('language' ) || language) === 'english' ?  'EN' :  'UA'}
       </LangBtn>
 
-      <ThemeBtn 
+      {/* <ThemeBtn 
       onClick={themeMaker}
       type="button"
     
@@ -46,9 +47,9 @@ const AppBar = () => {
         ? <MdOutlineLightMode size={30}/>
         : <MdOutlineNightlight size={30}/>
         }
-      </ThemeBtn>
+      </ThemeBtn> */}
       
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
     </StyledHeader>
   );
 };
