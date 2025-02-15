@@ -14,7 +14,7 @@ import { addContactSchema, addContactSchemaType, } from '../../types/AddComtact.
 
 
 const ContactForm = () => {
-  const {contacts, } = useContacts()
+  const {contacts, sameNumber} = useContacts()
   // const { name, number } = useSelector(getForm);
   const [newAdded, setNewAdded] = useState(false)
   const lang = useLanguage()
@@ -25,6 +25,7 @@ const ContactForm = () => {
     handleSubmit,
     formState,
     reset,
+    setError,
     clearErrors,
   } = useForm<addContactSchemaType >({
     defaultValues: {  
@@ -42,12 +43,15 @@ const ContactForm = () => {
     } = formState
 
   const onSubmit = async (data: addContactSchemaType) => {
-  const result =  dispatch(addContact(data))
-    // if(result.existingNameError){
-    //   console.log(result.message);
-
-    // }
-    // // reset()
+  const result =  dispatch(addContact(data)).then((data) => {
+    console.log(data)
+    if(data.type === 'contacts/addContact/rejected'){
+      setError('number', { type: 'manual', message: data.payload as string }  )
+    }
+    if(data.type === 'contacts/addContact/fulfilled'){
+      reset()
+    }
+  })
     setNewAdded(true)
     setTimeout(() => setNewAdded(false), 2000)
   }
@@ -73,6 +77,7 @@ const ContactForm = () => {
         />
       </Label>
       {errors.number && <div className='text-purple-900'>{errors.number?.message}</div>}
+      {/* {sameNumber && <div className='text-purple-900'>{sameNumber}</div>} */}
       <ContactFormBtn 
       type="submit"
       disabled={isSubmitting || !isDirty || !isValid}
