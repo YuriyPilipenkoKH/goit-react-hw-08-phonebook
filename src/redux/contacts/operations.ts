@@ -3,6 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Notify } from "notiflix";
 import { Contact } from "../../types/contact.model";
 import { ContactsState } from "./contactsSlice";
+import { RootState } from "../store";
 
 axios.defaults.baseURL = import.meta.env.VITE_HOST
 
@@ -20,12 +21,15 @@ interface PB_data{
 }
 
  export const fetchContacts  = 
-  createAsyncThunk< PB_Response, void, { state: ContactsState }>(
+  createAsyncThunk< PB_Response, void, { state: RootState}>(
     "contacts/fetchAll",
   
     async (_, thunkAPI) => {
       try {
         const response = await axios.get("/contacts/grab");
+        if(!response.data){
+          return thunkAPI.rejectWithValue('Unable to fetch contacts');
+        }
         return response.data;
 
       } catch (error: unknown) {
@@ -38,7 +42,7 @@ interface PB_data{
   );
 
  export const addContact = 
-  createAsyncThunk< PB_update_Response, PB_data, { state: ContactsState }>(
+  createAsyncThunk< PB_update_Response, PB_data, { state: RootState }>(
     "contacts/addContact",
   
     async (contact, thunkAPI) => {
@@ -57,7 +61,7 @@ interface PB_data{
   );
 
  export const deleteContact = 
-  createAsyncThunk< PB_update_Response, string, { state: ContactsState}>(
+  createAsyncThunk< PB_update_Response, string, { state: RootState}>(
     "contacts/deleteContact",
   
     async (id, thunkAPI) => {

@@ -15,7 +15,7 @@ contact: Contact
 
 const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   const dispatch = useAppDispatch();
-  const contactsList  = useSelector(getContactsList )
+
   const { _id, name, number} = contact;
   const [deleted, setDeleted] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
@@ -40,7 +40,7 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
 
     confirmDelete(`Are you sure you want to delete ${name}?`, name)
   .then(() => {
-    dispatch(deleteContact(id))
+    // dispatch(deleteContact(id))
     setDeleted(true)
     setTimeout(() => {
       setDeleted(false)

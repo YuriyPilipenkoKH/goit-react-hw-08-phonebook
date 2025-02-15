@@ -1,7 +1,8 @@
 import React from 'react'
 import { useContacts } from '../../../hooks/useContacts';
-import { ContactContainer, List } from './ContactList.styled';
+import { ContactContainer, EmptySpan, List } from './ContactList.styled';
 import { Contact } from '../../../types/contact.model';
+import ContactListItem from '../listitem/ContactListItem';
 
 interface ContactListProps{
   contacts:Contact[]
