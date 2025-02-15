@@ -4,7 +4,8 @@ import { Notify } from 'notiflix';
 import { RootState } from '../store';
 import { User } from '../../types/user.model';
 
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL =  import.meta.env.VITE_HOST
+
 
 
 // Utility to add JWT
