@@ -9,18 +9,18 @@ const PhonebookPage = () => {
   const lang = useLanguage()
   return (
     <PhonebookWrapper className="phonebook__wrap">
-    {/* <Section title={lang.phonebook} icon ={language === 'english' &&   iconMphone}>
+    <Section title={lang.phonebook} icon ={language === 'english' &&   iconMphone}>
       <ContactForm  />
 
-      <Filter />
+      {/* <Filter /> */}
       
       {contacts.length > 0 && (
         <>
-       <ListBar></ListBar>
+       {/* <ListBar></ListBar> */}
         <ContactList  />
         </>
       )}
-    </Section> */}
+    </Section >
     
 
   </PhonebookWrapper>
