@@ -16,9 +16,10 @@ export const contactSchema = z.object({
   number: z
   .string()
   .trim()
-  .regex(/^0\d{9}$/, {
-    message: 'Correct format: 0985551204 ',
-   })  ,
+  // .regex(/^0\d{9}$/, {
+  //   message: 'Correct format: 0985551204 ',
+  //  }) 
+    ,
   createdAt: z
   .date()
   .optional(),
@@ -27,3 +28,4 @@ export const contactSchema = z.object({
   .optional(),
 }) 
 export type Contact =  z.infer<typeof contactSchema>
+
