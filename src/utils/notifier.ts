@@ -1,7 +1,8 @@
 import Notiflix, { Confirm } from 'notiflix';
 
 
-export function confirmUpdate (question, name) {
+
+export function confirmUpdate (question: string, name: string): Promise<void> {
 
         return new Promise((resolve, reject) => {
             Confirm.show(
@@ -23,7 +24,7 @@ export function confirmUpdate (question, name) {
 
 }
 
-export function confirmDelete (question, name) {
+export function confirmDelete (question: string, name: string): Promise<void> {
 
         return new Promise((resolve, reject) => {
             Confirm.show(

@@ -16,7 +16,7 @@ contact: Contact
 const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   const dispatch = useAppDispatch();
   const contactsList  = useSelector(getContactsList )
-  const { id, name, number} = contact;
+  const { _id, name, number} = contact;
   const [deleted, setDeleted] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const [nick, setNick] = useState(name)
@@ -28,7 +28,7 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
  
     if (isEdit) {
       const updatedContact = {
-        id,
+        _id,
         name: nick,
         number: phone,
       };
