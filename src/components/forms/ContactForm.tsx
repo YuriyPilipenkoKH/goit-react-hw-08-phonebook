@@ -1,76 +1,81 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ContactFormBtn, Form, Input, Label } from './Form.styled';
+import IconRedux from '../../img/icons/iconRedux';
+import { useContacts } from '../../hooks/useContacts';
+import { useLanguage } from '../../hooks/useLanguage';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { addContact } from '../../redux/contacts/operations';
+import { resetForm } from '../../redux/formSlice';
+import { useSelector } from 'react-redux';
+import { getLang } from '../../redux/selectors/selectors';
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { addContactSchema, addContactSchemaType, } from '../../types/AddComtact.model';
+
 
 const ContactForm = () => {
-  onst contacts = useSelector(getContactsList)
-  const { name, number } = useSelector(getForm);
+  const {contacts} = useContacts()
+  // const { name, number } = useSelector(getForm);
   const [newAdded, setNewAdded] = useState(false)
   const lang = useLanguage()
   const language = useSelector(getLang)
-  const dispatch = useDispatch()
- 
+  const dispatch = useAppDispatch()
+  const {
+    register, 
+    handleSubmit,
+    formState,
+    reset,
+    clearErrors,
+  } = useForm<addContactSchemaType >({
+    defaultValues: {  
+      name: '',
+      number: '',
+       },
+        mode:'all',
+        resolver: zodResolver(addContactSchema), })
+    const {
+      errors,
+      isDirty,
+      isValid ,
+      isSubmitting,
+      isLoading 
+    } = formState
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    dispatch(updateField({ field: name, value }));
-  };
-
-  const handleSubmit = (e) => {
-  
-    e.preventDefault();
-
-    const newContact  = {
-      name,
-      number,
-    }
-
-    if (contacts.find((contact) => contact.name.toLowerCase() === newContact.name.toLowerCase())) {
-      Notiflix.Notify.failure(`${name} is already in contacts.`);
-      return;
-    } else if (contacts.find((contact) => contact.number === number)) {
-      Notiflix.Notify.failure(`${number} is already in contacts.`);
-      return;
-    }
-
-    dispatch(addContact(newContact))
-    dispatch(resetForm()); // Reset the form after submission
+  const onSubmit = async (data: addContactSchemaType) => {
+    dispatch(addContact(data))
+    reset()
     setNewAdded(true)
-    setTimeout(() => {
-      setNewAdded(false)
-    }, 3000);
-  };
-
+    setTimeout(() => setNewAdded(false), 2000)
+  }
 
   return (
-    <Form autoComplete="off" onSubmit={handleSubmit}>
+    <Form 
+    autoComplete="off" 
+    noValidate
+     onSubmit={handleSubmit(onSubmit)}>
       <Label>
       {lang.name}:
         <Input
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          value={name}
-          required
-          onChange={handleChange}
+        {...register('name',)}
+          placeholder=	{( isSubmitting )? "Processing" : 'name'}
         />
       </Label>
+      {errors.name && <div className='text-purple-900'>{errors.name?.message}</div>}
       <Label>
       {lang.number}:
         <Input
-          type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          value={number}
-          required
-          onChange={handleChange}
+        {...register('number',)}
+        placeholder=	{( isSubmitting )? "Processing" : 'number'}
         />
       </Label>
+      {errors.number && <div className='text-purple-900'>{errors.number?.message}</div>}
       <ContactFormBtn 
       type="submit"
+      disabled={isSubmitting || !isDirty || !isValid}
             >
-              {lang.add}{ language === 'english' && iconRedux }</ContactFormBtn>
+               { isLoading  ? "Sending.." :  lang.add}
+              {' '}{ language === 'english' && <IconRedux/> }
+      </ContactFormBtn>
              {/* {newAdded && <Lottie animationData={animationData} className="new"/>} */}
             
     </Form>
@@ -78,3 +83,12 @@ const ContactForm = () => {
 };
 
 export default ContactForm
+
+
+    // if (contacts.find((contact) => contact.name.toLowerCase() === newContact.name.toLowerCase())) {
+    //   Notiflix.Notify.failure(`${name} is already in contacts.`);
+    //   return;
+    // } else if (contacts.find((contact) => contact.number === number)) {
+    //   Notiflix.Notify.failure(`${number} is already in contacts.`);
+    //   return;
+    // }

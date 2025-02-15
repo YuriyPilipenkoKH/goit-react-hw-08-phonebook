@@ -11,8 +11,8 @@ import { fetchContacts } from '../redux/contacts/operations'
 import { useAppDispatch } from '../hooks/useAppDispatch'
 
 const PhonebookPage = () => {
-  const language = useSelector(getLang)
   const lang = useLanguage()
+  const language = useSelector(getLang)
   const{contacts, } = useContacts()
 const dispatch = useAppDispatch();
   useEffect(() => {
