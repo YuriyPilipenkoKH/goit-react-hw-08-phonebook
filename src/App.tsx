@@ -18,7 +18,7 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage '))
 
 function App() {
   const {token, user} = useAuth()
-  const userRole =user?.role  
+  const isAnmin = user?.role  === 'admin'
   const theme = useSelector(getTheme)
   const language = useSelector(getLang)
     // Set the data-theme attribute on the <html> element
@@ -27,10 +27,7 @@ function App() {
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    async function check() {
-      await dispatch(refreshUser()); 
-    }
-    check()
+    dispatch(refreshUser()); 
   }, [dispatch]);
 
 
@@ -56,9 +53,12 @@ function App() {
             ? <ProfilePage /> 
             : <Navigate to='/login' />} />
         <Route path="/admin"
-            element={ token
-            ? <AdminPage/> 
-            : <Navigate to='/login' />} />
+            element={ !token
+            ? <PhonebookPage/> 
+            : isAnmin 
+              ? <AdminPage/>
+              :  <Navigate to='/phonebook' />
+            } />
         <Route path="*" 
             element={<NotFoundPage />} />
         </Route>

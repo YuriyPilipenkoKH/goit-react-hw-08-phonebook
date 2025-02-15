@@ -45,7 +45,6 @@ export const register = createAsyncThunk<
         Notify.info('Something went wrong. Please, try again later.');
         if(error instanceof AxiosError){
           return thunkAPI.rejectWithValue(error.message);
-
         }
       }
     }
