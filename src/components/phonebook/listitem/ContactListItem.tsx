@@ -7,8 +7,13 @@ import { useLanguage } from '../../../hooks/useLanguage';
 import { confirmDelete } from '../../../utils/notifier';
 import { deleteContact } from '../../../redux/contacts/operations';
 import { updateValue } from '../../../redux/editSlice';
+import { Contact } from '../../../types/contact.model';
 
-const ContactListItem = () => {
+interface ContactListItemProps{
+contact: Contact
+}
+
+const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   const dispatch = useAppDispatch();
   const contactsList  = useSelector(getContactsList )
   const { id, name, number} = contact;
@@ -27,45 +32,9 @@ const ContactListItem = () => {
         name: nick,
         number: phone,
       };
- 
+    }
+  }
 
-// const contactToUpdate  = contactsList.find(contact => contact.id === updatedContact.id)
-// const allExeptUpdated = contactsList.filter(contact => contact.id !== contactToUpdate.id)
-
-// const returnDefault =() =>{
-//   setNick(contactToUpdate.name)
-//   setPhone(contactToUpdate.number)
-// }  
-
-// if(updatedContact.name === '' || updatedContact.number === ''){
-//   Notiflix.Notify.failure('No Empty Strings, dude!');
-//   returnDefault()
-//   return;
-}
-
-// if (allExeptUpdated.find((contact) => contact.name.toLowerCase() === updatedContact.name.toLowerCase())){
-//   Notiflix.Notify.failure(`${updatedContact.name} is already in contacts.`);
-//   returnDefault()
-//   return ;
-// }
-
-// else if (allExeptUpdated.find((contact) => contact.number === updatedContact.number)) {
-//   Notiflix.Notify.failure(`${updatedContact.number} is already in contacts.`);
-//   returnDefault() 
-//   return ;
-// }
-
-
-// confirmUpdate(`Are you sure you want to update ${name}?`, name)
-//   .then(() => {
-//     dispatch(editContact(updatedContact));
-//   })
-//   .catch(() => {
-//     // Handle cancellation or rejection
-//   });
-
-//     }
-//   };
 
   const handleDelete = () => {
 
@@ -124,3 +93,41 @@ const ContactListItem = () => {
   );
 }
 export default ContactListItem
+
+// const contactToUpdate  = contactsList.find(contact => contact.id === updatedContact.id)
+// const allExeptUpdated = contactsList.filter(contact => contact.id !== contactToUpdate.id)
+
+// const returnDefault =() =>{
+//   setNick(contactToUpdate.name)
+//   setPhone(contactToUpdate.number)
+// }  
+
+// if(updatedContact.name === '' || updatedContact.number === ''){
+//   Notiflix.Notify.failure('No Empty Strings, dude!');
+//   returnDefault()
+//   return;
+
+
+// if (allExeptUpdated.find((contact) => contact.name.toLowerCase() === updatedContact.name.toLowerCase())){
+//   Notiflix.Notify.failure(`${updatedContact.name} is already in contacts.`);
+//   returnDefault()
+//   return ;
+// }
+
+// else if (allExeptUpdated.find((contact) => contact.number === updatedContact.number)) {
+//   Notiflix.Notify.failure(`${updatedContact.number} is already in contacts.`);
+//   returnDefault() 
+//   return ;
+// }
+
+
+// confirmUpdate(`Are you sure you want to update ${name}?`, name)
+//   .then(() => {
+//     dispatch(editContact(updatedContact));
+//   })
+//   .catch(() => {
+//     // Handle cancellation or rejection
+//   });
+
+//     }
+//   };
