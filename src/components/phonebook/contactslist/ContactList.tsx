@@ -1,17 +1,10 @@
 import React from 'react'
+import { useContacts } from '../../../hooks/useContacts';
 
 const ContactList = () => {
-  const contacts = useSelector(getContactsList)
-  const filterValue = useSelector(getContactsFilter)
-  const {activeIndex, id,  name, number}  = useSelector(getSorted)
-  const arrayOfBools = [id,  name, number]
-  const sortedContacts = arrayOfMethods[activeIndex]
-  const filteredContacts = [...sortedContacts(contacts, arrayOfBools[activeIndex])
-    .filter((contact )=>
-     contact.name.toLowerCase().includes(filterValue.filter) 
-     || contact.number.includes(filterValue.filter) )]
-
-
+  
+  const {ContactsList, isLoading} = useContacts()
+  
   return (
     <>
       {/* <Count>{filteredContacts.length}</Count>  */}
