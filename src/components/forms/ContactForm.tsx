@@ -1,21 +1,19 @@
 import React, { useState } from 'react'
 import { ContactFormBtn, Form, Input, Label } from './Form.styled';
 import IconRedux from '../../img/icons/iconRedux';
-import { useContacts } from '../../hooks/useContacts';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { addContact } from '../../redux/contacts/operations';
-import { resetForm } from '../../redux/formSlice';
 import { useSelector } from 'react-redux';
 import { getLang } from '../../redux/selectors/selectors';
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { addContactSchema, addContactSchemaType, } from '../../types/AddComtact.model';
+import Lottie from 'lottie-react';
 
+import animationData  from '../../assets/Animation - 1739633703538.json'
 
 const ContactForm = () => {
-  const {contacts, sameNumber} = useContacts()
-  // const { name, number } = useSelector(getForm);
   const [newAdded, setNewAdded] = useState(false)
   const lang = useLanguage()
   const language = useSelector(getLang)
@@ -26,7 +24,6 @@ const ContactForm = () => {
     formState,
     reset,
     setError,
-    clearErrors,
   } = useForm<addContactSchemaType >({
     defaultValues: {  
       name: '',
@@ -44,16 +41,16 @@ const ContactForm = () => {
 
   const onSubmit = async (data: addContactSchemaType) => {
   const result =  dispatch(addContact(data)).then((data) => {
-    console.log(data)
+    // console.log(data)
     if(data.type === 'contacts/addContact/rejected'){
       setError('number', { type: 'manual', message: data.payload as string }  )
     }
     if(data.type === 'contacts/addContact/fulfilled'){
       reset()
+      setNewAdded(true)
+      setTimeout(() => setNewAdded(false), 2000)
     }
   })
-    setNewAdded(true)
-    setTimeout(() => setNewAdded(false), 2000)
   }
 
   return (
@@ -85,7 +82,7 @@ const ContactForm = () => {
                { isLoading  ? "Sending.." :  lang.add}
               {' '}{ language === 'english' && <IconRedux/> }
       </ContactFormBtn>
-             {/* {newAdded && <Lottie animationData={animationData} className="new"/>} */}
+             {newAdded && <Lottie animationData={animationData} className="new"/>}
             
     </Form>
   );
