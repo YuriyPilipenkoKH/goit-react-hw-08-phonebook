@@ -8,6 +8,7 @@ import { confirmDelete } from '../../../utils/notifier';
 import { deleteContact } from '../../../redux/contacts/operations';
 import { updateValue } from '../../../redux/editSlice';
 import { Contact } from '../../../types/contact.model';
+import { IDspan } from './ContactListItem.styled';
 
 interface ContactListItemProps{
 contact: Contact
@@ -35,28 +36,23 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
     }
   }
 
-
   const handleDelete = () => {
 
     confirmDelete(`Are you sure you want to delete ${name}?`, name)
   .then(() => {
-    // dispatch(deleteContact(id))
+    dispatch(deleteContact(_id))
     setDeleted(true)
-    setTimeout(() => {
-      setDeleted(false)
-    }, 5000);
+    setTimeout(() => setDeleted(false), 2000);
   })
   .catch(() => {
     // Handle cancellation or rejection
   });
-
   };
 
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    dispatch(updateValue({ field: name, value }));
+    // dispatch(updateValue({ field: name, value }));
   };
-
   
 
   return (
@@ -64,7 +60,7 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
       <ListItem 
       // totalItems={4}
       >
-        {/* <IDspan>{id}</IDspan> */}
+        
         {isEdit ? (
           <EditWrapper className="edit-wrapper">
             <input type="text" name="nick" value={nick} onChange={handleChange} />

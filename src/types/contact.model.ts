@@ -9,16 +9,18 @@ export const contactSchema = z.object({
   .string()
   .trim()
   .min(3)
-  .max(32)
+  .max(16)
   .refine((val) => !val.toLowerCase().startsWith('qwe'), {
     message: 'forbidden prefix',
   }),
   number: z
   .string()
   .trim()
+  .min(10 , '')
+  .max(10)
   // .regex(/^0\d{9}$/, {
   //   message: 'Correct format: 0985551204 ',
-  //  }) 
+  //  }) //moved to backend
     ,
   createdAt: z
   .date()
