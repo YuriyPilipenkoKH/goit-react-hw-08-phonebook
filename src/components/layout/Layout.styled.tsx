@@ -5,7 +5,7 @@ export const MainHeader= styled.header`
   top: 0;
   left: 0;
   width: 100%;
- position: sticky;
+ /* position: sticky; */
   z-index: 100;
   display: flex;
   gap: 25px;

@@ -148,8 +148,11 @@ export const ContactContainer = styled.div`
 @media screen and (min-width: 768px) {
       width: 700px;
       padding: 4px 8px;
-      max-height: 280px;
+      max-height: 300px;
     }
+    @media (min-width: 1024px) {
+      max-height: 500px;
+  }
 `;
 
 export const BtnWrapper = styled.div`

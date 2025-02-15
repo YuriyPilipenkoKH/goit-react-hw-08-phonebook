@@ -24,6 +24,7 @@ const dispatch = useAppDispatch();
     <PhonebookWrapper className="phonebook__wrap">
     <Section title={lang.phonebook} icon ={language === 'english' &&  <IconMphone/>}>
       <ContactForm  />
+      </Section >
 
       {/* <Filter /> */}
       
@@ -33,7 +34,6 @@ const dispatch = useAppDispatch();
         <ContactList contacts ={contacts} />
         </>
       )}
-    </Section >
     
 
   </PhonebookWrapper>

@@ -48,13 +48,18 @@ export const PhonebookWrapper= styled.div`
   background-position: center;  
   background-size: cover;
 
+  display: grid;
+  min-height: 100vh;
+  transition: all 0.8s ease-in-out;
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   &>.new {
     position: absolute;
   }
  
 `
-
-
 
 export const HomeTitle = styled.h1`
 
