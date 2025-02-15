@@ -19,14 +19,13 @@ interface PB_data{
   number: string
 }
 
-
  export const fetchContacts  = 
   createAsyncThunk< PB_Response, void, { state: ContactsState }>(
     "contacts/fetchAll",
   
     async (_, thunkAPI) => {
       try {
-        const response = await axios.get("/contacts");
+        const response = await axios.get("/contacts/grab");
         return response.data;
 
       } catch (error: unknown) {
