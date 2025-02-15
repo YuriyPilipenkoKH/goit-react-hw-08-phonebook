@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { getContactsList, selectIsLoading } from "../redux/contacts/selectors";
+import { getContactsList, selectError, selectIsLoading } from "../redux/contacts/selectors";
 
 
 export const useContacts = () => {
@@ -8,6 +8,7 @@ export const useContacts = () => {
 
     contacts: useSelector(getContactsList),
     isLoading: useSelector(selectIsLoading),
+    sameNumber: useSelector(selectError),
  
   };
 };

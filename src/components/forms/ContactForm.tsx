@@ -14,7 +14,7 @@ import { addContactSchema, addContactSchemaType, } from '../../types/AddComtact.
 
 
 const ContactForm = () => {
-  const {contacts} = useContacts()
+  const {contacts, } = useContacts()
   // const { name, number } = useSelector(getForm);
   const [newAdded, setNewAdded] = useState(false)
   const lang = useLanguage()
@@ -42,8 +42,12 @@ const ContactForm = () => {
     } = formState
 
   const onSubmit = async (data: addContactSchemaType) => {
-    dispatch(addContact(data))
-    reset()
+  const result =  dispatch(addContact(data))
+    // if(result.existingNameError){
+    //   console.log(result.message);
+
+    // }
+    // // reset()
     setNewAdded(true)
     setTimeout(() => setNewAdded(false), 2000)
   }

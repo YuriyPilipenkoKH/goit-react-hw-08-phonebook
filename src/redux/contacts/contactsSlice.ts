@@ -6,12 +6,14 @@ export interface ContactsState {
   contactsList: Contact[],
   isLoading: boolean,
   error: string | null;
+  message: string | null;
 }
 
 const initialState:ContactsState = { 
   contactsList: [],
   isLoading: false,
   error: null,
+  message: null
 };
 
 const contactsSlice = createSlice({
@@ -48,6 +50,7 @@ const contactsSlice = createSlice({
   .addCase(addContact.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload as string;
+
       })
 
   .addCase(deleteContact.pending, state => {

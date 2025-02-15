@@ -55,7 +55,7 @@ interface PB_data{
 
       } catch (error: unknown) {
         if(error instanceof AxiosError){
-          return thunkAPI.rejectWithValue(error.message);
+          return thunkAPI.rejectWithValue(error.response?.data.message);
         }
         Notify.info('Something went wrong. ');
       }
