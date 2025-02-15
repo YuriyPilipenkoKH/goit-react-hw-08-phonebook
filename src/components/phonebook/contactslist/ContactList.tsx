@@ -1,23 +1,28 @@
 import React from 'react'
 import { useContacts } from '../../../hooks/useContacts';
+import { ContactContainer, List } from './ContactList.styled';
+import { Contact } from '../../../types/contact.model';
 
-const ContactList = () => {
+interface ContactListProps{
+  contacts:Contact[]
+}
+
+const ContactList:React.FC<ContactListProps> = ({contacts}) => {
   
-  const {ContactsList, isLoading} = useContacts()
-  
+ 
   return (
     <>
       {/* <Count>{filteredContacts.length}</Count>  */}
-      {filteredContacts.length !== 0
+      {contacts.length !== 0
       ?(
         <ContactContainer>
           {/* <Count>{contacts.length}</Count> */}
           <List>
-            {filteredContacts.map((contact) => {
+            {contacts.map((contact) => {
       
               return (
               <ContactListItem
-              key={contact.id}
+              key={contact._id}
               contact = {contact}
               ></ContactListItem>
               );

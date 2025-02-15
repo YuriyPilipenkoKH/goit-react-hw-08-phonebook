@@ -22,7 +22,7 @@ const PhonebookPage = () => {
       {contacts.length > 0 && (
         <>
        {/* <ListBar></ListBar> */}
-        <ContactList  />
+        <ContactList contacts ={contacts} />
         </>
       )}
     </Section >
