@@ -42,10 +42,10 @@ export const register = createAsyncThunk<
         // console.log(res);
         return res.data;
       } catch (error: unknown) {
-        Notify.info('Something went wrong. Please, try again later.');
         if(error instanceof AxiosError){
           return thunkAPI.rejectWithValue(error.message);
         }
+        Notify.info('Something went wrong. ');
       }
     }
   );

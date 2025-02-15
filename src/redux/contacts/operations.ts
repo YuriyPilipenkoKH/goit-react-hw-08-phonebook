@@ -1,26 +1,87 @@
-export const getSortedById = (contactsList, bool)  => { 
- 
-  return bool 
-  ? [...contactsList].sort((a, b) => Number(a.id) - Number(b.id))
-  : [...contactsList].sort((b, a) => Number(a.id) - Number(b.id)) 
-} 
+import axios, { AxiosError } from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { Notify } from "notiflix";
+import { Contact } from "../../types/contact.model";
+import { ContactsState } from "./contactsSlice";
 
-// export const getSortedByDate = (contactsList, bool)  => {
-//     return bool 
-//     ? [...contactsList].sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-//     : [...contactsList].sort((b, a) => a.createdAt.localeCompare(b.createdAt))
-//   } 
+axios.defaults.baseURL = import.meta.env.VITE_HOST
 
-export const getSortedByName = (contactsList, bool)  => {
-  return bool 
-  ? [...contactsList].sort((a, b) => a.name.localeCompare(b.name))
-  : [...contactsList].sort((b, a) => a.name.localeCompare(b.name))
-} 
+interface PB_Response {
+  list: Contact[]
+  message: string
+}
+interface PB_data{
+  name: string
+  number: string
+}
 
-export const getSortedByNumber = (contactsList, bool)  => {
-return bool 
-  ? [...contactsList].sort((a, b) => a.number.localeCompare(b.number))
-  : [...contactsList].sort((b, a) => a.number.localeCompare(b.number))
-} 
+ export const fetchContacts  = 
+  createAsyncThunk< PB_Response, void,{ state: ContactsState }>(
+    "contacts/fetchAll",
+  
+    async (_, thunkAPI) => {
+      try {
+        const response = await axios.get("/contacts");
+        return response.data;
 
-export const arrayOfMethods = [getSortedById,  getSortedByName, getSortedByNumber]
+      } catch (error: unknown) {
+        if(error instanceof AxiosError){
+          return thunkAPI.rejectWithValue(error.message);
+        }
+        Notify.info('Something went wrong. ');
+      }
+    }
+  );
+
+ export const addContact = 
+  createAsyncThunk< PB_Response, PB_data,{ state: ContactsState }>(
+    "contacts/addContact",
+  
+    async (contact, thunkAPI) => {
+      const {name, number} = contact
+      try {
+        const response = await axios.post("/contacts", {name, number});
+        return response.data;
+
+      } catch (error: unknown) {
+        if(error instanceof AxiosError){
+          return thunkAPI.rejectWithValue(error.message);
+        }
+        Notify.info('Something went wrong. ');
+      }
+    }
+  );
+
+ export const deleteContact = createAsyncThunk(
+    "contacts/deleteContact",
+  
+    async (id, thunkAPI) => {
+      try {
+        const response = await axios.delete(`/contacts/${id}`);  
+        return response.data;
+
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+      }
+    }
+  );
+
+ export const editContact = createAsyncThunk(
+    "contacts/editContact",
+  
+    async (contact, thunkAPI) => {
+
+   const {id, name, number} = contact
+   try {
+    const response = await axios.patch(`/contacts/${id}`, {
+      name: name,
+      number: number,
+    });
+      
+        return response.data;
+
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+      }
+    }
+  );

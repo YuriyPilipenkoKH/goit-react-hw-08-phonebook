@@ -50,6 +50,7 @@ const initialState:AuthState  = {
         state.isRefreshing = false;
         state.error = payload as string;
       })
+
       .addCase(logIn.pending, state => {
         state.isLoading = true;
         state.isFetching = true;
@@ -64,7 +65,6 @@ const initialState:AuthState  = {
         state.user = payload.user;
         state.isLoggedIn = true;
         state.error = null;
-        
       })
       .addCase(logIn.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -72,6 +72,7 @@ const initialState:AuthState  = {
         state.isRefreshing = false;
         state.error = payload as string;
       })
+      
       .addCase(logOut.pending, (state, { payload }) => {
         state.isLoading = true;
         state.isFetching = true;
