@@ -14,6 +14,8 @@ interface PB_Response {
 interface PB_update_Response {
   contact: Contact
   message: string
+  existingNameError?: boolean
+  existingNumberError?: boolean
 }
 interface PB_data{
   name: string
@@ -48,7 +50,7 @@ interface PB_data{
     async (contact, thunkAPI) => {
       const {name, number} = contact
       try {
-        const response = await axios.post("/contacts", {name, number});
+        const response = await axios.post("/contacts/new", {name, number});
         return response.data;
 
       } catch (error: unknown) {

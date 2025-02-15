@@ -284,7 +284,7 @@ export const ContactFormBtn = styled.button`
   overflow: hidden;
   ${baseLiStyles};
 
-  width: 180px;
+  width: 240px;
  justify-content: space-between; 
   /* width: 160px; */
   outline: none;
@@ -300,13 +300,12 @@ export const ContactFormBtn = styled.button`
 
     & >svg {
         fill: var(--background-color);
-
      }
-
-     
+    
      &:active {
     transform: scale(0.98);
   }
+  
 
   &:after {
     content: '';
@@ -329,5 +328,9 @@ export const ContactFormBtn = styled.button`
     opacity: 0.3;
     transition: 0s;
   }
+  }
+  &:disabled {
+    background-color: #777;
+    cursor: none;
   }
 `;

@@ -9,6 +9,7 @@ import ContactList from '../components/phonebook/contactslist/ContactList'
 import IconMphone from '../img/icons/iconMphone'
 import { fetchContacts } from '../redux/contacts/operations'
 import { useAppDispatch } from '../hooks/useAppDispatch'
+import ContactForm from '../components/forms/ContactForm'
 
 const PhonebookPage = () => {
   const lang = useLanguage()
@@ -22,7 +23,7 @@ const dispatch = useAppDispatch();
   return (
     <PhonebookWrapper className="phonebook__wrap">
     <Section title={lang.phonebook} icon ={language === 'english' &&  <IconMphone/>}>
-      {/* <ContactForm  /> */}
+      <ContactForm  />
 
       {/* <Filter /> */}
       
