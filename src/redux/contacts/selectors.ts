@@ -1,7 +1,10 @@
 import { RootState } from "../store";
 
 
-// export const getContactsList = (state: RootState) => state.contacts.contactsList
+export const getContactsList = (state: RootState) => state.contacts.contactsList
+export const selectIsLoading = (state: RootState) => state.contacts.isLoading;
+
+
 // export const getContactsFilter = (state: RootState) => state.filter
 
 // export const getEditedName =  (state: RootState) => state.edit.nick
@@ -10,4 +13,3 @@ import { RootState } from "../store";
 
 
 
-// export const selectIsLoading = (state: RootState) => state.contacts.isLoading;

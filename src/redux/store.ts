@@ -15,6 +15,7 @@ import { langReducer } from './langSlice';
 import { authReducer, AuthState } from './auth/authSlice';
 import { themeReducer } from './themeSlice';
 import { formReducer } from './formSlice';
+import { contactsReducer } from './contacts/contactsSlice';
 
 
 const authPersistConfig= {
@@ -26,7 +27,7 @@ const authPersistConfig= {
 export const store = configureStore({
 
     reducer: {    
-        // contacts: contactsReducer,
+        contacts: contactsReducer,
         // filter: filterReducer,
         // sort:sortReducer,
         // form: formReducer ,    

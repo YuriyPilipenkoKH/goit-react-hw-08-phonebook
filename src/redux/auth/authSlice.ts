@@ -72,7 +72,7 @@ const initialState:AuthState  = {
         state.isRefreshing = false;
         state.error = payload as string;
       })
-      
+
       .addCase(logOut.pending, (state, { payload }) => {
         state.isLoading = true;
         state.isFetching = true;
@@ -109,9 +109,10 @@ const initialState:AuthState  = {
           state.error = payload as string;
         })
 
-    },
-  });
-
+      },
+    });
+    
+    export const authReducer = authSlice.reducer;
   
 // const handleFulfilled = (state, { payload }) => {
 //   state.isFetching = false;
@@ -177,5 +178,3 @@ const initialState:AuthState  = {
 //       },
 
 // })
-
-export const authReducer = authSlice.reducer;

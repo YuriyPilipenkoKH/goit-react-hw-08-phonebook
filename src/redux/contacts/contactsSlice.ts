@@ -14,7 +14,7 @@ const initialState:ContactsState = {
   error: null,
 };
 
-const authSlice = createSlice({
+const contactsSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},
@@ -67,3 +67,5 @@ const authSlice = createSlice({
 
   }
 });
+
+export const contactsReducer = contactsSlice.reducer
