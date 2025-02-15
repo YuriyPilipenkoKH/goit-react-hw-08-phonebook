@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import Notiflix from "notiflix";
-import { fetchContacts , addContact, deleteContact, editContact } from "./operations.sort";
+import { fetchContacts , addContact, deleteContact, editContact } from "../../redux/contacts/operations.sort";
 
 const arrayOfThunks  = [fetchContacts , addContact, deleteContact, editContact]
 const fn = (type) => arrayOfThunks.map((el) => el[type])

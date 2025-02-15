@@ -41,6 +41,9 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
     confirmDelete(`Are you sure you want to delete ${name}?`, name)
   .then(() => {
     dispatch(deleteContact(_id))
+    .then((data) => {
+      console.log(data.payload);
+    })
     setDeleted(true)
     setTimeout(() => setDeleted(false), 2000);
   })
