@@ -6,7 +6,7 @@ export const useContacts = () => {
 
   return {
 
-    ContactsList: useSelector(getContactsList),
+    contacts: useSelector(getContactsList),
     isLoading: useSelector(selectIsLoading),
  
   };
