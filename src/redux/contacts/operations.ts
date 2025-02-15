@@ -10,13 +10,18 @@ interface PB_Response {
   list: Contact[]
   message: string
 }
+interface PB_update_Response {
+  contact: Contact
+  message: string
+}
 interface PB_data{
   name: string
   number: string
 }
 
+
  export const fetchContacts  = 
-  createAsyncThunk< PB_Response, void,{ state: ContactsState }>(
+  createAsyncThunk< PB_Response, void, { state: ContactsState }>(
     "contacts/fetchAll",
   
     async (_, thunkAPI) => {
@@ -34,7 +39,7 @@ interface PB_data{
   );
 
  export const addContact = 
-  createAsyncThunk< PB_Response, PB_data,{ state: ContactsState }>(
+  createAsyncThunk< PB_update_Response, PB_data, { state: ContactsState }>(
     "contacts/addContact",
   
     async (contact, thunkAPI) => {
@@ -52,7 +57,8 @@ interface PB_data{
     }
   );
 
- export const deleteContact = createAsyncThunk(
+ export const deleteContact = 
+  createAsyncThunk< PB_update_Response, string, { state: ContactsState}>(
     "contacts/deleteContact",
   
     async (id, thunkAPI) => {
@@ -60,28 +66,34 @@ interface PB_data{
         const response = await axios.delete(`/contacts/${id}`);  
         return response.data;
 
-      } catch (e) {
-        return thunkAPI.rejectWithValue(e.message);
+      } catch (error: unknown) {
+        if(error instanceof AxiosError){
+          return thunkAPI.rejectWithValue(error.message);
+        }
+        Notify.info('Something went wrong. ');
       }
     }
   );
 
- export const editContact = createAsyncThunk(
-    "contacts/editContact",
+//  export const editContact = createAsyncThunk(
+//     "contacts/editContact",
   
-    async (contact, thunkAPI) => {
+//     async (contact, thunkAPI) => {
 
-   const {id, name, number} = contact
-   try {
-    const response = await axios.patch(`/contacts/${id}`, {
-      name: name,
-      number: number,
-    });
+//    const {id, name, number} = contact
+//    try {
+//     const response = await axios.patch(`/contacts/${id}`, {
+//       name: name,
+//       number: number,
+//     });
       
-        return response.data;
+//         return response.data;
 
-      } catch (e) {
-        return thunkAPI.rejectWithValue(e.message);
-      }
-    }
-  );
+//       } catch (error: unknown) {
+//         if(error instanceof AxiosError){
+//           return thunkAPI.rejectWithValue(error.message);
+//         }
+//         Notify.info('Something went wrong. ');
+//       }
+//     }
+//   );

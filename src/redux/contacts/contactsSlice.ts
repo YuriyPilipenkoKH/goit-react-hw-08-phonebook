@@ -1,6 +1,6 @@
 import { createSlice, } from "@reduxjs/toolkit";
 import { Contact } from "../../types/contact.model";
-import { fetchContacts, addContact, deleteContact, editContact  } from "./operations";
+import { fetchContacts, addContact, deleteContact,   } from "./operations";
 
 export interface ContactsState {
   contactsList: Contact[],
@@ -42,10 +42,25 @@ const authSlice = createSlice({
       })
   .addCase(addContact.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.contactsList = payload.list;
+        state.contactsList.push(payload.contact)
         state.error = null;
       })
   .addCase(addContact.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload as string;
+      })
+
+  .addCase(deleteContact.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+  .addCase(deleteContact.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.contactsList = state.contactsList
+          .filter(contact => contact._id !== payload.contact._id);
+        state.error = null;
+      })
+  .addCase(deleteContact.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload as string;
       })
