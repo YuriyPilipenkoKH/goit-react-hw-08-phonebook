@@ -9,6 +9,7 @@ import {  useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signUpSchema, signUpSchemaType } from '../../types/signUpSchema';
+import { Notify } from 'notiflix';
 
 const SignupForm = () => {
   const dispatch = useAppDispatch();
@@ -50,6 +51,7 @@ const SignupForm = () => {
         // setError('number', { type: 'manual', message: res.payload as string }  )
       }
       if(res.type === 'auth/register/fulfilled'){
+        Notify.success(res.payload?.message as string)
       reset()
       navigate('/login')
       }

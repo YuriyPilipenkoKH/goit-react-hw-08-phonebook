@@ -8,7 +8,7 @@ import { lazy, useEffect } from 'react'
 import { refreshUser } from './redux/auth/operations'
 import { useAuth } from './hooks/useAuth'
 import AdminPage from './pages/AdminPage'
-
+import  "./utils/notiflix"
 const HomePage = lazy(() => import('./pages/HomePage'))
 const SignUpPage = lazy(() => import('./pages/SignUpPage'))
 const LoginPage = lazy(() => import('./pages/LoginPage'))
