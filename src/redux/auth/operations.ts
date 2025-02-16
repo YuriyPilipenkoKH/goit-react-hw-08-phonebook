@@ -48,6 +48,7 @@ export const register = createAsyncThunk<
      
         // setAuthHeader(res.data.token);
         // console.log(res);
+        Notify.success(res.data.message)
         return res.data
       } catch (error) {
         if(error instanceof AxiosError){
@@ -70,9 +71,10 @@ export const register = createAsyncThunk<
       
         setAuthHeader(res.data.token);
         localStorage.setItem("token-08",res.data.token)
+        Notify.success(res.data.message)
         return res.data;
       } catch (error: unknown) {
-        Notify.info('Something went wrong. Please, try again later.');
+        Notify.warning('Something went wrong. Please, try again later.');
         if(error instanceof AxiosError){
         return thunkAPI.rejectWithValue(error.message);
         }
@@ -92,6 +94,7 @@ export const register = createAsyncThunk<
       clearAuthHeader();
       localStorage.removeItem("token-08");
       localStorage.removeItem("refreshToken");
+      Notify.success(res.data.message)
     } catch (error:unknown) {
       if(error instanceof AxiosError){
       return thunkAPI.rejectWithValue(error.message);

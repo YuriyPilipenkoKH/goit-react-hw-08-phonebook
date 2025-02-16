@@ -52,7 +52,7 @@ const initialState:AuthState  = {
       .addCase(logIn.pending, state => {
         state.isLoading = true;
         state.isRefreshing = true;
-        state.successMessage = null;
+        // state.successMessage = null;
         state.error = null;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
@@ -66,7 +66,7 @@ const initialState:AuthState  = {
       .addCase(logIn.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isRefreshing = false;
-        state.successMessage = null;
+        // state.successMessage = null;
         state.error = payload as string;
       })
 
