@@ -87,6 +87,7 @@ const SignupForm = () => {
           <Input
             {...rg('password',{ onChange: handleInputChange } )}
             placeholder=	{( isSubmitting )? "Processing" : "••••"}
+            type = {show ? 'text' : 'password' }
           />
             <ShowBtn 
             type='button' 
