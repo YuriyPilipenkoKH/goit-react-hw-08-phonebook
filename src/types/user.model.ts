@@ -24,7 +24,7 @@ export const userSchema = z.object({
   password: z
   .string()
   .trim()
-  .min(4)
+  .min(4, '')
   .regex(/^(?=.*[A-Za-z])(?=.*\d).+$/, {
     message: 'include numbers ',
   }),

@@ -5,9 +5,11 @@ import { Button } from '../button/Button';
 import { register } from '../../redux/auth/operations';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,10 +32,16 @@ const SignupForm = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>)=> {
     e.preventDefault();
-    dispatch(register({ name, email, password }));
-    setName('');
-    setEmail('');
-    setPassword('');
+    dispatch(register({ name, email, password }))
+    .then((data) => {
+      console.log(data);
+
+
+      setName('');
+      setEmail('');
+      setPassword('');
+      navigate('/login')
+    })
   };
 
   return (
