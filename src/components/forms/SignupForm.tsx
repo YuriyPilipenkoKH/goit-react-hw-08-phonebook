@@ -39,8 +39,7 @@ const SignupForm = () => {
       } = formState
 
   const handleInputChange =() => {
-
-    }
+   }
 
   const onSubmit = (data: signUpSchemaType)=> {
    

@@ -6,6 +6,9 @@ import { FormLink, FormWrapper, Input, Label, LogoWrapp, MainTitle, RouteWrapp, 
 import { IoMdUnlock } from 'react-icons/io';
 import { CgSandClock } from 'react-icons/cg';
 import { Button } from '../button/Button';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { loginSchema, LoginSchemaType } from '../../types/loginSchema';
 
 const LoginForm = () => {
   const TIME = 200
@@ -18,6 +21,27 @@ const LoginForm = () => {
   const [timer, setTimer] = useState<boolean | null>(null);
   const [remained, setRemained] = useState(TIME);
   const lang = useLanguage()
+
+     const {
+        register, 
+        handleSubmit,
+        formState,
+        reset,
+        setError,
+      } = useForm<LoginSchemaType >({
+        defaultValues: {  
+          email: '',
+          password: ''
+           },
+            mode:'all',
+            resolver: zodResolver(loginSchema), })
+        const {
+          errors,
+          isDirty,
+          isValid ,
+          isSubmitting,
+          isLoading 
+        } = formState
 
 
   useEffect(() => {
@@ -40,28 +64,23 @@ const LoginForm = () => {
 }, [timer,remained])
 
 
-  const handleChange =(e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-  setTimer(true)
-
-    switch (name) {
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
+  const handleInputChange =() => {
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = (data: LoginSchemaType) => {
+   
 
-    dispatch(logIn({ email, password }));
-    setEmail('');
-    setPassword('');
-  };
+    dispatch(logIn(data))
+    .then((res) => {
+      console.log(res);
+      if(res.type === 'auth/login/rejected'){
+        // setError('number', { type: 'manual', message: res.payload as string }  )
+      }
+      if(res.type === 'auth/login/fulfilled'){
+      reset()
+      }
+    })
+  }
 
   return (
     <FormWrapper>
@@ -69,36 +88,35 @@ const LoginForm = () => {
       <MainTitle>
       {lang.logBtn} {timer ? <CgSandClock/> : ''}</MainTitle>
 
-      <StyledForm  onSubmit={handleSubmit}  noValidate autoComplete="off">
+      <StyledForm 
+      autoComplete="off" 
+      noValidate
+      onSubmit={handleSubmit(onSubmit)}>
         <Label >
         {lang.email}
           <Input
-            type='email'
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />   
+           {...register('email',{ onChange: handleInputChange })}
+           placeholder=	{( isSubmitting )? "Processing" : 'email'}
+         />
         </Label>
-
+        {errors.email && <div className='text-purple-900'>{errors.email.message}</div>}
         <Label  className='pass__label'>
         {lang.pass}
           <Input
-            type={show ? 'text' : 'password'}
-            name="password"
-            value={password}
-            onChange={handleChange}
-
-          />
+            {...register('password',{ onChange: handleInputChange } )}
+            placeholder=	{( isSubmitting )? "Processing" : "••••"}
+            type = {show ? 'text' : 'password' }
+            />
             <ShowBtn 
             type='button' 
             onClick={() => setShow(!show)}>
               {show ? lang.hide : lang.show}
               </ShowBtn>
         </Label>
-
+        {errors.password && <div className='text-purple-900'>{errors.password.message}</div>}
         <Button 
         type="submit"
-        disabled = {!remained}>
+        disabled = {!remained || isSubmitting || !isDirty || !isValid}>
           {remained ? lang.logBtn : lang.try }
         </Button>
         {timer 
