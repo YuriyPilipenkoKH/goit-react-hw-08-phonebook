@@ -42,7 +42,6 @@ const initialState:AuthState  = {
         state.user = payload.user;
         state.isLoggedIn = true;
         state.error = null;
-        
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -73,27 +72,27 @@ const initialState:AuthState  = {
         state.error = payload as string;
       })
 
-      .addCase(logOut.pending, (state, { payload }) => {
+      .addCase(logOut.pending, state => {
         state.isLoading = true;
         state.isFetching = true;
         state.isRefreshing = true;
         state.error = null;
       })
-        .addCase(logOut.fulfilled, state => {
-          state.isFetching = false;
-          state.isRefreshing = false;
-          state.isLoading = false;
-          state.user = null;
-          state.token = null;
-          state.isLoggedIn = false;
-          state.error = null;
-        })
-        .addCase(logOut.rejected, (state, { payload }) => {
-          state.isLoading = false;
-          state.isFetching = false;
-          state.isRefreshing = false;
-          state.error = payload as string;
-        })
+      .addCase(logOut.fulfilled, state => {
+        state.isFetching = false;
+        state.isRefreshing = false;
+        state.isLoading = false;
+        state.user = null;
+        state.token = null;
+        state.isLoggedIn = false;
+        state.error = null;
+      })
+      .addCase(logOut.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isFetching = false;
+        state.isRefreshing = false;
+        state.error = payload as string;
+      })
 
         .addCase(refreshUser.pending, state => {
           state.isRefreshing = true;

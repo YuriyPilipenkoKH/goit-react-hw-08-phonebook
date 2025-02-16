@@ -65,14 +65,17 @@ interface PB_data{
  export const deleteContact = 
   createAsyncThunk< PB_update_Response, string, { state: RootState}>(
     "contacts/deleteContact",
-  
     async (id, thunkAPI) => {
+      console.log('deleteContact..')
       try {
+        console.log(id);
         const response = await axios.delete(`/contacts/${id}`);  
+        console.log('response..',response.data);
         return response.data;
 
       } catch (error: unknown) {
         if(error instanceof AxiosError){
+          console.log(error);
           return thunkAPI.rejectWithValue(error.message);
         }
         Notify.info('Something went wrong. ');

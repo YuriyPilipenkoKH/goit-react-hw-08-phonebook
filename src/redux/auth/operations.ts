@@ -49,7 +49,6 @@ export const register = createAsyncThunk<
       }
     }
   );
-  
 
   export const logIn = createAsyncThunk<
     AuthResponse, 
@@ -83,7 +82,8 @@ export const register = createAsyncThunk<
       await axios.post('/auth/logout');
    
       clearAuthHeader();
-      localStorage.setItem("token-08", "")
+      localStorage.removeItem("token-08");
+      localStorage.removeItem("refreshToken");
     } catch (error:unknown) {
       if(error instanceof AxiosError){
       return thunkAPI.rejectWithValue(error.message);
