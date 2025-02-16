@@ -63,8 +63,9 @@ const LoginForm = () => {
     dispatch(logIn(data))
     .then((res) => {
       console.log(res);
+      
       if(res.type === 'auth/login/rejected'){
-        // setError('number', { type: 'manual', message: res.payload as string }  )
+        setError('password', { type: 'manual', message: res.payload as string });
       }
       if(res.type === 'auth/login/fulfilled'){
       reset()

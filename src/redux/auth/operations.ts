@@ -74,9 +74,9 @@ export const register = createAsyncThunk<
         Notify.success(res.data.message)
         return res.data;
       } catch (error: unknown) {
-        Notify.warning('Something went wrong. Please, try again later.');
+        // Notify.warning('Something went wrong. Please, try again later.');
         if(error instanceof AxiosError){
-        return thunkAPI.rejectWithValue(error.message);
+        return thunkAPI.rejectWithValue(error.response?.data.message);
         }
       }
     }

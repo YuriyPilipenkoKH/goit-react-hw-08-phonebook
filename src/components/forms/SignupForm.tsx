@@ -50,7 +50,7 @@ console.log('authError',authError);
     .then((res) => {
       console.log(res);
       if(res.type === 'auth/register/rejected'){
-        setError('password', { type: 'manual', message: res.payload as string });
+        setError('email', { type: 'manual', message: res.payload as string });
       }
       if(res.type === 'auth/register/fulfilled'){
         reset()
