@@ -53,7 +53,6 @@ console.log('authError',authError);
         setError('password', { type: 'manual', message: res.payload as string });
       }
       if(res.type === 'auth/register/fulfilled'){
-
         reset()
         navigate('/login')
       }
