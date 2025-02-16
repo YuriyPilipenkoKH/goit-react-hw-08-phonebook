@@ -8,7 +8,6 @@ export interface AuthState {
   token: string | null;
   isLoggedIn: boolean;
   isRefreshing: boolean;
-  isFetching: boolean;
   isLoading: boolean;
 }
 
@@ -18,7 +17,6 @@ const initialState:AuthState  = {
   token: localStorage.getItem("token-08") || null,
   isLoggedIn: false,
   isRefreshing: false,
-  isFetching: false,
   isLoading: false, 
 };
 
@@ -31,34 +29,28 @@ const initialState:AuthState  = {
 
       .addCase(register.pending, state => {
         state.isLoading = true;
-        state.isFetching = true;
         state.isRefreshing = true;
         state.error = null;
       })
       .addCase(register.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.isFetching = false;
         state.isRefreshing = false;
         state.user = payload.user;
-        state.isLoggedIn = true;
         state.error = null;
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.isFetching = false;
         state.isRefreshing = false;
         state.error = payload as string;
       })
 
       .addCase(logIn.pending, state => {
         state.isLoading = true;
-        state.isFetching = true;
         state.isRefreshing = true;
         state.error = null;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.isFetching = false;
         state.isRefreshing = false;
         state.token = payload.token;
         state.user = payload.user;
@@ -67,19 +59,16 @@ const initialState:AuthState  = {
       })
       .addCase(logIn.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.isFetching = false;
         state.isRefreshing = false;
         state.error = payload as string;
       })
 
       .addCase(logOut.pending, state => {
         state.isLoading = true;
-        state.isFetching = true;
         state.isRefreshing = true;
         state.error = null;
       })
       .addCase(logOut.fulfilled, state => {
-        state.isFetching = false;
         state.isRefreshing = false;
         state.isLoading = false;
         state.user = null;
@@ -89,7 +78,6 @@ const initialState:AuthState  = {
       })
       .addCase(logOut.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.isFetching = false;
         state.isRefreshing = false;
         state.error = payload as string;
       })
