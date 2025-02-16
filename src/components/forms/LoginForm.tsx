@@ -9,18 +9,16 @@ import { Button } from '../button/Button';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema, LoginSchemaType } from '../../types/loginSchema';
+import { useAuth } from '../../hooks/useAuth';
 
 const LoginForm = () => {
-  const TIME = 200
+  const TIME = 25
   const dispatch = useAppDispatch();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [show, setShow] = useState(false);
-
+  const [show, setShow] = useState<boolean>(false);
   const [timer, setTimer] = useState<boolean | null>(null);
-  const [remained, setRemained] = useState(TIME);
+  const [remained, setRemained] = useState<number>(TIME);
   const lang = useLanguage()
+  const {user} = useAuth()
 
      const {
         register, 
@@ -30,7 +28,7 @@ const LoginForm = () => {
         setError,
       } = useForm<LoginSchemaType >({
         defaultValues: {  
-          email: '',
+          email: user?.email || '',
           password: ''
            },
             mode:'all',
@@ -43,25 +41,17 @@ const LoginForm = () => {
           isLoading 
         } = formState
 
-
   useEffect(() => {
     if((remained > 0) && timer){
       setTimeout(() => {
       setRemained(prev => prev - 1)
       }, 1000);
-  
-    }
+      }
   else if(remained === 0) {
     setTimer(null)
-
-    setTimeout(() => {
-      setRemained(TIME)
-      setEmail('');
-      setPassword('');
-    }, 4000);
+    setTimeout(() => setRemained(TIME), 1000);
   }
-
-}, [timer,remained])
+  }, [timer,remained])
 
 
   const handleInputChange =() => {
