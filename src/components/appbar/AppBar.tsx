@@ -14,7 +14,7 @@ import AuthNav from '../authnav/AuthNav';
 
 const AppBar = () => {
 
-  const { isLoggedIn } = useAuth();
+  const {  token } = useAuth();
   const theme = useSelector(getTheme)
 
   const dispatch = useAppDispatch()
@@ -57,7 +57,7 @@ const AppBar = () => {
         }
       </ThemeBtn>
       
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      {token ? <UserMenu /> : <AuthNav />}
     </StyledHeader>
   );
 };

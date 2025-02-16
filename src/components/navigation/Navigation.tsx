@@ -10,9 +10,6 @@ const Navigation = () => {
   const dispatch = useAppDispatch();
   const { isLoggedIn } = useAuth();
   const lang = useLanguage()
-  const quit =() => {
-     dispatch(logOut())
-  }
   
 
   return (
@@ -20,8 +17,10 @@ const Navigation = () => {
       <StyledLink  to="/">
       {lang.homeBtn}
       </StyledLink>
-                  {/* <button type='button' onClick={quit}>
-                    {lang.out}</button> */}
+        {/* <button type='button' 
+        onClick={()=>dispatch(logOut())}>
+          {lang.out}
+          </button> */}
       {isLoggedIn && (
         <StyledLink to="/phonebook">
          {lang.contactsBtn}
