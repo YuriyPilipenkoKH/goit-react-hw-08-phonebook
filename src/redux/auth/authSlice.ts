@@ -9,6 +9,7 @@ export interface AuthState {
   isLoggedIn: boolean;
   isRefreshing: boolean;
   isLoading: boolean;
+  successMessage: string | null
 }
 
 const initialState:AuthState  = {
@@ -18,6 +19,7 @@ const initialState:AuthState  = {
   isLoggedIn: false,
   isRefreshing: false,
   isLoading: false, 
+  successMessage:  null
 };
 
   const authSlice = createSlice({
@@ -30,23 +32,27 @@ const initialState:AuthState  = {
       .addCase(register.pending, state => {
         state.isLoading = true;
         state.isRefreshing = true;
+        state.successMessage = null;
         state.error = null;
       })
       .addCase(register.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isRefreshing = false;
         state.user = payload.user;
+        state.successMessage = payload.message;
         state.error = null;
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isRefreshing = false;
+        state.successMessage = null;
         state.error = payload as string;
       })
 
       .addCase(logIn.pending, state => {
         state.isLoading = true;
         state.isRefreshing = true;
+        state.successMessage = null;
         state.error = null;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
@@ -60,6 +66,7 @@ const initialState:AuthState  = {
       .addCase(logIn.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isRefreshing = false;
+        state.successMessage = null;
         state.error = payload as string;
       })
 

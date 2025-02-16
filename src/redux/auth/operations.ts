@@ -18,15 +18,23 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-interface AuthResponse {
+export interface AuthResponse {
   user: User; // Adjust based on your API response
   token: string;
+  message:string
 }
 interface Credentials {
   name?:string
   email: string
   password: string
 }
+// export interface Rg_result{
+//   type:string
+//   payload: {
+//     message:string
+//     user: User
+//   }
+// }
 
 export const register = createAsyncThunk<
     AuthResponse, 
@@ -40,10 +48,10 @@ export const register = createAsyncThunk<
      
         // setAuthHeader(res.data.token);
         // console.log(res);
-        return res.data;
-      } catch (error: unknown) {
+        return res.data
+      } catch (error) {
         if(error instanceof AxiosError){
-          return thunkAPI.rejectWithValue(error.message);
+          return thunkAPI.rejectWithValue(error.message );
         }
         Notify.info('Something went wrong. ');
       }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FormLink, FormWrapper, Input, Label, LogoWrapp, MainTitle, RouteWrapp, ShowBtn, StyledForm } from './Form.styled';
 import { SiLazarus } from 'react-icons/si';
 import { Button } from '../button/Button';
-import { register } from '../../redux/auth/operations';
+import { register  } from '../../redux/auth/operations';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import {  useNavigate } from 'react-router-dom';
@@ -10,13 +10,15 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signUpSchema, signUpSchemaType } from '../../types/signUpSchema';
 import { Notify } from 'notiflix';
+import { useAuth } from '../../hooks/useAuth';
 
 const SignupForm = () => {
+  const {successMessage, authError, } = useAuth()
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const lang = useLanguage()
-
+console.log('authError',authError);
     const {
       register: rg, 
       handleSubmit,
@@ -48,10 +50,10 @@ const SignupForm = () => {
     .then((res) => {
       console.log(res);
       if(res.type === 'auth/register/rejected'){
-        // setError('number', { type: 'manual', message: res.payload as string }  )
+        setError('password', { type: 'manual', message: res.payload as string });
       }
-      if(res.type === 'auth/register/fulfilled'){
-        Notify.success(res.payload?.message as string)
+      if(res.type === 'auth/register/fulfilled' && successMessage){
+        Notify.success(successMessage)
       reset()
       navigate('/login')
       }

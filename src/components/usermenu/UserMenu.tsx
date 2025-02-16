@@ -12,7 +12,7 @@ import { useAppDispatch } from '../../hooks/useAppDispatch.ts';
 
 const UserMenu = () => {
   const dispatch = useAppDispatch();
-  const { isFetching ,user, isLoggedIn} = useAuth();
+  const { user, isLoggedIn, isLoading} = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [avatar, setAvatar] = useState(false);
   const [activeAvatar, setActiveAvatar] = useState(arrayOfActors[0]);
@@ -38,7 +38,7 @@ const quit =() => {
 
   return (
     <MainMenu className='mainMenu'>
-      {isFetching && <Loader/>}
+      {isLoading && <Loader/>}
       {isLoggedIn && (
         <StyledWrap>
           <div className='avatar__wrapp-sm'>{ activeAvatar }</div>
