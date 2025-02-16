@@ -40,12 +40,13 @@ const ContactForm = () => {
     } = formState
 
   const onSubmit = async (data: addContactSchemaType) => {
-  const result =  dispatch(addContact(data)).then((data) => {
-    // console.log(data)
-    if(data.type === 'contacts/addContact/rejected'){
-      setError('number', { type: 'manual', message: data.payload as string }  )
+   dispatch(addContact(data))
+   .then((res) => {
+    // console.log(res)
+    if(res.type === 'contacts/addContact/rejected'){
+      setError('number', { type: 'manual', message: res.payload as string }  )
     }
-    if(data.type === 'contacts/addContact/fulfilled'){
+    if(res.type === 'contacts/addContact/fulfilled'){
       reset()
       setNewAdded(true)
       setTimeout(() => setNewAdded(false), 2000)

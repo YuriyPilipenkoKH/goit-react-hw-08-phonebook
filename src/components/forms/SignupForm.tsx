@@ -42,15 +42,18 @@ const SignupForm = () => {
 
     }
 
-
   const onSubmit = (data: signUpSchemaType)=> {
    
-    const result =  dispatch(register(data))
-    .then((data) => {
-      console.log(data);
-
+    dispatch(register(data))
+    .then((res) => {
+      console.log(res);
+      if(res.type === 'auth/register/rejected'){
+        // setError('number', { type: 'manual', message: res.payload as string }  )
+      }
+      if(res.type === 'auth/register/fulfilled'){
       reset()
       navigate('/login')
+      }
     })
   };
 
