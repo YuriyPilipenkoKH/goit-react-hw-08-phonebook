@@ -1,45 +1,55 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import React, { useState } from 'react'
 import { FormLink, FormWrapper, Input, Label, LogoWrapp, MainTitle, RouteWrapp, ShowBtn, StyledForm } from './Form.styled';
 import { SiLazarus } from 'react-icons/si';
 import { Button } from '../button/Button';
 import { register } from '../../redux/auth/operations';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { signUpSchema, signUpSchemaType } from '../../types/signUpSchema';
 
 const SignupForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
   const lang = useLanguage()
 
-  const handleChange =(e: ChangeEvent<HTMLInputElement>) => {
-     const { name, value } = e.target;
-    switch (name) {
-      case 'name':
-        return setName(value);
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
-  };
+    const {
+      register: rg, 
+      handleSubmit,
+      formState,
+      reset,
+      setError,
+    } = useForm<signUpSchemaType >({
+      defaultValues: {  
+        name: '',
+        email: '',
+        password: ''
+         },
+          mode:'all',
+          resolver: zodResolver(signUpSchema), })
+      const {
+        errors,
+        isDirty,
+        isValid ,
+        isSubmitting,
+        isLoading 
+      } = formState
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>)=> {
-    e.preventDefault();
-    dispatch(register({ name, email, password }))
+  const handleInputChange =() => {
+
+    }
+
+
+  const onSubmit = (data: signUpSchemaType)=> {
+   
+    const result =  dispatch(register(data))
     .then((data) => {
       console.log(data);
 
-
-      setName('');
-      setEmail('');
-      setPassword('');
+      reset()
       navigate('/login')
     })
   };
@@ -49,34 +59,31 @@ const SignupForm = () => {
        <LogoWrapp ><SiLazarus size={50}/></LogoWrapp>
       <MainTitle>{lang.regBtn}</MainTitle>
 
-      <StyledForm onSubmit={handleSubmit} noValidate autoComplete="off">
+      <StyledForm 
+      autoComplete="off" 
+      noValidate
+      onSubmit={handleSubmit(onSubmit)}>
         <Label >
         {lang.name}
           <Input
-
-           type="text"
-            name="name"
-             value={name} 
-             onChange={handleChange} />
+        {...rg('name',{ onChange: handleInputChange })}
+        placeholder=	{( isSubmitting )? "Processing" : 'name'}
+        />
         </Label>
-
+        {errors.name && <div className='text-purple-900'>{errors.name.message}</div>}
         <Label >
         {lang.email}
           <Input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
+           {...rg('email',{ onChange: handleInputChange })}
+           placeholder=	{( isSubmitting )? "Processing" : 'email'}
+         />
         </Label>
-
+        {errors.email && <div className='text-purple-900'>{errors.email.message}</div>}
         <Label >
         {lang.pass}
           <Input
-            type={show ? 'text' : 'password'}
-            name="password"
-            value={password}
-            onChange={handleChange}
+            {...rg('password',{ onChange: handleInputChange } )}
+            placeholder=	{( isSubmitting )? "Processing" : "••••"}
           />
             <ShowBtn 
             type='button' 
@@ -84,8 +91,12 @@ const SignupForm = () => {
               {show ? lang.hide : lang.show}
               </ShowBtn>
         </Label>
-
-          <Button  type="submit">{lang.regSubmit}</Button>
+        {errors.password && <div className='text-purple-900'>{errors.password.message}</div>}
+          <Button  
+          type="submit"
+          disabled={isSubmitting || !isDirty || !isValid}>
+            { isLoading  ? "Sending.." :  lang.regSubmit}
+          </Button>
 
       </StyledForm>
       <RouteWrapp>
