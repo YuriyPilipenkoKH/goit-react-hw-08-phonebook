@@ -52,8 +52,9 @@ console.log('authError',authError);
       if(res.type === 'auth/register/rejected'){
         setError('password', { type: 'manual', message: res.payload as string });
       }
-      if(res.type === 'auth/register/fulfilled' && successMessage){
-        Notify.success(successMessage)
+      if(res.type === 'auth/register/fulfilled'){
+        if (successMessage)  Notify.success(successMessage)
+ 
       reset()
       navigate('/login')
       }

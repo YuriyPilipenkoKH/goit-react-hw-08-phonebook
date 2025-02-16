@@ -51,9 +51,9 @@ export const register = createAsyncThunk<
         return res.data
       } catch (error) {
         if(error instanceof AxiosError){
-          return thunkAPI.rejectWithValue(error.message );
+          return thunkAPI.rejectWithValue(error.response?.data.message );
         }
-        Notify.info('Something went wrong. ');
+        Notify.warning('Something went wrong. ');
       }
     }
   );
