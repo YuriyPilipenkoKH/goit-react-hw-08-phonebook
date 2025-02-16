@@ -1,4 +1,5 @@
-import axios, { AxiosError } from 'axios';
+
+import  axios, { AxiosError } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
 import { RootState } from '../store';
@@ -19,7 +20,7 @@ const clearAuthHeader = () => {
 };
 
 export interface AuthResponse {
-  user: User; // Adjust based on your API response
+  user: User; 
   token: string;
   message:string
 }
@@ -28,13 +29,6 @@ interface Credentials {
   email: string
   password: string
 }
-// export interface Rg_result{
-//   type:string
-//   payload: {
-//     message:string
-//     user: User
-//   }
-// }
 
 export const register = createAsyncThunk<
     AuthResponse, 
@@ -47,7 +41,7 @@ export const register = createAsyncThunk<
         const res = await axios.post('/auth/signup', credentials);
      
         // setAuthHeader(res.data.token);
-        // console.log(res);
+
         Notify.success(res.data.message)
         return res.data
       } catch (error) {
@@ -74,7 +68,6 @@ export const register = createAsyncThunk<
         Notify.success(res.data.message)
         return res.data;
       } catch (error: unknown) {
-        // Notify.warning('Something went wrong. Please, try again later.');
         if(error instanceof AxiosError){
         return thunkAPI.rejectWithValue(error.response?.data.message);
         }
