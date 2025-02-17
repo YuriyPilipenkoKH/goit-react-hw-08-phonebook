@@ -59,7 +59,6 @@ export const ModalOverlay = styled.div`
 export const ModalContainer = styled.div`
 
   width: 280px;
-
   position: relative;
   display: grid;
   place-items: center;
@@ -71,7 +70,6 @@ export const ModalContainer = styled.div`
   color: var(--text-color);
   @media screen and (min-width: 768px) {
     width: 600px;
-
   }
 `;
 

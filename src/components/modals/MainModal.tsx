@@ -6,14 +6,17 @@ import { createPortal } from 'react-dom';
 import { ModalContainer, ModalOverlay, ModalText, ModalTitle } from './MainModal.styled';
 import { BtnEdit } from '../phonebook/contactslist/ContactList.styled';
 import { toggleModal } from '../../redux/modal/modalSlice';
+import EditContactForm from '../forms/EditContactForm';
+import { Contact } from '../../types/contact.model';
 
 interface MainModalProps {
   // modalTypes: ModalBaseTypes
+  contact?: Contact
 
 }
 const modalRoot = document.getElementById('modal-root');
 
-const MainModal: React.FC<MainModalProps> = () => {
+const MainModal: React.FC<MainModalProps> = ({contact}) => {
   const dispatch = useAppDispatch();
   const lang = useLanguage()
   const {  modalIsOpen } = useAll()
@@ -64,7 +67,10 @@ const shut = () => {
             <ModalText>
                 {lang.find} 
             </ModalText>
-            
+            <EditContactForm 
+            contactName={contact?.name || 'Dude'}
+            contactNumber={contact?.number || '095'}
+            />
           </ModalContainer>
         </ModalOverlay>
 
