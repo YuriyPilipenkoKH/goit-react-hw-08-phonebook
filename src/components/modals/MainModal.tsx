@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAll } from '../../hooks/useAll';
@@ -18,6 +18,35 @@ const MainModal: React.FC<MainModalProps> = () => {
   const dispatch = useAppDispatch();
   const lang = useLanguage()
   const {  modalIsOpen } = useAll()
+
+  useEffect(() => {
+    const handleBackdropClick =( e:MouseEvent ) => {
+      if ((e.target as HTMLElement).classList.contains("modal-backdrop")) {
+        dispatch(toggleModal());
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        dispatch(toggleModal());
+        }
+    };
+
+    const body = document.body;
+    body.style.overflow = 'hidden';
+    document.addEventListener('click', handleBackdropClick);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+        body.style.overflow = 'unset';
+        document.removeEventListener('click', handleBackdropClick);
+        document.removeEventListener('keydown', handleKeyDown);
+    };
+}, [dispatch]);
+
+const shut = () => {
+    dispatch(toggleModal())
+};
 
 
   if (!modalRoot) return null;
