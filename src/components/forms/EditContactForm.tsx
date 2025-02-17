@@ -3,8 +3,10 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { addContactSchema, addContactSchemaType } from '../../types/AddComtact.model'
 import { ContactFormBtn, Form, Input, Label } from './Form.styled'
+import { useLanguage } from '../../hooks/useLanguage'
 
 const EditContactForm = () => {
+    const lang = useLanguage()
     const {
       register, 
       handleSubmit,
