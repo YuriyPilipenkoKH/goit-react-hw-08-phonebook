@@ -8,6 +8,7 @@ export const MainSection = styled.section`
     align-items: center;
     gap: 20px;
     margin: 0;
+
     transition: width 1s ease-in-out, left 1.5s ease-in-out;
 `
 

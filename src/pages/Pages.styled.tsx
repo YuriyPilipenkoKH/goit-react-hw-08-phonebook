@@ -47,13 +47,15 @@ export const PhonebookWrapper= styled.div`
   transition: background-image 1s ease-in-out;
   background-repeat: no-repeat;
   background-position: center;  
-  background-size: cover;
-
+  background-size: cover;    
+  padding: 0 20px 0;
   display: grid;
+  gap: 32px;
   min-height: 100vh;
   transition: all 0.8s ease-in-out;
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     grid-template-columns: repeat(2, 1fr);
+    justify-items: start;
   }
 
   &>.new {
