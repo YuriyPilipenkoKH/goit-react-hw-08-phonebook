@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { getModal, getModalIsOpen } from "../redux/modal/modalSelectors"
 
 
-export const useALL = () => {
+export const useAll = () => {
   
   return {
     modal: useSelector(getModal),

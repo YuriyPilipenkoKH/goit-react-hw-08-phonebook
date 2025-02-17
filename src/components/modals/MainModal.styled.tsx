@@ -27,3 +27,125 @@ export const PicWrapper = styled("div", {
 					${PicWrapperStyles}
         `
     );
+
+
+
+
+export const ModalOverlay = styled.div`
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0000007f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 7;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s, visibility 0s 1s; 
+
+
+  
+&.modal.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s;
+}
+`;
+
+export const ModalContainer = styled.div`
+
+  width: 280px;
+
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 20px;  
+  background-color: var(--white);
+  padding: 50px 20px;
+  border-radius: 20px;
+  z-index: 50;
+  background-color: var(--background-color-form);
+  color: var(--text-color);
+  @media screen and (min-width: 768px) {
+    width: 608px;
+    padding: 50px 40px;
+    border-radius: 40px;
+  }
+`;
+
+export const ModalTitle = styled.h2`
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    font-size: 36px;
+  }
+`;
+
+
+export const ModalCategory = styled.div`
+  width: 126px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 20px;
+  top: 55px;
+  font-size: 14px;
+  color: var(--black);
+  font-weight: 600;
+  padding: 11px;
+  background-color: var(--light-blue);
+  border-radius: 0 16px 16px 0;
+
+  @media screen and (min-width: 768px) {
+    left: 32px;
+  }
+`;
+
+export const ModalText = styled.p`
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 20px;
+  border: none;
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+
+  }
+`;
+
+export const ModalImage = styled.img`
+  /* max-width: 100%;
+  height: auto; */
+  width:240px;
+  height: 240px;
+  border-radius: 0px 0px 40px 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 262px;
+    height: 300px;
+
+  }
+  
+`;
+
+export const ContentWrapp = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+
+
+
+
