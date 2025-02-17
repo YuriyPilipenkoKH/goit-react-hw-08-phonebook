@@ -33,7 +33,7 @@ const avatarSetter = () => {
 }
 const quit =() => {
    setIsOpen(!isOpen)
-   dispatch(logOut())
+   dispatch(logOut(user?.name || 'Dude'))
 }
 
   return (

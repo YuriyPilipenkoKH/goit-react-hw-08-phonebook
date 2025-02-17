@@ -77,12 +77,12 @@ export const register = createAsyncThunk<
 
   export const logOut = createAsyncThunk<
     void, 
-    void, 
+    string, 
     { state: RootState }
     >(
-    'auth/logout', async (_, thunkAPI) => {
+    'auth/logout', async (userName, thunkAPI) => {
     try {
-     const res =  await axios.post('/auth/logout');
+     const res =  await axios.post('/auth/logout', {userName});
    
       clearAuthHeader();
       localStorage.removeItem("token-08");
