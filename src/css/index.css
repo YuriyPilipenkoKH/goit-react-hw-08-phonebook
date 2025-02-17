@@ -62,7 +62,8 @@
   --border: 3px solid transparent;
   --background-image-contacts: url('../img/mobile_app_development_02.svg');
   --main-text:  #001129;
-
+  --color-purple: #490445;
+  --modal-bg: #A4C495;
 }
 
 :root[data-theme="dark"] {
@@ -73,6 +74,8 @@
   --border: 3px solid var(--teal);
   --background-image-contacts: url('../img/mobile-app.svg');
   --main-text:  #001129;
+  --color-purple: #990ee9;
+  --modal-bg: #12141c;
 }
 
 :root[data-lang="english"] {
@@ -414,5 +417,7 @@ height: 55px;
 
 } 
 .text-purple-900 {
-  color: #d824e2; /* Tailwind's purple-900 color */
+  color:var(--color-purple); /* Tailwind's purple-900 color */
+  font-weight: 600;
+  transition: all 1s ease-in-out,
 }

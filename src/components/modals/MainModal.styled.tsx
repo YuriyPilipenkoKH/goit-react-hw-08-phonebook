@@ -38,7 +38,7 @@ export const ModalOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0000007f;
+  background-color: #00000011;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,16 +64,14 @@ export const ModalContainer = styled.div`
   display: grid;
   place-items: center;
   gap: 20px;  
-  background-color: var(--white);
-  padding: 50px 20px;
-  border-radius: 20px;
+  background-color: var(--modal-bg);
+  padding: 20px;
+  border-radius: 16px;
   z-index: 50;
-  background-color: var(--background-color-form);
   color: var(--text-color);
   @media screen and (min-width: 768px) {
-    width: 608px;
-    padding: 50px 40px;
-    border-radius: 40px;
+    width: 600px;
+
   }
 `;
 

@@ -70,9 +70,9 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
       </ListItem>
      {/* {deleted && <Lottie animationData={animationDel} className='deleted'/>}
      {isEdit && <Lottie animationData={animationEdit} className='edited'/>} */}
-     {/* {modalIsOpen && (
+     {modalIsOpen && (
      <MainModal/>
-    )} */}
+    )}
         
     </>
   );

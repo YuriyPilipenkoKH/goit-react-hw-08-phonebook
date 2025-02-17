@@ -16,32 +16,33 @@ const modalRoot = document.getElementById('modal-root');
 const MainModal: React.FC<MainModalProps> = () => {
   const dispatch = useAppDispatch();
   const lang = useLanguage()
+  const {  modalIsOpen } = useAll()
   
 
-//   useEffect(() => {
-//     const handleBackdropClick =( e:MouseEvent ) => {
-//       if ((e.target as HTMLElement).classList.contains("modal-backdrop")) {
-//         dispatch(toggleModal());
-//       }
-//     };
+  useEffect(() => {
+    const handleBackdropClick =( e:MouseEvent ) => {
+      if ((e.target as HTMLElement).classList.contains("modal-backdrop")) {
+        dispatch(toggleModal());
+      }
+    };
 
-//     const handleKeyDown = (e: KeyboardEvent) => {
-//       if (e.key === "Escape") {
-//         dispatch(toggleModal());
-//         }
-//     };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        dispatch(toggleModal());
+        }
+    };
 
-//     const body = document.body;
-//     body.style.overflow = 'hidden';
-//     document.addEventListener('click', handleBackdropClick);
-//     document.addEventListener('keydown', handleKeyDown);
+    const body = document.body;
+    body.style.overflow = 'hidden';
+    document.addEventListener('click', handleBackdropClick);
+    document.addEventListener('keydown', handleKeyDown);
 
-//     return () => {
-//         body.style.overflow = 'unset';
-//         document.removeEventListener('click', handleBackdropClick);
-//         document.removeEventListener('keydown', handleKeyDown);
-//     };
-// }, [dispatch]);
+    return () => {
+        body.style.overflow = 'unset';
+        document.removeEventListener('click', handleBackdropClick);
+        document.removeEventListener('keydown', handleKeyDown);
+    };
+}, [dispatch]);
 
 const shut = () => {
     dispatch(toggleModal())
@@ -52,12 +53,18 @@ const shut = () => {
     return createPortal(
       <div className="modal">
        
-        <ModalOverlay>
+        <ModalOverlay 
+          className={`modal ${
+          modalIsOpen
+            ? ['active', 'modal-backdrop'].join(' ')
+            : 'modal-backdrop'
+            }`}>
           <ModalContainer >
             <ModalTitle>{lang.appTitle } </ModalTitle>
             <ModalText>
                 {lang.find} 
             </ModalText>
+            
           </ModalContainer>
         </ModalOverlay>
 
