@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import { BtnDelete, BtnEdit, BtnWrapper, EditWrapper, ItemCard, ListItem } from '../contactslist/ContactList.styled';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import { useSelector } from 'react-redux';
-import { getContactsList } from '../../../redux/contacts/selectors';
 import { useLanguage } from '../../../hooks/useLanguage';
 import { confirmDelete } from '../../../utils/notifier';
 import { deleteContact } from '../../../redux/contacts/operations';
-import { updateValue } from '../../../redux/editSlice';
 import { Contact } from '../../../types/contact.model';
-import { IDspan } from './ContactListItem.styled';
+
 
 interface ContactListItemProps{
 contact: Contact
@@ -57,13 +54,7 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   return (
     <>
       <ListItem  >
-        
-        {/* //   <EditWrapper className="edit-wrapper">
-        //     <input type="text" name="nick" value={nick} onChange={handleChange} />
-        //     <input type="text" name="phone" value={phone} onChange={handleChange} />
-        //   </EditWrapper>
-        // ) : (
-       */}
+
           <ItemCard className="cardSpan">
             {contact.name}: {contact.number}
           </ItemCard>
