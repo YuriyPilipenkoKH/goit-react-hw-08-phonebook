@@ -42,20 +42,9 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
 
-
-    /* set up the animation */
     animation-duration: 0.5s;
     animation-fill-mode: both;
-  
-    
-    /* use a css helper function to generate the delay */
-    /* ${({ totalItems }) => css`
-      ${Array.from({ length: totalItems }, (_, i) => css`
-        &:nth-child(${i + 1}) {
-          animation-delay: ${0.25 * (i + 1)}s;
-        }
-      `)}
-    `} */
+     
 
    display: grid;
    gap: 8px; 
@@ -146,7 +135,7 @@ export const ContactContainer = styled.div`
 }
 
 @media screen and (min-width: 768px) {
-      width: 600px;
+      width: 90%;
       padding: 4px 8px;
       max-height: 300px;
     }
