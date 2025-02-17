@@ -16,9 +16,10 @@ const Layout = () => {
         <AppBar/>
       </MainHeader>
         <Suspense >
+    
                   <Outlet />
         </Suspense>
-        
+
         <MainFooter >
           {lang.footerTitle} 
           < MirrorStreamIcon />

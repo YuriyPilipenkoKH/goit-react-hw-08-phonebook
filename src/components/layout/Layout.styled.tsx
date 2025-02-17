@@ -2,21 +2,13 @@ import styled from '@emotion/styled';
 import { NavLink } from "react-router-dom";
 
 export const MainHeader= styled.header`
-  top: 0;
-  left: 0;
-  width: 100%;
- /* position: sticky; */
-  z-index: 100;
+width: 100%;
   display: flex;
   gap: 25px;
   align-items: center;
-
   padding: 32px 50px 16px;
   background-color: transparent;
- 
   border-bottom: 1px solid #222;
-
-
 
   >.logo{
     width: 100px;
@@ -31,7 +23,6 @@ export const MainHeader= styled.header`
   }
 
   >.KH-icon {
-
     width: 100px;
     height: 32px;
     color: #222;
@@ -40,8 +31,6 @@ export const MainHeader= styled.header`
     &:hover {
         color: var(--teal);
     }
-
-
   }
 `
 
