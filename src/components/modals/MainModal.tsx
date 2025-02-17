@@ -9,15 +9,14 @@ import { toggleModal } from '../../redux/modal/modalSlice';
 
 interface MainModalProps {
   // modalTypes: ModalBaseTypes
-  id: string
-  name: string
+
 }
 const modalRoot = document.getElementById('modal-root');
 
 const MainModal: React.FC<MainModalProps> = () => {
   const dispatch = useAppDispatch();
   const lang = useLanguage()
-  const {  modalIsOpen } = useAll()
+  
 
   useEffect(() => {
     const handleBackdropClick =( e:MouseEvent ) => {
@@ -52,12 +51,7 @@ const shut = () => {
   if (!modalRoot) return null;
     return createPortal(
       <div className="modal">
-        {!modalIsOpen && (
-          <BtnEdit type="button" onClick={()=> dispatch(toggleModal())}>
-          { lang.edit}
-          </BtnEdit>
-        )}
-        {modalIsOpen && (
+       
         <ModalOverlay>
           <ModalContainer >
             <ModalTitle>{lang.appTitle } </ModalTitle>
@@ -66,8 +60,7 @@ const shut = () => {
             </ModalText>
           </ModalContainer>
         </ModalOverlay>
-        )}
-        
+
       </div>,
       modalRoot
     )

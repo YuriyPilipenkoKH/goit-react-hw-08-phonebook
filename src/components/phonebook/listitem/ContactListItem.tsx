@@ -5,6 +5,9 @@ import { useLanguage } from '../../../hooks/useLanguage';
 import { confirmDelete, confirmUpdate } from '../../../utils/notifier';
 import { deleteContact } from '../../../redux/contacts/operations';
 import { Contact } from '../../../types/contact.model';
+import MainModal from '../../modals/MainModal';
+import { useAll } from '../../../hooks/useAll';
+import { toggleModal } from '../../../redux/modal/modalSlice';
 
 
 interface ContactListItemProps{
@@ -20,10 +23,11 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   const [nick, setNick] = useState(name)
   const [phone, setPhone] = useState(number)
   const lang = useLanguage()
+  const {  modalIsOpen } = useAll()
 
   const handleEdit = () => {
     confirmUpdate(`updating ${name}?`, name)
-    
+
   }
 
   const handleDelete = () => {
@@ -53,7 +57,8 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
           </ItemCard>
 
         <BtnWrapper className="button-wrapper">
-          <BtnEdit type="button" onClick={handleEdit}>
+         
+          <BtnEdit type="button" onClick={()=>dispatch(toggleModal())}>
           { lang.edit}
           </BtnEdit>
           <BtnDelete
@@ -65,6 +70,10 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
       </ListItem>
      {/* {deleted && <Lottie animationData={animationDel} className='deleted'/>}
      {isEdit && <Lottie animationData={animationEdit} className='edited'/>} */}
+     {modalIsOpen && (
+     <MainModal/>
+    )}
+        
     </>
   );
 }
