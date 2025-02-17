@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 export const MainContainer = styled.div`
-   
-    min-height: 100vh;
+   min-height: 100vh;
+
     display: grid;
     justify-items: center;
     grid-gap: 25px;

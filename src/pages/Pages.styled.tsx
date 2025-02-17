@@ -42,7 +42,8 @@ export const HomeWrapper= styled.div`
 export const PhonebookWrapper= styled.div`
   width: 100%;
 
-  /* background-image: var(--background-image-contacts); */
+  background-image: var(--background-image-contacts);
+ 
   transition: background-image 1s ease-in-out;
   background-repeat: no-repeat;
   background-position: center;  
