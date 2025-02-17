@@ -5,7 +5,11 @@ import { addContactSchema, addContactSchemaType } from '../../types/AddComtact.m
 import { ContactFormBtn, Form, Input, Label } from './Form.styled'
 import { useLanguage } from '../../hooks/useLanguage'
 
-const EditContactForm = () => {
+interface EditContactFormProps {
+
+}
+
+const EditContactForm: React.FC<EditContactFormProps> = () => {
     const lang = useLanguage()
     const {
       register, 
