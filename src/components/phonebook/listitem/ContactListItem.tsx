@@ -19,16 +19,9 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
 
   const { _id, name, number} = contact;
   const [deleted, setDeleted] = useState(false)
-  const [isEdit, setIsEdit] = useState(false)
-  const [nick, setNick] = useState(name)
-  const [phone, setPhone] = useState(number)
   const lang = useLanguage()
   const {  modalIsOpen } = useAll()
 
-  const handleEdit = () => {
-    confirmUpdate(`updating ${name}?`, name)
-
-  }
 
   const handleDelete = () => {
 

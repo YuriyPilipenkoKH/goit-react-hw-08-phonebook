@@ -4,17 +4,20 @@ import { useForm } from 'react-hook-form'
 import { addContactSchema, addContactSchemaType } from '../../types/AddComtact.model'
 import { ContactFormBtn, Form, Input, Label } from './Form.styled'
 import { useLanguage } from '../../hooks/useLanguage'
+import { editContact } from '../../redux/contacts/operations'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { Contact } from '../../types/contact.model'
 
 interface EditContactFormProps {
-  contactName: string
-  contactNumber: string
+ contact: Contact
 }
 
 const EditContactForm: React.FC<EditContactFormProps> = ({
-    contactName,
-    contactNumber
+  contact
   }) => {
     const lang = useLanguage()
+     const dispatch = useAppDispatch();
+     const {_id, name, number, userId} = contact
     const {
       register, 
       handleSubmit,
@@ -23,8 +26,8 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
       setError,
     } = useForm<addContactSchemaType >({
       defaultValues: {  
-        name: contactName || '',
-        number: contactNumber || '',
+        name: name || '',
+        number: number || '',
          },
           mode:'all',
           resolver: zodResolver(addContactSchema), })
@@ -37,6 +40,12 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
       } = formState
   const onSubmit = async (data: addContactSchemaType) => {
 
+        dispatch(editContact({
+          _id,
+          name: data.name,
+          number: data.number,
+          userId
+        }))
   }
 
   return (

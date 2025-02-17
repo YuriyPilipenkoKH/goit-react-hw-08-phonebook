@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAll } from '../../hooks/useAll';
 import { createPortal } from 'react-dom';
 import { ModalContainer, ModalOverlay, ModalText, ModalTitle } from './MainModal.styled';
-import { BtnEdit } from '../phonebook/contactslist/ContactList.styled';
 import { toggleModal } from '../../redux/modal/modalSlice';
 import EditContactForm from '../forms/EditContactForm';
 import { Contact } from '../../types/contact.model';
@@ -44,12 +43,17 @@ const MainModal: React.FC<MainModalProps> = ({contact}) => {
         document.removeEventListener('click', handleBackdropClick);
         document.removeEventListener('keydown', handleKeyDown);
     };
-}, [dispatch]);
+  }, [dispatch]);
 
-const shut = () => {
-    dispatch(toggleModal())
-};
-
+  const shut = () => {
+      dispatch(toggleModal())
+  };
+  const fakeContact ={
+    _id : '',
+    name: '',
+    number: '',
+    userId: ''
+  }
 
   if (!modalRoot) return null;
     return createPortal(
@@ -67,8 +71,7 @@ const shut = () => {
                 {lang.find} 
             </ModalText>
             <EditContactForm 
-            contactName={contact?.name || 'Dude'}
-            contactNumber={contact?.number || '095'}
+              contact={ contact || fakeContact}
             />
           </ModalContainer>
         </ModalOverlay>
