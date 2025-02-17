@@ -64,12 +64,12 @@ export const ModalContainer = styled.div`
   place-items: center;
   gap: 20px;  
   background-color: var(--modal-bg);
-  padding: 20px;
+  padding: 60px 20px;
   border-radius: 16px;
   z-index: 50;
   color: var(--text-color);
   @media screen and (min-width: 768px) {
-    width: 600px;
+    width: 500px;
   }
 `;
 

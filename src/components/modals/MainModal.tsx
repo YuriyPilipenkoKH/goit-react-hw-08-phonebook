@@ -12,7 +12,6 @@ import { Contact } from '../../types/contact.model';
 interface MainModalProps {
   // modalTypes: ModalBaseTypes
   contact?: Contact
-
 }
 const modalRoot = document.getElementById('modal-root');
 

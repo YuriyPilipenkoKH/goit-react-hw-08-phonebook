@@ -40,7 +40,7 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
   }
 
   return (
-       <Form 
+    <Form 
     autoComplete="off" 
     noValidate
      onSubmit={handleSubmit(onSubmit)}>
@@ -63,12 +63,9 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
       <ContactFormBtn 
       type="submit"
       disabled={isSubmitting || !isDirty || !isValid}
-            >
-               { isLoading  ? "Sending.." :  lang.add}
-       
+        >
+        { isLoading  ? "Sending.." :  lang.editCont}
       </ContactFormBtn>
-
-            
     </Form>
   )
 }

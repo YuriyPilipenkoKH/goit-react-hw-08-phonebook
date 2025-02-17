@@ -66,11 +66,9 @@ interface PB_data{
   createAsyncThunk< PB_update_Response, string, { state: RootState}>(
     "contacts/deleteContact",
     async (id, thunkAPI) => {
-      console.log('deleteContact..')
+
       try {
-        console.log(id);
         const response = await axios.delete(`/contacts/${id}`);  
-        console.log('response..',response.data);
         return response.data;
 
       } catch (error: unknown) {
@@ -83,25 +81,26 @@ interface PB_data{
     }
   );
 
-//  export const editContact = createAsyncThunk(
-//     "contacts/editContact",
+
+ export const editContact = 
+  createAsyncThunk< PB_update_Response, Contact, { state: RootState }>(
+    "contacts/editContact",
   
-//     async (contact, thunkAPI) => {
+    async (contact, thunkAPI) => {
 
-//    const {id, name, number} = contact
-//    try {
-//     const response = await axios.patch(`/contacts/${id}`, {
-//       name: name,
-//       number: number,
-//     });
-      
-//         return response.data;
+   const {_id, name, number} = contact
+   try {
+      const response = await axios.patch(`/contacts/${_id}`, {
+        name,
+        number,
+      });
+        return response.data;
 
-//       } catch (error: unknown) {
-//         if(error instanceof AxiosError){
-//           return thunkAPI.rejectWithValue(error.message);
-//         }
-//         Notify.info('Something went wrong. ');
-//       }
-//     }
-//   );
+      } catch (error: unknown) {
+        if(error instanceof AxiosError){
+          return thunkAPI.rejectWithValue(error.response?.data.message);
+        }
+        Notify.info('Something went wrong. ');
+      }
+    }
+  );
