@@ -1,6 +1,12 @@
 import React from 'react'
 
-const MainModal = () => {
+interface MainModalProps {
+  modalTypes: ModalBaseTypes
+  id: string
+  name: string
+}
+
+const MainModal: React.FC<MainModalProps> = () => {
   return (
     <div>MainModal</div>
   )
