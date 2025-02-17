@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BtnDelete, BtnEdit, BtnWrapper, EditWrapper, ItemCard, ListItem } from '../contactslist/ContactList.styled';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useLanguage } from '../../../hooks/useLanguage';
-import { confirmDelete } from '../../../utils/notifier';
+import { confirmDelete, confirmUpdate } from '../../../utils/notifier';
 import { deleteContact } from '../../../redux/contacts/operations';
 import { Contact } from '../../../types/contact.model';
 
@@ -22,15 +22,8 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   const lang = useLanguage()
 
   const handleEdit = () => {
-    setIsEdit(!isEdit)
- 
-    if (isEdit) {
-      const updatedContact = {
-        _id,
-        name: nick,
-        number: phone,
-      };
-    }
+    confirmUpdate(`updating ${name}?`, name)
+    
   }
 
   const handleDelete = () => {

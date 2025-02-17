@@ -6,10 +6,14 @@ import { ContactFormBtn, Form, Input, Label } from './Form.styled'
 import { useLanguage } from '../../hooks/useLanguage'
 
 interface EditContactFormProps {
-
+  contactName: string
+  contactNumber: string
 }
 
-const EditContactForm: React.FC<EditContactFormProps> = () => {
+const EditContactForm: React.FC<EditContactFormProps> = ({
+    contactName,
+    contactNumber
+  }) => {
     const lang = useLanguage()
     const {
       register, 
@@ -19,8 +23,8 @@ const EditContactForm: React.FC<EditContactFormProps> = () => {
       setError,
     } = useForm<addContactSchemaType >({
       defaultValues: {  
-        name: '',
-        number: '',
+        name: contactName || '',
+        number: contactNumber || '',
          },
           mode:'all',
           resolver: zodResolver(addContactSchema), })
@@ -56,7 +60,6 @@ const EditContactForm: React.FC<EditContactFormProps> = () => {
         />
       </Label>
       {errors.number && <div className='text-purple-900'>{errors.number?.message}</div>}
-      {/* {sameNumber && <div className='text-purple-900'>{sameNumber}</div>} */}
       <ContactFormBtn 
       type="submit"
       disabled={isSubmitting || !isDirty || !isValid}

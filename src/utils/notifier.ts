@@ -6,12 +6,12 @@ export function confirmUpdate (question: string, name: string): Promise<void> {
 
         return new Promise((resolve, reject) => {
             Confirm.show(
-              'Notiflix Confirm',
+              'Phonebook Confirm',
               question,
               'Yes',
               'No',
               () => {
-                // Notiflix.Notify.success(`Contact ${name} was updated.`);
+                Notiflix.Notify.success(`Contact ${name} was updated.`);
                 resolve();
               },
               () => {
@@ -28,7 +28,7 @@ export function confirmDelete (question: string, name: string): Promise<void> {
 
         return new Promise((resolve, reject) => {
             Confirm.show(
-              'Notiflix Confirm',
+              'Phonebook Confirm',
               question,
               'Yes',
               'No',

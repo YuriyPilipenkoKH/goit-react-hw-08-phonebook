@@ -42,7 +42,6 @@ const ContactForm = () => {
   const onSubmit = async (data: addContactSchemaType) => {
    dispatch(addContact(data))
    .then((res) => {
-    // console.log(res)
     if(res.type === 'contacts/addContact/rejected'){
       setError('number', { type: 'manual', message: res.payload as string }  )
     }
@@ -75,7 +74,6 @@ const ContactForm = () => {
         />
       </Label>
       {errors.number && <div className='text-purple-900'>{errors.number?.message}</div>}
-      {/* {sameNumber && <div className='text-purple-900'>{sameNumber}</div>} */}
       <ContactFormBtn 
       type="submit"
       disabled={isSubmitting || !isDirty || !isValid}
