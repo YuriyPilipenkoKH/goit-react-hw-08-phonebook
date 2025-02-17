@@ -10,12 +10,11 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
 import { langReducer } from './langSlice';
 import { authReducer, AuthState } from './auth/authSlice';
 import { themeReducer } from './themeSlice';
-import { formReducer } from './formSlice';
 import { contactsReducer } from './contacts/contactsSlice';
+import { modalReducer } from './modal/modalSlice';
 
 
 const authPersistConfig= {
@@ -30,7 +29,7 @@ export const store = configureStore({
         contacts: contactsReducer,
         // filter: filterReducer,
         // sort:sortReducer,
-        // form: formReducer ,    
+        modal: modalReducer,
         theme:themeReducer,
         lang:langReducer,
         auth: persistReducer<AuthState >(authPersistConfig, authReducer) ,// ✅ Correctly typed
