@@ -146,6 +146,7 @@ export const ContactContainer = styled.div`
 
 export const BtnWrapper = styled.div`
   display: flex;
+  align-items: center;
   gap: 8px;
 
 `

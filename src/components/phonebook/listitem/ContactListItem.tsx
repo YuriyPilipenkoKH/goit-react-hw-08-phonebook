@@ -25,7 +25,7 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   const lang = useLanguage()
 
   const handleEdit = () => {
-    setIsEdit(prev => !prev )
+    setIsEdit(!isEdit)
  
     if (isEdit) {
       const updatedContact = {
@@ -52,32 +52,25 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   });
   };
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    // dispatch(updateValue({ field: name, value }));
-  };
-  
+
 
   return (
     <>
-      <ListItem 
-      // totalItems={4}
-      >
+      <ListItem  >
         
-        {isEdit ? (
-          <EditWrapper className="edit-wrapper">
-            <input type="text" name="nick" value={nick} onChange={handleChange} />
-            <input type="text" name="phone" value={phone} onChange={handleChange} />
-          </EditWrapper>
-        ) : (
-      
+        {/* //   <EditWrapper className="edit-wrapper">
+        //     <input type="text" name="nick" value={nick} onChange={handleChange} />
+        //     <input type="text" name="phone" value={phone} onChange={handleChange} />
+        //   </EditWrapper>
+        // ) : (
+       */}
           <ItemCard className="cardSpan">
             {contact.name}: {contact.number}
           </ItemCard>
-        )}
+
         <BtnWrapper className="button-wrapper">
           <BtnEdit type="button" onClick={handleEdit}>
-          {isEdit  ? 'Save' : lang.edit}
+          { lang.edit}
           </BtnEdit>
           <BtnDelete
       
