@@ -8,8 +8,8 @@ interface ContactListProps{
   contacts:Contact[]
 }
 
-const ContactList:React.FC<ContactListProps> = ({contacts}) => {
-  
+const ContactList:React.FC<ContactListProps> = () => {
+  const {contacts} = useContacts()
  
   return (
     <>
@@ -19,11 +19,11 @@ const ContactList:React.FC<ContactListProps> = ({contacts}) => {
         <ContactContainer>
           {/* <Count>{contacts.length}</Count> */}
           <List>
-            {contacts.map((contact) => {
+            {contacts.map((contact,idx) => {
       
               return (
               <ContactListItem
-              key={contact._id}
+              key={idx}
               contact = {contact}
               ></ContactListItem>
               );

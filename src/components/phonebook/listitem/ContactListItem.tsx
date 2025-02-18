@@ -8,6 +8,7 @@ import { Contact } from '../../../types/contact.model';
 import MainModal from '../../modals/MainModal';
 import { useAll } from '../../../hooks/useAll';
 import { toggleModal } from '../../../redux/modal/modalSlice';
+import { useContacts } from '../../../hooks/useContacts';
 
 
 interface ContactListItemProps{
@@ -16,9 +17,10 @@ contact: Contact
 
 const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   const dispatch = useAppDispatch();
-
+const {contacts} = useContacts()
   const { _id, name, number} = contact;
-  const [deleted, setDeleted] = useState(false)
+  const [deleted, setDeleted] = useState<boolean>(false)
+  const [selectedContact, setSelectedContact] = useState<Contact >(contact);
   const lang = useLanguage()
   const {  modalIsOpen } = useAll()
 
@@ -39,23 +41,32 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   });
   };
 
+  const handleEdit = () => {
+    setSelectedContact(contact); // Set clicked contact
+    dispatch(toggleModal());
+  };
+
+  const handleEdit2 = (id: string) => {
+    const foundContact = contacts.find((c) => c._id === id);
+    if (foundContact) {
+      setSelectedContact(foundContact); // Now we pass the correct contact
+      dispatch(toggleModal());
+    }
+  };
 
 
   return (
     <>
       <ListItem  >
-
           <ItemCard className="cardSpan">
             {contact.name}: {contact.number}
           </ItemCard>
-
         <BtnWrapper className="button-wrapper">
-         
-          <BtnEdit type="button" onClick={()=>dispatch(toggleModal())}>
+         <BtnEdit type="button" onClick={handleEdit}>
           { lang.edit}
           </BtnEdit>
+
           <BtnDelete
-      
           type="button" onClick={handleDelete}>
             {lang.delete}
           </BtnDelete>
@@ -64,7 +75,7 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
      {/* {deleted && <Lottie animationData={animationDel} className='deleted'/>}
      {isEdit && <Lottie animationData={animationEdit} className='edited'/>} */}
      {modalIsOpen && (
-     <MainModal contact={contact}/>
+     <MainModal contact={selectedContact}/>
     )}
         
     </>
