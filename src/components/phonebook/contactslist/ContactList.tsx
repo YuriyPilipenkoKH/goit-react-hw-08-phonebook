@@ -3,6 +3,7 @@ import { useContacts } from '../../../hooks/useContacts';
 import { ContactContainer, EmptySpan, List } from './ContactList.styled';
 import { Contact } from '../../../types/contact.model';
 import ContactListItem from '../listitem/ContactListItem';
+import { useAll } from '../../../hooks/useAll';
 
 interface ContactListProps{
   contacts:Contact[]
@@ -10,6 +11,7 @@ interface ContactListProps{
 
 const ContactList:React.FC<ContactListProps> = () => {
   const {contacts} = useContacts()
+    const {  modalIsOpen } = useAll()
  
   return (
     <>
@@ -19,15 +21,13 @@ const ContactList:React.FC<ContactListProps> = () => {
         <ContactContainer>
           {/* <Count>{contacts.length}</Count> */}
           <List>
-            {contacts.map((contact,idx) => {
-      
-              return (
+            {contacts.map((contact,idx) =>(
               <ContactListItem
               key={idx}
               contact = {contact}
               ></ContactListItem>
-              );
-            })}
+              ))
+            }
           </List>
         </ContactContainer>
       )

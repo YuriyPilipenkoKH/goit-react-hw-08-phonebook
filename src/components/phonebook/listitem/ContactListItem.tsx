@@ -9,6 +9,7 @@ import MainModal from '../../modals/MainModal';
 import { useAll } from '../../../hooks/useAll';
 import { toggleModal } from '../../../redux/modal/modalSlice';
 import { useContacts } from '../../../hooks/useContacts';
+import { IDspan } from './ContactListItem.styled';
 
 
 interface ContactListItemProps{
@@ -21,10 +22,10 @@ const {contacts} = useContacts()
   const { _id, name, number} = contact;
   const [deleted, setDeleted] = useState<boolean>(false)
   const [selectedContactId, setSelectedContactId] = useState<string | null>(null);
-  const [open, setOpen] = useState<{ [key: string]: boolean }>({});
+  const [openModals, setOpenModals] = useState<{ [key: string]: boolean }>({});
   const lang = useLanguage()
   const {  modalIsOpen } = useAll()
-console.log('open',open);
+// console.log('open',open);
 
   const handleDelete = () => {
 
@@ -45,9 +46,9 @@ console.log('open',open);
   const handleEdit = (id: string) => {
     // console.log(e.currentTarget.id);
     // setSelectedContactId(id); // Store only the clicked contact's ID
-    setOpen((prev) => ({
+    setOpenModals((prev) => ({
       ...prev,
-      [id]: !prev[id], // Toggle the specific project
+      [id]: !prev[id], // Toggle modal for the specific contact
     }));
     dispatch(toggleModal());
   };
@@ -69,12 +70,8 @@ console.log('open',open);
             {contact.name}: {contact.number}
           </ItemCard>
         <BtnWrapper className="button-wrapper">
-         <BtnEdit 
-         type="button"
-         id ={contact._id}
-         onClick={(e)=>handleEdit(_id)}
-         >
-          { lang.edit}
+          <BtnEdit type="button" onClick={() => handleEdit(contact._id)}>
+            {lang.edit}
           </BtnEdit>
 
           <BtnDelete
@@ -85,9 +82,12 @@ console.log('open',open);
       </ListItem>
      {/* {deleted && <Lottie animationData={animationDel} className='deleted'/>}
      {isEdit && <Lottie animationData={animationEdit} className='edited'/>} */}
-     {modalIsOpen && (
-     <MainModal contact={selectedContact}/>
-    )}
+     {/* {modalIsOpen && (
+     <MainModal contact={contact}/>
+    )} */}
+    {modalIsOpen && openModals[contact._id] && <MainModal contact={contact} 
+    onClose={() => handleEdit(contact._id)}
+     />}
         
     </>
   );

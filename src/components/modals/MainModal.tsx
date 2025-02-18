@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAll } from '../../hooks/useAll';
@@ -7,18 +7,33 @@ import { ModalContainer, ModalOverlay, ModalText, ModalTitle } from './MainModal
 import { toggleModal } from '../../redux/modal/modalSlice';
 import EditContactForm from '../forms/EditContactForm';
 import { Contact } from '../../types/contact.model';
+import { BtnEdit } from '../phonebook/contactslist/ContactList.styled';
 
 interface MainModalProps {
   // modalTypes: ModalBaseTypes
   contact?: Contact
+  onClose: () => void;
 }
 const modalRoot = document.getElementById('modal-root');
 
-const MainModal: React.FC<MainModalProps> = ({contact}) => {
+const MainModal: React.FC<MainModalProps> = ({contact,onClose}) => {
   const dispatch = useAppDispatch();
   const lang = useLanguage()
   const {  modalIsOpen } = useAll()
+  const [open, setOpen] = useState(false);
   
+  const showModal = () => {
+    setOpen(true);
+  };
+  const handleOk = () => {
+      setOpen(false);
+  };
+  const handleCancel = () => {
+    setOpen(false);
+  };
+  const shut = () => {
+    dispatch(toggleModal())
+};
 
   useEffect(() => {
     const handleBackdropClick =( e:MouseEvent ) => {
@@ -45,9 +60,7 @@ const MainModal: React.FC<MainModalProps> = ({contact}) => {
     };
   }, [dispatch]);
 
-  const shut = () => {
-      dispatch(toggleModal())
-  };
+
   const fakeContact ={
     _id : '',
     name: '',
@@ -57,10 +70,11 @@ const MainModal: React.FC<MainModalProps> = ({contact}) => {
 
   if (!modalRoot) return null;
     return createPortal(
-           
-        <ModalOverlay 
+           <>
+
+         <ModalOverlay 
           className={`modal ${
-          modalIsOpen
+          open
             ? ['active', 'modal-backdrop'].join(' ')
             : 'modal-backdrop'
             }`}>
@@ -74,6 +88,18 @@ const MainModal: React.FC<MainModalProps> = ({contact}) => {
             />
           </ModalContainer>
         </ModalOverlay>
+
+            {/* {!open && (
+              <BtnEdit 
+              type="button"
+              //  id ={contact._id}
+              onClick={showModal}
+              >
+                { lang.edit}
+                </BtnEdit>
+            )} */}
+
+           </>
      ,
       modalRoot
     )

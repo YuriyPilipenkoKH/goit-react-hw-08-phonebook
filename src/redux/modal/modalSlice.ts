@@ -1,20 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Contact } from "../../types/contact.model";
 
 export interface ModalState {
-  modalIsOpen: boolean
+  modalIsOpen: boolean;
+  selectedContact: Contact | null;
 }
 
-export  const modalSlice = createSlice({
-    name: 'modal',
-    initialState: {
-        modalIsOpen: false,
+const initialState: ModalState = {
+  modalIsOpen: false,
+  selectedContact: null,
+};
+
+export const modalSlice = createSlice({
+  name: "modal",
+  initialState,
+  reducers: {
+    toggleModal: (state) => {
+      state.modalIsOpen = !state.modalIsOpen;
     },
-    reducers: {
-      toggleModal: (state) => {
-        state.modalIsOpen = !state.modalIsOpen;
-      }
-}
-})
+    onModalOpen: (state, action: PayloadAction<Contact>) => {
+      state.modalIsOpen = true;
+      state.selectedContact = action.payload; // ✅ Correctly accessing payload
+    },
+    onModalClose: (state) => {
+      state.modalIsOpen = false;
+      state.selectedContact = null;
+    },
+  },
+});
 
-export const {toggleModal, }  = modalSlice.actions
-export const modalReducer = modalSlice.reducer
+export const { toggleModal, onModalOpen, onModalClose } = modalSlice.actions;
+export const modalReducer = modalSlice.reducer;
