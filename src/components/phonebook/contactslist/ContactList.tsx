@@ -4,6 +4,8 @@ import { ContactContainer, EmptySpan, List } from './ContactList.styled';
 import { Contact } from '../../../types/contact.model';
 import ContactListItem from '../listitem/ContactListItem';
 import { useAll } from '../../../hooks/useAll';
+import MainModal from '../../modals/MainModal';
+
 
 interface ContactListProps{
   contacts:Contact[]
@@ -11,7 +13,8 @@ interface ContactListProps{
 
 const ContactList:React.FC<ContactListProps> = () => {
   const {contacts} = useContacts()
-    const {  modalIsOpen } = useAll()
+    const {  modalIsOpen , selectedContact } = useAll()
+    console.log('modalIsOpen', modalIsOpen ,'selectedContact',selectedContact);
  
   return (
     <>
@@ -35,6 +38,7 @@ const ContactList:React.FC<ContactListProps> = () => {
         <EmptySpan>No match to this query
           </EmptySpan>
       </ContactContainer>}
+{ modalIsOpen && selectedContact && <MainModal contact={selectedContact}/> }
     </>
   );
 };

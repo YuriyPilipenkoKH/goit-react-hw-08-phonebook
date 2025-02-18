@@ -8,18 +8,19 @@ import { toggleModal } from '../../redux/modal/modalSlice';
 import EditContactForm from '../forms/EditContactForm';
 import { Contact } from '../../types/contact.model';
 import { BtnEdit } from '../phonebook/contactslist/ContactList.styled';
+import { fakeContact } from '../../data/contact';
 
 interface MainModalProps {
   // modalTypes: ModalBaseTypes
   contact?: Contact
-  onClose: () => void;
+  onClose?: () => void;
 }
 const modalRoot = document.getElementById('modal-root');
 
 const MainModal: React.FC<MainModalProps> = ({contact,onClose}) => {
   const dispatch = useAppDispatch();
   const lang = useLanguage()
-  const {  modalIsOpen } = useAll()
+  const {  modalIsOpen, selectedContact } = useAll()
   const [open, setOpen] = useState(false);
   
   const showModal = () => {
@@ -61,12 +62,7 @@ const MainModal: React.FC<MainModalProps> = ({contact,onClose}) => {
   }, [dispatch]);
 
 
-  const fakeContact ={
-    _id : '',
-    name: '',
-    number: '',
-    userId: ''
-  }
+
 
   if (!modalRoot) return null;
     return createPortal(
@@ -83,8 +79,9 @@ const MainModal: React.FC<MainModalProps> = ({contact,onClose}) => {
             <ModalText>
                 {/* {lang.find}  */}{contact?._id}
             </ModalText>
-            <EditContactForm 
-              contact={ contact || fakeContact}
+
+        <EditContactForm 
+                    contact={ contact || fakeContact }
             />
           </ModalContainer>
         </ModalOverlay>

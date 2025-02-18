@@ -2,15 +2,13 @@ import React, { useState } from 'react'
 import { BtnDelete, BtnEdit, BtnWrapper, EditWrapper, ItemCard, ListItem } from '../contactslist/ContactList.styled';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useLanguage } from '../../../hooks/useLanguage';
-import { confirmDelete, confirmUpdate } from '../../../utils/notifier';
+import { confirmDelete,  } from '../../../utils/notifier';
 import { deleteContact } from '../../../redux/contacts/operations';
 import { Contact } from '../../../types/contact.model';
-import MainModal from '../../modals/MainModal';
-import { useAll } from '../../../hooks/useAll';
-import { toggleModal } from '../../../redux/modal/modalSlice';
-import { useContacts } from '../../../hooks/useContacts';
-import { IDspan } from './ContactListItem.styled';
 
+import { useAll } from '../../../hooks/useAll';
+import { toggleModal, onModalOpen, onModalClose } from '../../../redux/modal/modalSlice';
+import { useContacts } from '../../../hooks/useContacts';
 
 interface ContactListItemProps{
 contact: Contact
@@ -21,11 +19,9 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
 const {contacts} = useContacts()
   const { _id, name, number} = contact;
   const [deleted, setDeleted] = useState<boolean>(false)
-  const [selectedContactId, setSelectedContactId] = useState<string | null>(null);
-  const [openModals, setOpenModals] = useState<{ [key: string]: boolean }>({});
   const lang = useLanguage()
-  const {  modalIsOpen } = useAll()
-// console.log('open',open);
+  const {  modalIsOpen,  } = useAll()
+
 
   const handleDelete = () => {
 
@@ -41,26 +37,13 @@ const {contacts} = useContacts()
   .catch(() => {
     // Handle cancellation or rejection
   });
-  };
+  }
 
-  const handleEdit = (id: string) => {
-    // console.log(e.currentTarget.id);
-    // setSelectedContactId(id); // Store only the clicked contact's ID
-    setOpenModals((prev) => ({
-      ...prev,
-      [id]: !prev[id], // Toggle modal for the specific contact
-    }));
-    dispatch(toggleModal());
-  };
-  const selectedContact = contacts.find((c) => c._id === selectedContactId);
+  const handleEdit = () => {
+    dispatch(onModalOpen(contact))
+  }
+ 
 
-  const handleEdit2 = (id: string) => {
-    const foundContact = contacts.find((c) => c._id === id);
-    if (foundContact) {
-      // setSelectedContact(foundContact); // Now we pass the correct contact
-      dispatch(toggleModal());
-    }
-  };
 
 
   return (
@@ -70,7 +53,7 @@ const {contacts} = useContacts()
             {contact.name}: {contact.number}
           </ItemCard>
         <BtnWrapper className="button-wrapper">
-          <BtnEdit type="button" onClick={() => handleEdit(contact._id)}>
+          <BtnEdit type="button" onClick={() => handleEdit()}>
             {lang.edit}
           </BtnEdit>
 
@@ -80,17 +63,12 @@ const {contacts} = useContacts()
           </BtnDelete>
         </BtnWrapper>
       </ListItem>
-     {/* {deleted && <Lottie animationData={animationDel} className='deleted'/>}
-     {isEdit && <Lottie animationData={animationEdit} className='edited'/>} */}
-     {/* {modalIsOpen && (
-     <MainModal contact={contact}/>
-    )} */}
-    {modalIsOpen && openModals[contact._id] && <MainModal contact={contact} 
-    onClose={() => handleEdit(contact._id)}
-     />}
         
     </>
   );
 }
 export default ContactListItem
 
+
+// {deleted && <Lottie animationData={animationDel} className='deleted'/>}
+//  {isEdit && <Lottie animationData={animationEdit} className='edited'/>} 
