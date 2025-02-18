@@ -7,7 +7,7 @@ import { deleteContact } from '../../../redux/contacts/operations';
 import { Contact } from '../../../types/contact.model';
 
 import { useAll } from '../../../hooks/useAll';
-import { toggleModal, onModalOpen, onModalClose } from '../../../redux/modal/modalSlice';
+import { onModalOpen } from '../../../redux/modal/modalSlice';
 import { useContacts } from '../../../hooks/useContacts';
 
 interface ContactListItemProps{
@@ -42,7 +42,7 @@ const {contacts} = useContacts()
   const handleEdit = () => {
     dispatch(onModalOpen(contact))
   }
- 
+
 
 
 

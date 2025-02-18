@@ -7,6 +7,7 @@ import { useLanguage } from '../../hooks/useLanguage'
 import { editContact } from '../../redux/contacts/operations'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { Contact } from '../../types/contact.model'
+import { onModalClose } from '../../redux/modal/modalSlice'
 
 interface EditContactFormProps {
  contact: Contact
@@ -40,12 +41,13 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
       } = formState
   const onSubmit = async (data: addContactSchemaType) => {
 
-        dispatch(editContact({
-          _id,
-          name: data.name,
-          number: data.number,
-          userId
-        }))
+    dispatch(editContact({
+      _id,
+      name: data.name,
+      number: data.number,
+      userId
+    }))
+    dispatch(onModalClose())
   }
 
   return (

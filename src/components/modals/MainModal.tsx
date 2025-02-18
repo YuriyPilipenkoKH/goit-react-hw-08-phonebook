@@ -4,48 +4,31 @@ import { useLanguage } from '../../hooks/useLanguage';
 import { useAll } from '../../hooks/useAll';
 import { createPortal } from 'react-dom';
 import { ModalContainer, ModalOverlay, ModalText, ModalTitle } from './MainModal.styled';
-import { toggleModal } from '../../redux/modal/modalSlice';
+import { onModalClose } from '../../redux/modal/modalSlice';
 import EditContactForm from '../forms/EditContactForm';
 import { Contact } from '../../types/contact.model';
-import { BtnEdit } from '../phonebook/contactslist/ContactList.styled';
 import { fakeContact } from '../../data/contact';
 
 interface MainModalProps {
-  // modalTypes: ModalBaseTypes
   contact?: Contact
-  onClose?: () => void;
 }
 const modalRoot = document.getElementById('modal-root');
 
-const MainModal: React.FC<MainModalProps> = ({contact,onClose}) => {
+const MainModal: React.FC<MainModalProps> = ({contact}) => {
   const dispatch = useAppDispatch();
   const lang = useLanguage()
-  const {  modalIsOpen, selectedContact } = useAll()
-  const [open, setOpen] = useState(false);
-  
-  const showModal = () => {
-    setOpen(true);
-  };
-  const handleOk = () => {
-      setOpen(false);
-  };
-  const handleCancel = () => {
-    setOpen(false);
-  };
-  const shut = () => {
-    dispatch(toggleModal())
-};
+  const {  modalIsOpen } = useAll()
 
   useEffect(() => {
     const handleBackdropClick =( e:MouseEvent ) => {
       if ((e.target as HTMLElement).classList.contains("modal-backdrop")) {
-        dispatch(toggleModal());
+        dispatch(onModalClose())
       }
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        dispatch(toggleModal());
+        dispatch(onModalClose())
         }
     };
 
@@ -61,16 +44,13 @@ const MainModal: React.FC<MainModalProps> = ({contact,onClose}) => {
     };
   }, [dispatch]);
 
-
-
-
-  if (!modalRoot) return null;
+    if (!modalRoot) return null;
     return createPortal(
            <>
 
          <ModalOverlay 
           className={`modal ${
-          open
+          modalIsOpen
             ? ['active', 'modal-backdrop'].join(' ')
             : 'modal-backdrop'
             }`}>
