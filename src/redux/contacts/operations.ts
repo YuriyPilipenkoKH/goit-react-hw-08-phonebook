@@ -95,6 +95,7 @@ interface PB_data{
         name,
         number,
       });
+      if(response.data) Notify.success(response.data.message)
         return response.data;
 
       } catch (error: unknown) {
