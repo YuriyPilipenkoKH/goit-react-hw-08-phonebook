@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Contact } from "../../types/contact.model";
+import { RootState } from "../store";
+
 
 export interface ModalState {
   modalIsOpen: boolean;
@@ -13,7 +15,7 @@ const initialState: ModalState = {
 
 export const modalSlice = createSlice({
   name: "modal",
-  initialState,
+  initialState ,
   reducers: {
     toggleModal: (state) => {
       state.modalIsOpen = !state.modalIsOpen;
