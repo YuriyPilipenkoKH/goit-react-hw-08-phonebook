@@ -1,7 +1,8 @@
 import z from 'zod'
+import { LangType } from '../utils/languages';
 
 
-export const contactSchema = z.object({
+export const contactSchema = (lang: LangType)=> z.object({
    _id: z
   .string(),
    userId: z
@@ -9,10 +10,10 @@ export const contactSchema = z.object({
   name: z
   .string()
   .trim()
-  .min(3)
-  .max(16)
+  .min(3,  lang.minLength)
+  .max(16, lang.maxLength)
   .refine((val) => !val.toLowerCase().startsWith('qwe'), {
-    message: 'forbidden prefix',
+    message: lang.forbiddenPrefix,
   }),
   number: z
   .string()
@@ -30,5 +31,5 @@ export const contactSchema = z.object({
   .date()
   .optional(),
 }) 
-export type Contact =  z.infer<typeof contactSchema>
+export type Contact = z.infer<ReturnType<typeof contactSchema>>;
 
