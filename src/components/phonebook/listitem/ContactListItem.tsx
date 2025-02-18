@@ -20,10 +20,11 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
 const {contacts} = useContacts()
   const { _id, name, number} = contact;
   const [deleted, setDeleted] = useState<boolean>(false)
-  const [selectedContact, setSelectedContact] = useState<Contact >(contact);
+  const [selectedContactId, setSelectedContactId] = useState<string | null>(null);
+  const [open, setOpen] = useState<{ [key: string]: boolean }>({});
   const lang = useLanguage()
   const {  modalIsOpen } = useAll()
-
+console.log('open',open);
 
   const handleDelete = () => {
 
@@ -41,15 +42,21 @@ const {contacts} = useContacts()
   });
   };
 
-  const handleEdit = () => {
-    setSelectedContact(contact); // Set clicked contact
+  const handleEdit = (id: string) => {
+    // console.log(e.currentTarget.id);
+    // setSelectedContactId(id); // Store only the clicked contact's ID
+    setOpen((prev) => ({
+      ...prev,
+      [id]: !prev[id], // Toggle the specific project
+    }));
     dispatch(toggleModal());
   };
+  const selectedContact = contacts.find((c) => c._id === selectedContactId);
 
   const handleEdit2 = (id: string) => {
     const foundContact = contacts.find((c) => c._id === id);
     if (foundContact) {
-      setSelectedContact(foundContact); // Now we pass the correct contact
+      // setSelectedContact(foundContact); // Now we pass the correct contact
       dispatch(toggleModal());
     }
   };
@@ -62,7 +69,11 @@ const {contacts} = useContacts()
             {contact.name}: {contact.number}
           </ItemCard>
         <BtnWrapper className="button-wrapper">
-         <BtnEdit type="button" onClick={handleEdit}>
+         <BtnEdit 
+         type="button"
+         id ={contact._id}
+         onClick={(e)=>handleEdit(_id)}
+         >
           { lang.edit}
           </BtnEdit>
 
@@ -83,40 +94,3 @@ const {contacts} = useContacts()
 }
 export default ContactListItem
 
-// const contactToUpdate  = contactsList.find(contact => contact.id === updatedContact.id)
-// const allExeptUpdated = contactsList.filter(contact => contact.id !== contactToUpdate.id)
-
-// const returnDefault =() =>{
-//   setNick(contactToUpdate.name)
-//   setPhone(contactToUpdate.number)
-// }  
-
-// if(updatedContact.name === '' || updatedContact.number === ''){
-//   Notiflix.Notify.failure('No Empty Strings, dude!');
-//   returnDefault()
-//   return;
-
-
-// if (allExeptUpdated.find((contact) => contact.name.toLowerCase() === updatedContact.name.toLowerCase())){
-//   Notiflix.Notify.failure(`${updatedContact.name} is already in contacts.`);
-//   returnDefault()
-//   return ;
-// }
-
-// else if (allExeptUpdated.find((contact) => contact.number === updatedContact.number)) {
-//   Notiflix.Notify.failure(`${updatedContact.number} is already in contacts.`);
-//   returnDefault() 
-//   return ;
-// }
-
-
-// confirmUpdate(`Are you sure you want to update ${name}?`, name)
-//   .then(() => {
-//     dispatch(editContact(updatedContact));
-//   })
-//   .catch(() => {
-//     // Handle cancellation or rejection
-//   });
-
-//     }
-//   };
