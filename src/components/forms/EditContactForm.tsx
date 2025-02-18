@@ -41,13 +41,21 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
       } = formState
   const onSubmit = async (data: addContactSchemaType) => {
 
-    dispatch(editContact({
+   dispatch(editContact({
       _id,
       name: data.name,
       number: data.number,
       userId
     }))
-    dispatch(onModalClose())
+    .then((res) => {
+      if(res.type === 'contacts/editContact/rejected'){
+        setError('number', { type: 'manual', message: res.payload as string }  )
+      }
+      if(res.type === 'contacts/editContact/fulfilled'){
+        reset()
+        dispatch(onModalClose())
+      }
+    })
   }
 
   return (
