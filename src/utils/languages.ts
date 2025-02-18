@@ -1,3 +1,5 @@
+import { updateField } from "../redux/formSlice"
+
 export const langEN = {
   appTitle: 'React-phonebook',
   appUnderTitle: `web application that allows users to store and manage their contacts,
@@ -35,9 +37,21 @@ export const langEN = {
   profile: "Profile",
   out: "LogOut",
   slides: "Slides",
-
+  updateInfo: "Update contact information",
   sorry: "Sorry dude, we couldn't find this page",
   
+  contacts:{
+    existingNumberError: 'A contact with this number already exists.',
+    notFoundError: 'Contact not found.',
+    incorrectFormat: 'Correct nuber format: 0985551204',
+
+    addSuccess: 'Contact added successfully',
+    upddateSuccess: 'Contact updated successfully',
+    delSuccess: 'Contact deleted successfully',
+
+
+
+  }
   
 }
 
@@ -79,6 +93,42 @@ export const langUA = {
   profile: "Профіль",
   out: "Вийти",
   slides: "Слайди",
+  updateInfo: "Оновіть контактну інформацію",
   sorry: "Вибач чувак, ми не змогли знайти цю сторінку",
 
+  contacts:{
+    existingNumberError: 'Контакт із цим номером уже існує.',
+    notFoundError: 'Контакт не знайдено.',
+    incorrectFormat: 'Правильний формат номера: 0985551204',
+
+    addSuccess: 'Контакт успішно додано',
+    upddateSuccess: 'Контакт успішно оновлено',
+    delSuccess: 'Контакт успішно видалено',
+
+
+
+  }
+
 }
+
+
+export type LangType = {
+  forbiddenPrefix: string;
+  minLength: string;
+  maxLength: string;
+  correctFormat: string;
+};
+
+export const zodLangEn: LangType = {
+  forbiddenPrefix: "Forbidden prefix",
+  minLength: "Name must be at least 3 characters",
+  maxLength: "Name must be at most 16 characters",
+  correctFormat: "Correct format: 0985551204",
+};
+
+export const zodLangUa: LangType = {
+  forbiddenPrefix: "Заборонений префікс",
+  minLength: "Ім'я має містити щонайменше 3 символи",
+  maxLength: "Ім'я має містити не більше 16 символів",
+  correctFormat: "Правильний формат: 0985551204",
+};

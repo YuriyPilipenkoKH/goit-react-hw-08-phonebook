@@ -1,3 +1,4 @@
+//redux/langSlice.ts
 import { createSlice } from "@reduxjs/toolkit";
 import { languageTypes } from "../types";
 

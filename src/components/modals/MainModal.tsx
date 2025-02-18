@@ -57,7 +57,7 @@ const MainModal: React.FC<MainModalProps> = ({contact}) => {
           <ModalContainer >
             <ModalTitle>{lang.appTitle } </ModalTitle>
             <ModalText>
-                {/* {lang.find}  */}{contact?._id}
+              {lang.updateInfo}
             </ModalText>
 
         <EditContactForm 
