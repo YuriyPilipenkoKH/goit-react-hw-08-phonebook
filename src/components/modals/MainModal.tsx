@@ -57,8 +57,7 @@ const MainModal: React.FC<MainModalProps> = ({contact}) => {
 
   if (!modalRoot) return null;
     return createPortal(
-      <div className="modal">
-       
+           
         <ModalOverlay 
           className={`modal ${
           modalIsOpen
@@ -68,15 +67,14 @@ const MainModal: React.FC<MainModalProps> = ({contact}) => {
           <ModalContainer >
             <ModalTitle>{lang.appTitle } </ModalTitle>
             <ModalText>
-                {lang.find} 
+                {/* {lang.find}  */}{contact?._id}
             </ModalText>
             <EditContactForm 
               contact={ contact || fakeContact}
             />
           </ModalContainer>
         </ModalOverlay>
-
-      </div>,
+     ,
       modalRoot
     )
 
