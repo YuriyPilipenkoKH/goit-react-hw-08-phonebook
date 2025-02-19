@@ -141,6 +141,11 @@ export const ContactContainer = styled.div`
     }
     @media (min-width: 1024px) {
       max-height: 500px;
+
+  }
+    @media (min-width: 1280px) {
+      max-height: 500px;
+      width: 100%;
   }
 `;
 
