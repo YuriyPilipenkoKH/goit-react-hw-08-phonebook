@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth } from '../../hooks/useAuth';
 import { SignUpSchemaType, useSignUpSchema } from '../../hooks/useSignUpSchema';
 import { Notify } from 'notiflix';
+import capitalize from '../../utils/capitalize';
 
 const SignupForm = () => {
   const {successMessage, authError, } = useAuth()
@@ -62,7 +63,7 @@ console.log('authError',authError);
       }
       if (res.payload && typeof res.payload === 'object' && 'success' in res.payload) {
         const newusername = (res.payload as AuthResponse).user.name || 'Dude';
-        Notify.success(`${lang.regSuccess}, ${newusername}`)
+        Notify.success(`${lang.regSuccess}, ${capitalize(newusername)}`)
       }
     })
   };
