@@ -62,6 +62,19 @@ export interface pagination {
       const {name, number} = contact
       try {
         const response = await axios.post("/contacts/new", {name, number});
+
+        if (response.data) {
+          Notify.success(response.data.message);
+          // Get current page & limit from state
+          const { currentPage, totalPages } = (thunkAPI.getState() as RootState).contacts;
+          const page = currentPage > totalPages ? totalPages : currentPage; // Stay within bounds
+          const limit = 5; // Adjust limit as needed
+  
+          // Re-fetch contacts after adding
+          thunkAPI.dispatch(fetchContacts({ page, limit }));
+        }
+
+
         return response.data;
 
       } catch (error: unknown) {
