@@ -39,9 +39,8 @@ export const ModalOverlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: #00000029;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
   z-index: 7;
   opacity: 0;
   visibility: hidden;
@@ -58,7 +57,7 @@ export const ModalOverlay = styled.div`
 
 export const ModalContainer = styled.div`
 
-  width: 280px;
+  width: 360px;
   position: relative;
   display: grid;
   place-items: center;

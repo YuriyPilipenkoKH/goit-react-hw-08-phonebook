@@ -5,6 +5,10 @@ import { useLanguage } from '../../hooks/useLanguage';
 import { useAuth } from '../../hooks/useAuth';
 import { logOut } from '../../redux/auth/operations';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { MobileWrap } from '../appbar/AppBar.styled';
+import { Link } from 'react-router-dom';
+import { VscHome } from "react-icons/vsc";
+import { GiSmartphone } from "react-icons/gi";
 
 const Navigation = () => {
   const dispatch = useAppDispatch();
@@ -13,20 +17,30 @@ const Navigation = () => {
   
 
   return (
+    <>
     <StyledWrap >
       <StyledLink  to="/">
       {lang.homeBtn}
       </StyledLink>
-        {/* <button type='button' 
-        onClick={()=>dispatch(logOut())}>
-          {lang.out}
-          </button> */}
       {isLoggedIn && (
         <StyledLink to="/phonebook">
          {lang.contactsBtn}
         </StyledLink>
       )}
     </StyledWrap>
+
+    <MobileWrap>
+    <Link  to="/">
+        <VscHome />
+      </Link>
+
+      {isLoggedIn && (
+        <Link to="/phonebook">
+         <GiSmartphone />
+        </Link>
+      )}
+    </MobileWrap>
+    </>
   );
 };
 

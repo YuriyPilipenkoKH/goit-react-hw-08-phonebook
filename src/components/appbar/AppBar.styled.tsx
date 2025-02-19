@@ -6,7 +6,7 @@ export const StyledHeader = styled.header`
     align-items: center;
    justify-content: space-between;
    gap: 20px;
-	 
+
 `
 
 export const ThemeBtn = styled.button`
@@ -82,9 +82,9 @@ export const Wrap = styled.div`
 		display: none;
 			}
 `
-export const MenuWrap = styled.div`
+export const MobileWrap = styled.div`
   display: flex;
-	gap: 8px;
+	gap: 32px;
 		@media screen and (min-width: 768px) {
 		display: none;
 			}

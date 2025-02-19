@@ -1,6 +1,6 @@
 import {MdOutlineNightlight} from 'react-icons/md';
 import {MdOutlineLightMode} from 'react-icons/md';
-import { LangBtn, MenuWrap, StyledHeader, ThemeBtn, Wrap } from './AppBar.styled';
+import { LangBtn,  MobileWrap, StyledHeader, ThemeBtn, Wrap } from './AppBar.styled';
 import Navigation from '../navigation/Navigation';
 import {  useSelector } from 'react-redux';
 import { getLang, getTheme } from '../../redux/selectors/selectors';
@@ -39,6 +39,9 @@ const AppBar = () => {
   return (
     <StyledHeader >
       <Navigation />
+      <MobileWrap>
+        
+      </MobileWrap>
 
       <Wrap >
         <LangBtn
@@ -57,9 +60,9 @@ const AppBar = () => {
         
         {token ? <UserMenu /> : <AuthNav />}
       </Wrap>
-      <MenuWrap>
+      <MobileWrap>
           <MobileMenu />
-      </MenuWrap>
+      </MobileWrap>
     </StyledHeader>
   );
 };
