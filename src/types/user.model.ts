@@ -10,24 +10,24 @@ export const userSchema = (lang: LangType) => z.object({
   .min(3)
   .max(16)
   .refine((val) => !val.toLowerCase().startsWith('qwe'), {
-    message: 'forbidden prefix',
+    message: lang.forbiddenPrefix,
   }),
   email: z
   .string()
   .trim()
   .email('invalid email')
   .refine((val) => !val.toLowerCase().startsWith('admin'), {
-    message: 'admin is not allowed',
+    message: lang.notAllowed,
   })
   .refine((val) => !val.endsWith('.ru'), {
-    message: 'forbidden domain',
+    message: lang.forbiddenDomain,
   }),
   password: z
   .string()
   .trim()
   .min(4, )
   .regex(/^(?=.*[A-Za-z])(?=.*\d).+$/, {
-    message: 'include numbers ',
+    message: lang.includeNum,
   }),
   image: z
   .string(),

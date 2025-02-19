@@ -1,21 +1,29 @@
 export type LangType = {
-  forbiddenPrefix: string;
-  minLength: string;
-  maxLength: string;
-  maxLengthNum: string;
+  forbiddenPrefix: string
+  forbiddenDomain: string
+  notAllowed: string
+  includeNum: string
+  
+  minLength: string
+  maxLength: string
+  maxLengthNum: string
  
-  existingNumberError: string;
-  notFoundError: string;
-  incorrectFormat: string;
+  existingNumberError: string
+  notFoundError: string
+  incorrectFormat: string
 
-  addSuccess: string;
-  upddateSuccess: string;
-  delSuccess: string;
+  addSuccess: string
+  upddateSuccess: string
+  delSuccess: string
 };
 
 
 export const zodLangEn: LangType = {
   forbiddenPrefix: "Forbidden prefix",
+  forbiddenDomain: 'Forbidden domain',
+  notAllowed: 'Admin is not allowed name',
+  includeNum: 'include numbers',
+
   minLength: "Name must be at least 3 characters",
   maxLength: "Name must be at most 16 characters",
   maxLengthNum: "Number must be at most 10 digits",
@@ -31,6 +39,10 @@ export const zodLangEn: LangType = {
 
 export const zodLangUa: LangType = {
   forbiddenPrefix: "Заборонений префікс",
+  forbiddenDomain: 'Заборонений домен',
+  notAllowed: 'Admin не дозволене ім’я',
+  includeNum: 'додайте кілька цифр',
+
   minLength: "Ім'я має містити щонайменше 3 символи",
   maxLength: "Ім'я має містити не більше 16 символів",
   maxLengthNum: "Номер має містити не більше 10 символів",
