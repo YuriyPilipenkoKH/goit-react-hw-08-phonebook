@@ -58,6 +58,7 @@ const LoginForm = () => {
   const onSubmit = (data: LoginSchemaType) => {
     dispatch(logIn(data))
     .then((res) => {
+      console.log(res);
       if(res.type === 'auth/login/rejected'){
         const errorCode = res.payload as string; 
         const translatedMsg = lang[errorCode] || errorCode;

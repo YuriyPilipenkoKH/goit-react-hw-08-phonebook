@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FormLink, FormWrapper, Input, Label, LogoWrapp, MainTitle, RouteWrapp, ShowBtn, StyledForm } from './Form.styled';
 import { SiLazarus } from 'react-icons/si';
 import { Button } from '../button/Button';
-import { register  } from '../../redux/auth/operations';
+import { AuthResponse, register  } from '../../redux/auth/operations';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import {  useNavigate } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth } from '../../hooks/useAuth';
 import { SignUpSchemaType, useSignUpSchema } from '../../hooks/useSignUpSchema';
+import { Notify } from 'notiflix';
 
 const SignupForm = () => {
   const {successMessage, authError, } = useAuth()
@@ -58,6 +59,10 @@ console.log('authError',authError);
       if(res.type === 'auth/register/fulfilled'){
         reset()
         navigate('/login')
+      }
+      if (res.payload && typeof res.payload === 'object' && 'success' in res.payload) {
+        const newusername = (res.payload as AuthResponse).user.name || 'Dude';
+        Notify.success(`${lang.regSuccess}, ${newusername}`)
       }
     })
   };

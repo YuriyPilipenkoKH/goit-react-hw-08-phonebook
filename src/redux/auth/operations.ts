@@ -23,6 +23,7 @@ export interface AuthResponse {
   user: User; 
   token: string;
   message:string
+  success: boolean
 }
 interface Credentials {
   name?:string
@@ -42,7 +43,7 @@ export const register = createAsyncThunk<
      
         // setAuthHeader(res.data.token);
 
-        Notify.success(res.data.message)
+        // Notify.success(res.data.message)//moved to form
         return res.data
       } catch (error) {
         if(error instanceof AxiosError){
@@ -51,6 +52,7 @@ export const register = createAsyncThunk<
           return thunkAPI.rejectWithValue(error.response?.data.errorCode);
         }
         Notify.warning('Something went wrong. ');
+        return thunkAPI.rejectWithValue({ errorCode: 'unknown_error' });
       }
     }
   );

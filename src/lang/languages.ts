@@ -46,6 +46,8 @@ export const langEN = {
 
   emailInUse: 'Email already in use',
   credentialsError: 'Invalid credentials',
+
+  regSuccess: 'Successful registration',
   
 }
 
@@ -98,6 +100,8 @@ export const langUA = {
 
   emailInUse: 'імейл вже використовується',
   credentialsError: 'Недійсні облікові дані',
+
+  regSuccess: 'Успішна реєстрація',
 }
 
 
