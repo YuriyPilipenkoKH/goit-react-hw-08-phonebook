@@ -6,7 +6,7 @@ import { langEN, langUA } from "../utils/languages";
 
 
 export const useLanguage = () => {
-    const [lang, setLang] = useState(langUA)
+    const [lang, setLang] = useState(langEN)
     const language = useSelector(getLang)
 
     useEffect(() => {

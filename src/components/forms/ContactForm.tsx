@@ -8,23 +8,28 @@ import { useSelector } from 'react-redux';
 import { getLang } from '../../redux/selectors/selectors';
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { addContactSchema, addContactSchemaType, } from '../../types/AddComtact.model';
+import {  } from '../../types/AddComtact.model';
 import Lottie from 'lottie-react';
 
 import animationData  from '../../assets/Animation - 1739633703538.json'
+import { AddContactSchemaType, useAddContactSchema } from '../zod/AddContactSchema';
+
+
 
 const ContactForm = () => {
   const [newAdded, setNewAdded] = useState(false)
   const lang = useLanguage()
   const language = useSelector(getLang)
   const dispatch = useAppDispatch()
+  const {addContactSchema} = useAddContactSchema()
+
   const {
     register, 
     handleSubmit,
     formState,
     reset,
     setError,
-  } = useForm<addContactSchemaType >({
+  } = useForm<AddContactSchemaType >({
     defaultValues: {  
       name: '',
       number: '',
@@ -39,7 +44,7 @@ const ContactForm = () => {
       isLoading 
     } = formState
 
-  const onSubmit = async (data: addContactSchemaType) => {
+  const onSubmit = async (data: AddContactSchemaType) => {
    dispatch(addContact(data))
    .then((res) => {
     if(res.type === 'contacts/addContact/rejected'){
