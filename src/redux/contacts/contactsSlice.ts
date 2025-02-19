@@ -32,7 +32,7 @@ const contactsSlice = createSlice({
         state.error = null;
       })
   .addCase(fetchContacts.fulfilled, (state, { payload }) => {
-        console.log('payload',payload);
+
         state.isLoading = false;
         state.contactsList = payload.list;
         state.totalPages = payload.pagination.totalPages

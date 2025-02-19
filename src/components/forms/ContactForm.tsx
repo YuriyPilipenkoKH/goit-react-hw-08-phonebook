@@ -18,7 +18,7 @@ const ContactForm = () => {
   const dispatch = useAppDispatch()
   const {addContactSchema} = useAddContactSchema()
   const {theme, language} = useAll()
-console.log(theme);
+
   const {
     register, 
     handleSubmit,
@@ -43,7 +43,6 @@ console.log(theme);
   const onSubmit = async (data: AddContactSchemaType) => {
    dispatch(addContact(data))
    .then((res) => {
-    console.log(res);
     if(res.type === 'contacts/addContact/rejected'){
       const errorCode = res.payload as string; // Ensure it's a string
       const translatedMsg = lang[errorCode] || errorCode;

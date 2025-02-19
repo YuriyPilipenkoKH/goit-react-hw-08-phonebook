@@ -28,19 +28,16 @@ interface PB_data{
   name: string
   number: string
 }
-
 export interface pagination {
   page: number
   limit: number
 }
-
 
  export const fetchContacts  = 
   createAsyncThunk< PB_Response, pagination, { state: RootState}>(
     "contacts/fetchAll",
   
     async ({page = 1, limit = 5}, thunkAPI) => {
-
       try {
         const response = await axios.get(`/contacts/grab?page=${page}&limit=${limit}`); //?page=${page}&limit=${limit}
         if(!response.data){
