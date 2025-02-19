@@ -7,6 +7,10 @@ export const selectIsLoading = (state: RootState) => state.contacts.isLoading;
 
 export const selectError = (state: RootState) => state.contacts.error; 
 
+export const selectTotalPages = (state: RootState) => state.contacts.totalPages;
+
+export const selectCurrentPage = (state: RootState) => state.contacts.currentPage; 
+
 
 // export const getContactsFilter = (state: RootState) => state.filter
 
