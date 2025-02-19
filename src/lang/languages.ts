@@ -55,9 +55,9 @@ export const langEN = {
   welcome: 'Welcome back',
   bye: 'Goodbye',
 
-  addSuccess: 'Contact added successfully',
-  updSuccess: 'Contact updated successfully',
-  deSuccess: 'Contact deleted successfully',
+  addSuccess: ' added successfully',
+  updSuccess: ' updated successfully',
+  deSuccess: ' deleted successfully',
 
   noContacts: 'No contacts have been added recently',
   
@@ -120,10 +120,9 @@ export const langUA = {
   welcome: 'Ласкаво просимо',
   bye: 'До побачення',
 
-  addSuccess: 'Контакт успішно додано',
-  updSuccess: 'Контакт успішно оновлено',
-  deSuccess: 'Контакт успішно видалено',
-
+  addSuccess: ' успішно додано',
+  updSuccess: ' успішно оновлено',
+  deSuccess: ' успішно видалено',
 
   noContacts: 'Останнім часом не було додано жодного контакту',
 }

@@ -18,7 +18,7 @@ interface PB_Response {
     page: number
   }
 }
-interface PB_update_Response {
+export interface PB_update_Response {
   contact: Contact
   message: string
   existingNameError?: boolean
@@ -128,8 +128,8 @@ export interface pagination {
         name,
         number,
       });
-      if(response.data) Notify.success(response.data.message)
-        
+      // if(response.data) Notify.success(response.data.message)
+
         return response.data;
 
       } catch (error: unknown) {

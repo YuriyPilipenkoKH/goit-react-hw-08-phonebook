@@ -3,13 +3,14 @@ import { ContactFormBtn, Form, Input, Label } from './Form.styled';
 import IconRedux from '../../img/icons/iconRedux';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { addContact } from '../../redux/contacts/operations';
+import { addContact, PB_update_Response } from '../../redux/contacts/operations';
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Lottie from 'lottie-react';
 import animationData  from '../../assets/Animation - 1739633703538.json'
 import { AddContactSchemaType, useAddContactSchema } from '../../hooks/useAddContactSchema';
 import { useAll } from '../../hooks/useAll';
+import { Notify } from 'notiflix';
 
 
 const ContactForm = () => {
@@ -43,15 +44,24 @@ const ContactForm = () => {
   const onSubmit = async (data: AddContactSchemaType) => {
    dispatch(addContact(data))
    .then((res) => {
+    console.log(res);
     if(res.type === 'contacts/addContact/rejected'){
-      const errorCode = res.payload as string; // Ensure it's a string
+      const errorCode = res.payload as string; 
       const translatedMsg = lang[errorCode] || errorCode;
       // const translatedMsg = (lang as Record<string, string>)[errorCode] || errorCode;
-
       // setError('number', { type: 'manual', message: res.payload as string }  )
       setError('number', { type: 'manual', message: translatedMsg  }  )
     }
     if(res.type === 'contacts/addContact/fulfilled'){
+      const newContactName = (res.payload as PB_update_Response).contact.name 
+      Notify.success(`${newContactName} ${lang.addSuccess}`)
+      reset()
+      setNewAdded(true)
+      setTimeout(() => setNewAdded(false), 2000)
+    }
+    if(res.type === 'contacts/editContact/fulfilled'){
+      const newContactName = (res.payload as PB_update_Response).contact.name 
+      Notify.success(`${newContactName} ${lang.updSuccess}`)
       reset()
       setNewAdded(true)
       setTimeout(() => setNewAdded(false), 2000)
