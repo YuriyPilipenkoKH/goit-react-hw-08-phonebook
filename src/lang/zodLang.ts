@@ -3,8 +3,11 @@ export type LangType = {
   forbiddenDomain: string
   notAllowed: string
   includeNum: string
+  invalidEmail: string
+
   
   minLength: string
+  minLengthPass: string
   maxLength: string
   maxLengthNum: string
  
@@ -23,8 +26,10 @@ export const zodLangEn: LangType = {
   forbiddenDomain: 'Forbidden domain',
   notAllowed: 'Admin is not allowed name',
   includeNum: 'include numbers',
+  invalidEmail: 'invalid email',
 
   minLength: "Name must be at least 3 characters",
+  minLengthPass: 'Password must be at least 4 characters',
   maxLength: "Name must be at most 16 characters",
   maxLengthNum: "Number must be at most 10 digits",
 
@@ -42,8 +47,10 @@ export const zodLangUa: LangType = {
   forbiddenDomain: 'Заборонений домен',
   notAllowed: 'Admin не дозволене ім’я',
   includeNum: 'додайте кілька цифр',
+  invalidEmail: 'невалідний імейл',
 
-  minLength: "Ім'я має містити щонайменше 3 символи",
+  minLength: "Ім'я має бути не менше 3 символів",
+  minLengthPass: 'Пароль має бути не менше 4 символів',
   maxLength: "Ім'я має містити не більше 16 символів",
   maxLengthNum: "Номер має містити не більше 10 символів",
 

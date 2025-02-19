@@ -7,15 +7,15 @@ export const userSchema = (lang: LangType) => z.object({
   name: z
   .string()
   .trim()
-  .min(3)
-  .max(16)
+  .min(3,  lang.minLength)
+  .max(16, lang.maxLength)
   .refine((val) => !val.toLowerCase().startsWith('qwe'), {
     message: lang.forbiddenPrefix,
   }),
   email: z
   .string()
   .trim()
-  .email('invalid email')
+  .email(lang.invalidEmail)
   .refine((val) => !val.toLowerCase().startsWith('admin'), {
     message: lang.notAllowed,
   })
@@ -25,7 +25,7 @@ export const userSchema = (lang: LangType) => z.object({
   password: z
   .string()
   .trim()
-  .min(4, )
+  .min(4, lang.minLengthPass)
   .regex(/^(?=.*[A-Za-z])(?=.*\d).+$/, {
     message: lang.includeNum,
   }),
