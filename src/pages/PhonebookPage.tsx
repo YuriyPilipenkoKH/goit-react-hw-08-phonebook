@@ -14,10 +14,10 @@ import ContactForm from '../components/forms/ContactForm'
 const PhonebookPage = () => {
   const lang = useLanguage()
   const language = useSelector(getLang)
-  const{contacts, } = useContacts()
-const dispatch = useAppDispatch();
+  const{contacts, currentPage} = useContacts()
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchContacts())
+    dispatch(fetchContacts({ page: currentPage, limit: 5 }))
   }, [dispatch])
   
   return (

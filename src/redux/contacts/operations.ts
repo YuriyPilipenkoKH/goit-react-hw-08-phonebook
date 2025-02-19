@@ -33,7 +33,7 @@ export interface pagination {
   
     async ({page = 1, limit = 5}, thunkAPI) => {
       try {
-        const response = await axios.get(`/contacts/grab?page=${page}&limit=${limit}`);
+        const response = await axios.get(`/contacts/grab?page=${page}&limit=${limit}`); //?page=${page}&limit=${limit}
         if(!response.data){
           return thunkAPI.rejectWithValue('Unable to fetch contacts');
         }
