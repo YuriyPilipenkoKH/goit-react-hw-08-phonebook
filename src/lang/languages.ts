@@ -39,6 +39,10 @@ export const langEN = {
   updateInfo: "Update contact information",
   namePlaceholder: "enter name",
   sorry: "Sorry dude, we couldn't find this page",
+  prev: 'Previous',
+  next : 'Next',
+  page: 'Page',
+  of: 'of',
   
   existingNumberError: 'A contact with this number already exists.',
   notFoundError: 'Contact not found.',
@@ -93,8 +97,11 @@ export const langUA = {
   slides: "Слайди",
   updateInfo: "Оновіть контактну інформацію",
   namePlaceholder: "введіть ім'я",
-
   sorry: "Вибач чувак, ми не змогли знайти цю сторінку",
+  prev: 'Попередня',
+  next : 'Наступна',
+  page: 'Сторінка',
+  of: 'з',
 
   existingNumberError: 'Контакт із цим номером уже існує.',
   notFoundError: 'Контакт не знайдено.',

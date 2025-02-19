@@ -5,12 +5,14 @@ import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { PaginationWrap, PagSpan } from "../../pages/Pages.styled";
 import { BtnEdit } from "../phonebook/contactslist/ContactList.styled";
 import {  Wrap } from "../appbar/AppBar.styled";
+import { useLanguage } from "../../hooks/useLanguage";
 
 
 
 
 const PaginationControls:React.FC = () => {
   const dispatch = useAppDispatch();
+    const lang = useLanguage()
   const {currentPage, totalPages, } = useContacts()
 
   const handlePageChange = (newPage: number) => {
@@ -26,10 +28,10 @@ const PaginationControls:React.FC = () => {
         disabled={currentPage === 1}
         className="px-4 py-2 border rounded-[8px] disabled:opacity-50 bg-base-300"
       >
-        Previous
+        {lang.prev}
       </BtnEdit>
 
-      <PagSpan ><Wrap>Page</Wrap> {currentPage} of {totalPages}</PagSpan>
+      <PagSpan ><Wrap>{lang.page}</Wrap> {currentPage} {lang.of} {totalPages}</PagSpan>
 
       <BtnEdit
       type="button"
@@ -37,7 +39,7 @@ const PaginationControls:React.FC = () => {
         disabled={currentPage === totalPages}
         className="px-4 py-2 border rounded-[8px] disabled:opacity-50 bg-base-300"
       >
-        Next
+        {lang.next}
       </BtnEdit>
     </PaginationWrap>
   );
