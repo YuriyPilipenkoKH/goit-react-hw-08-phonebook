@@ -60,8 +60,8 @@ const LoginForm = () => {
   const onSubmit = (data: LoginSchemaType) => {
     dispatch(logIn(data))
     .then((res) => {
-      if(res.type === 'auth/login/rejected'){
-        const errorCode = res.payload as string; 
+      if(res.type === 'auth/login/rejected' ){
+        const errorCode = res.payload as string
         const translatedMsg = lang[errorCode] || errorCode;
         // setError('password', { type: 'manual',message: res.payload as string });
         setError('password', { type: 'manual', message: translatedMsg  }  )

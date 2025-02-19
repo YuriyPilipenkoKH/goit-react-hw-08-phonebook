@@ -21,7 +21,7 @@ export interface AuthResponse {
   token: string;
   message:string
   success: boolean
-}
+ }
 interface Credentials {
   name?:string
   email: string

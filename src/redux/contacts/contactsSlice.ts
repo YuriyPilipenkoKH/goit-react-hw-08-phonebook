@@ -7,20 +7,23 @@ export interface ContactsState {
   isLoading: boolean,
   error: string | null;
   message: string | null;
+  totalPages: number,
+  currentPage: number,
 }
 
 const initialState:ContactsState = { 
   contactsList: [],
   isLoading: false,
   error: null,
-  message: null
+  message: null,
+  totalPages: 1,
+  currentPage: 1,
 };
 
 const contactsSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},
-
   extraReducers: builder => {
     builder
 
