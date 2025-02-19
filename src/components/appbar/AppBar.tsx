@@ -11,26 +11,22 @@ import { languageTypes, themeTypes } from '../../types';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import UserMenu from '../usermenu/UserMenu';
 import AuthNav from '../authnav/AuthNav';
-import MobileMenu from '../forms/mobilemenu/MobileMenu';
+
+import ThemeChanger from '../button/ThemeChanger';
 
 const AppBar = () => {
 
   const {  token } = useAuth();
   const dispatch = useAppDispatch()
-  const theme = useSelector(getTheme)
+
   const language = useSelector(getLang)
 
-  const themeInvertor =(theme:themeTypes) => {
-   return  theme === 'light' ?  'dark'  :  'light'
-  }
+
   const languageInvertor =(language:languageTypes) => {
    return  language === 'english' ?  'ukrainian'  :  'english'
   }
 
-  const themeMaker =() => {
-    localStorage.setItem('theme', themeInvertor(theme))
-    dispatch(toggleTheme())
-  }
+
   const languageMaker =() => {
     localStorage.setItem('language', languageInvertor(language))
     dispatch(toggleLang())
@@ -46,14 +42,8 @@ const AppBar = () => {
         type="button">
         {(localStorage.getItem('language' ) || language) === 'english' ?  'EN' :  'UA'}
         </LangBtn>
-        <ThemeBtn
-        onClick={themeMaker}
-        type="button" >
-          {(localStorage.getItem('theme') || theme) === 'light'
-          ? <MdOutlineLightMode size={30}/>
-          : <MdOutlineNightlight size={30}/>
-          }
-        </ThemeBtn>
+
+        <ThemeChanger/>
         
       </Wrap>
         {token ? <UserMenu /> : <AuthNav />}

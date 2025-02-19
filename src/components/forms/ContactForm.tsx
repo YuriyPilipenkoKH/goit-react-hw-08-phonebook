@@ -4,11 +4,8 @@ import IconRedux from '../../img/icons/iconRedux';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { addContact } from '../../redux/contacts/operations';
-import { useSelector } from 'react-redux';
-import { getLang } from '../../redux/selectors/selectors';
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {  } from '../../types/AddComtact.model';
 import Lottie from 'lottie-react';
 import animationData  from '../../assets/Animation - 1739633703538.json'
 import { AddContactSchemaType, useAddContactSchema } from '../../hooks/useAddContactSchema';
@@ -21,7 +18,7 @@ const ContactForm = () => {
   const dispatch = useAppDispatch()
   const {addContactSchema} = useAddContactSchema()
   const {theme, language} = useAll()
-
+console.log(theme);
   const {
     register, 
     handleSubmit,
