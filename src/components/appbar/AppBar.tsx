@@ -48,9 +48,7 @@ const AppBar = () => {
 
       <ThemeBtn 
       onClick={themeMaker}
-      type="button"
-    
-      >
+      type="button" >
         {(localStorage.getItem('theme') || theme) === 'light'
         ? <MdOutlineLightMode size={30}/>
         : <MdOutlineNightlight size={30}/>
