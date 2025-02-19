@@ -46,38 +46,22 @@ const MainModal: React.FC<MainModalProps> = ({contact}) => {
 
     if (!modalRoot) return null;
     return createPortal(
-           <>
-
-         <ModalOverlay 
+   
+        <ModalOverlay 
           className={`modal ${
           modalIsOpen
             ? ['active', 'modal-backdrop'].join(' ')
             : 'modal-backdrop'
             }`}>
           <ModalContainer >
-            <ModalTitle>{lang.appTitle } </ModalTitle>
-            <ModalText>
-              {lang.updateInfo}
-            </ModalText>
+            <ModalTitle> {lang.appTitle } </ModalTitle>
+            <ModalText> {lang.updateInfo} </ModalText>
 
-        <EditContactForm 
-                    contact={ contact || fakeContact }
-            />
+            <EditContactForm 
+              contact={ contact || fakeContact } />
           </ModalContainer>
         </ModalOverlay>
-
-            {/* {!open && (
-              <BtnEdit 
-              type="button"
-              //  id ={contact._id}
-              onClick={showModal}
-              >
-                { lang.edit}
-                </BtnEdit>
-            )} */}
-
-           </>
-     ,
+      ,
       modalRoot
     )
 

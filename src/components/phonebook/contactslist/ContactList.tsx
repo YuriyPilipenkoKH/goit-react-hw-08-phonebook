@@ -14,15 +14,12 @@ interface ContactListProps{
 const ContactList:React.FC<ContactListProps> = () => {
   const {contacts} = useContacts()
     const {  modalIsOpen , selectedContact } = useAll()
-    console.log('modalIsOpen', modalIsOpen ,'selectedContact',selectedContact);
  
   return (
     <>
-      {/* <Count>{filteredContacts.length}</Count>  */}
       {contacts.length !== 0
       ?(
         <ContactContainer>
-          {/* <Count>{contacts.length}</Count> */}
           <List>
             {contacts.map((contact,idx) =>(
               <ContactListItem
@@ -38,7 +35,9 @@ const ContactList:React.FC<ContactListProps> = () => {
         <EmptySpan>No match to this query
           </EmptySpan>
       </ContactContainer>}
-{ modalIsOpen && selectedContact && <MainModal contact={selectedContact}/> }
+    { modalIsOpen && selectedContact && (
+    <MainModal contact={selectedContact}/>
+    ) }
     </>
   );
 };
