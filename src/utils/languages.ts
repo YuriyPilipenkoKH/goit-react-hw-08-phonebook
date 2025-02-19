@@ -38,20 +38,11 @@ export const langEN = {
   out: "LogOut",
   slides: "Slides",
   updateInfo: "Update contact information",
+  namePlaceholder: "enter name",
+
   sorry: "Sorry dude, we couldn't find this page",
   
-  contacts:{
-    existingNumberError: 'A contact with this number already exists.',
-    notFoundError: 'Contact not found.',
-    incorrectFormat: 'Correct nuber format: 0985551204',
 
-    addSuccess: 'Contact added successfully',
-    upddateSuccess: 'Contact updated successfully',
-    delSuccess: 'Contact deleted successfully',
-
-
-
-  }
   
 }
 
@@ -94,17 +85,9 @@ export const langUA = {
   out: "Вийти",
   slides: "Слайди",
   updateInfo: "Оновіть контактну інформацію",
+  namePlaceholder: "введіть ім'я",
+
   sorry: "Вибач чувак, ми не змогли знайти цю сторінку",
-
-  contacts:{
-    existingNumberError: 'Контакт із цим номером уже існує.',
-    notFoundError: 'Контакт не знайдено.',
-    incorrectFormat: 'Правильний формат номера: 0985551204',
-
-    addSuccess: 'Контакт успішно додано',
-    upddateSuccess: 'Контакт успішно оновлено',
-    delSuccess: 'Контакт успішно видалено',
-  }
 
 }
 
@@ -114,6 +97,14 @@ export type LangType = {
   minLength: string;
   maxLength: string;
   correctFormat: string;
+
+  existingNumberError: string;
+  notFoundError: string;
+  incorrectFormat: string;
+
+  addSuccess: string;
+  upddateSuccess: string;
+  delSuccess: string;
 };
 
 
@@ -122,6 +113,14 @@ export const zodLangEn: LangType = {
   minLength: "Name must be at least 3 characters",
   maxLength: "Name must be at most 16 characters",
   correctFormat: "Correct format: 0985551204",
+
+  existingNumberError: 'A contact with this number already exists.',
+  notFoundError: 'Contact not found.',
+  incorrectFormat: 'Correct nuber format: 0985551204',
+
+  addSuccess: 'Contact added successfully',
+  upddateSuccess: 'Contact updated successfully',
+  delSuccess: 'Contact deleted successfully',
 };
 
 export const zodLangUa: LangType = {
@@ -129,4 +128,12 @@ export const zodLangUa: LangType = {
   minLength: "Ім'я має містити щонайменше 3 символи",
   maxLength: "Ім'я має містити не більше 16 символів",
   correctFormat: "Правильний формат: 0985551204",
+
+  existingNumberError: 'Контакт із цим номером уже існує.',
+  notFoundError: 'Контакт не знайдено.',
+  incorrectFormat: 'Правильний формат номера: 0985551204',
+
+  addSuccess: 'Контакт успішно додано',
+  upddateSuccess: 'Контакт успішно оновлено',
+  delSuccess: 'Контакт успішно видалено',
 };

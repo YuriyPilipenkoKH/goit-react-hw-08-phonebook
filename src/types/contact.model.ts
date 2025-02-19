@@ -2,7 +2,7 @@ import z from 'zod'
 import { LangType } from '../utils/languages';
 
 
-export const contactSchema = (lang: LangType)=> z.object({
+export const contactSchema = (lang: LangType) => z.object({
    _id: z
   .string(),
    userId: z

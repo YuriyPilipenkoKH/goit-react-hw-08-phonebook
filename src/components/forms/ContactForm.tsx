@@ -12,7 +12,7 @@ import {  } from '../../types/AddComtact.model';
 import Lottie from 'lottie-react';
 
 import animationData  from '../../assets/Animation - 1739633703538.json'
-import { AddContactSchemaType, useAddContactSchema } from '../zod/AddContactSchema';
+import { AddContactSchemaType, useAddContactSchema } from '../../hooks/useAddContactSchema';
 
 
 
@@ -67,7 +67,7 @@ const ContactForm = () => {
       {lang.name}:
         <Input
         {...register('name',)}
-          placeholder=	{( isSubmitting )? "Processing" : 'name'}
+          placeholder=	{( isSubmitting )? "Processing" : lang.namePlaceholder}
         />
       </Label>
       {errors.name && <div className='text-purple-900'>{errors.name?.message}</div>}
@@ -75,7 +75,7 @@ const ContactForm = () => {
       {lang.number}:
         <Input
         {...register('number',)}
-        placeholder=	{( isSubmitting )? "Processing" : 'number'}
+        placeholder=	{( isSubmitting )? "Processing" : '0980001204'}
         />
       </Label>
       {errors.number && <div className='text-purple-900'>{errors.number?.message}</div>}

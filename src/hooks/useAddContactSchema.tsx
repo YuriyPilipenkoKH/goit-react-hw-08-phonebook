@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { contactSchema } from '../../types/contact.model';
-import { zodLangEn, zodLangUa } from '../../utils/languages';
+import { contactSchema } from '../types/contact.model';
+import { zodLangEn, zodLangUa } from '../utils/languages';
 import { useSelector } from 'react-redux';
-import { getLang } from '../../redux/selectors/selectors';
+import { getLang } from '../redux/selectors/selectors';
 import { z } from 'zod';
 
 export const useAddContactSchema = () => {
-  const [lang, setLang] = useState(zodLangEn); // Default to English
+  const [lang, setLang] = useState(zodLangEn); 
   const language = useSelector(getLang);
 
   useEffect(() => {
@@ -19,7 +19,6 @@ export const useAddContactSchema = () => {
     number: true,
   });
 
-  // Return the schema
   return { addContactSchema };
 };
 
