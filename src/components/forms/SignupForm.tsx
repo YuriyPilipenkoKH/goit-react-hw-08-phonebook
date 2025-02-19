@@ -8,19 +8,18 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import {  useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAuth } from '../../hooks/useAuth';
 import { SignUpSchemaType, useSignUpSchema } from '../../hooks/useSignUpSchema';
 import { Notify } from 'notiflix';
 import capitalize from '../../utils/capitalize';
 
 const SignupForm = () => {
-  const {successMessage, authError, } = useAuth()
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const lang = useLanguage()
   const {signUpSchema} = useSignUpSchema()
-console.log('authError',authError);
+
     const {
       register: rg, 
       handleSubmit,

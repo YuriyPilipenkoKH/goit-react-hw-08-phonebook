@@ -11,6 +11,3 @@ export const selectIsLoading = (state: RootState) => state.auth.isLoading;
 
 export const selectToken = (state: RootState) => state.auth.token;
 
-export const selectSuccessMessage = (state: RootState) => state.auth.successMessage;
-
-export const selectError = (state: RootState) => state.auth.error;
