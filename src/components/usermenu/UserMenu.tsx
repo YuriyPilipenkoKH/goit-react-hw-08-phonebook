@@ -21,7 +21,7 @@ const UserMenu = () => {
   const [activeAvatar, setActiveAvatar] = useState(arrayOfActors[0]);
   const [activeIndex, setActiveIndex] = useState(0)
   const lang = useLanguage()
- 
+ const isAnmin = user?.role  === 'admin'
 
 const getIndex = () => {
   const newIndex = (activeIndex + 1) % 20; // Increment the index and wrap around 0-7 range
@@ -78,16 +78,19 @@ const quit =() => {
               {lang.profile}
                </Link>
                </MenuItem>
-            <MenuItem 
-               className="slides-button"
-               onClick={() => setIsOpen(!isOpen)}
-               type='button'>
-            <Link to="/admin" className="button-link">
-              {/* {lang.slides} */}admin
-            </Link>
-          </MenuItem>
+               {isAnmin&&(
+              <MenuItem 
+                  className="admin-button"
+                  onClick={() => setIsOpen(!isOpen)}
+                  type='button'>
+              <Link to="/admin" className="button-link">
+                {/* {lang.slides} */}admin
+              </Link>
+              </MenuItem>
+               )}
             <MenuItem type='button' onClick={quit}>
-              {lang.out}</MenuItem>
+              {lang.out}
+            </MenuItem>
               <MobileWrap>
               <LangChanger/>
               <ThemeChanger/>
