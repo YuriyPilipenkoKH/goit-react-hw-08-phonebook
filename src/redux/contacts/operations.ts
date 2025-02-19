@@ -74,7 +74,6 @@ export interface pagination {
           thunkAPI.dispatch(fetchContacts({ page, limit }));
         }
 
-
         return response.data;
 
       } catch (error: unknown) {
@@ -94,6 +93,23 @@ export interface pagination {
 
       try {
         const response = await axios.delete(`/contacts/${id}`);  
+
+        if (response.data) {
+          // Notify.success(response.data.message);
+          // Get current page & limit from state
+          const { currentPage, totalPages, contactsList } = (thunkAPI.getState() as RootState).contacts;
+          const limit = 5;
+  
+          // Adjust page number to prevent empty pages
+          let page = currentPage;
+          if (contactsList.length === 1 && currentPage > 1) {
+            page = currentPage - 1; // Move back a page if last item is deleted
+          }
+  
+          // Re-fetch contacts after deletion
+          thunkAPI.dispatch(fetchContacts({ page, limit }));
+        }
+
         return response.data;
 
       } catch (error: unknown) {
