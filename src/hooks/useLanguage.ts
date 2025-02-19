@@ -5,9 +5,9 @@ import { langEN, langUA } from "../utils/languages";
 
 
 
-export const useLanguage = () => {
-    const [lang, setLang] = useState(langEN)
-    const language = useSelector(getLang)
+export const useLanguage = (): Record<string, string> => {
+  const [lang, setLang] = useState<Record<string, string>>(langEN);
+  const language = useSelector(getLang);
 
     useEffect(() => {
       setLang(language === 'english' ?  langEN :  langUA);

@@ -51,7 +51,7 @@ const ContactForm = () => {
     if(res.type === 'contacts/addContact/rejected'){
       const errorCode = res.payload as string; // Ensure it's a string
       const translatedMsg = lang[errorCode] || errorCode;
-
+      // const translatedMsg = (lang as Record<string, string>)[errorCode] || errorCode;
 
       // setError('number', { type: 'manual', message: res.payload as string }  )
       setError('number', { type: 'manual', message: translatedMsg  }  )

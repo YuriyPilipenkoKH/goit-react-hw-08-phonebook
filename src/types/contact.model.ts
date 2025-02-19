@@ -19,7 +19,7 @@ export const contactSchema = (lang: LangType) => z.object({
   .string()
   .trim()
   .min(10 , '')
-  .max(10)
+  .max(10,  lang.maxLengthNum)
   // .regex(/^0\d{9}$/, {
   //   message: 'Correct format: 0985551204 ',
   //  }) //moved to backend
