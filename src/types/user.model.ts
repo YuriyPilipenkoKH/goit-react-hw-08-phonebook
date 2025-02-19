@@ -1,6 +1,7 @@
 import z from 'zod'
+import { LangType } from '../lang/zodLang'
 
-export const userSchema = z.object({
+export const userSchema = (lang: LangType) => z.object({
    _id: z
   .string(),
   name: z
@@ -51,5 +52,6 @@ export const userSchema = z.object({
   .optional(),
  })
 
-export type User =  z.infer<typeof userSchema>
+
+export type User =  z.infer<ReturnType<typeof userSchema>>;
 
