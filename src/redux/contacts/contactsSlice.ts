@@ -9,6 +9,7 @@ export interface ContactsState {
   message: string | null;
   totalPages: number,
   currentPage: number,
+  limit:number
 }
 
 const initialState:ContactsState = { 
@@ -18,6 +19,7 @@ const initialState:ContactsState = {
   message: null,
   totalPages: 1,
   currentPage: 1,
+  limit: 10
 };
 
 const contactsSlice = createSlice({

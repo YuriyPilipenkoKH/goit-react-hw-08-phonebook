@@ -18,7 +18,7 @@ const PhonebookPage = () => {
   const{contacts, currentPage} = useContacts()
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchContacts({ page: currentPage, limit: 5 }))
+    dispatch(fetchContacts({ page: currentPage, }))
   }, [dispatch])
   
   return (

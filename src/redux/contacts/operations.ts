@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Notify } from "notiflix";
 import { Contact } from "../../types/contact.model";
 import { RootState } from "../store";
-import { number } from "zod";
+
 
 axios.defaults.baseURL = import.meta.env.VITE_HOST
 
@@ -29,18 +29,20 @@ interface PB_data{
   number: string
 }
 export interface pagination {
-  page: number
-  limit: number
-}
+  page: number 
+  }
 
  export const fetchContacts  = 
   createAsyncThunk< PB_Response, pagination, { state: RootState}>(
     "contacts/fetchAll",
   
-    async ({page = 1, limit = 5}, thunkAPI) => {
+    async ({ page = 1 } , thunkAPI) => {
+      const state = thunkAPI.getState() as RootState;
+      const limit = state.contacts.limit; // Retrieve limit from Redux state
+
       try {
-        const response = await axios.get(`/contacts/grab?page=${page}&limit=${limit}`); //?page=${page}&limit=${limit}
-        if(!response.data){
+        const response = await axios.get(`/contacts/grab?page=${page}&limit=${limit}`);
+       if(!response.data){
           return thunkAPI.rejectWithValue('Unable to fetch contacts');
         }
         return response.data;
@@ -64,16 +66,14 @@ export interface pagination {
         const response = await axios.post("/contacts/new", {name, number});
 
         if (response.data) {
-          Notify.success(response.data.message);
+          // Notify.success(response.data.message);
           // Get current page & limit from state
-          const { currentPage, totalPages } = (thunkAPI.getState() as RootState).contacts;
+          const { currentPage, totalPages} = (thunkAPI.getState() as RootState).contacts;
           const page = currentPage > totalPages ? totalPages : currentPage; // Stay within bounds
-          const limit = 5; // Adjust limit as needed
   
           // Re-fetch contacts after adding
-          thunkAPI.dispatch(fetchContacts({ page, limit }));
+          thunkAPI.dispatch(fetchContacts({ page }));
         }
-
         return response.data;
 
       } catch (error: unknown) {
@@ -96,20 +96,14 @@ export interface pagination {
 
         if (response.data) {
           // Notify.success(response.data.message);
-          // Get current page & limit from state
-          const { currentPage, totalPages, contactsList } = (thunkAPI.getState() as RootState).contacts;
-          const limit = 5;
-  
-          // Adjust page number to prevent empty pages
+            const { currentPage,  contactsList } = (thunkAPI.getState() as RootState).contacts;
           let page = currentPage;
           if (contactsList.length === 1 && currentPage > 1) {
             page = currentPage - 1; // Move back a page if last item is deleted
           }
-  
-          // Re-fetch contacts after deletion
-          thunkAPI.dispatch(fetchContacts({ page, limit }));
+            // Re-fetch contacts after deletion
+          thunkAPI.dispatch(fetchContacts({ page }));
         }
-
         return response.data;
 
       } catch (error: unknown) {
@@ -128,8 +122,6 @@ export interface pagination {
     "contacts/editContact",
   
     async (contact, thunkAPI) => {
-     
-
    const {_id, name, number} = contact
    try {
       const response = await axios.patch(`/contacts/${_id}`, {
@@ -137,6 +129,7 @@ export interface pagination {
         number,
       });
       if(response.data) Notify.success(response.data.message)
+        
         return response.data;
 
       } catch (error: unknown) {

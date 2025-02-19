@@ -54,6 +54,12 @@ export const langEN = {
   regSuccess: 'Successful registration',
   welcome: 'Welcome back',
   bye: 'Goodbye',
+
+  addSuccess: 'Contact added successfully',
+  updSuccess: 'Contact updated successfully',
+  deSuccess: 'Contact deleted successfully',
+
+  noContacts: 'No contacts have been added recently',
   
 }
 
@@ -113,6 +119,13 @@ export const langUA = {
   regSuccess: 'Успішна реєстрація',
   welcome: 'Ласкаво просимо',
   bye: 'До побачення',
+
+  addSuccess: 'Контакт успішно додано',
+  updSuccess: 'Контакт успішно оновлено',
+  deSuccess: 'Контакт успішно видалено',
+
+
+  noContacts: 'Останнім часом не було додано жодного контакту',
 }
 
 
