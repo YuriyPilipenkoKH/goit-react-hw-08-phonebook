@@ -59,10 +59,10 @@ const LoginForm = () => {
     dispatch(logIn(data))
     .then((res) => {
       if(res.type === 'auth/login/rejected'){
-        setError('password', { 
-          type: 'manual', 
-          message: res.payload as string 
-        });
+        const errorCode = res.payload as string; 
+        const translatedMsg = lang[errorCode] || errorCode;
+        // setError('password', { type: 'manual',message: res.payload as string });
+        setError('password', { type: 'manual', message: translatedMsg  }  )
       }
       if(res.type === 'auth/login/fulfilled'){
       reset()

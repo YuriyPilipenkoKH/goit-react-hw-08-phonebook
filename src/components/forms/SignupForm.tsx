@@ -50,7 +50,10 @@ console.log('authError',authError);
     .then((res) => {
       console.log(res);
       if(res.type === 'auth/register/rejected'){
-        setError('email', { type: 'manual', message: res.payload as string });
+        const errorCode = res.payload as string; // Ensure it's a string
+        const translatedMsg = lang[errorCode] || errorCode;
+        // setError('email', { type: 'manual', message: res.payload as string });
+        setError('email', { type: 'manual', message: translatedMsg  }  )
       }
       if(res.type === 'auth/register/fulfilled'){
         reset()

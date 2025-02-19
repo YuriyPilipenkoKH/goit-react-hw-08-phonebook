@@ -97,10 +97,3 @@ console.log(theme);
 export default ContactForm
 
 
-    // if (contacts.find((contact) => contact.name.toLowerCase() === newContact.name.toLowerCase())) {
-    //   Notiflix.Notify.failure(`${name} is already in contacts.`);
-    //   return;
-    // } else if (contacts.find((contact) => contact.number === number)) {
-    //   Notiflix.Notify.failure(`${number} is already in contacts.`);
-    //   return;
-    // }

@@ -38,12 +38,14 @@ export const langEN = {
   slides: "Slides",
   updateInfo: "Update contact information",
   namePlaceholder: "enter name",
-
   sorry: "Sorry dude, we couldn't find this page",
   
   existingNumberError: 'A contact with this number already exists.',
   notFoundError: 'Contact not found.',
   incorrectFormat: 'Correct nuber format: 0985551204',
+
+  emailInUse: 'Email already in use',
+  credentialsError: 'Invalid credentials',
   
 }
 
@@ -94,6 +96,8 @@ export const langUA = {
   notFoundError: 'Контакт не знайдено.',
   incorrectFormat: 'Правильний формат номера: 0985551204',
 
+  emailInUse: 'імейл вже використовується',
+  credentialsError: 'Недійсні облікові дані',
 }
 
 

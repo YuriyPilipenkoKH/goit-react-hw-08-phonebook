@@ -5,7 +5,6 @@ export type LangType = {
   includeNum: string
   invalidEmail: string
 
-  
   minLength: string
   minLengthPass: string
   maxLength: string

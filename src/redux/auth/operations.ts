@@ -46,7 +46,9 @@ export const register = createAsyncThunk<
         return res.data
       } catch (error) {
         if(error instanceof AxiosError){
-          return thunkAPI.rejectWithValue(error.response?.data.message );
+       
+          // return thunkAPI.rejectWithValue(error.response?.data.message );
+          return thunkAPI.rejectWithValue(error.response?.data.errorCode);
         }
         Notify.warning('Something went wrong. ');
       }
@@ -69,7 +71,8 @@ export const register = createAsyncThunk<
         return res.data;
       } catch (error: unknown) {
         if(error instanceof AxiosError){
-        return thunkAPI.rejectWithValue(error.response?.data.message);
+        // return thunkAPI.rejectWithValue(error.response?.data.message);
+        return thunkAPI.rejectWithValue(error.response?.data.errorCode);
         }
       }
     }
