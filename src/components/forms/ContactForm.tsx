@@ -10,18 +10,17 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {  } from '../../types/AddComtact.model';
 import Lottie from 'lottie-react';
-
 import animationData  from '../../assets/Animation - 1739633703538.json'
 import { AddContactSchemaType, useAddContactSchema } from '../../hooks/useAddContactSchema';
-
+import { useAll } from '../../hooks/useAll';
 
 
 const ContactForm = () => {
   const [newAdded, setNewAdded] = useState(false)
   const lang = useLanguage()
-  const language = useSelector(getLang)
   const dispatch = useAppDispatch()
   const {addContactSchema} = useAddContactSchema()
+  const {theme, language} = useAll()
 
   const {
     register, 
