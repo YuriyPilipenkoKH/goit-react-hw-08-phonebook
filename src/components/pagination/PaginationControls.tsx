@@ -2,8 +2,9 @@ import React from "react"
 import { useContacts } from "../../hooks/useContacts"
 import { fetchContacts } from "../../redux/contacts/operations"
 import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { PaginationWrap } from "../../pages/Pages.styled";
+import { PaginationWrap, PagSpan } from "../../pages/Pages.styled";
 import { BtnEdit } from "../phonebook/contactslist/ContactList.styled";
+import {  Wrap } from "../appbar/AppBar.styled";
 
 
 
@@ -28,7 +29,7 @@ const PaginationControls:React.FC = () => {
         Previous
       </BtnEdit>
 
-      <span>Page {currentPage} of {totalPages}</span>
+      <PagSpan ><Wrap>Page</Wrap> {currentPage} of {totalPages}</PagSpan>
 
       <BtnEdit
       type="button"

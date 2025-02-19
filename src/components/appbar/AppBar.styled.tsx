@@ -69,24 +69,24 @@ export const LangBtn = styled.button`
         background-color: #eee5;
 
 
-        &> svg {
-            transition:  fill 1s ease-in-out;
-            fill:  ${props => props.theme === 'light' ? '#eee' : '#222'};
-        }
+    &> svg {
+        transition:  fill 1s ease-in-out;
+        fill:  ${props => props.theme === 'light' ? '#eee' : '#222'};
+    }
     }
 `
 
 export const Wrap = styled.div`
   display: flex;
 	gap: 8px;
-		@media screen and (max-width: 767px) {
-		display: none;
-			}
+    @media screen and (max-width: 767px) {
+    display: none;
+        }
 `
 export const MobileWrap = styled.div`
   display: flex;
 	gap: 32px;
-		@media screen and (min-width: 768px) {
-		display: none;
-			}
+    @media screen and (min-width: 768px) {
+    display: none;
+}
 `

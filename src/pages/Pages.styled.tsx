@@ -113,5 +113,20 @@ export const PaginationWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 12px;
+
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+    }
+`
+export const PagSpan = styled.div`
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  min-height: 40px;
+  border-radius: 4px;
+  padding:4px 16px;
+  font-weight: 600;
+  color: var(--footer-text-color);
+  background-color: var(--lauren);
 `
