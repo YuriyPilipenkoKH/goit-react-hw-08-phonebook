@@ -104,9 +104,6 @@ export const langUA = {
     addSuccess: 'Контакт успішно додано',
     upddateSuccess: 'Контакт успішно оновлено',
     delSuccess: 'Контакт успішно видалено',
-
-
-
   }
 
 }
@@ -119,12 +116,6 @@ export type LangType = {
   correctFormat: string;
 };
 
-export const lang: LangType = {
-  forbiddenPrefix: "Forbidden prefix",
-  minLength: "Name must be at least 3 characters",
-  maxLength: "Name must be at most 16 characters",
-  correctFormat: "Correct format: 0985551204",
-};
 
 export const zodLangEn: LangType = {
   forbiddenPrefix: "Forbidden prefix",
