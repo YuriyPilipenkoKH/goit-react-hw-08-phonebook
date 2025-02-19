@@ -19,6 +19,7 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage '))
 function App() {
   const {token, user} = useAuth()
   const isAnmin = user?.role  === 'admin'
+
   const theme = useSelector(getTheme)
   const language = useSelector(getLang)
     // Set the data-theme attribute on the <html> element

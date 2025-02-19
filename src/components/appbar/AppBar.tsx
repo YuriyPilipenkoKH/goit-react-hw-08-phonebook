@@ -15,9 +15,8 @@ import AuthNav from '../authnav/AuthNav';
 const AppBar = () => {
 
   const {  token } = useAuth();
-  const theme = useSelector(getTheme)
-
   const dispatch = useAppDispatch()
+  const theme = useSelector(getTheme)
   const language = useSelector(getLang)
 
   const themeInvertor =(theme:themeTypes) => {
