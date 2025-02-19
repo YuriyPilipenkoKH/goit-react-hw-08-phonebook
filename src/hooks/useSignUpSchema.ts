@@ -3,6 +3,7 @@ import { zodLangEn, zodLangUa } from '../lang/zodLang';
 import { useSelector } from 'react-redux';
 import { getLang } from '../redux/selectors/selectors';
 import { userSchema } from '../types/user.model';
+import { z } from 'zod';
 
 export const useSignUpSchema = () => {
   const [lang, setLang] = useState(zodLangEn); 
@@ -17,7 +18,7 @@ export const useSignUpSchema = () => {
       email: true,
       password: true,
     });
-    
 
     return { signUpSchema };
 }
+export type SignUpSchemaType = z.infer<ReturnType<typeof useSignUpSchema>['signUpSchema']>;
