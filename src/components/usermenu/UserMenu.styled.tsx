@@ -6,6 +6,7 @@ export const StyledWrap = styled.div`
     align-items: center;
     gap: 20px;
 
+
     &> svg {
         width: 25px;
         fill:  #333;
@@ -59,6 +60,7 @@ export const SliderBtn = styled.button`
 export const DropdownMenu = styled.div`
     
     position: absolute;
+    z-index: 5;
     top: 60px;
     right: 6px;
     /* left: 20px; */
@@ -68,7 +70,7 @@ export const DropdownMenu = styled.div`
     gap: 12px;
     padding: 14px 22px;
     border: 3px solid var(--teal);
-    background-color: #eee5;
+    background-color: var(--background-color);
     border-radius: 6px;
     box-shadow: var(--shadow-four);
 
