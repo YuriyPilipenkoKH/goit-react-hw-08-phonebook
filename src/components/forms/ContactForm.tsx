@@ -47,8 +47,14 @@ const ContactForm = () => {
   const onSubmit = async (data: AddContactSchemaType) => {
    dispatch(addContact(data))
    .then((res) => {
+    console.log(res);
     if(res.type === 'contacts/addContact/rejected'){
-      setError('number', { type: 'manual', message: res.payload as string }  )
+      const errorCode = res.payload as string; // Ensure it's a string
+      const translatedMsg = lang[errorCode] || errorCode;
+
+
+      // setError('number', { type: 'manual', message: res.payload as string }  )
+      setError('number', { type: 'manual', message: translatedMsg  }  )
     }
     if(res.type === 'contacts/addContact/fulfilled'){
       reset()

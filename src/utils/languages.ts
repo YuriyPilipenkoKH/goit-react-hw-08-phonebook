@@ -42,7 +42,9 @@ export const langEN = {
 
   sorry: "Sorry dude, we couldn't find this page",
   
-
+  existingNumberError: 'A contact with this number already exists.',
+  notFoundError: 'Contact not found.',
+  incorrectFormat: 'Correct nuber format: 0985551204',
   
 }
 
@@ -89,6 +91,10 @@ export const langUA = {
 
   sorry: "Вибач чувак, ми не змогли знайти цю сторінку",
 
+  existingNumberError: 'Контакт із цим номером уже існує.',
+  notFoundError: 'Контакт не знайдено.',
+  incorrectFormat: 'Правильний формат номера: 0985551204',
+
 }
 
 
@@ -96,8 +102,7 @@ export type LangType = {
   forbiddenPrefix: string;
   minLength: string;
   maxLength: string;
-  correctFormat: string;
-
+ 
   existingNumberError: string;
   notFoundError: string;
   incorrectFormat: string;
@@ -112,7 +117,6 @@ export const zodLangEn: LangType = {
   forbiddenPrefix: "Forbidden prefix",
   minLength: "Name must be at least 3 characters",
   maxLength: "Name must be at most 16 characters",
-  correctFormat: "Correct format: 0985551204",
 
   existingNumberError: 'A contact with this number already exists.',
   notFoundError: 'Contact not found.',
@@ -127,7 +131,6 @@ export const zodLangUa: LangType = {
   forbiddenPrefix: "Заборонений префікс",
   minLength: "Ім'я має містити щонайменше 3 символи",
   maxLength: "Ім'я має містити не більше 16 символів",
-  correctFormat: "Правильний формат: 0985551204",
 
   existingNumberError: 'Контакт із цим номером уже існує.',
   notFoundError: 'Контакт не знайдено.',
