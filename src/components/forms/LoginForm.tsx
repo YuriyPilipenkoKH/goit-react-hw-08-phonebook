@@ -38,7 +38,6 @@ const LoginForm = () => {
           isDirty,
           isValid ,
           isSubmitting,
-          isLoading 
         } = formState
 
   useEffect(() => {
@@ -53,19 +52,15 @@ const LoginForm = () => {
   }
   }, [timer,remained])
 
-
-  const handleInputChange =() => {
-  };
-
+  const handleInputChange =() => {};
   const onSubmit = (data: LoginSchemaType) => {
-   
-
     dispatch(logIn(data))
     .then((res) => {
-      console.log(res);
-      
       if(res.type === 'auth/login/rejected'){
-        setError('password', { type: 'manual', message: res.payload as string });
+        setError('password', { 
+          type: 'manual', 
+          message: res.payload as string 
+        });
       }
       if(res.type === 'auth/login/fulfilled'){
       reset()

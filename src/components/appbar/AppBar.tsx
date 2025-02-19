@@ -1,6 +1,6 @@
 import {MdOutlineNightlight} from 'react-icons/md';
 import {MdOutlineLightMode} from 'react-icons/md';
-import { LangBtn, StyledHeader, ThemeBtn } from './AppBar.styled';
+import { LangBtn, MenuWrap, StyledHeader, ThemeBtn, Wrap } from './AppBar.styled';
 import Navigation from '../navigation/Navigation';
 import {  useSelector } from 'react-redux';
 import { getLang, getTheme } from '../../redux/selectors/selectors';
@@ -11,6 +11,7 @@ import { languageTypes, themeTypes } from '../../types';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import UserMenu from '../usermenu/UserMenu';
 import AuthNav from '../authnav/AuthNav';
+import MobileMenu from '../forms/mobilemenu/MobileMenu';
 
 const AppBar = () => {
 
@@ -39,22 +40,26 @@ const AppBar = () => {
     <StyledHeader >
       <Navigation />
 
-      <LangBtn  
-      onClick={languageMaker}
-      type="button">
-      {(localStorage.getItem('language' ) || language) === 'english' ?  'EN' :  'UA'}
-      </LangBtn>
-
-      <ThemeBtn 
-      onClick={themeMaker}
-      type="button" >
-        {(localStorage.getItem('theme') || theme) === 'light'
-        ? <MdOutlineLightMode size={30}/>
-        : <MdOutlineNightlight size={30}/>
-        }
-      </ThemeBtn>
-      
-      {token ? <UserMenu /> : <AuthNav />}
+      <Wrap >
+        <LangBtn
+        onClick={languageMaker}
+        type="button">
+        {(localStorage.getItem('language' ) || language) === 'english' ?  'EN' :  'UA'}
+        </LangBtn>
+        <ThemeBtn
+        onClick={themeMaker}
+        type="button" >
+          {(localStorage.getItem('theme') || theme) === 'light'
+          ? <MdOutlineLightMode size={30}/>
+          : <MdOutlineNightlight size={30}/>
+          }
+        </ThemeBtn>
+        
+        {token ? <UserMenu /> : <AuthNav />}
+      </Wrap>
+      <MenuWrap>
+          <MobileMenu />
+      </MenuWrap>
     </StyledHeader>
   );
 };

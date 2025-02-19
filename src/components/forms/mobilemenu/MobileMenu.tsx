@@ -1,12 +1,13 @@
 import React from 'react'
 import { CgMenuGridR } from "react-icons/cg";
+import { FlatButton } from '../../button/Button';
 
 const MobileMenu = () => {
 
   return (
-    <button>
-      <CgMenuGridR />
-    </button>
+    <FlatButton >
+      <CgMenuGridR size={20} />
+    </FlatButton>
   )
 }
 

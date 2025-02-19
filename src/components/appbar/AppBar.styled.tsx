@@ -4,7 +4,7 @@ export const StyledHeader = styled.header`
     width: 100%;
     display: flex;
     align-items: center;
-   /* justify-content: space-between; */
+   justify-content: space-between;
    gap: 20px;
 `
 
@@ -72,4 +72,19 @@ export const LangBtn = styled.button`
             fill:  ${props => props.theme === 'light' ? '#eee' : '#222'};
         }
     }
+`
+
+export const Wrap = styled.div`
+  display: flex;
+	gap: 8px;
+		@media screen and (max-width: 767px) {
+		display: none;
+			}
+`
+export const MenuWrap = styled.div`
+  display: flex;
+	gap: 8px;
+		@media screen and (min-width: 768px) {
+		display: none;
+			}
 `
