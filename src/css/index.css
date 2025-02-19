@@ -421,3 +421,7 @@ height: 55px;
   font-weight: 600;
   transition: all 1s ease-in-out,
 }
+
+.TL_center{
+  margin-left: auto;
+}

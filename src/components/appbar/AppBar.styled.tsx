@@ -4,8 +4,9 @@ export const StyledHeader = styled.header`
     width: 100%;
     display: flex;
     align-items: center;
-   justify-content: space-between;
-   gap: 20px;
+
+		justify-content: space-between;
+		gap: 20px;
 
 `
 

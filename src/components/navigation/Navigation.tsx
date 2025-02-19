@@ -31,12 +31,12 @@ const Navigation = () => {
 
     <MobileWrap>
     <Link  to="/">
-        <VscHome />
+        <VscHome size={25}/>
       </Link>
 
       {isLoggedIn && (
         <Link to="/phonebook">
-         <GiSmartphone />
+         <GiSmartphone size={25}/>
         </Link>
       )}
     </MobileWrap>

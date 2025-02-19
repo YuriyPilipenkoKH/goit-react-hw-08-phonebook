@@ -39,11 +39,8 @@ const AppBar = () => {
   return (
     <StyledHeader >
       <Navigation />
-      <MobileWrap>
-        
-      </MobileWrap>
 
-      <Wrap >
+      <Wrap className='TL_center'>
         <LangBtn
         onClick={languageMaker}
         type="button">
@@ -58,11 +55,11 @@ const AppBar = () => {
           }
         </ThemeBtn>
         
-        {token ? <UserMenu /> : <AuthNav />}
       </Wrap>
-      <MobileWrap>
+        {token ? <UserMenu /> : <AuthNav />}
+      {/* <MobileWrap>
           <MobileMenu />
-      </MobileWrap>
+      </MobileWrap> */}
     </StyledHeader>
   );
 };

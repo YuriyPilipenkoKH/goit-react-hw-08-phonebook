@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { arrayOfActors } from '../../img/actors.ts';
 import Loader from '../loader/Loader.tsx';
 import { useAppDispatch } from '../../hooks/useAppDispatch.ts';
+import { Wrap } from '../appbar/AppBar.styled.tsx';
 
 const UserMenu = () => {
   const dispatch = useAppDispatch();
@@ -44,7 +45,9 @@ const quit =() => {
           <div className='avatar__wrapp-sm'>{ activeAvatar }</div>
         
           <UserWrapp >
-            <UserName >{user?.name}</UserName>
+            <Wrap>
+              <UserName >{user?.name}</UserName>
+            </Wrap>
             <MenuBtn
              type='button'
              onClick={() => setIsOpen(!isOpen)}
