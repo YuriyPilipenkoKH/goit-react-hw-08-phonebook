@@ -8,9 +8,8 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import {  useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { signUpSchema, signUpSchemaType } from '../../types/signUpSchema';
-import { Notify } from 'notiflix';
 import { useAuth } from '../../hooks/useAuth';
+import { SignUpSchemaType, useSignUpSchema } from '../../hooks/useSignUpSchema';
 
 const SignupForm = () => {
   const {successMessage, authError, } = useAuth()
@@ -18,6 +17,7 @@ const SignupForm = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const lang = useLanguage()
+  const {signUpSchema} = useSignUpSchema()
 console.log('authError',authError);
     const {
       register: rg, 
@@ -25,7 +25,7 @@ console.log('authError',authError);
       formState,
       reset,
       setError,
-    } = useForm<signUpSchemaType >({
+    } = useForm<SignUpSchemaType >({
       defaultValues: {  
         name: '',
         email: '',
@@ -44,7 +44,7 @@ console.log('authError',authError);
   const handleInputChange =() => {
    }
 
-  const onSubmit = (data: signUpSchemaType)=> {
+  const onSubmit = (data: SignUpSchemaType)=> {
    
     dispatch(register(data))
     .then((res) => {

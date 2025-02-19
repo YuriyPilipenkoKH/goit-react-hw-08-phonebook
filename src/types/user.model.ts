@@ -8,7 +8,7 @@ export const userSchema = (lang: LangType) => z.object({
   .string()
   .trim()
   .min(3)
-  .max(32)
+  .max(16)
   .refine((val) => !val.toLowerCase().startsWith('qwe'), {
     message: 'forbidden prefix',
   }),
