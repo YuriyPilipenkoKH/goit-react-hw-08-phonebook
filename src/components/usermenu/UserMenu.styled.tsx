@@ -73,6 +73,7 @@ export const DropdownMenu = styled.div`
     background-color: var(--background-color);
     border-radius: 6px;
     box-shadow: var(--shadow-four);
+    transition: all 1s ease-in-out;
 
     &>a.profile-link{
         width: 150px;

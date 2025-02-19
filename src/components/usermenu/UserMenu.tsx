@@ -9,7 +9,9 @@ import { Link } from 'react-router-dom';
 import { arrayOfActors } from '../../img/actors.ts';
 import Loader from '../loader/Loader.tsx';
 import { useAppDispatch } from '../../hooks/useAppDispatch.ts';
-import { Wrap } from '../appbar/AppBar.styled.tsx';
+import { MobileWrap, Wrap } from '../appbar/AppBar.styled.tsx';
+import LangChanger from '../button/LangChanger.tsx';
+import ThemeChanger from '../button/ThemeChanger.tsx';
 
 const UserMenu = () => {
   const dispatch = useAppDispatch();
@@ -86,6 +88,10 @@ const quit =() => {
           </MenuItem>
             <MenuItem type='button' onClick={quit}>
               {lang.out}</MenuItem>
+              <MobileWrap>
+              <LangChanger/>
+              <ThemeChanger/>
+              </MobileWrap>
         
         </DropdownMenu>
       )}
