@@ -1,4 +1,3 @@
-
 import  axios, { AxiosError } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
@@ -6,8 +5,6 @@ import { RootState } from '../store';
 import { User } from '../../types/user.model';
 
 axios.defaults.baseURL =  import.meta.env.VITE_HOST
-
-
 
 // Utility to add JWT
 const setAuthHeader = (token:string )=> {
@@ -69,13 +66,15 @@ export const register = createAsyncThunk<
       
         setAuthHeader(res.data.token);
         localStorage.setItem("token-08",res.data.token)
-        Notify.success(res.data.message)
+        // Notify.success(res.data.message)
         return res.data;
       } catch (error: unknown) {
         if(error instanceof AxiosError){
         // return thunkAPI.rejectWithValue(error.response?.data.message);
         return thunkAPI.rejectWithValue(error.response?.data.errorCode);
         }
+        Notify.warning('Something went wrong. ');
+        return thunkAPI.rejectWithValue({ errorCode: 'unknown_error' });
       }
     }
   );
@@ -92,7 +91,8 @@ export const register = createAsyncThunk<
       clearAuthHeader();
       localStorage.removeItem("token-08");
       localStorage.removeItem("refreshToken");
-      Notify.success(res.data.message)
+      // Notify.success(res.data.message)
+      return res.data
     } catch (error:unknown) {
       if(error instanceof AxiosError){
       return thunkAPI.rejectWithValue(error.message);

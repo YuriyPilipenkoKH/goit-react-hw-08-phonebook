@@ -1,7 +1,7 @@
 import  { useState } from 'react'
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAuth } from '../../hooks/useAuth';
-import { logOut } from '../../redux/auth/operations';
+import { AuthResponse, logOut } from '../../redux/auth/operations';
 import { DropdownMenu, MainMenu, MenuBtn, MenuItem, SliderBtn, StyledWrap, UserName, UserWrapp } from './UserMenu.styled';
 import { FaWindowClose } from 'react-icons/fa';
 import { AiFillCaretRight, AiOutlineCaretDown } from 'react-icons/ai';
@@ -12,6 +12,8 @@ import { useAppDispatch } from '../../hooks/useAppDispatch.ts';
 import { MobileWrap, Wrap } from '../appbar/AppBar.styled.tsx';
 import LangChanger from '../button/LangChanger.tsx';
 import ThemeChanger from '../button/ThemeChanger.tsx';
+import { Notify } from 'notiflix';
+import capitalize from '../../utils/capitalize.ts';
 
 const UserMenu = () => {
   const dispatch = useAppDispatch();
@@ -37,6 +39,11 @@ const avatarSetter = () => {
 const quit =() => {
    setIsOpen(!isOpen)
    dispatch(logOut(user?.name || 'Dude'))
+   .then((res) => {
+    if(res.type === 'auth/logout/fulfilled' && (res.payload as AuthResponse).success){
+       Notify.success(`${lang.bye}, ${capitalize(user?.name)}`)
+    }
+   })
 }
 
   return (

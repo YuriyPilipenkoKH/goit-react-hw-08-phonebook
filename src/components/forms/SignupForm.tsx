@@ -50,7 +50,6 @@ console.log('authError',authError);
    
     dispatch(register(data))
     .then((res) => {
-      console.log(res);
       if(res.type === 'auth/register/rejected'){
         const errorCode = res.payload as string; // Ensure it's a string
         const translatedMsg = lang[errorCode] || errorCode;
@@ -61,7 +60,7 @@ console.log('authError',authError);
         reset()
         navigate('/login')
       }
-      if (res.payload && typeof res.payload === 'object' && 'success' in res.payload) {
+      if ((res.payload as AuthResponse).success) {
         const newusername = (res.payload as AuthResponse).user.name || 'Dude';
         Notify.success(`${lang.regSuccess}, ${capitalize(newusername)}`)
       }

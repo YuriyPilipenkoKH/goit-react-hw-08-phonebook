@@ -1,7 +1,7 @@
 import React, { useEffect, useState , FormEvent, ChangeEvent} from 'react'
 import { useLanguage } from '../../hooks/useLanguage';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { logIn } from '../../redux/auth/operations';
+import { AuthResponse, logIn } from '../../redux/auth/operations';
 import { FormLink, FormWrapper, Input, Label, LogoWrapp, MainTitle, RouteWrapp, SecondsCounter, ShowBtn, StyledForm } from './Form.styled';
 import { IoMdUnlock } from 'react-icons/io';
 import { CgSandClock } from 'react-icons/cg';
@@ -11,6 +11,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { useAuth } from '../../hooks/useAuth';
 import { LoginSchemaType, useLoginSchema } from '../../hooks/useLoginSchema';
+import { Notify } from 'notiflix';
+import capitalize from '../../utils/capitalize';
 
 const LoginForm = () => {
   const TIME = 25
@@ -58,7 +60,6 @@ const LoginForm = () => {
   const onSubmit = (data: LoginSchemaType) => {
     dispatch(logIn(data))
     .then((res) => {
-      console.log(res);
       if(res.type === 'auth/login/rejected'){
         const errorCode = res.payload as string; 
         const translatedMsg = lang[errorCode] || errorCode;
@@ -67,6 +68,10 @@ const LoginForm = () => {
       }
       if(res.type === 'auth/login/fulfilled'){
       reset()
+      }
+      if ((res.payload as AuthResponse).success) {
+        const newusername = (res.payload as AuthResponse).user.name || 'Dude';
+        Notify.success(`${lang.welcome}, ${capitalize(newusername)}`)
       }
     })
   }

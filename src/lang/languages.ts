@@ -48,6 +48,8 @@ export const langEN = {
   credentialsError: 'Invalid credentials',
 
   regSuccess: 'Successful registration',
+  welcome: 'Welcome back',
+  bye: 'Goodbye',
   
 }
 
@@ -102,6 +104,8 @@ export const langUA = {
   credentialsError: 'Недійсні облікові дані',
 
   regSuccess: 'Успішна реєстрація',
+  welcome: 'Ласкаво просимо',
+  bye: 'До побачення',
 }
 
 
