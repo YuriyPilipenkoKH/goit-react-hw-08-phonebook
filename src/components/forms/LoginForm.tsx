@@ -8,8 +8,9 @@ import { CgSandClock } from 'react-icons/cg';
 import { Button } from '../button/Button';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, LoginSchemaType } from '../../types/loginSchema';
+
 import { useAuth } from '../../hooks/useAuth';
+import { LoginSchemaType, useLoginSchema } from '../../hooks/useLoginSchema';
 
 const LoginForm = () => {
   const TIME = 25
@@ -19,6 +20,7 @@ const LoginForm = () => {
   const [remained, setRemained] = useState<number>(TIME);
   const lang = useLanguage()
   const {user} = useAuth()
+  const {loginSchema} = useLoginSchema()
 
      const {
         register, 
