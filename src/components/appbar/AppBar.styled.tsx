@@ -6,6 +6,7 @@ export const StyledHeader = styled.header`
     align-items: center;
    justify-content: space-between;
    gap: 20px;
+	 
 `
 
 export const ThemeBtn = styled.button`

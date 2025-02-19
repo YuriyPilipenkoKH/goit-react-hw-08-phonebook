@@ -6,7 +6,7 @@ width: 100%;
   display: flex;
   gap: 25px;
   align-items: center;
-  padding: 32px 50px 16px;
+  padding: 24px 8px 12px;
   background-color: transparent;
   border-bottom: 1px solid #222;
 
@@ -32,6 +32,12 @@ width: 100%;
         color: var(--teal);
     }
   }
+  @media screen and (min-width: 768px) {
+    padding: 32px 20px 16px;
+    }
+  @media screen and (min-width: 1280px) {
+    padding: 32px 40px 16px;
+    }
 `
 
 export const StyledLink = styled(NavLink)`
