@@ -100,3 +100,18 @@ export const Page404 = styled.div`
   }
 
 `
+
+
+export const ListWrap = styled.div`
+  width: 100%;
+  display: flex; 
+  flex-direction: column;
+  gap: 22px;
+
+`
+export const PaginationWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+`

@@ -205,8 +205,14 @@ export const BtnEdit = styled.button`
         color: var(--crimson);
         box-shadow: var(--shadow-two); 
     }
-    ${myRippleStyles}
   }
+  &:disabled {
+    cursor: none;
+    background-color: #888 !important;
+    color: #eee;
+    
+  }
+    ${myRippleStyles}
 `
 export const EmptySpan = styled.span`
   display: flex;

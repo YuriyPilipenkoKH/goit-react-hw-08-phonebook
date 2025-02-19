@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { PhonebookWrapper } from './Pages.styled'
+import { ListWrap,  PhonebookWrapper } from './Pages.styled'
 import { useLanguage } from '../hooks/useLanguage'
 import { useSelector } from 'react-redux'
 import { getLang } from '../redux/selectors/selectors'
@@ -32,10 +32,10 @@ const PhonebookPage = () => {
       {contacts.length > 0 && (
         <>
        {/* <ListBar></ListBar> */}
-       <section>
+       <ListWrap>
          <PaginationControls />
           <ContactList contacts ={contacts} />
-       </section>
+       </ListWrap>
         </>
       )}
     

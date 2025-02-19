@@ -2,6 +2,8 @@ import React from "react"
 import { useContacts } from "../../hooks/useContacts"
 import { fetchContacts } from "../../redux/contacts/operations"
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { PaginationWrap } from "../../pages/Pages.styled";
+import { BtnEdit } from "../phonebook/contactslist/ContactList.styled";
 
 
 
@@ -16,27 +18,27 @@ const PaginationControls:React.FC = () => {
   }
 
   return (
-    <div className="flex items-center gap-6 mt-4">
-      <button
+    <PaginationWrap className="flex items-center gap-6 mt-4">
+      <BtnEdit
         type="button"
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className="px-4 py-2 border rounded-[8px] disabled:opacity-50 bg-base-300"
       >
         Previous
-      </button>
+      </BtnEdit>
 
       <span>Page {currentPage} of {totalPages}</span>
 
-      <button
+      <BtnEdit
       type="button"
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className="px-4 py-2 border rounded-[8px] disabled:opacity-50 bg-base-300"
       >
         Next
-      </button>
-    </div>
+      </BtnEdit>
+    </PaginationWrap>
   );
 }
 
