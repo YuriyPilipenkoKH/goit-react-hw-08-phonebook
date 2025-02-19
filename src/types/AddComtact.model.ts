@@ -1,10 +1,11 @@
 
 import z from 'zod'
 import { contactSchema } from './contact.model';
-import { zodLangEn, zodLangUa } from '../utils/languages';
+import { zodLangEn, zodLangUa } from '../lang/zodLang';
+
 
 const language = localStorage.getItem('language')
-const lang = language === 'ukrainian' ? zodLangUa : zodLangEn;
+const lang = language === 'ukrainian' ? zodLangUa : zodLangEn
 
 
 export const addContactSchema = contactSchema(lang).pick({
@@ -13,4 +14,4 @@ export const addContactSchema = contactSchema(lang).pick({
 });
 
 // Infer the type of loginSchema
-export type addContactSchemaType = z.infer<typeof addContactSchema>;
+export type addContactSchemaType = z.infer<typeof addContactSchema>

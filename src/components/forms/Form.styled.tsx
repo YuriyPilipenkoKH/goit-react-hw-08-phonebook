@@ -34,44 +34,45 @@ export const RouteWrapp = styled.div`
 `
 export const FormLink = styled(Link)`
     
-    ${buttonStyles} ;
-    padding: 4px 16px;
-    text-decoration: none;
-    font-size: 14px;
+  ${buttonStyles} ;
+  padding: 4px 16px;
+  text-decoration: none;
+  font-size: 14px;
 `
 
 export const FormWrapper = styled.div`
-    position: relative;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 18px;
-min-height: 520px;
-padding:  32px 16px 60px;
-border: 4px solid #777;
-border-radius: 12px;
-box-shadow: var(--shadow-four);
-background-color:var(--background-color);
-transition: background-color 1s ease-in-out, color 1s ease-in-out;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+
+  min-height: 520px;
+  padding:  32px 16px 60px;
+  border: 4px solid #777;
+  border-radius: 12px;
+  box-shadow: var(--shadow-four);
+  background-color:var(--background-color);
+  transition: background-color 1s ease-in-out, color 1s ease-in-out;
 `
 
 export const StyledForm = styled.form`
-    
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 24px;
 `
 
 export const ShowBtn = styled.button`
-position: absolute;
-top: 35px;
-right: 5px;
-padding: 4px;
-width: 80px;
-border-radius: 4px;
-border: transparent;
-background-color: #777;
-color: #eee;
+    position: absolute;
+    top: 35px;
+    right: 5px;
+    padding: 4px;
+    width: 80px;
+    border-radius: 4px;
+    border: transparent;
+    background-color: #777;
+    color: #eee;
 `
 
 export const SecondsCounter = styled.div`
@@ -109,7 +110,7 @@ export const MainTitle = styled.h2`
 
 export const Input = styled.input`
   height: 40px;
-  width: 280px;
+  width: 100%;
   border-radius: 10px;
   padding:4px 16px;
   font-size: 18px;
@@ -156,6 +157,7 @@ export const Form = styled.form`
 
 export const Label = styled.label`
 position: relative;
+
   font-size: 18px;
   font-weight: 500;
   color:  var(--text-color);

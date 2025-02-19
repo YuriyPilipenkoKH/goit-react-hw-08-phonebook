@@ -1,5 +1,6 @@
 import z from 'zod'
-import { LangType } from '../utils/languages';
+import { LangType } from '../lang/zodLang';
+
 
 
 export const contactSchema = (lang: LangType) => z.object({

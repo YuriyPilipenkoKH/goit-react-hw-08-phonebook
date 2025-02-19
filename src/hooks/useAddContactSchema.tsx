@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { contactSchema } from '../types/contact.model';
-import { zodLangEn, zodLangUa } from '../utils/languages';
+
 import { useSelector } from 'react-redux';
 import { getLang } from '../redux/selectors/selectors';
 import { z } from 'zod';
+import { zodLangEn, zodLangUa } from '../lang/zodLang';
 
 export const useAddContactSchema = () => {
   const [lang, setLang] = useState(zodLangEn); 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getLang } from "../redux/selectors/selectors";
-import { langEN, langUA } from "../utils/languages";
+import { langEN, langUA } from "../lang/languages";
 import { languageTypes } from "../types";
 
 
