@@ -14,7 +14,7 @@ const LangChanger = () => {
 
   return (
       <button
-        className="btn btn-ghost text-[var(--text-color)]"
+        className="btn btn-ghost text-[var(--text-color)] bg-transparent"
         onClick={()=>dispatch(toggleLang())}
         aria-label="Toggle Theme"
       >

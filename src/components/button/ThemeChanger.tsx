@@ -17,11 +17,13 @@ export default function ThemeChanger() {
 
   return (
     <button
-      className="btn btn-ghost text-[var(--text-color)]"
+      className="btn btn-ghost text-[var(--text-color)] "
       onClick={()=>dispatch(toggleTheme())}
       aria-label="Toggle Theme"
     >
-      {theme === 'dark' ? <MdOutlineNightlight /> : <MdOutlineLightMode />}
+      {theme === 'dark' 
+      ? <MdOutlineNightlight size={20}/> 
+      : <MdOutlineLightMode size={20}/>}
     </button>
   );
 }

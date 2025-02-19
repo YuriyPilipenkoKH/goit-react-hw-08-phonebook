@@ -425,3 +425,9 @@ height: 55px;
 .TL_center{
   margin-left: auto;
 }
+.btn-ghost {
+  background: transparent;
+  color: var(--text-color);
+  border-radius: 8px;
+  transition: all 1s ease-in-out;
+}
