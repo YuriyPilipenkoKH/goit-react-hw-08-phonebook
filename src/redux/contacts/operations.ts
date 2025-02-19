@@ -3,12 +3,20 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Notify } from "notiflix";
 import { Contact } from "../../types/contact.model";
 import { RootState } from "../store";
+import { number } from "zod";
 
 axios.defaults.baseURL = import.meta.env.VITE_HOST
 
 interface PB_Response {
   list: Contact[]
   message: string
+  pagination:{
+    totalItems: number
+    totalPages: number
+    currentPage: number
+    pageSize: number
+    page: number
+  }
 }
 interface PB_update_Response {
   contact: Contact
@@ -32,6 +40,7 @@ export interface pagination {
     "contacts/fetchAll",
   
     async ({page = 1, limit = 5}, thunkAPI) => {
+
       try {
         const response = await axios.get(`/contacts/grab?page=${page}&limit=${limit}`); //?page=${page}&limit=${limit}
         if(!response.data){

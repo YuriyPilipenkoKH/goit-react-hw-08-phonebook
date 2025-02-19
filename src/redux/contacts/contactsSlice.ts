@@ -35,6 +35,8 @@ const contactsSlice = createSlice({
         console.log('payload',payload);
         state.isLoading = false;
         state.contactsList = payload.list;
+        state.totalPages = payload.pagination.totalPages
+        state.currentPage = payload.pagination.page
         state.error = null;
       })
   .addCase(fetchContacts.rejected, (state, { payload }) => {

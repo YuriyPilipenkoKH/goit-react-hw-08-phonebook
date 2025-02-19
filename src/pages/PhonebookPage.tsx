@@ -10,6 +10,7 @@ import IconMphone from '../img/icons/iconMphone'
 import { fetchContacts } from '../redux/contacts/operations'
 import { useAppDispatch } from '../hooks/useAppDispatch'
 import ContactForm from '../components/forms/ContactForm'
+import PaginationControls from '../components/pagination/PaginationControls'
 
 const PhonebookPage = () => {
   const lang = useLanguage()
@@ -31,7 +32,10 @@ const PhonebookPage = () => {
       {contacts.length > 0 && (
         <>
        {/* <ListBar></ListBar> */}
-        <ContactList contacts ={contacts} />
+       <section>
+         <PaginationControls />
+          <ContactList contacts ={contacts} />
+       </section>
         </>
       )}
     
