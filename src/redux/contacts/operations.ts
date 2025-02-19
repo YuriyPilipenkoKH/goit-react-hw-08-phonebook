@@ -2,7 +2,6 @@ import axios, { AxiosError } from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Notify } from "notiflix";
 import { Contact } from "../../types/contact.model";
-import { ContactsState } from "./contactsSlice";
 import { RootState } from "../store";
 
 axios.defaults.baseURL = import.meta.env.VITE_HOST
@@ -22,13 +21,19 @@ interface PB_data{
   number: string
 }
 
+export interface pagination {
+  page: number
+  limit: number
+}
+
+
  export const fetchContacts  = 
-  createAsyncThunk< PB_Response, void, { state: RootState}>(
+  createAsyncThunk< PB_Response, pagination, { state: RootState}>(
     "contacts/fetchAll",
   
-    async (_, thunkAPI) => {
+    async ({page = 1, limit = 5}, thunkAPI) => {
       try {
-        const response = await axios.get("/contacts/grab");
+        const response = await axios.get(`/contacts/grab?page=${page}&limit=${limit}`);
         if(!response.data){
           return thunkAPI.rejectWithValue('Unable to fetch contacts');
         }

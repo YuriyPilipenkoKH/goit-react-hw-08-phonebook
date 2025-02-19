@@ -1,15 +1,16 @@
 import React from "react"
 import { useContacts } from "../../hooks/useContacts"
+import { fetchContacts } from "../../redux/contacts/operations"
 
 
 
 
 const PaginationControls:React.FC = () => {
   // const { currentPage, totalPages, grabTransactions } = useFinanceStore()
-  const {} = useContacts()
+  const {currentPage, totalPages, } = useContacts()
 
   const handlePageChange = (newPage: number) => {
-    grabTransactions({ page: newPage, limit: 5 })
+    fetchContacts({ page: newPage, limit: 5 })
   }
 
   return (
