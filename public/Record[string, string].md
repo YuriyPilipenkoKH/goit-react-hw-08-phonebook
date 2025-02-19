@@ -122,6 +122,111 @@ Strict key safety	✅ Safer	❌ Any string is allowed
 🚀 Use Record<string, string> when you need flexible, dynamic key access while ensuring all values remain strings.
 
 
+If your lang object contains nested objects, Record<string, string> is no longer sufficient because not all values are simple strings. Instead, you need a recursive type or a specific type definition.
+
+1️⃣ Example: Nested Language Object
+Imagine your translations look like this:
+
+ts
+Copy
+Edit
+export const langEN = {
+  appTitle: "React Phonebook",
+  buttons: {
+    home: "Home",
+    contacts: "Contacts",
+  },
+  errors: {
+    userExists: "User already exists",
+    invalidEmail: "Invalid email address",
+  },
+};
+❌ Problem with Record<string, string>
+If you define:
+
+ts
+Copy
+Edit
+const lang: Record<string, string> = langEN;
+🔴 TypeScript Error: "buttons" and "errors" contain objects, not strings.
+
+2️⃣ Solution 1: Recursive Type
+To allow nested objects, use a recursive TypeScript type:
+
+ts
+Copy
+Edit
+type NestedLang = {
+  [key: string]: string | NestedLang;
+};
+
+const lang: NestedLang = langEN;
+✅ Now, TypeScript allows both string values and nested objects.
+
+3️⃣ Solution 2: Exact Type Definition
+Instead of allowing any key, explicitly define the structure:
+
+ts
+Copy
+Edit
+export type LangType = {
+  appTitle: string;
+  buttons: {
+    home: string;
+    contacts: string;
+  };
+  errors: {
+    userExists: string;
+    invalidEmail: string;
+  };
+};
+
+export const langEN: LangType = {
+  appTitle: "React Phonebook",
+  buttons: {
+    home: "Home",
+    contacts: "Contacts",
+  },
+  errors: {
+    userExists: "User already exists",
+    invalidEmail: "Invalid email address",
+  },
+};
+✅ This provides auto-completion and strict type safety.
+
+4️⃣ Accessing Nested Translations Dynamically
+If errorCode might be nested (e.g., "errors.userExists"), you need to handle dynamic object paths.
+
+Solution: Utility Function for Safe Access
+ts
+Copy
+Edit
+const getTranslation = (lang: NestedLang, path: string): string => {
+  return path.split(".").reduce((obj, key) => (obj && obj[key]) ? obj[key] : path, lang) as string;
+};
+
+const errorCode = "errors.userExists";
+const translatedMsg = getTranslation(langEN, errorCode);
+console.log(translatedMsg); // "User already exists"
+🔹 This function:
+
+Splits "errors.userExists" into ["errors", "userExists"]
+Traverses the lang object safely
+Returns the correct translation or falls back to the key itself
+5️⃣ Final Recommendation
+✅ If your structure is known and fixed, use explicit types (LangType).
+✅ If your translations are deeply nested, use a recursive type (NestedLang).
+✅ If you need dynamic access, use a utility function like getTranslation().
+Would you like to modify your useLanguage hook to support this? 🚀
+
+
+
+
+
+
+
+
+
 
 
 

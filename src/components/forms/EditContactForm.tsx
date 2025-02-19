@@ -1,13 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { addContactSchema, addContactSchemaType } from '../../types/AddComtact.model'
+
 import { ContactFormBtn, Form, Input, Label } from './Form.styled'
 import { useLanguage } from '../../hooks/useLanguage'
 import { editContact } from '../../redux/contacts/operations'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { Contact } from '../../types/contact.model'
 import { onModalClose } from '../../redux/modal/modalSlice'
+import { AddContactSchemaType, useAddContactSchema } from '../../hooks/useAddContactSchema'
 
 interface EditContactFormProps {
  contact: Contact
@@ -18,6 +19,7 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
   }) => {
     const lang = useLanguage()
      const dispatch = useAppDispatch();
+       const {addContactSchema} = useAddContactSchema()
      const {_id, name, number, userId} = contact
     const {
       register, 
@@ -25,7 +27,7 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
       formState,
       reset,
       setError,
-    } = useForm<addContactSchemaType >({
+    } = useForm<AddContactSchemaType >({
       defaultValues: {  
         name: name || '',
         number: number || '',
@@ -39,7 +41,7 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
         isSubmitting,
         isLoading 
       } = formState
-  const onSubmit = async (data: addContactSchemaType) => {
+  const onSubmit = async (data: AddContactSchemaType) => {
 
    dispatch(editContact({
       _id,
@@ -49,7 +51,10 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
     }))
     .then((res) => {
       if(res.type === 'contacts/editContact/rejected'){
-        setError('number', { type: 'manual', message: res.payload as string }  )
+        const errorCode = res.payload as string; // Ensure it's a string
+        const translatedMsg = lang[errorCode] || errorCode;
+        setError('number', { type: 'manual', message: translatedMsg  }  )
+        // setError('number', { type: 'manual', message: res.payload as string }  )
       }
       if(res.type === 'contacts/editContact/fulfilled'){
         reset()
@@ -67,7 +72,7 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
       {lang.name}:
         <Input
         {...register('name',)}
-          placeholder=	{( isSubmitting )? "Processing" : 'name'}
+          placeholder=	{( isSubmitting )? "Processing" : lang.namePlaceholder}
         />
       </Label>
       {errors.name && <div className='text-purple-900'>{errors.name?.message}</div>}
@@ -75,7 +80,7 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
       {lang.number}:
         <Input
         {...register('number',)}
-        placeholder=	{( isSubmitting )? "Processing" : 'number'}
+        placeholder=	{( isSubmitting )? "Processing" : '0980001204'}
         />
       </Label>
       {errors.number && <div className='text-purple-900'>{errors.number?.message}</div>}

@@ -101,7 +101,8 @@ interface PB_data{
 
       } catch (error: unknown) {
         if(error instanceof AxiosError){
-          return thunkAPI.rejectWithValue(error.response?.data.message);
+          // return thunkAPI.rejectWithValue(error.response?.data.message);
+          return thunkAPI.rejectWithValue(error.response?.data.errorCode);//receiving errorCode from backend
         }
         Notify.info('Something went wrong. ');
       }
