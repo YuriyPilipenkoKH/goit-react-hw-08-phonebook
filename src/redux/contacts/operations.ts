@@ -23,6 +23,7 @@ export interface PB_update_Response {
   message: string
   existingNameError?: boolean
   existingNumberError?: boolean
+  querytFormatError?: boolean
 }
 interface PB_data{
   name: string

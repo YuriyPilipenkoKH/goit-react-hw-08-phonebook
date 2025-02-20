@@ -10,6 +10,7 @@ import { Input } from "../../forms/Form.styled";
 import { fetchContacts } from "../../../redux/contacts/operations";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { useContacts } from "../../../hooks/useContacts";
+import { useLanguage } from "../../../hooks/useLanguage";
 
 // interface SearchBarProps {
 //   onSearch: (query: string) => void;
@@ -18,13 +19,13 @@ import { useContacts } from "../../../hooks/useContacts";
 const SearchBar = () => {
   const dispatch = useAppDispatch()
   const{currentPage} = useContacts()
+    const lang = useLanguage()
   const {
     register, 
     handleSubmit,
     formState,
     reset,
     setError,
-
   } = useForm<Search >({
     defaultValues: {  
       query:  '',
@@ -51,6 +52,13 @@ const SearchBar = () => {
   const shut =() => {
      dispatch(search(''))
      dispatch(fetchContacts({ page: currentPage, }))
+     .then((res) => {
+      if(res.type === 'contacts/fetchAll/rejected'){
+        const errorCode = res.payload as string; 
+        const translatedMsg = lang[errorCode] || errorCode;
+        setError('query', { type: 'manual', message: translatedMsg  }  )
+      }
+     })
     reset()
   }
 

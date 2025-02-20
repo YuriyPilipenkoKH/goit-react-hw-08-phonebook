@@ -51,6 +51,7 @@ export const langEN = createLang({
   existingNumberError: 'A contact with this number already exists.',
   notFoundError: 'Contact not found.',
   incorrectFormat: 'Correct nuber format: 0985551204',
+  querytFormatError: 'Correct format letters & digits ',
 
   emailInUse: 'Email already in use',
   credentialsError: 'Invalid credentials',
@@ -121,6 +122,7 @@ export const langUA = createLang({
   existingNumberError: 'Контакт із цим номером уже існує.',
   notFoundError: 'Контакт не знайдено.',
   incorrectFormat: 'Правильний формат номера: 0985551204',
+  querytFormatError: 'Правильний формат букви і цифри',
 
   emailInUse: 'імейл вже використовується',
   credentialsError: 'Недійсні облікові дані',
