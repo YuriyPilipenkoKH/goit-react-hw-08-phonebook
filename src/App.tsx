@@ -7,6 +7,7 @@ import { refreshUser } from './redux/auth/operations'
 import { useAuth } from './hooks/useAuth'
 import AdminPage from './pages/AdminPage'
 import  "./utils/notiflix"
+import ErrorBoundary from './components/errorboundary/ErrorBoundary'
 const HomePage = lazy(() => import('./pages/HomePage'))
 const SignUpPage = lazy(() => import('./pages/SignUpPage'))
 const LoginPage = lazy(() => import('./pages/LoginPage'))
@@ -25,38 +26,40 @@ function App() {
 
 
   return (
-    <Container>
-       <Routes>
-        <Route path="/" element={<Layout />}>
-        <Route index element={< HomePage />}/>
-        <Route path="/signup"
-            element ={!token
-            ? <SignUpPage/>
-            : <Navigate to='/phonebook'/>}/>
-        <Route path="/login"
-            element ={!token
-            ? <LoginPage/>
-            : <Navigate to='/phonebook'/>}/>
-        <Route path="phonebook"
-            element ={ token
-            ? <PhonebookPage/>
-            : <Navigate to='/login'/>}/>
-        <Route path="/profile"
-            element={ token
-            ? <ProfilePage /> 
-            : <Navigate to='/login' />} />
-        <Route path="/admin"
-            element={ !token
-            ? <PhonebookPage/> 
-            : isAnmin 
-              ? <AdminPage/>
-              :  <Navigate to='/phonebook' />
-            } />
-        <Route path="*" 
-            element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </Container>
+    <ErrorBoundary>
+      <Container>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+          <Route index element={< HomePage />}/>
+          <Route path="/signup"
+              element ={!token
+              ? <SignUpPage/>
+              : <Navigate to='/phonebook'/>}/>
+          <Route path="/login"
+              element ={!token
+              ? <LoginPage/>
+              : <Navigate to='/phonebook'/>}/>
+          <Route path="phonebook"
+              element ={ token
+              ? <PhonebookPage/>
+              : <Navigate to='/login'/>}/>
+          <Route path="/profile"
+              element={ token
+              ? <ProfilePage /> 
+              : <Navigate to='/login' />} />
+          <Route path="/admin"
+              element={ !token
+              ? <PhonebookPage/> 
+              : isAnmin 
+                ? <AdminPage/>
+                :  <Navigate to='/phonebook' />
+              } />
+          <Route path="*" 
+              element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </Container>
+    </ErrorBoundary>
 
   )
 }

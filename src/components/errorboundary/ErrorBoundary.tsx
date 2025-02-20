@@ -1,4 +1,5 @@
 import React, { ReactNode, useState } from "react";
+import { BoundaryWrapper } from "./ErrorBoundary.styled";
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -13,11 +14,11 @@ const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children }) => {
   };
 
   return error ? (
-    <div style={{ padding: "20px", textAlign: "center" }}>
+    <BoundaryWrapper >
       <h2>Something went wrong.</h2>
       <p>{error.message}</p>
       <button onClick={() => setError(null)}>Try Again</button>
-    </div>
+    </BoundaryWrapper>
   ) : (
     <ErrorCatcher onError={handleError}>{children}</ErrorCatcher>
   );

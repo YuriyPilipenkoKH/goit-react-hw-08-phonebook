@@ -4,6 +4,8 @@ export const CounterWrap = styled.div`
   position: absolute;
   right: 0;
   top: 62px;
+  height: 40px;
+  min-width: 40px;
   display: flex;
   align-items: center;
   justify-content: center;

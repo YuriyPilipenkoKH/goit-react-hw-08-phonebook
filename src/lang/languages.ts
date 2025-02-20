@@ -67,7 +67,7 @@ export const langEN = createLang({
 
 
   noContacts: 'No contacts have been added recently',
-  
+
 });
 
 
@@ -116,6 +116,7 @@ export const langUA = createLang({
   next : 'Наступна',
   page: 'Сторінка',
   of: 'з',
+  // dodik: 'з',
 
   existingNumberError: 'Контакт із цим номером уже існує.',
   notFoundError: 'Контакт не знайдено.',
@@ -127,6 +128,7 @@ export const langUA = createLang({
   regSuccess: 'Успішна реєстрація',
   welcome: 'Ласкаво просимо',
   bye: 'До побачення',
+
 
   addSuccess: ' успішно додано',
   updSuccess: ' успішно оновлено',

@@ -12,7 +12,7 @@ const Layout = () => {
   const lang = useLanguage()
 
     return (
-    <ErrorBoundary>
+    <>
       <MainHeader  className="main-header" >
         <AppBar/>
       </MainHeader>
@@ -23,7 +23,7 @@ const Layout = () => {
           {lang.footerTitle} 
           < MirrorStreamIcon />
         </MainFooter>
-      </ErrorBoundary>
+      </>
     )}
 
 export default Layout
