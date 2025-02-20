@@ -30,8 +30,13 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   .then(() => {
     dispatch(deleteContact(_id))
     .then((res) => {
+      console.log(res);
+      if(res.type === 'contacts/deleteContact/fulfilled'){
+      const delContactName = (res.payload as PB_update_Response).contact.name
+      Notify.success(`${delContactName} ${lang.delSuccess}`)
       setDeleted(true)
       setTimeout(() => setDeleted(false), 2000);
+      }
     })
   })
   .catch(() => { });   // Handle cancellation or rejection 

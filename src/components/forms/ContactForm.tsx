@@ -18,7 +18,7 @@ const ContactForm = () => {
   const lang = useLanguage()
   const dispatch = useAppDispatch()
   const {addContactSchema} = useAddContactSchema()
-  const {theme, language} = useAll()
+  const { language} = useAll()
 
   const {
     register, 
