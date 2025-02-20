@@ -46,7 +46,7 @@ const contactsSlice = createSlice({
         state.isLoading = false;
         state.contactsList = payload.list;
         state.totalPages = payload.pagination.totalPages
-        state.currentPage = payload.pagination.page
+        state.currentPage = payload.pagination.currentPage
         state.counter = payload.pagination.totalItems
         state.error = null;
       })

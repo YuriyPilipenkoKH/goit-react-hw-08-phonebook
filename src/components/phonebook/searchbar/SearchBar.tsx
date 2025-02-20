@@ -7,6 +7,8 @@ import { search } from "../../../redux/contacts/contactsSlice";
 import { StyledSearchingForm } from "./SearchBar.styled";
 import { BiSearchAlt } from "react-icons/bi";
 import { Input } from "../../forms/Form.styled";
+import { fetchContacts } from "../../../redux/contacts/operations";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 // interface SearchBarProps {
 //   onSearch: (query: string) => void;
@@ -21,6 +23,7 @@ const SearchBar = () => {
     formState,
     reset,
     setError,
+
   } = useForm<Search >({
     defaultValues: {  
       query:  '',
@@ -30,11 +33,14 @@ const SearchBar = () => {
     const {
       errors,
       isSubmitting,
+      isDirty
     } = formState
     console.log('errors', errors);
 
     const onSubmit = async (data: Search) => {
       console.log(data, 'submited..');
+      const searchQuery = data.query.trim(); // Remove extra spaces
+      dispatch(fetchContacts({ page: 1}));
       reset()
     }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,11 +48,13 @@ const SearchBar = () => {
     dispatch(search(value))
 
   };
-  const shut =() => {
+  const cleaner =() => {
     reset()
     setError('query', { type: 'manual', message: '' })
   }
-
+  const shut =() => {
+    reset()
+  }
   return (
     <StyledSearchingForm 
         autoComplete="off" 
@@ -64,13 +72,13 @@ const SearchBar = () => {
    {errors.query && <div className='text-purple-900'>{errors.query?.message}</div>}
    </label>
     <div className='search_btn_wrap absolute'>
-      {/* {isDirty && (
+      {isDirty && (
       <button 
       onClick={cleaner}
       type='button'>
         <IoMdCloseCircleOutline size={25} className='text-violet-950'/>
       </button>
-      )} */}
+      )}
       <button type='submit'>
         <BiSearchAlt size={25} />
       </button>

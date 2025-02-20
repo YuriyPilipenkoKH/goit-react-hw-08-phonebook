@@ -39,9 +39,11 @@ export interface pagination {
     async ({ page = 1 } , thunkAPI) => {
       const state = thunkAPI.getState() as RootState;
       const limit = state.contacts.limit; // Retrieve limit from Redux state
+      const query = state.contacts.query;
 
       try {
-        const response = await axios.get(`/contacts/grab?page=${page}&limit=${limit}`);
+        const response = await axios
+        .get(`/contacts/grab?page=${page}&limit=${limit}&query=${query}`);
        if(!response.data){
           return thunkAPI.rejectWithValue('Unable to fetch contacts');
         }
