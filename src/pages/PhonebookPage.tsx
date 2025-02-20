@@ -11,6 +11,7 @@ import { fetchContacts } from '../redux/contacts/operations'
 import { useAppDispatch } from '../hooks/useAppDispatch'
 import ContactForm from '../components/forms/ContactForm'
 import PaginationControls from '../components/pagination/PaginationControls'
+import GenerateRandomContact from '../components/generator/GenerateRandomContact'
 
 const PhonebookPage = () => {
   const lang = useLanguage()
@@ -25,6 +26,7 @@ const PhonebookPage = () => {
     <PhonebookWrapper className="phonebook__wrap">
     <Section title={lang.phonebook} icon ={language === 'english' &&  <IconMphone/>}>
       <ContactForm  />
+      <GenerateRandomContact/>
       </Section >
 
       {/* <Filter /> */}
