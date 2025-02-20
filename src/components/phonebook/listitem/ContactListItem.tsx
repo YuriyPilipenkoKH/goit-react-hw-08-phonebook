@@ -10,6 +10,7 @@ import { useAll } from '../../../hooks/useAll';
 import { onModalOpen } from '../../../redux/modal/modalSlice';
 import { useContacts } from '../../../hooks/useContacts';
 import { Notify } from 'notiflix';
+import capitalize from '../../../utils/capitalize';
 
 interface ContactListItemProps{
 contact: Contact
@@ -34,14 +35,14 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
       console.log(res);
       if(res.type === 'contacts/deleteContact/fulfilled'){
       const delContactName = (res.payload as PB_update_Response).contact.name
-      Notify.success(`${delContactName} ${lang.delSuccess}`)
+      Notify.success(`${lang.cont}  ${capitalize(delContactName)} ${lang.delSuccess}`)
       setDeleted(true)
       setTimeout(() => setDeleted(false), 2000);
       }
     })
   })
   .catch((rej) =>{
-    Notify.info(`contact ${rej?.name} remained same`)
+    Notify.info(`${lang.cont} ${capitalize(rej?.name)} ${lang.same}`)
   })
   }
 

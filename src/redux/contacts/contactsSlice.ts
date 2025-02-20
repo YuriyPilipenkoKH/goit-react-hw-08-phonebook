@@ -19,7 +19,7 @@ const initialState:ContactsState = {
   message: null,
   totalPages: 1,
   currentPage: 1,
-  limit: 10
+  limit: 5
 };
 
 const contactsSlice = createSlice({

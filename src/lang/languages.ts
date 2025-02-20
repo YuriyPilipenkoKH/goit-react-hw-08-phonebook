@@ -58,6 +58,8 @@ export const langEN = {
   addSuccess: ' added successfully',
   updSuccess: ' updated successfully',
   delSuccess: ' deleted successfully',
+  cont: ' Contact',
+  same: ' remained same',
 
   noContacts: 'No contacts have been added recently',
   
@@ -123,6 +125,8 @@ export const langUA = {
   addSuccess: ' успішно додано',
   updSuccess: ' успішно оновлено',
   delSuccess: ' успішно видалено',
+  cont: ' Контакт',
+  same: ' залишився таким самим',
 
   noContacts: 'Останнім часом не було додано жодного контакту',
 }
