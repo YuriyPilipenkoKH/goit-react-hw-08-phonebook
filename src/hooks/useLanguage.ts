@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getLang } from "../redux/selectors/selectors";
 import { langEN, langUA } from "../lang/languages";
-import { languageTypes } from "../types";
 import { validateTranslationKeys } from "../lang/langValidation";
 
 

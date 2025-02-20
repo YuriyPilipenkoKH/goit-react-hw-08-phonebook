@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom'
 import AppBar from '../appbar/AppBar'
 import MirrorStreamIcon from '../../img/icons/mirrorStream'
 import { useLanguage } from '../../hooks/useLanguage'
+import ErrorBoundary from '../errorboundary/ErrorBoundary'
 
 
 
@@ -11,7 +12,7 @@ const Layout = () => {
   const lang = useLanguage()
 
     return (
-    <>
+    <ErrorBoundary>
       <MainHeader  className="main-header" >
         <AppBar/>
       </MainHeader>
@@ -22,7 +23,7 @@ const Layout = () => {
           {lang.footerTitle} 
           < MirrorStreamIcon />
         </MainFooter>
-      </>
+      </ErrorBoundary>
     )}
 
 export default Layout
