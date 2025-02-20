@@ -10,11 +10,12 @@ export const StyledSearchingForm = styled('form')`
 
 & > label  {
     display: flex;
-    gap: 5px;
+    flex-direction: column;
+    gap: 12px;
 
   & > input{
         outline: none;
-        width: 280px;
+        width: 260px;
 /*   
         padding: 6px 90px 6px 16px;
         border: 2px solid #999;
@@ -23,7 +24,7 @@ export const StyledSearchingForm = styled('form')`
 }
 & > .search_btn_wrap{
     position: absolute;
-    right: 20px;
+    right: 36px;
     top: 8px;
     display: flex;
     gap: 8px;
@@ -31,6 +32,7 @@ export const StyledSearchingForm = styled('form')`
     &> button{
         outline: none;
         border: none;
+        background: transparent;
         cursor: pointer;
     }  
   &> button > svg {
@@ -40,7 +42,7 @@ export const StyledSearchingForm = styled('form')`
 
 & > .shut{
     position: absolute;
-    right: 4px;
+    right: 14px;
     top: 1px;
     width: 12px;
     height: 12px;

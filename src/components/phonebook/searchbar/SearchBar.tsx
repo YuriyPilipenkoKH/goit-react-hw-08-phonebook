@@ -5,7 +5,6 @@ import { Search, searchSchema } from "../../../types/search.schema";
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { search } from "../../../redux/contacts/contactsSlice";
 import { StyledSearchingForm } from "./SearchBar.styled";
-import { IoMdCloseCircleOutline } from "react-icons/io";
 import { BiSearchAlt } from "react-icons/bi";
 import { Input } from "../../forms/Form.styled";
 
@@ -14,15 +13,13 @@ import { Input } from "../../forms/Form.styled";
 // }
 
 const SearchBar = () => {
-  
-  const dispatch = useAppDispatch()
+   const dispatch = useAppDispatch()
   
   const {
     register, 
     handleSubmit,
     formState,
     reset,
-    setValue,
     setError,
   } = useForm<Search >({
     defaultValues: {  
@@ -32,27 +29,23 @@ const SearchBar = () => {
         resolver: zodResolver(searchSchema), })
     const {
       errors,
-      isDirty,
-      isValid ,
       isSubmitting,
-      isLoading 
     } = formState
+    console.log('errors', errors);
 
     const onSubmit = async (data: Search) => {
+      console.log(data, 'submited..');
+      reset()
     }
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     dispatch(search(value))
 
   };
-  const cleaner =() => {
+  const shut =() => {
     reset()
-
-}
-const shut =() => {
-  reset()
-}
+    setError('query', { type: 'manual', message: ''  })
+  }
 
   return (
     <StyledSearchingForm 
@@ -68,20 +61,21 @@ const shut =() => {
       })}
         placeholder=	{( isSubmitting )? "Processing" : "Search..."}
       />
+   {errors.query?.message && <div className='text-purple-900'>{errors.query?.message}</div>}
    </label>
-   <div className='search_btn_wrap absolute'>
-      {isDirty && (
+    <div className='search_btn_wrap absolute'>
+      {/* {isDirty && (
       <button 
       onClick={cleaner}
       type='button'>
         <IoMdCloseCircleOutline size={25} className='text-violet-950'/>
       </button>
-      )}
+      )} */}
       <button type='submit'>
         <BiSearchAlt size={25} />
       </button>
-      </div>
-      <button 
+    </div>
+    <button 
         onClick={shut}
         className='shut'>
       </button>
@@ -92,9 +86,3 @@ const shut =() => {
 
 export default SearchBar;
 
-// <input
-//   type="text"
-//   placeholder="Search contacts..."
-//   value={query}
-//   onChange={handleChange}
-// />

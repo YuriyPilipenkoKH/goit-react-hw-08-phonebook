@@ -63,7 +63,6 @@ const GenerateRandomContact: React.FC = () => {
           <button
           onClick={ clear }
           className="close shut">
-            {/* <CgCloseO /> */}
           </button>
         </p>
       )}
