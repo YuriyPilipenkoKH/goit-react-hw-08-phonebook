@@ -4,11 +4,12 @@ import { useForm } from 'react-hook-form'
 
 import { ContactFormBtn, Form, Input, Label } from './Form.styled'
 import { useLanguage } from '../../hooks/useLanguage'
-import { editContact } from '../../redux/contacts/operations'
+import { editContact, PB_update_Response } from '../../redux/contacts/operations'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { Contact } from '../../types/contact.model'
 import { onModalClose } from '../../redux/modal/modalSlice'
 import { AddContactSchemaType, useAddContactSchema } from '../../hooks/useAddContactSchema'
+import { Notify } from 'notiflix'
 
 interface EditContactFormProps {
  contact: Contact
@@ -57,6 +58,8 @@ const EditContactForm: React.FC<EditContactFormProps> = ({
         // setError('number', { type: 'manual', message: res.payload as string }  )
       }
       if(res.type === 'contacts/editContact/fulfilled'){
+        const newContactName = (res.payload as PB_update_Response).contact.name 
+        Notify.success(`${newContactName} ${lang.updSuccess}`)
         reset()
         dispatch(onModalClose())
       }

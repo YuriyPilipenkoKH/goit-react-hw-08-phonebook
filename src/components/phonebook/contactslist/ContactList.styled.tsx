@@ -108,7 +108,7 @@ export const EditWrapper = styled.div`
 export const ContactContainer = styled.div`
   position: relative;
   width: 320px;
-  max-height: 480px;
+  max-height: 670px;
   padding: 4px 2px;
   border: 3px solid var(--teal);
   background-color: rgba(238, 238, 238, 0.533);
@@ -137,14 +137,14 @@ export const ContactContainer = styled.div`
 @media screen and (min-width: 768px) {
       width: 100%;
       padding: 4px 8px;
-      max-height: 300px;
+
     }
     @media (min-width: 1024px) {
-      max-height: 500px;
+
 
   }
     @media (min-width: 1280px) {
-      max-height: 500px;
+
       width: 100%;
   }
 `;

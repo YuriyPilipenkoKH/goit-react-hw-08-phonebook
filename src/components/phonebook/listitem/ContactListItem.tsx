@@ -3,12 +3,13 @@ import { BtnDelete, BtnEdit, BtnWrapper, EditWrapper, ItemCard, ListItem } from 
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useLanguage } from '../../../hooks/useLanguage';
 import { confirmDelete,  } from '../../../utils/notifier';
-import { deleteContact } from '../../../redux/contacts/operations';
+import { deleteContact, PB_update_Response } from '../../../redux/contacts/operations';
 import { Contact } from '../../../types/contact.model';
 
 import { useAll } from '../../../hooks/useAll';
 import { onModalOpen } from '../../../redux/modal/modalSlice';
 import { useContacts } from '../../../hooks/useContacts';
+import { Notify } from 'notiflix';
 
 interface ContactListItemProps{
 contact: Contact
@@ -16,11 +17,11 @@ contact: Contact
 
 const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   const dispatch = useAppDispatch();
-const {contacts} = useContacts()
+
   const { _id, name, number} = contact;
   const [deleted, setDeleted] = useState<boolean>(false)
   const lang = useLanguage()
-  const {  modalIsOpen,  } = useAll()
+
 
 
   const handleDelete = () => {
@@ -28,22 +29,17 @@ const {contacts} = useContacts()
     confirmDelete(`Are you sure you want to delete ${name}?`, name)
   .then(() => {
     dispatch(deleteContact(_id))
-    .then((data) => {
-      console.log(data.payload);
+    .then((res) => {
+      setDeleted(true)
+      setTimeout(() => setDeleted(false), 2000);
     })
-    setDeleted(true)
-    setTimeout(() => setDeleted(false), 2000);
   })
-  .catch(() => {
-    // Handle cancellation or rejection
-  });
+  .catch(() => { });   // Handle cancellation or rejection 
   }
 
   const handleEdit = () => {
     dispatch(onModalOpen(contact))
   }
-
-
 
 
   return (

@@ -59,13 +59,6 @@ const ContactForm = () => {
       setNewAdded(true)
       setTimeout(() => setNewAdded(false), 2000)
     }
-    if(res.type === 'contacts/editContact/fulfilled'){
-      const newContactName = (res.payload as PB_update_Response).contact.name 
-      Notify.success(`${newContactName} ${lang.updSuccess}`)
-      reset()
-      setNewAdded(true)
-      setTimeout(() => setNewAdded(false), 2000)
-    }
   })
   }
 
