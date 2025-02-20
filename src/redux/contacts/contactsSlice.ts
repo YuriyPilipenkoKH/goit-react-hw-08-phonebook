@@ -93,9 +93,6 @@ const contactsSlice = createSlice({
         state.isLoading = false;
         state.error = payload as string;
       })
-
-
-
   }
 });
 
