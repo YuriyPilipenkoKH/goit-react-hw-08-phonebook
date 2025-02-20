@@ -1,6 +1,6 @@
 import React from 'react'
 import { CgMenuGridR } from "react-icons/cg";
-import { FlatButton } from '../../button/Button';
+import { FlatButton } from '../button/Button';
 
 const MobileMenu = () => {
 

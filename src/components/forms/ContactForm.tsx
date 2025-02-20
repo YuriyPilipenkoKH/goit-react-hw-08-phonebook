@@ -59,7 +59,7 @@ const ContactForm = () => {
       setNewAdded(true)
       setTimeout(() => setNewAdded(false), 2000)
     }
-  })
+  }).catch((rej) => console.log(rej))
   }
 
   return (

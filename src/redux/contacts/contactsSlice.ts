@@ -9,7 +9,8 @@ export interface ContactsState {
   message: string | null;
   totalPages: number,
   currentPage: number,
-  limit:number
+  limit: number
+  counter: number
 }
 
 const initialState:ContactsState = { 
@@ -19,7 +20,8 @@ const initialState:ContactsState = {
   message: null,
   totalPages: 1,
   currentPage: 1,
-  limit: 5
+  limit: 5,
+  counter: 0
 };
 
 const contactsSlice = createSlice({
@@ -39,6 +41,7 @@ const contactsSlice = createSlice({
         state.contactsList = payload.list;
         state.totalPages = payload.pagination.totalPages
         state.currentPage = payload.pagination.page
+        state.counter = payload.pagination.totalItems
         state.error = null;
       })
   .addCase(fetchContacts.rejected, (state, { payload }) => {

@@ -11,6 +11,8 @@ export const selectTotalPages = (state: RootState) => state.contacts.totalPages;
 
 export const selectCurrentPage = (state: RootState) => state.contacts.currentPage; 
 
+export const selectCounter = (state: RootState) => state.contacts.counter; 
+
 
 // export const getContactsFilter = (state: RootState) => state.filter
 
