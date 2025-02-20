@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const CounterWrap = styled.div`
   position: absolute;
   right: 0;
+  top: 62px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,5 +13,9 @@ export const CounterWrap = styled.div`
   background-color: var(--orange);
   color: var(--secondary-text-color);
   font-weight: 600;
+  z-index: 3;
 
+  @media screen and (min-width: 768px) {
+    top: 0;
+  }
 `
