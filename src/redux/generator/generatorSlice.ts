@@ -15,14 +15,14 @@ const generatorSlice = createSlice({
   name: 'generator',
   initialState,
   reducers: {
-    setContact(state, action) {
+    setGenContact(state, action) {
       state.genContact = action.payload
     },
-    rmContact(state) {
+    rmGenContact(state) {
       state.genContact.name = ''
       state.genContact.number = ''
     }
   },
 })
-export const { setContact, rmContact } = generatorSlice.actions;
+export const { setGenContact, rmGenContact } = generatorSlice.actions;
 export const generatorReducer = generatorSlice.reducer

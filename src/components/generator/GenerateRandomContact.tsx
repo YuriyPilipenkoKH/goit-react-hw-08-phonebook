@@ -3,6 +3,8 @@ import { GeneratorWrap } from "./GenerateRandomContact.styled";
 import { ContactFormBtn } from "../forms/Form.styled";
 import { FlatButton } from "../button/Button";
 import { CgCloseO } from "react-icons/cg";
+import { useAll } from "../../hooks/useAll";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 export interface Gen_Contact {
   name: string;
@@ -20,6 +22,9 @@ const generateRandomPhoneNumber = () => {
 const GenerateRandomContact: React.FC = () => {
   const [contact, setContact] = useState<Gen_Contact | null>(null);
   const [loading, setLoading] = useState(false);
+  const {genContact} = useAll()
+  const dispatch = useAppDispatch()
+  console.log('genContact', genContact);
 
   const fetchRandomName = async () => {
     setLoading(true);
@@ -39,6 +44,7 @@ const GenerateRandomContact: React.FC = () => {
     const name = await fetchRandomName();
     const number = generateRandomPhoneNumber();
     setContact({ name, number });
+    
   };
 
   return (
