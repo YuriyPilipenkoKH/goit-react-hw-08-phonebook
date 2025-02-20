@@ -37,16 +37,12 @@ const SearchBar = () => {
       isDirty
     } = formState
 
-    const onSubmit = async (data: Search) => {
-      console.log(data, 'submited..');
-      const searchQuery = data.query.trim(); // Remove extra spaces
-      dispatch(fetchContacts({ page: 1}));
-   
-    }
+  const onSubmit = async (data: Search) => {
+    dispatch(fetchContacts({ page: 1}));
+  }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    dispatch(search(value))
-
+    dispatch(search(value.trim()))
   };
   const cleaner =() => {
     reset()
@@ -57,6 +53,7 @@ const SearchBar = () => {
      dispatch(fetchContacts({ page: currentPage, }))
     reset()
   }
+
   return (
     <StyledSearchingForm 
         autoComplete="off" 
