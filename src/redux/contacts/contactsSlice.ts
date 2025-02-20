@@ -11,6 +11,7 @@ export interface ContactsState {
   currentPage: number,
   limit: number
   counter: number
+  query:string
 }
 
 const initialState:ContactsState = { 
@@ -21,13 +22,18 @@ const initialState:ContactsState = {
   totalPages: 1,
   currentPage: 1,
   limit: 5,
-  counter: 0
+  counter: 0,
+  query: ''
 };
 
 const contactsSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    search: (state, action) =>{
+      state.query = action.payload
+    }
+  },
   extraReducers: builder => {
     builder
 
@@ -95,5 +101,5 @@ const contactsSlice = createSlice({
       })
   }
 });
-
+export const { search } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer
