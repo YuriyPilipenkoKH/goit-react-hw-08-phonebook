@@ -24,7 +24,7 @@ const PhonebookPage = () => {
   useEffect(() => {
     dispatch(fetchContacts({ page: currentPage, }))
   }, [dispatch])
-  console.log(query);
+  console.log('query',query);
   
   return (
     <PhonebookWrapper className="phonebook__wrap">

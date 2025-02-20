@@ -9,14 +9,15 @@ import { BiSearchAlt } from "react-icons/bi";
 import { Input } from "../../forms/Form.styled";
 import { fetchContacts } from "../../../redux/contacts/operations";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import { useContacts } from "../../../hooks/useContacts";
 
 // interface SearchBarProps {
 //   onSearch: (query: string) => void;
 // }
 
 const SearchBar = () => {
-   const dispatch = useAppDispatch()
-  
+  const dispatch = useAppDispatch()
+  const{currentPage} = useContacts()
   const {
     register, 
     handleSubmit,
@@ -35,13 +36,12 @@ const SearchBar = () => {
       isSubmitting,
       isDirty
     } = formState
-    console.log('errors', errors);
 
     const onSubmit = async (data: Search) => {
       console.log(data, 'submited..');
       const searchQuery = data.query.trim(); // Remove extra spaces
       dispatch(fetchContacts({ page: 1}));
-      reset()
+   
     }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -53,6 +53,8 @@ const SearchBar = () => {
     setError('query', { type: 'manual', message: '' })
   }
   const shut =() => {
+     dispatch(search(''))
+     dispatch(fetchContacts({ page: currentPage, }))
     reset()
   }
   return (
