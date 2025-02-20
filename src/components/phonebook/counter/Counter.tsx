@@ -1,10 +1,11 @@
 import React from 'react'
 import { useContacts } from '../../../hooks/useContacts'
+import { CounterWrap } from './Counter.styled'
 
 const Counter = () => {
   const {counter} = useContacts()
   return (
-    <div>Counter</div>
+    <CounterWrap>{counter}</CounterWrap>
   )
 }
 

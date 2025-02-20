@@ -17,7 +17,7 @@ const PaginationControls:React.FC = () => {
 
   const handlePageChange = (newPage: number) => {
 
-    dispatch(fetchContacts({ page: newPage, limit: 5 }))
+    dispatch(fetchContacts({ page: newPage}))
   }
 
   return (
