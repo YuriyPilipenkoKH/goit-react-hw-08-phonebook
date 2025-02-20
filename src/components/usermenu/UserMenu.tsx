@@ -91,7 +91,7 @@ const quit =() => {
                   onClick={() => setIsOpen(!isOpen)}
                   type='button'>
               <Link to="/admin" className="button-link">
-                {/* {lang.slides} */}admin
+                {lang.admin}
               </Link>
               </MenuItem>
                )}
