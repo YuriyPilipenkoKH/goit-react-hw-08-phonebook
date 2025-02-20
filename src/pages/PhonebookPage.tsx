@@ -28,7 +28,7 @@ const PhonebookPage = () => {
     <PhonebookWrapper className="phonebook__wrap">
     <Section title={lang.phonebook} icon ={language === 'english' &&  <IconMphone/>}>
       <ContactForm  />
-    {isAdmin &&  <GenerateRandomContact/>}
+      {isAdmin &&  <GenerateRandomContact/>}
       </Section >
 
       {/* <Filter /> */}

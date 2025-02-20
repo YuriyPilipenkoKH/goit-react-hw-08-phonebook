@@ -11,6 +11,8 @@ import animationData  from '../../assets/Animation - 1739633703538.json'
 import { AddContactSchemaType, useAddContactSchema } from '../../hooks/useAddContactSchema';
 import { useAll } from '../../hooks/useAll';
 import { Notify } from 'notiflix';
+import { useAuth } from '../../hooks/useAuth';
+import IconReact from '../../img/icons/iconReact';
 
 
 const ContactForm = () => {
@@ -19,7 +21,7 @@ const ContactForm = () => {
   const dispatch = useAppDispatch()
   const {addContactSchema} = useAddContactSchema()
   const { language, genContact} = useAll()
-
+  const { isAdmin } = useAuth()
 
   const {
     register, 
@@ -93,10 +95,11 @@ const ContactForm = () => {
       {errors.number && <div className='text-purple-900'>{errors.number?.message}</div>}
       <ContactFormBtn 
       type="submit"
-      disabled = { isSubmitting  }
-            >
+      disabled = { isAdmin 
+        ? isSubmitting 
+        : (isSubmitting || !isDirty || !isValid )} >
                { isLoading  ? "Sending.." :  lang.add}
-              {' '}{ language === 'english' && <IconRedux/> }
+              {' '}{ language === 'english' ? <IconRedux /> : <IconReact />  }
       </ContactFormBtn>
              {newAdded && <Lottie animationData={animationData} className="new"/>}
             
