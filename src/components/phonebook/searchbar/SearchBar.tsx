@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { Search, searchSchema } from "../../../types/search.schema";
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
@@ -44,7 +44,7 @@ const SearchBar = () => {
   };
   const shut =() => {
     reset()
-    setError('query', { type: 'manual', message: ''  })
+    setError('query', { type: 'manual', message: '' })
   }
 
   return (
@@ -61,7 +61,7 @@ const SearchBar = () => {
       })}
         placeholder=	{( isSubmitting )? "Processing" : "Search..."}
       />
-   {errors.query?.message && <div className='text-purple-900'>{errors.query?.message}</div>}
+   {errors.query && <div className='text-purple-900'>{errors.query?.message}</div>}
    </label>
     <div className='search_btn_wrap absolute'>
       {/* {isDirty && (
