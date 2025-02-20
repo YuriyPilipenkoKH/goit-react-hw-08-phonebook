@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { getLang } from "../redux/selectors/selectors";
 import { langEN, langUA } from "../lang/languages";
 import { languageTypes } from "../types";
+import { validateTranslationKeys } from "../lang/langValidation";
 
 
 
@@ -12,6 +13,7 @@ export const useLanguage = (): Record<string, string> => {
 
     useEffect(() => {
       setLang(language === 'english' ?  langEN :  langUA);
+      validateTranslationKeys(langEN, langUA)
     }, [language])
 
     return lang

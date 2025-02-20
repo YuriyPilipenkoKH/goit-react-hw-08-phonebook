@@ -64,7 +64,7 @@ export const langEN = createLang({
   delSuccess: ' deleted successfully',
   cont: ' Contact',
   same: ' remained same',
-  same1: ' remained same',
+
 
   noContacts: 'No contacts have been added recently',
   
