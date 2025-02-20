@@ -17,13 +17,13 @@ import capitalize from '../../utils/capitalize.ts';
 
 const UserMenu = () => {
   const dispatch = useAppDispatch();
-  const { user, isLoggedIn, isLoading} = useAuth();
+  const { user, isLoggedIn, isLoading, isAdmin} = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [avatar, setAvatar] = useState(false);
   const [activeAvatar, setActiveAvatar] = useState(arrayOfActors[0]);
   const [activeIndex, setActiveIndex] = useState(0)
   const lang = useLanguage()
- const isAnmin = user?.role  === 'admin'
+
 
 const getIndex = () => {
   const newIndex = (activeIndex + 1) % 20; // Increment the index and wrap around 0-7 range
@@ -85,7 +85,7 @@ const quit =() => {
               {lang.profile}
                </Link>
                </MenuItem>
-               {isAnmin&&(
+               {isAdmin &&(
               <MenuItem 
                   className="admin-button"
                   onClick={() => setIsOpen(!isOpen)}

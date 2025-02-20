@@ -16,8 +16,8 @@ const ProfilePage = lazy(() => import('./pages/ProfilePage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage '))
 
 function App() {
-  const {token, user} = useAuth()
-  const isAnmin = user?.role  === 'admin'
+  const {token,  isAdmin} = useAuth()
+ 
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -50,7 +50,7 @@ function App() {
           <Route path="/admin"
               element={ !token
               ? <PhonebookPage/> 
-              : isAnmin 
+              : isAdmin
                 ? <AdminPage/>
                 :  <Navigate to='/phonebook' />
               } />

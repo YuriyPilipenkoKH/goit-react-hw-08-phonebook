@@ -12,9 +12,11 @@ import { useAppDispatch } from '../hooks/useAppDispatch'
 import ContactForm from '../components/forms/ContactForm'
 import PaginationControls from '../components/pagination/PaginationControls'
 import GenerateRandomContact from '../components/generator/GenerateRandomContact'
+import { useAuth } from '../hooks/useAuth'
 
 const PhonebookPage = () => {
   const lang = useLanguage()
+  const { isAdmin} = useAuth()
   const language = useSelector(getLang)
   const{contacts, currentPage} = useContacts()
   const dispatch = useAppDispatch();
@@ -26,7 +28,7 @@ const PhonebookPage = () => {
     <PhonebookWrapper className="phonebook__wrap">
     <Section title={lang.phonebook} icon ={language === 'english' &&  <IconMphone/>}>
       <ContactForm  />
-      <GenerateRandomContact/>
+    {isAdmin &&  <GenerateRandomContact/>}
       </Section >
 
       {/* <Filter /> */}
