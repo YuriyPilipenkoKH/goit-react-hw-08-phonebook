@@ -5,6 +5,7 @@ import { FlatButton } from "../button/Button";
 import { CgCloseO } from "react-icons/cg";
 import { useAll } from "../../hooks/useAll";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { rmGenContact, setGenContact } from "../../redux/generator/generatorSlice";
 
 export interface Gen_Contact {
   name: string;
@@ -44,8 +45,12 @@ const GenerateRandomContact: React.FC = () => {
     const name = await fetchRandomName();
     const number = generateRandomPhoneNumber();
     setContact({ name, number });
-    
+    dispatch(setGenContact({ name, number }))
   };
+  const clear = () => {
+    setContact(null)
+    dispatch(rmGenContact())
+  }
 
   return (
     <GeneratorWrap>
@@ -57,7 +62,7 @@ const GenerateRandomContact: React.FC = () => {
           <strong>{contact.name}</strong>
           <span>{contact.number}</span>
           <FlatButton 
-          onClick={() => setContact(null)}
+          onClick={ clear }
           className="close">
             <CgCloseO />
           </FlatButton>
