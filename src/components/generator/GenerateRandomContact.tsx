@@ -4,7 +4,7 @@ import { ContactFormBtn } from "../forms/Form.styled";
 import { FlatButton } from "../button/Button";
 import { CgCloseO } from "react-icons/cg";
 
-interface Contact {
+export interface Gen_Contact {
   name: string;
   number: string;
 }
@@ -18,7 +18,7 @@ const generateRandomPhoneNumber = () => {
 };
 
 const GenerateRandomContact: React.FC = () => {
-  const [contact, setContact] = useState<Contact | null>(null);
+  const [contact, setContact] = useState<Gen_Contact | null>(null);
   const [loading, setLoading] = useState(false);
 
   const fetchRandomName = async () => {
