@@ -12,6 +12,7 @@ export const GeneratorWrap= styled.div`
    
 
   &>.flex {
+    position: relative;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -20,6 +21,11 @@ export const GeneratorWrap= styled.div`
     padding: 12px;
     border-radius: 12px;
 
+    &>button.close{
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
   }
 
 `

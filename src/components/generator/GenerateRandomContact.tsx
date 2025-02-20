@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { GeneratorWrap } from "./GenerateRandomContact.styled";
 import { ContactFormBtn } from "../forms/Form.styled";
+import { FlatButton } from "../button/Button";
+import { CgCloseO } from "react-icons/cg";
 
 interface Contact {
   name: string;
@@ -48,6 +50,11 @@ const GenerateRandomContact: React.FC = () => {
         <p className="flex">
           <strong>{contact.name}</strong>
           <span>{contact.number}</span>
+          <FlatButton 
+          onClick={() => setContact(null)}
+          className="close">
+            <CgCloseO />
+          </FlatButton>
         </p>
       )}
     </GeneratorWrap>
