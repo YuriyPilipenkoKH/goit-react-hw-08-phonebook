@@ -27,7 +27,8 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
   const handleDelete = () => {
 
     confirmDelete(`Are you sure you want to delete ${name}?`, name)
-  .then(() => {
+  .then((conf) => {
+    console.log(conf);
     dispatch(deleteContact(_id))
     .then((res) => {
       console.log(res);
@@ -39,7 +40,9 @@ const ContactListItem:React.FC<ContactListItemProps> = ({contact}) => {
       }
     })
   })
-  .catch(() => { });   // Handle cancellation or rejection 
+  .catch((rej) =>{
+    Notify.info(`contact ${rej?.name} remained same`)
+  })
   }
 
   const handleEdit = () => {

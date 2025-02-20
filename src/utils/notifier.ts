@@ -2,6 +2,8 @@ import Notiflix, { Confirm } from 'notiflix';
 
 export interface confirm_Response{
   success: boolean
+  question:string
+  name:string
 }
 
 
@@ -37,12 +39,12 @@ export function confirmDelete (question: string, name: string): Promise<confirm_
         'No',
         () => {
           // Notiflix.Notify.warning(`Contact ${name} was deleted.`);
-          resolve({success: true});
+          resolve({success: true, name, question});
           
         },
         () => {
           // Notiflix.Notify.info(`Contact ${name} remained same.`);
-          reject({success: false});
+          reject({success: false, name, question});
         },
         {}
       );
