@@ -11,3 +11,5 @@ export const selectIsLoading = (state: RootState) => state.auth.isLoading;
 
 export const selectToken = (state: RootState) => state.auth.token;
 
+export const selectisAdmin = (state: RootState) => state.auth.isAdmin;
+

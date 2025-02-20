@@ -9,7 +9,7 @@ export interface AuthState {
   isLoggedIn: boolean;
   isRefreshing: boolean;
   isLoading: boolean;
-  isAnmin: boolean
+  isAdmin: boolean
 }
 
 const initialState:AuthState  = {
@@ -19,7 +19,7 @@ const initialState:AuthState  = {
   isLoggedIn: false,
   isRefreshing: false,
   isLoading: false, 
-  isAnmin: false
+  isAdmin: false
 };
 
   const authSlice = createSlice({
@@ -56,7 +56,7 @@ const initialState:AuthState  = {
         state.isRefreshing = false;
         state.token = payload.token;
         state.user = payload.user;
-        state.isAnmin = payload.user.role === 'admin' ? true : false
+        state.isAdmin = payload.user.role === 'admin' ? true : false
         state.isLoggedIn = true;
         state.error = null;
       })
@@ -74,7 +74,7 @@ const initialState:AuthState  = {
       .addCase(logOut.fulfilled, state => {
         state.isRefreshing = false;
         state.isLoading = false;
-        state.isAnmin = false
+        state.isAdmin = false
         state.user = null;
         state.token = null;
         state.isLoggedIn = false;
@@ -93,7 +93,7 @@ const initialState:AuthState  = {
         .addCase(refreshUser.fulfilled, (state, { payload }) => {
           state.user = payload.user;
           state.isLoggedIn = true;
-          state.isAnmin = payload.user.role === 'admin' ? true : false
+          state.isAdmin = payload.user.role === 'admin' ? true : false
           state.isRefreshing = false;
         })
         .addCase(refreshUser.rejected, (state, { payload }) => {
