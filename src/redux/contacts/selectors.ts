@@ -13,6 +13,8 @@ export const selectCurrentPage = (state: RootState) => state.contacts.currentPag
 
 export const selectCounter = (state: RootState) => state.contacts.counter; 
 
+export const selectQuery = (state: RootState) => state.contacts.query; 
+
 
 // export const getContactsFilter = (state: RootState) => state.filter
 

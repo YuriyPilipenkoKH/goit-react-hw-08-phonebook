@@ -13,22 +13,25 @@ import ContactForm from '../components/forms/ContactForm'
 import PaginationControls from '../components/pagination/PaginationControls'
 import GenerateRandomContact from '../components/generator/GenerateRandomContact'
 import { useAuth } from '../hooks/useAuth'
+import SearchBar from '../components/phonebook/searchbar/SearchBar'
 
 const PhonebookPage = () => {
   const lang = useLanguage()
   const { isAdmin} = useAuth()
   const language = useSelector(getLang)
-  const{contacts, currentPage} = useContacts()
+  const{contacts, currentPage, query} = useContacts()
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchContacts({ page: currentPage, }))
   }, [dispatch])
+  console.log(query);
   
   return (
     <PhonebookWrapper className="phonebook__wrap">
     <Section title={lang.phonebook} icon ={language === 'english' &&  <IconMphone/>}>
       <ContactForm  />
       {isAdmin &&  <GenerateRandomContact/>}
+      <SearchBar/>
       </Section >
 
       {/* <Filter /> */}
