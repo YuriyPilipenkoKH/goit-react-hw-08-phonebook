@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ContactFormBtn, Form, Input, Label } from './Form.styled';
 import IconRedux from '../../img/icons/iconRedux';
 import { useLanguage } from '../../hooks/useLanguage';
@@ -18,18 +18,20 @@ const ContactForm = () => {
   const lang = useLanguage()
   const dispatch = useAppDispatch()
   const {addContactSchema} = useAddContactSchema()
-  const { language} = useAll()
+  const { language, genContact} = useAll()
+
 
   const {
     register, 
     handleSubmit,
     formState,
     reset,
+    setValue,
     setError,
   } = useForm<AddContactSchemaType >({
     defaultValues: {  
-      name: '',
-      number: '',
+      name:  '',
+      number:  '',
        },
         mode:'all',
         resolver: zodResolver(addContactSchema), })
@@ -40,6 +42,12 @@ const ContactForm = () => {
       isSubmitting,
       isLoading 
     } = formState
+
+    useEffect(() => {
+      setValue('name', genContact.name)
+      setValue('number', genContact.number)
+    }, [genContact])
+    
 
   const onSubmit = async (data: AddContactSchemaType) => {
    dispatch(addContact(data))
@@ -85,7 +93,7 @@ const ContactForm = () => {
       {errors.number && <div className='text-purple-900'>{errors.number?.message}</div>}
       <ContactFormBtn 
       type="submit"
-      disabled={isSubmitting || !isDirty || !isValid}
+      disabled={ isSubmitting  }
             >
                { isLoading  ? "Sending.." :  lang.add}
               {' '}{ language === 'english' && <IconRedux/> }

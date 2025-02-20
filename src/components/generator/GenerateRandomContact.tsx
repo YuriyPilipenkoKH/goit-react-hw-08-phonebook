@@ -23,9 +23,8 @@ const generateRandomPhoneNumber = () => {
 const GenerateRandomContact: React.FC = () => {
   const [contact, setContact] = useState<Gen_Contact | null>(null);
   const [loading, setLoading] = useState(false);
-  const {genContact} = useAll()
   const dispatch = useAppDispatch()
-  console.log('genContact', genContact);
+
 
   const fetchRandomName = async () => {
     setLoading(true);
