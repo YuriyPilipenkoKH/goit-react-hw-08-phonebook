@@ -93,7 +93,7 @@ const ContactForm = () => {
       {errors.number && <div className='text-purple-900'>{errors.number?.message}</div>}
       <ContactFormBtn 
       type="submit"
-      disabled={ isSubmitting  }
+      disabled = { isSubmitting  }
             >
                { isLoading  ? "Sending.." :  lang.add}
               {' '}{ language === 'english' && <IconRedux/> }
