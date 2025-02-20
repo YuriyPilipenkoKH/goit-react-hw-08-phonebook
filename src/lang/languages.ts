@@ -1,5 +1,8 @@
+function createLang<T extends Record<string, string>>(langObj: T): T {
+  return langObj;
+}
 
-export const langEN = {
+export const langEN = createLang({
   appTitle: 'React-phonebook',
   appUnderTitle: `web application that allows users to store and manage their contacts,
   providing features for adding, editing, and deleting contact information`,
@@ -61,13 +64,14 @@ export const langEN = {
   delSuccess: ' deleted successfully',
   cont: ' Contact',
   same: ' remained same',
+  same1: ' remained same',
 
   noContacts: 'No contacts have been added recently',
   
-}
+});
 
 
-export const langUA = {
+export const langUA = createLang({
   appTitle: 'React телефонна книга',
   appUnderTitle: `веб додаток, який дозволяє користувачам зберігати та керувати своїми контактами,
   надання функцій для додавання, редагування та видалення контактної інформації`,
@@ -131,7 +135,6 @@ export const langUA = {
   same: ' залишився таким самим',
 
   noContacts: 'Останнім часом не було додано жодного контакту',
-}
-
+});
 
 
