@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { GeneratorWrap } from "./GenerateRandomContact.styled";
+import { ContactFormBtn } from "../forms/Form.styled";
 
 interface Contact {
   name: string;
@@ -38,16 +40,17 @@ const GenerateRandomContact: React.FC = () => {
   };
 
   return (
-    <div>
-      <button onClick={generateContact} disabled={loading}>
+    <GeneratorWrap>
+      <ContactFormBtn onClick={generateContact} disabled={loading}>
         {loading ? "Generating..." : "Generate Contact"}
-      </button>
+      </ContactFormBtn>
       {contact && (
-        <p>
-          <strong>{contact.name}</strong> - {contact.number}
+        <p className="flex">
+          <strong>{contact.name}</strong>
+          <span>{contact.number}</span>
         </p>
       )}
-    </div>
+    </GeneratorWrap>
   );
 };
 
