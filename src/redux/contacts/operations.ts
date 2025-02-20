@@ -52,7 +52,7 @@ export interface pagination {
 
       } catch (error: unknown) {
         if(error instanceof AxiosError){
-          return thunkAPI.rejectWithValue(error.message);
+          return thunkAPI.rejectWithValue(error.response?.data.errorCode)
         }
         Notify.info('Something went wrong. ');
       }

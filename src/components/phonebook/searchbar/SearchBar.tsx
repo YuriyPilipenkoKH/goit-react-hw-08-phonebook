@@ -37,9 +37,21 @@ const SearchBar = () => {
       isSubmitting,
       isDirty
     } = formState
+console.log(errors);
 
   const onSubmit = async (data: Search) => {
-    dispatch(fetchContacts({ page: 1}));
+    dispatch(fetchContacts({ page: 1}))
+    .then((res) => {
+      console.log(res);
+      if(res.type === 'contacts/fetchAll/rejected'){
+        const errorCode = res.payload as string; 
+        const translatedMsg = lang[errorCode] || errorCode;
+        setError('query', { type: 'manual', message: translatedMsg  }  )
+        console.log('errorCode',errorCode, 'translatedMsg',translatedMsg);
+      }
+     }).catch((rej) => {
+      console.log(rej);
+     })
   }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -52,13 +64,7 @@ const SearchBar = () => {
   const shut =() => {
      dispatch(search(''))
      dispatch(fetchContacts({ page: currentPage, }))
-     .then((res) => {
-      if(res.type === 'contacts/fetchAll/rejected'){
-        const errorCode = res.payload as string; 
-        const translatedMsg = lang[errorCode] || errorCode;
-        setError('query', { type: 'manual', message: translatedMsg  }  )
-      }
-     })
+
     reset()
   }
 
