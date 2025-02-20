@@ -82,10 +82,9 @@ const shut =() => {
       </button>
       </div>
       <button 
-            onClick={shut}
-            className='shut'>
-
-            </button>
+        onClick={shut}
+        className='shut'>
+      </button>
     </StyledSearchingForm>
 
 );

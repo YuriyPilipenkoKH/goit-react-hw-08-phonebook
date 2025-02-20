@@ -60,11 +60,11 @@ const GenerateRandomContact: React.FC = () => {
         <p className="flex">
           <strong>{contact.name}</strong>
           <span>{contact.number}</span>
-          <FlatButton 
+          <button
           onClick={ clear }
-          className="close">
-            <CgCloseO />
-          </FlatButton>
+          className="close shut">
+            {/* <CgCloseO /> */}
+          </button>
         </p>
       )}
     </GeneratorWrap>

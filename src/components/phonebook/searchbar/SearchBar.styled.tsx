@@ -35,7 +35,6 @@ export const StyledSearchingForm = styled('form')`
     }  
   &> button > svg {
     fill: #01050a;
-    
   }  
 }
 

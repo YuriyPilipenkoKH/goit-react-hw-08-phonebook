@@ -30,8 +30,8 @@ const PhonebookPage = () => {
     <PhonebookWrapper className="phonebook__wrap">
     <Section title={lang.phonebook} icon ={language === 'english' &&  <IconMphone/>}>
       <ContactForm  />
-      {isAdmin &&  <GenerateRandomContact/>}
       <SearchBar/>
+      {isAdmin &&  <GenerateRandomContact/>}
       </Section >
 
       {/* <Filter /> */}
