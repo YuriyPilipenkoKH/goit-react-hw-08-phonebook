@@ -4,6 +4,10 @@ import { useForm } from "react-hook-form";
 import { Search, searchSchema } from "../../../types/search.schema";
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { search } from "../../../redux/contacts/contactsSlice";
+import { StyledSearchingForm } from "./SearchBar.styled";
+import { IoMdCloseCircleOutline } from "react-icons/io";
+import { BiSearchAlt } from "react-icons/bi";
+import { Input } from "../../forms/Form.styled";
 
 // interface SearchBarProps {
 //   onSearch: (query: string) => void;
@@ -42,21 +46,47 @@ const SearchBar = () => {
     dispatch(search(value))
 
   };
+  const cleaner =() => {
+    reset()
+
+}
+const shut =() => {
+  reset()
+}
 
   return (
-    <form 
+    <StyledSearchingForm 
         autoComplete="off" 
         noValidate
          onSubmit={handleSubmit(onSubmit)}>
-   <input
-        {...register('query', {
-          onChange(e) {
-            handleChange(e)
-          },
-        })}
-          // placeholder=	{( isSubmitting )? "Processing" : lang.namePlaceholder}
-        />
-    </form>
+   <label htmlFor="">
+     <Input
+      {...register('query', {
+        onChange(e) {
+          handleChange(e)
+        },
+      })}
+        placeholder=	{( isSubmitting )? "Processing" : "Search..."}
+      />
+   </label>
+   <div className='search_btn_wrap absolute'>
+      {isDirty && (
+      <button 
+      onClick={cleaner}
+      type='button'>
+        <IoMdCloseCircleOutline size={25} className='text-violet-950'/>
+      </button>
+      )}
+      <button type='submit'>
+        <BiSearchAlt size={25} />
+      </button>
+      </div>
+      <button 
+            onClick={shut}
+            className='shut'>
+
+            </button>
+    </StyledSearchingForm>
 
 );
 };
