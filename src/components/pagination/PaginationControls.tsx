@@ -6,6 +6,7 @@ import { PaginationWrap, PagSpan } from "../../pages/Pages.styled";
 import { BtnEdit } from "../phonebook/contactslist/ContactList.styled";
 import {  Wrap } from "../appbar/AppBar.styled";
 import { useLanguage } from "../../hooks/useLanguage";
+import Counter from "../phonebook/counter/Counter";
 
 
 
@@ -41,6 +42,8 @@ const PaginationControls:React.FC = () => {
       >
         {lang.next}
       </BtnEdit>
+
+      <Counter/>
     </PaginationWrap>
   );
 }

@@ -6,12 +6,11 @@ export const CounterWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  padding:10px;
+
+  border-radius: 8px;
   background-color: var(--orange);
-  color: var(--add-text-color);
+  color: var(--secondary-text-color);
   font-weight: 600;
 
 `

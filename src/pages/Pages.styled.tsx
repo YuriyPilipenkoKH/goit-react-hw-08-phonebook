@@ -110,6 +110,7 @@ export const ListWrap = styled.div`
 
 `
 export const PaginationWrap = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
