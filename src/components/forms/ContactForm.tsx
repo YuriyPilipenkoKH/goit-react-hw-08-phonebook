@@ -97,7 +97,8 @@ const ContactForm = () => {
       type="submit"
       disabled = { isAdmin 
         ? isSubmitting 
-        : (isSubmitting || !isDirty || !isValid )} >
+        : (isSubmitting )} > 
+        
                { isLoading  ? "Sending.." :  lang.add}
               {' '}{ language === 'english' ? <IconRedux /> : <IconReact />  }
       </ContactFormBtn>
@@ -109,4 +110,4 @@ const ContactForm = () => {
 
 export default ContactForm
 
-
+//|| !isDirty || !isValid 
