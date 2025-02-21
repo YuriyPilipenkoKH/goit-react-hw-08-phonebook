@@ -12,7 +12,7 @@ export const contactSchema = (lang: LangType) => z.object({
   .string()
   .trim()
   .min(3,  lang.minLength)
-  .max(16, lang.maxLength)
+  .max(32, lang.maxLength)
   .refine((val) => !val.toLowerCase().startsWith('qwe'), {
     message: lang.forbiddenPrefix,
   }),

@@ -24,10 +24,10 @@ export const StyledSearchingForm = styled('form')`
 }
 & > .search_btn_wrap{
     position: absolute;
-    right: 36px;
+    right: 30px;
     top: 8px;
     display: flex;
-    gap: 8px;
+    gap: 5px;
 
     &> button{
         outline: none;

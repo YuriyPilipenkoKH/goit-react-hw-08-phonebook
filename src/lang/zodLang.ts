@@ -29,7 +29,7 @@ export const zodLangEn: LangType = {
 
   minLength: "Name must be at least 3 characters",
   minLengthPass: 'Password must be at least 4 characters',
-  maxLength: "Name must be at most 16 characters",
+  maxLength: "Name must be at most 32 characters",
   maxLengthNum: "Number must be at most 10 digits",
 
   existingNumberError: 'A contact with this number already exists.',
@@ -50,7 +50,7 @@ export const zodLangUa: LangType = {
 
   minLength: "Ім'я має бути не менше 3 символів",
   minLengthPass: 'Пароль має бути не менше 4 символів',
-  maxLength: "Ім'я має містити не більше 16 символів",
+  maxLength: "Ім'я має містити не більше 32 символів",
   maxLengthNum: "Номер має містити не більше 10 символів",
 
   existingNumberError: 'Контакт із цим номером уже існує.',
