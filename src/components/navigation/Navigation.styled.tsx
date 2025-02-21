@@ -9,3 +9,10 @@ export const StyledWrap = styled.div`
 		display: none;
 }
     `
+
+export const Wrap = styled.div`
+
+    @media screen and (min-width: 768px) {
+		display: none;
+}
+    `
