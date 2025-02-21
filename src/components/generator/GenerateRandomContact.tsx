@@ -6,6 +6,7 @@ import { CgCloseO } from "react-icons/cg";
 import { useAll } from "../../hooks/useAll";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { rmGenContact, setGenContact } from "../../redux/generator/generatorSlice";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export interface Gen_Contact {
   name: string;
@@ -24,7 +25,7 @@ const GenerateRandomContact: React.FC = () => {
   const [contact, setContact] = useState<Gen_Contact | null>(null);
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch()
-
+  const lang = useLanguage()
 
   const fetchRandomName = async () => {
     setLoading(true);
@@ -54,7 +55,7 @@ const GenerateRandomContact: React.FC = () => {
   return (
     <GeneratorWrap>
       <ContactFormBtn onClick={generateContact} disabled={loading}>
-        {loading ? "Generating..." : "Generate Contact"}
+        {loading ? lang.generating : lang.generate}
       </ContactFormBtn>
       {contact && (
         <p className="flex">

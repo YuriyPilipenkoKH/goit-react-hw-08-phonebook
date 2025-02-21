@@ -80,7 +80,7 @@ console.log(errors);
           handleChange(e)
         },
       })}
-        placeholder=	{( isSubmitting )? "Processing" : "Search..."}
+        placeholder=	{( isSubmitting )? "Processing" : lang.search}
       />
    {errors.query && <div className='text-purple-900'>{errors.query?.message}</div>}
    </label>

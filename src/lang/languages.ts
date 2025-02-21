@@ -47,6 +47,11 @@ export const langEN = createLang({
   next : 'Next',
   page: 'Page',
   of: 'of',
+
+  generate: 'Generate Contact',
+  generating: 'Generating..',
+  search: 'Search..',
+
   
   existingNumberError: 'A contact with this number already exists.',
   notFoundError: 'Contact not found.',
@@ -118,7 +123,10 @@ export const langUA = createLang({
   next : 'Наступна',
   page: 'Сторінка',
   of: 'з',
-  // dodik: 'з',
+
+  generate: 'Створити контакт',
+  generating: 'Створення..',
+  search: 'Пошук..',
 
   existingNumberError: 'Контакт із цим номером уже існує.',
   notFoundError: 'Контакт не знайдено.',
