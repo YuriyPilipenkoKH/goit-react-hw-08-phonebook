@@ -10,6 +10,7 @@ axios.defaults.baseURL = import.meta.env.VITE_HOST
 interface PB_Response {
   list: Contact[]
   message: string
+  query:string
   pagination:{
     totalItems: number
     totalPages: number
