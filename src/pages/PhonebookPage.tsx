@@ -36,18 +36,17 @@ const PhonebookPage = () => {
 
       {/* <Filter /> */}
       
-      {contacts.length > 0 && (
+    {contacts.length > 0 ? (
+      <ListWrap>
+        <PaginationControls />
+        <ContactList contacts ={contacts} />
+      </ListWrap>
+      ): (
         <>
-       {/* <ListBar></ListBar> */}
-       <ListWrap>
-         <PaginationControls />
-          <ContactList contacts ={contacts} />
-       </ListWrap>
+          {/* <Message/> */}
         </>
-      )}
-    
-
-  </PhonebookWrapper>
+      )  }
+    </PhonebookWrapper>
   )
 }
 
