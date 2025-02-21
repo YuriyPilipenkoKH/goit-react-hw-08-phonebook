@@ -48,6 +48,9 @@ export const langEN = createLang({
   page: 'Page',
   of: 'of',
 
+  phName: 'type name..',
+  phEmail: 'type email..',
+
   generate: 'Generate Contact',
   generating: 'Generating..',
   search: 'Search..',
@@ -123,6 +126,9 @@ export const langUA = createLang({
   next : 'Наступна',
   page: 'Сторінка',
   of: 'з',
+
+  phName: "введіть ім'я..",
+  phEmail: 'введіть імейл..',
 
   generate: 'Створити контакт',
   generating: 'Створення..',
