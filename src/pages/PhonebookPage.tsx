@@ -32,7 +32,7 @@ const PhonebookPage = () => {
     <Section title={lang.phonebook} icon ={language === 'english' &&  <IconMphone/>}>
       <ContactForm  />
       <SearchBar/>
-      {isAdmin &&  <GenerateRandomContact/>}
+       <GenerateRandomContact/>
       </Section >
 
       {/* <Filter /> */}
