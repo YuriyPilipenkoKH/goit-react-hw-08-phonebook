@@ -49,10 +49,12 @@ export const PhonebookWrapper= styled.div`
   background-position: center;  
   background-size: cover;    
   padding: 0 20px 0;
-  display: grid;
+  /* display: flex;
+  flex-direction:column;
+  align-items: center; */
   gap: 32px;
-  min-height: 100vh;
   transition: all 0.8s ease-in-out;
+
   @media (min-width: 1280px) {
     grid-template-columns: repeat(2, 1fr);
     justify-items: start;
