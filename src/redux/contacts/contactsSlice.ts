@@ -1,6 +1,7 @@
 import { createSlice, } from "@reduxjs/toolkit";
 import { Contact } from "../../types/contact.model";
 import { fetchContacts, addContact, deleteContact,  editContact } from "./operations";
+import { messageProps } from "../../data/messageProps";
 
 export interface ContactsState {
   contactsList: Contact[],
@@ -39,6 +40,7 @@ const contactsSlice = createSlice({
 
   .addCase(fetchContacts.pending, state => {
         state.isLoading = true;
+        // state.message = null
         state.error = null;
       })
   .addCase(fetchContacts.fulfilled, (state, { payload }) => {
@@ -48,10 +50,16 @@ const contactsSlice = createSlice({
         state.totalPages = payload.pagination.totalPages
         state.currentPage = payload.pagination.currentPage
         state.counter = payload.pagination.totalItems
+        state.message = payload.pagination.totalItems === 0 
+          ? payload.query === '' 
+            ? messageProps.noContacts
+            : messageProps.noContactsFound
+          : null
         state.error = null;
       })
   .addCase(fetchContacts.rejected, (state, { payload }) => {
         state.isLoading = false;
+        state.message = null
         state.error = payload as string;
       })
       
