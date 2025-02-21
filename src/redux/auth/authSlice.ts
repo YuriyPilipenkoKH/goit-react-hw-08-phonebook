@@ -1,5 +1,5 @@
 import { createSlice, } from "@reduxjs/toolkit";
-import { logIn, logOut,  refreshUser,  register } from "./operations";
+import { logIn, logOut,  refreshUser,  register , uploadAvatar} from "./operations";
 import { User } from "../../types/user.model";
 
 export interface AuthState {
@@ -86,20 +86,33 @@ const initialState:AuthState  = {
         state.error = payload as string;
       })
 
-        .addCase(refreshUser.pending, state => {
-          state.isRefreshing = true;
-          state.error = null;
-        })
-        .addCase(refreshUser.fulfilled, (state, { payload }) => {
-          state.user = payload.user;
-          state.isLoggedIn = true;
-          state.isAdmin = payload.user.role === 'admin' ? true : false
-          state.isRefreshing = false;
-        })
-        .addCase(refreshUser.rejected, (state, { payload }) => {
-          state.isRefreshing = false;
-          state.error = payload as string;
-        })
+      .addCase(refreshUser.pending, state => {
+        state.isRefreshing = true;
+        state.error = null;
+      })
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.isLoggedIn = true;
+        state.isAdmin = payload.user.role === 'admin' ? true : false
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUser.rejected, (state, { payload }) => {
+        state.isRefreshing = false;
+        state.error = payload as string;
+      })
+
+      .addCase(uploadAvatar.pending, state => {
+        state.isRefreshing = true;
+        state.error = null;
+      })
+      .addCase(uploadAvatar.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.isRefreshing = false;
+      })
+      .addCase(uploadAvatar.rejected, (state, { payload }) => {
+        state.isRefreshing = false;
+        state.error = payload as string;
+      })
 
       },
     });
