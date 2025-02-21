@@ -14,6 +14,7 @@ import LangChanger from '../button/LangChanger.tsx';
 import ThemeChanger from '../button/ThemeChanger.tsx';
 import { Notify } from 'notiflix';
 import capitalize from '../../utils/capitalize.ts';
+import AvatarUploadForm from '../forms/AvatarUploadForm.tsx';
 
 const UserMenu = () => {
   const dispatch = useAppDispatch();
@@ -66,11 +67,13 @@ const quit =() => {
           </UserWrapp>
           {isOpen && (
         <DropdownMenu className="dropdown-menu">
-            <div className='avatar__wrapp'> {arrayOfActors[activeIndex]()}  </div>
+
+            {/* <div className='avatar__wrapp'> {arrayOfActors[activeIndex]()}  </div>
             {avatar && <SliderBtn 
              type='button'
              onClick={getIndex }
-            ><AiFillCaretRight/></SliderBtn>}
+            ><AiFillCaretRight/></SliderBtn>} */}
+          <AvatarUploadForm/>
             {user?.email}
 
             <MenuItem type='button' onClick={avatarSetter }>
