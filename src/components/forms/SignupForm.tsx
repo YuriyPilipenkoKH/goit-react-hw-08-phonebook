@@ -79,7 +79,7 @@ const SignupForm = () => {
         {lang.name}
           <Input
         {...rg('name',{ onChange: handleInputChange })}
-        placeholder=	{( isSubmitting )? "Processing" : 'name'}
+        placeholder=	{( isSubmitting )? "Processing" : lang.phName}
         />
         </Label>
         {errors.name && <div className='text-purple-900'>{errors.name.message}</div>}
@@ -87,7 +87,7 @@ const SignupForm = () => {
         {lang.email}
           <Input
            {...rg('email',{ onChange: handleInputChange })}
-           placeholder=	{( isSubmitting )? "Processing" : 'email'}
+           placeholder=	{( isSubmitting )? "Processing" : lang.phEmail}
          />
         </Label>
         {errors.email && <div className='text-purple-900'>{errors.email.message}</div>}

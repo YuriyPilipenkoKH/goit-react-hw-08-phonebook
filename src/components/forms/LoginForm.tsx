@@ -90,7 +90,7 @@ const LoginForm = () => {
         {lang.email}
           <Input
            {...register('email',{ onChange: handleInputChange })}
-           placeholder=	{( isSubmitting )? "Processing" : 'email'}
+           placeholder=	{( isSubmitting )? "Processing" :  lang.phEmail}
          />
         </Label>
         {errors.email && <div className='text-purple-900'>{errors.email.message}</div>}
