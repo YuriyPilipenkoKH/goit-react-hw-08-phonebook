@@ -20,7 +20,7 @@ const PhonebookPage = () => {
   const lang = useLanguage()
   const { isAdmin} = useAuth()
   const language = useSelector(getLang)
-  const{contacts, currentPage, query, } = useContacts()
+  const{contacts, currentPage, query, message} = useContacts()
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchContacts({ page: currentPage, }))
@@ -44,7 +44,7 @@ const PhonebookPage = () => {
       </ListWrap>
       ): (
         <>
-        <Message text={'No contacts have been added recently'}/>
+        <Message text={message || ''}/>
         </>
       )  }
     </PhonebookWrapper>

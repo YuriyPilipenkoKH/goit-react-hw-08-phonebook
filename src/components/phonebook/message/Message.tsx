@@ -7,7 +7,7 @@ interface MessageProps{
 
 const Message: React.FC<MessageProps> = ({text}) => {
   return (
-    <div>
+    <div style={{width: '100%'}}>
       <Wrapper>{text}</Wrapper>
     </div>
   )
