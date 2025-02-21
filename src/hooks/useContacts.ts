@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { getContactsList, selectCounter, selectCurrentPage, selectError, selectIsLoading, selectQuery, selectTotalPages } from "../redux/contacts/selectors";
+import { getContactsList, selectCounter, selectCurrentPage, selectError, selectIsLoading, selectMessage, selectQuery, selectTotalPages } from "../redux/contacts/selectors";
 
 
 export const useContacts = () => {
@@ -13,6 +13,7 @@ export const useContacts = () => {
     currentPage: useSelector(selectCurrentPage),
     counter: useSelector(selectCounter),
     query: useSelector(selectQuery),
+    message: useSelector(selectMessage),
  
   };
 };

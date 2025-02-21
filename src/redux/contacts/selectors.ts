@@ -15,6 +15,8 @@ export const selectCounter = (state: RootState) => state.contacts.counter;
 
 export const selectQuery = (state: RootState) => state.contacts.query; 
 
+export const selectMessage = (state: RootState) => state.contacts.message; 
+
 
 // export const getContactsFilter = (state: RootState) => state.filter
 
