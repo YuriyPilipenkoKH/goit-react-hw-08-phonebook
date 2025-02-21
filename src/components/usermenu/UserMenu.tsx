@@ -74,17 +74,9 @@ const quit =() => {
             {user?.email}
 
             <MenuItem type='button' onClick={avatarSetter }>
-              {avatar ? lang.set : lang.avatar}</MenuItem>
-              <MenuItem 
-               className="profile-button"
-               type='button'> 
-            <Link
-            className="profile-link"
-            onClick={() => setIsOpen(!isOpen)}
-             to="/profile">
-              {lang.profile}
-               </Link>
-               </MenuItem>
+              {avatar ? lang.set : lang.avatar}
+            </MenuItem>
+   
                {isAdmin &&(
               <MenuItem 
                   className="admin-button"
@@ -112,3 +104,15 @@ const quit =() => {
   );
 }
 export default UserMenu
+
+
+//      <MenuItem 
+//      className="profile-button"
+ //     type='button'> 
+//      <Link
+//      className="profile-link"
+//      onClick={() => setIsOpen(!isOpen)}
+//      to="/profile">
+//      {lang.profile}
+//      </Link>
+//      </MenuItem>
