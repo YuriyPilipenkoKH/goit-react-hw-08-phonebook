@@ -18,14 +18,17 @@ const clearAuthHeader = () => {
 
 export interface AuthResponse {
   user: User; 
-  token: string;
   message:string
+  token: string;
   success: boolean
  }
 interface Credentials {
   name?:string
   email: string
   password: string
+}
+export interface img {
+  image: File
 }
 
 export const register = createAsyncThunk<
@@ -121,6 +124,34 @@ export const register = createAsyncThunk<
         if(error instanceof AxiosError){
         return thunkAPI.rejectWithValue(error.message);
         }
+      }
+    }
+  );
+
+  export const uploadAvatar = createAsyncThunk<
+    AuthResponse, 
+    img, 
+    { state: RootState }
+    >(
+    'auth/uploadAvatar',
+    async (data, thunkAPI) => {
+      const formData = new FormData();
+      formData.append('file', data.image);
+
+      try {
+        const res = await axios.put("/auth/upload-avatar", formData,{
+          headers: { "Content-Type": "multipart/form-data", },
+      });
+     
+        return res.data
+
+      } catch (error) {
+        if(error instanceof AxiosError){
+          // return thunkAPI.rejectWithValue(error.response?.data.message );
+          return thunkAPI.rejectWithValue(error.response?.data.errorCode);
+        }
+        Notify.warning('Something went wrong. ');
+        return thunkAPI.rejectWithValue({ errorCode: 'unknown_error' });
       }
     }
   );
