@@ -14,6 +14,7 @@ import PaginationControls from '../components/pagination/PaginationControls'
 import GenerateRandomContact from '../components/generator/GenerateRandomContact'
 import { useAuth } from '../hooks/useAuth'
 import SearchBar from '../components/phonebook/searchbar/SearchBar'
+import Message from '../components/phonebook/message/Message'
 
 const PhonebookPage = () => {
   const lang = useLanguage()
@@ -43,7 +44,7 @@ const PhonebookPage = () => {
       </ListWrap>
       ): (
         <>
-          {/* <Message/> */}
+        <Message text={'No contacts have been added recently'}/>
         </>
       )  }
     </PhonebookWrapper>

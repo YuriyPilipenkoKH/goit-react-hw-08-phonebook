@@ -68,7 +68,7 @@ export const langEN = createLang({
 
 
   noContacts: 'No contacts have been added recently',
-  noContactsFound: 'No contacts found',
+  noContactsFound: 'No contacts found for this request',
 
 });
 
@@ -140,7 +140,7 @@ export const langUA = createLang({
   same: ' залишився таким самим',
 
   noContacts: 'Останнім часом не було додано жодного контакту',
-  noContactsFound: 'Контакти не знайдено',
+  noContactsFound: 'За цим запитом не знайдено контактів',
 });
 
 

@@ -1,8 +1,15 @@
 import React from 'react'
+import { Wrapper } from './Message.styled'
 
-const Message = () => {
+interface MessageProps{
+  text: string
+}
+
+const Message: React.FC<MessageProps> = ({text}) => {
   return (
-    <div>Message</div>
+    <div>
+      <Wrapper>{text}</Wrapper>
+    </div>
   )
 }
 
