@@ -336,3 +336,20 @@ export const ContactFormBtn = styled.button`
     cursor: none;
   }
 `;
+
+export const AvatarWrap = styled.div`
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+
+  margin-top: 16px;
+
+  &>img{
+    border-radius: 50%;
+  }
+
+`

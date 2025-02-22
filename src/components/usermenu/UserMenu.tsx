@@ -68,27 +68,20 @@ const quit =() => {
           {isOpen && (
         <DropdownMenu className="dropdown-menu">
 
-            {/* <div className='avatar__wrapp'> {arrayOfActors[activeIndex]()}  </div>
-            {avatar && <SliderBtn 
-             type='button'
-             onClick={getIndex }
-            ><AiFillCaretRight/></SliderBtn>} */}
           <AvatarUploadForm/>
             {user?.email}
-
             <MenuItem type='button' onClick={avatarSetter }>
               {avatar ? lang.set : lang.avatar}
             </MenuItem>
-   
-               {isAdmin &&(
-              <MenuItem 
-                  className="admin-button"
-                  onClick={() => setIsOpen(!isOpen)}
-                  type='button'>
+            {isAdmin &&(
+            <MenuItem 
+              className="admin-button"
+              onClick={() => setIsOpen(!isOpen)}
+              type='button'>
               <Link to="/admin" className="button-link">
                 {lang.admin}
               </Link>
-              </MenuItem>
+            </MenuItem>
                )}
             <MenuItem type='button' onClick={quit}>
               {lang.out}

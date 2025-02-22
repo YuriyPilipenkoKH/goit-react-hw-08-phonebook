@@ -6,6 +6,7 @@ import { avatarUploadSchema, AvatarUploadSchemaType } from "../../types/avatarUp
 import { uploadAvatar } from "../../redux/auth/operations";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { FiCamera } from "react-icons/fi";
+import { AvatarWrap } from "./Form.styled";
 
 
 const AvatarUploadForm = () => {
@@ -44,7 +45,7 @@ const dispatch = useAppDispatch();
 
   return (
 
-    <div  className="flex flex-col items-center gap-4">
+    <AvatarWrap  className="flex flex-col items-center gap-4">
         <img
           src={selectedImg}
           alt="Profile image"
@@ -71,9 +72,9 @@ const dispatch = useAppDispatch();
       {errors.image && <p className="text-sm text-red-500">{errors.image.message}</p>}
 
       <p className="text-sm text-zinc-400">
-        {isSubmitting ? "Uploading..." : "Click the camera icon to update your photo"}
+        {/* {isSubmitting ? "Uploading..." : "Click the camera icon to update your photo"} */}
       </p>
-    </div>
+    </AvatarWrap>
   )
 }
 
