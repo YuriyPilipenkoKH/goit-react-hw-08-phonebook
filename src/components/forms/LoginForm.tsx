@@ -21,7 +21,7 @@ const LoginForm = () => {
   const [timer, setTimer] = useState<boolean | null>(null);
   const [remained, setRemained] = useState<number>(TIME);
   const lang = useLanguage()
-  const {user} = useAuth()
+  const {user, isLoading} = useAuth()
   const {loginSchema} = useLoginSchema()
 
      const {
@@ -110,7 +110,7 @@ const LoginForm = () => {
         {errors.password && <div className='text-purple-900'>{errors.password.message}</div>}
         <Button 
         type="submit"
-        disabled = {!remained || isSubmitting || !isDirty || !isValid}>
+        disabled = {!remained || isLoading || !isDirty || !isValid}>
           {remained ? lang.logBtn : lang.try }
         </Button>
         {timer 

@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { SignUpSchemaType, useSignUpSchema } from '../../hooks/useSignUpSchema';
 import { Notify } from 'notiflix';
 import capitalize from '../../utils/capitalize';
+import { useAuth } from '../../hooks/useAuth';
 
 const SignupForm = () => {
 
@@ -18,6 +19,7 @@ const SignupForm = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const lang = useLanguage()
+  const {isLoading} = useAuth()
   const {signUpSchema} = useSignUpSchema()
 
     const {
@@ -39,7 +41,7 @@ const SignupForm = () => {
         isDirty,
         isValid ,
         isSubmitting,
-        isLoading 
+        isLoading:loading 
       } = formState
 
   const handleInputChange =() => {
@@ -107,7 +109,7 @@ const SignupForm = () => {
         {errors.password && <div className='text-purple-900'>{errors.password.message}</div>}
           <Button  
           type="submit"
-          disabled={isSubmitting || !isDirty || !isValid}>
+          disabled={isLoading || !isDirty || !isValid }>
             { isLoading  ? "Sending.." :  lang.regSubmit}
           </Button>
 

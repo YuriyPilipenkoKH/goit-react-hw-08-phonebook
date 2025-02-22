@@ -9,6 +9,7 @@ export interface AuthState {
   isLoggedIn: boolean;
   isRefreshing: boolean;
   isLoading: boolean;
+  isUploading: boolean;
   isAdmin: boolean
 }
 
@@ -19,6 +20,7 @@ const initialState:AuthState  = {
   isLoggedIn: false,
   isRefreshing: false,
   isLoading: false, 
+  isUploading: false, 
   isAdmin: false
 };
 
@@ -102,15 +104,15 @@ const initialState:AuthState  = {
       })
 
       .addCase(uploadAvatar.pending, state => {
-        state.isRefreshing = true;
+        state.isUploading = true;
         state.error = null;
       })
       .addCase(uploadAvatar.fulfilled, (state, { payload }) => {
         state.user = payload.user;
-        state.isRefreshing = false;
+        state.isUploading = false;
       })
       .addCase(uploadAvatar.rejected, (state, { payload }) => {
-        state.isRefreshing = false;
+        state.isUploading = false;
         state.error = payload as string;
       })
 
