@@ -350,6 +350,12 @@ export const AvatarWrap = styled.div`
 
   &>img{
     border-radius: 50%;
-  }
 
+  }
+  &>form>label>svg.upload {
+    cursor: pointer;
+    &:hover {
+      fill:var(--orange);
+    }
+  }
 `

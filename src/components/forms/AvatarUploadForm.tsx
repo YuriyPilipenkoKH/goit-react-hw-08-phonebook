@@ -53,11 +53,11 @@ const dispatch = useAppDispatch();
         />
       <form 
       onSubmit={handleSubmit(onSubmit)}
-      className="relative">
+      className="relative upload">
         <label
           htmlFor="avatar-upload"
            >
-        <FiCamera className="w-5 h-5 text-base-200" />
+        <FiCamera className="w-5 h-5 text-base-200 upload" />
           <input
             type="file"
             id="avatar-upload"
