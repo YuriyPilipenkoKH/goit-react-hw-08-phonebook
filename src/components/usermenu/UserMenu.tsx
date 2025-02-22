@@ -4,9 +4,9 @@ import { useAuth } from '../../hooks/useAuth';
 import { AuthResponse, logOut } from '../../redux/auth/operations';
 import { DropdownMenu, MainMenu, MenuBtn, MenuItem, SliderBtn, StyledWrap, UserName, UserWrapp } from './UserMenu.styled';
 import { FaWindowClose } from 'react-icons/fa';
-import { AiFillCaretRight, AiOutlineCaretDown } from 'react-icons/ai';
+import {  AiOutlineCaretDown } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { arrayOfActors } from '../../img/actors.ts';
+
 import Loader from '../loader/Loader.tsx';
 import { useAppDispatch } from '../../hooks/useAppDispatch.ts';
 import { MobileWrap, Wrap } from '../appbar/AppBar.styled.tsx';

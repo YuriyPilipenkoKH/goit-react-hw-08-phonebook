@@ -339,18 +339,17 @@ export const ContactFormBtn = styled.button`
 
 export const AvatarWrap = styled.div`
   width: 100px;
-  height: 100px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
   justify-content: center;
 
-  margin-top: 16px;
-
   &>img{
     border-radius: 50%;
-
+    width: 100px;
+    height: 100px;
   }
   &>form>label>svg.upload {
     cursor: pointer;

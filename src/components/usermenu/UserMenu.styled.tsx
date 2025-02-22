@@ -16,9 +16,10 @@ export const StyledWrap = styled.div`
         color: var(--text-color);
     }
     &>div{
-        /* background: transparent; */
-        &>img.userimage{
-        border-radius: 50%;
+			&>img.userimage{
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
     }
     }
 `
