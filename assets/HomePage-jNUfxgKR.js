@@ -1,0 +1,1 @@
+import{u as s,j as e}from"./index-CBh11IS_.js";import{H as r,a as t}from"./Pages.styled-BCP2gAWW.js";const p=()=>{const a=s();return e.jsxs(r,{children:[e.jsx(t,{children:a.appTitle}),e.jsx("span",{children:a.appUnderTitle})]})};export{p as default};
