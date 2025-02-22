@@ -12,7 +12,6 @@ const HomePage = lazy(() => import('./pages/HomePage'))
 const SignUpPage = lazy(() => import('./pages/SignUpPage'))
 const LoginPage = lazy(() => import('./pages/LoginPage'))
 const PhonebookPage = lazy(() => import('./pages/PhonebookPage'))
-const ProfilePage = lazy(() => import('./pages/ProfilePage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage '))
 
 function App() {
@@ -43,10 +42,6 @@ function App() {
               element ={ token
               ? <PhonebookPage/>
               : <Navigate to='/login'/>}/>
-          <Route path="/profile"
-              element={ token
-              ? <ProfilePage /> 
-              : <Navigate to='/login' />} />
           <Route path="/admin"
               element={ !token
               ? <PhonebookPage/> 
