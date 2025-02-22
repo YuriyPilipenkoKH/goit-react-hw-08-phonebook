@@ -20,23 +20,11 @@ const UserMenu = () => {
   const dispatch = useAppDispatch();
   const { user, isLoggedIn, isLoading, isAdmin} = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-  const [avatar, setAvatar] = useState(false);
-  const [activeAvatar, setActiveAvatar] = useState(arrayOfActors[0]);
-  const [activeIndex, setActiveIndex] = useState(0)
   const lang = useLanguage()
 
 
-const getIndex = () => {
-  const newIndex = (activeIndex + 1) % 20; // Increment the index and wrap around 0-7 range
-  setActiveIndex(newIndex);
-}
 
-const avatarSetter = () => {
-  setAvatar(!avatar)
-  if(avatar) {
-    setActiveAvatar(arrayOfActors[activeIndex])
-  }
-}
+
 const quit =() => {
    setIsOpen(!isOpen)
    dispatch(logOut(user?.name || 'Dude'))
@@ -52,7 +40,13 @@ const quit =() => {
       {isLoading && <Loader/>}
       {isLoggedIn && (
         <StyledWrap>
-          <div className='avatar__wrapp-sm'>{ activeAvatar }</div>
+          <div className='avatar__wrapp-sm'>
+          <img
+          src={user?.image}
+          alt="Profile image"
+          className="userimage"
+        />
+          </div>
         
           <UserWrapp >
             <Wrap>
@@ -70,9 +64,7 @@ const quit =() => {
 
           <AvatarUploadForm/>
             {user?.email}
-            <MenuItem type='button' onClick={avatarSetter }>
-              {avatar ? lang.set : lang.avatar}
-            </MenuItem>
+
             {isAdmin &&(
             <MenuItem 
               className="admin-button"

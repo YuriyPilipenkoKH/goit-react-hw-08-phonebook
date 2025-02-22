@@ -15,6 +15,12 @@ export const StyledWrap = styled.div`
         transition: color 1s ease-in-out;
         color: var(--text-color);
     }
+    &>div{
+        /* background: transparent; */
+        &>img.userimage{
+        border-radius: 50%;
+    }
+    }
 `
 export const UserName = styled.p`
     
