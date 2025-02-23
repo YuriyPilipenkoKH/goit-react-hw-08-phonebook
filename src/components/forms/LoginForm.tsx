@@ -51,12 +51,15 @@ const LoginForm = () => {
       }, 1000);
       }
   else if(remained === 0) {
+    reset()
     setTimer(null)
     setTimeout(() => setRemained(TIME), 1000);
   }
   }, [timer,remained])
 
-  const handleInputChange =() => {};
+  const handleInputChange =() => {
+    setTimer(true)
+  };
   const onSubmit = (data: LoginSchemaType) => {
     dispatch(logIn(data))
     .then((res) => {
