@@ -24,7 +24,7 @@ export const HomeWrapper= styled.div`
 
 
   background-image: var(--background-image);
-  transition: background-image 1s ease-in-out;
+  transition: background-image 0.5s ease-in-out;
   background-repeat: no-repeat;
   background-position: center;  
   background-size: cover;
@@ -44,7 +44,7 @@ export const PhonebookWrapper= styled.div`
 
   background-image: var(--background-image-contacts);
  
-  transition: background-image 1s ease-in-out;
+  transition: background-image 0.5s ease-in-out;
   background-repeat: no-repeat;
   background-position: center;  
   background-size: cover;    
@@ -53,7 +53,7 @@ export const PhonebookWrapper= styled.div`
   flex-direction:column;
   align-items: center; */
   gap: 32px;
-  transition: all 0.8s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   @media (min-width: 1280px) {
     grid-template-columns: repeat(2, 1fr);
@@ -93,7 +93,7 @@ export const Page404 = styled.div`
 
   & > svg {
        fill: var(--text-color);
-        transition: fill 1s ease-in-out;
+        transition: fill 0.5s ease-in-out;
 
   }
   & > b {

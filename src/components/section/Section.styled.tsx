@@ -9,7 +9,7 @@ export const MainSection = styled.section`
     gap: 20px;
     margin: 0;
 
-    transition: width 1s ease-in-out, left 1.5s ease-in-out;
+    transition: width 0.5s ease-in-out, left 1.5s ease-in-out;
 `
 
 
@@ -29,10 +29,10 @@ export const MainTitle = styled.h2`
   background-color: #777;
   border: 4px solid #777;
   box-shadow: var(--shadow-four);
-  transition: width 1s ease-in-out, left 1.5s ease-in-out;
+  transition: width 0.5s ease-in-out, left 1.5s ease-in-out;
 
   &>svg {
     fill: #eee;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
   }
 `

@@ -22,13 +22,13 @@ export const ThemeBtn = styled.button`
     outline: none;
     border-radius: 50%;
     background-color: transparent;
-    transition: all 0.4ms ease-in-out;
+    transition: all 0.5s ease-in-out;
     cursor: pointer;
  
     
 
     &> svg {
-        transition:  fill 1s ease-in-out;
+        transition:  fill 0.5s ease-in-out;
         fill: var(--text-color);
         }
 
@@ -37,7 +37,7 @@ export const ThemeBtn = styled.button`
 
 
         &> svg {
-            transition:  fill 1s ease-in-out;
+            transition:  fill 0.5s ease-in-out;
             fill:  ${props => props.theme === 'light' ? '#eee' : '#222'};
         }
     }
@@ -54,14 +54,14 @@ export const LangBtn = styled.button`
     outline: none;
     border-radius: 50%;
     background-color: transparent;
-    transition: all 0.4ms ease-in-out;
+    transition: all 0.5s ease-in-out;
     cursor: pointer;
     color: var(--text-color) ;
     font-weight: 600;
     
 
     &> svg {
-        transition:  fill 1s ease-in-out;
+        transition:  fill 0.5s ease-in-out;
         fill: var(--text-color);
         }
 
@@ -70,7 +70,7 @@ export const LangBtn = styled.button`
 
 
     &> svg {
-        transition:  fill 1s ease-in-out;
+        transition:  fill 0.5s ease-in-out;
         fill:  ${props => props.theme === 'light' ? '#eee' : '#222'};
     }
     }

@@ -15,7 +15,7 @@ font-size: 16px;
 cursor: pointer;
 outline: none;
 box-shadow: var(--shadow-four);
-transition: all 0.4s ease;
+transition: all 0.5s ease-in-out;
 
 &:hover  {
   color: #888;
@@ -46,7 +46,7 @@ export const ripple=`
   background-position: 50%;
   transform: scale(10, 10);
   opacity: 0;
-  transition: transform 0.4s, opacity 1s;
+  transition: transform 0.5s, opacity 0.5s;
 }
 
 &:active:after {
@@ -92,6 +92,6 @@ export const StyledFlatButton = styled.button`
        border:none;
        background-color: transparent;
        cursor: pointer; 
-      transition: all 0.4s ease-in-out; 
+      transition: all 0.5s ease-in-out; 
 
 `

@@ -15,7 +15,7 @@ width: 100%;
     height: 32px;
 
     color:var(--teal);
-    transition: 0.4s ease;
+    transition: 0.5s ease-in-out;
 
   &:hover {
     color: var(--react-color);
@@ -26,7 +26,7 @@ width: 100%;
     width: 100px;
     height: 32px;
     color: #222;
-    transition: 0.4s ease;
+    transition: 0.5s ease-in-out;
 
     &:hover {
         color: var(--teal);
@@ -51,10 +51,10 @@ export const StyledLink = styled(NavLink)`
   border-radius: 4px;
   text-decoration: none;
   color: var(--text-color) ;
-  transition:  color 1s ease-in-out;
+  transition:  color 0.5s ease-in-out;
 
   font-weight: 600;
-  transition: 0.3s ease;
+  transition: 0.5s ease-in-out;
 
 
 
@@ -79,11 +79,11 @@ export const MainFooter = styled.footer`
   color:  var(--text-color);
   border-top: 1px solid #222;
   background-color: transparent;
-  transition: color 1s ease-in-out, fill 1s ease-in-out;
+  transition: color 0.5s ease-in-out, fill 0.5s ease-in-out;
 
   &> svg {
-    /* transition: 0.3s ease; */
-    transition: color 1s ease-in-out, fill 1s ease-in-out;
+
+    transition: color 0.5s ease-in-out, fill 0.5s ease-in-out;
     fill: var(--text-color);
   }
 `

@@ -22,7 +22,7 @@ export const RouteWrapp = styled.div`
     justify-content: space-between;
 
     &> p{
-        transition: color 1s ease-in-out;
+        transition: color 0.5s ease-in-out;
 
     color: var(--text-color);
         font-size: 14px;
@@ -53,7 +53,7 @@ export const FormWrapper = styled.div`
   border-radius: 12px;
   box-shadow: var(--shadow-four);
   background-color:var(--background-color);
-  transition: background-color 1s ease-in-out, color 1s ease-in-out;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 `
 
 export const StyledForm = styled.form`
@@ -100,11 +100,11 @@ export const MainTitle = styled.h2`
   background-color: #777;
   border: 4px solid #777;
   box-shadow: var(--shadow-four);
-  transition: width 1s ease-in-out, left 1.5s ease-in-out;
+  transition: width 0.5s ease-in-out, left 0.5s ease-in-out;
 
   &>svg {
     fill: #eee;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
   }
 `
 
@@ -117,7 +117,7 @@ export const Input = styled.input`
   background-color: var(--field-color);
   border: var(--border);
   box-shadow: var(--shadow-four);
-  transition: background-color 1s ease-in-out, border 1s ease-in-out;
+  transition: background-color 0.5s ease-in-out, border 0.5s ease-in-out;
 
   &:hover,
   &:active,
@@ -126,7 +126,7 @@ export const Input = styled.input`
     outline: 3px solid var(--orange);
     border: 3px solid transparent;
     box-shadow: var(--shadow-two);
-    transition:  0.4s ease-in-out;
+    transition:  0.5s ease-in-out;
   }
 
   &:disabled {
@@ -161,7 +161,7 @@ position: relative;
   font-size: 18px;
   font-weight: 500;
   color:  var(--text-color);
-  transition:  color 1s ease-in-out;
+  transition:  color 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -210,7 +210,7 @@ overflow: hidden;
   background-position: 50%;
   transform: scale(10, 10);
   opacity: 0;
-  transition: transform 0.4s, opacity 1s;
+  transition: transform 0.5s, opacity 0.5s;
 }
 
 &:active:after {
@@ -229,7 +229,7 @@ export const Input_1 = styled.input`
   background-color: var(--field-color);
   border: var(--border);
   box-shadow: var(--shadow-four);
-  transition: background-color 1s ease-in-out, border 1s ease-in-out;
+  transition: background-color 0.5s ease-in-out, border 0.5s ease-in-out;
 
   &:hover,
   &:active,
@@ -238,7 +238,7 @@ export const Input_1 = styled.input`
     outline: 3px solid var(--orange);
     border: 3px solid transparent;
     box-shadow: var(--shadow-two);
-    transition:  0.4s ease-in-out;
+    transition:  0.5s ease-in-out;
   }
 
   &:disabled {
@@ -272,7 +272,7 @@ position: relative;
   font-size: 18px;
   font-weight: 500;
   color:  var(--text-color);
-  transition:  color 1s ease-in-out;
+  transition:  color 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -291,7 +291,7 @@ export const ContactFormBtn = styled.button`
   /* width: 160px; */
   outline: none;
   cursor: pointer;
-    transition: all 0.4s;
+    transition: all 0.5s ease-in-out;
 
   &:hover,
   &:focus {
@@ -322,7 +322,7 @@ export const ContactFormBtn = styled.button`
     background-position: 50%;
     transform: scale(10, 10);
     opacity: 0;
-    transition: transform 0.4s, opacity 1s;
+    transition: transform 0.5s, opacity 0.5s;
   }
 
   &:active:after {

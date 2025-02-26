@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 import AppBar from '../appbar/AppBar'
 import MirrorStreamIcon from '../../img/icons/mirrorStream'
 import { useLanguage } from '../../hooks/useLanguage'
-import ErrorBoundary from '../errorboundary/ErrorBoundary'
+
 
 
 

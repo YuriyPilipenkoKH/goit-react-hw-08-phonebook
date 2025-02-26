@@ -12,7 +12,7 @@ export const StyledWrap = styled.div`
         fill:  #333;
     }
     &>div> p{
-        transition: color 1s ease-in-out;
+        transition: color 0.5s ease-in-out;
         color: var(--text-color);
     }
     &>div{
@@ -37,7 +37,7 @@ export const UserWrapp = styled.div`
     padding: 6px 22px;
     border: 3px solid    var(--text-color);
     border-radius: 6px;
-    transition: border-color 1s ease-in-out;
+    transition: border-color 0.5s ease-in-out;
 `
 export const MenuBtn = styled.button`
     background-color: transparent;
@@ -49,7 +49,7 @@ export const MenuBtn = styled.button`
     cursor: pointer;
     &> svg {
         fill: var(--text-color);
-        transition: fill 1s ease-in-out;
+        transition: fill 0.5s ease-in-out;
     }
 `
 export const SliderBtn = styled.button`
@@ -80,7 +80,7 @@ export const DropdownMenu = styled.div`
     background-color: var(--background-color);
     border-radius: 6px;
     box-shadow: var(--shadow-four);
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
 
     &>a.profile-link{
         width: 150px;
@@ -97,7 +97,7 @@ export const MenuItem  = styled.button `
     border: 3px solid var(--green);
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.4ms ease-in-out;
+    transition: all 0.5s ease-in-out;
 
     &:hover, 
     &:focus {
@@ -106,14 +106,14 @@ export const MenuItem  = styled.button `
         &>a{
         color: #eee;
         background-color: var(--green);
-        transition: all 0.4ms ease-in-out;
+        transition: all 0.5s ease-in-out;
         }
     }
     &>a{
         height: 100%;
         padding: 4px;
         text-decoration: none;
-        transition: all 0.4ms ease-in-out;
+        transition: all 0.5s ease-in-out;
     }
 
 `

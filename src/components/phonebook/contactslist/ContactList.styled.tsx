@@ -115,7 +115,7 @@ export const ContactContainer = styled.div`
   border-radius: 16px;
   box-shadow: var(--shadow-four);
   overflow: auto;
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
   /* ::-webkit-scrollbar {
     display: none;
 } */
@@ -164,7 +164,7 @@ export const BtnDelete = styled.button`
    width: 100px;
    /* background-color: var(--red); */
    cursor: pointer;
-    transition: all 0.4s;
+    transition: all 0.5s ease-in-out ;
     padding: 2px;
     animation: ${fadeIn} 2s ease;
 
@@ -188,10 +188,10 @@ export const BtnEdit = styled.button`
    font-size: var(--fz);
    justify-content: center;
    width: 100px;
-   transition: opacity 1s ease-in-out;
+   transition: opacity 0.5s ease-in-out;
    
    cursor: pointer;
-    transition: all 0.4s;
+    transition: all 0.5s ease-in-out;
     padding: 2px;
 
   &:hover,
