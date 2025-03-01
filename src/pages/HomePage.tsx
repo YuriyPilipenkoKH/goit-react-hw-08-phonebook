@@ -1,8 +1,8 @@
-import React from 'react'
-import animationData  from '../assets/Animation - 1739632523847.json'
-import Lottie from 'lottie-react'
+
 import { HomeTitle, HomeWrapper } from './Pages.styled'
 import { useLanguage } from '../hooks/useLanguage'
+// import animationData  from '../assets/Animation - 1739632523847.json'
+// import Lottie from 'lottie-react'
 
 const HomePage = () => {
   const lang = useLanguage()

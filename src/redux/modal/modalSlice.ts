@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Contact } from "../../types/contact.model";
-import { RootState } from "../store";
+
 
 
 export interface ModalState {

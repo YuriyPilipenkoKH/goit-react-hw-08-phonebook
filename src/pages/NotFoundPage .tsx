@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useLanguage } from '../hooks/useLanguage';
 import { Page404 } from './Pages.styled';
 import Coyote404 from '../img/icons/coyote404';

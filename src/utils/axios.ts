@@ -1,15 +1,15 @@
-import axios from "axios";
-import { getDispatch } from "../redux/store";
-import { logOut } from "../redux/auth/operations";
+// import axios from "axios";
+// import { getDispatch } from "../redux/store";
+// import { logOut } from "../redux/auth/operations";
 
-const HOST = import.meta.env.VITE_HOST
+// const HOST = import.meta.env.VITE_HOST
 
-const api = axios.create({
+// const api = axios.create({
   
-  baseURL:  `${HOST}`,
-  withCredentials:true,
-  headers: { "Content-Type": "application/json" }
-})
+//   baseURL:  `${HOST}`,
+//   withCredentials:true,
+//   headers: { "Content-Type": "application/json" }
+// })
 
 // api.interceptors.response.use(
 //   (response) => response,

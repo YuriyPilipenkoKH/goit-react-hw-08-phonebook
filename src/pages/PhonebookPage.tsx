@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import  { useEffect } from 'react'
 import { ListWrap,  PhonebookWrapper } from './Pages.styled'
 import { useLanguage } from '../hooks/useLanguage'
 import { useSelector } from 'react-redux'
@@ -12,13 +12,12 @@ import { useAppDispatch } from '../hooks/useAppDispatch'
 import ContactForm from '../components/forms/ContactForm'
 import PaginationControls from '../components/pagination/PaginationControls'
 import GenerateRandomContact from '../components/generator/GenerateRandomContact'
-import { useAuth } from '../hooks/useAuth'
 import SearchBar from '../components/phonebook/searchbar/SearchBar'
 import Message from '../components/phonebook/message/Message'
 
 const PhonebookPage = () => {
   const lang = useLanguage()
-  const { isAdmin} = useAuth()
+
   const language = useSelector(getLang)
   const{contacts, currentPage, query, message} = useContacts()
   const dispatch = useAppDispatch();
