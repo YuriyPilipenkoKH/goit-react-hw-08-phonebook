@@ -42,10 +42,12 @@ export const StyledSearchingForm = styled('form')`
 
 & > .shut{
     position: absolute;
-    right: 14px;
+    right: 16px;
     top: 1px;
     width: 12px;
     height: 12px;
+    margin: 0;
+    padding: 0;
     background-color: #f05f05;
     border-radius: 50%;
     border: 2px solid #999;
