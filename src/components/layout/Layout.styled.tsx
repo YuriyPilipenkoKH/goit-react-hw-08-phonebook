@@ -67,23 +67,40 @@ export const StyledLink = styled(NavLink)`
 
 export const MainFooter = styled.footer`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 6px;
   width: 100%;
   padding: 22px 16px;
 
   text-align: center;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
   color:  var(--text-color);
   border-top: 1px solid #222;
   background-color: transparent;
   transition: color 0.5s ease-in-out, fill 0.5s ease-in-out;
 
-  &> svg {
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    font-weight: 600;
+    align-items: baseline;
+    }
 
+  &> svg {
+    display: none;
     transition: color 0.5s ease-in-out, fill 0.5s ease-in-out;
     fill: var(--text-color);
+    @media screen and (min-width: 768px) {
+    display: flex;
+    }
+  }
+  &>button.quit{
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none ;
+    color: var(--text-color);
   }
 `

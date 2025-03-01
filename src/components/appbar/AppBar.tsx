@@ -6,8 +6,9 @@ import ThemeChanger from '../button/ThemeChanger';
 import LangChanger from '../button/LangChanger';
 import UserMenu from '../usermenu/UserMenu';
 
+
 const AppBar = () => {
-  const {  token } = useAuth();
+  const {  token, } = useAuth()
 
   return (
     <StyledHeader >
