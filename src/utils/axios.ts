@@ -11,35 +11,35 @@ const api = axios.create({
   headers: { "Content-Type": "application/json" }
 })
 
-api.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
+// api.interceptors.response.use(
+//   (response) => response,
+//   async (error) => {
+//     const originalRequest = error.config;
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
+//     if (error.response?.status === 401 && !originalRequest._retry) {
+//       originalRequest._retry = true;
 
-      const refreshToken = localStorage.getItem("refreshToken");
-      if (!refreshToken) {
-        getDispatch()(logOut()); // Dispatch Redux action outside a component
-        return Promise.reject(error);
-      }
+//       const refreshToken = localStorage.getItem("refreshToken");
+//       if (!refreshToken) {
+//         getDispatch()(logOut(user?.name || 'Dude')); // Dispatch Redux action outside a component
+//         return Promise.reject(error);
+//       }
 
-      try {
-        const { data } = await axios.post("/refresh", { refreshToken });
-        localStorage.setItem("accessToken", data.accessToken);
+//       try {
+//         const { data } = await axios.post("/refresh", { refreshToken });
+//         localStorage.setItem("accessToken", data.accessToken);
 
-        originalRequest.headers["Authorization"] = `Bearer ${data.accessToken}`;
-        return api(originalRequest);
-      } catch (refreshError) {
-        console.log("Refresh token expired or invalid. Logging out.");
-        getDispatch()(logOut());
-        return Promise.reject(refreshError);
-      }
-    }
+//         originalRequest.headers["Authorization"] = `Bearer ${data.accessToken}`;
+//         return api(originalRequest);
+//       } catch (refreshError) {
+//         console.log("Refresh token expired or invalid. Logging out.");
+//         getDispatch()(logOut());
+//         return Promise.reject(refreshError);
+//       }
+//     }
 
-    return Promise.reject(error);
-  }
-);
+//     return Promise.reject(error);
+//   }
+// );
 
-export default api;
+// export default api;
